@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ReadingTimeTool from '../components/ReadingTimeTool';
+import Sidebar from '../components/Sidebar.astro';
+import Footer from '../components/Footer.astro';
+---
+<BaseLayout title="Email Reading Time Calculator - Estimate Reading Time for Emails" description="Free email reading time calculator. Estimate how long it takes to read emails. Optimize email length for better engagement and response rates.">
+  <main class="layout-shell px-4 py-6">
+    <header class="mb-6"><h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Email Reading Time Calculator</h1><p class="text-base text-text-muted max-w-3xl">Estimate reading time for emails. Optimize your email length for better engagement and higher response rates.</p></header>
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div class="lg:col-span-3">
+        <div class="bg-surface rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-4"><ReadingTimeTool client:load /></div>
+        <div class="mt-4 ad-slot-below-tool"><div class="bg-surface rounded-lg border border-gray-200 p-4 text-center"><p class="text-xs text-text-muted mb-2">Advertisement</p><div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded"><span class="text-gray-400 text-sm">AdSense Banner</span></div></div></div>
+        <div class="my-6 ad-slot-mid-content"><div class="bg-surface rounded-lg border border-gray-200 p-4 text-center"><p class="text-xs text-text-muted mb-2">Advertisement</p><div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded"><span class="text-gray-400 text-sm">AdSense Square</span></div></div></div>
+        <article class="mt-8">
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">Email Reading Time Guidelines</h2><div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4"><ul class="space-y-2 text-text-primary"><li class="flex justify-between"><span>Cold Email</span><span class="font-semibold">15-30 seconds</span></li><li class="flex justify-between"><span>Newsletter</span><span class="font-semibold">1-3 minutes</span></li><li class="flex justify-between"><span>Marketing Email</span><span class="font-semibold">30-60 seconds</span></li><li class="flex justify-between"><span>Recommended Length</span><span class="font-semibold">50-200 words</span></li></ul></div></section>
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">Email Writing Tips</h2><ul class="list-disc list-inside space-y-2 text-text-primary mb-4"><li>Keep subject lines under 50 characters</li><li>Get to the point in first 2 sentences</li><li>Use short paragraphs (2-3 sentences)</li><li>Include one clear call-to-action</li><li>Respect recipients' time</li></ul></section>
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">Related Tools</h2><ul class="space-y-2"><li><a href="/email-word-counter" class="text-brand-pink hover:underline">Email Word Counter</a></li><li><a href="/email-subject-counter" class="text-brand-pink hover:underline">Email Subject Counter</a></li><li><a href="/reading-time-calculator" class="text-brand-pink hover:underline">Reading Time Calculator</a></li></ul></section>
+        </article>
+      </div>
+      <Sidebar category="reading-time" />
+    </div>
+  </main>
+  <section class="py-6 bg-white"><div class="layout-shell px-4"><div class="bg-surface rounded-lg border border-gray-200 p-4 text-center"><p class="text-xs text-text-muted mb-2">Advertisement</p><div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded"><span class="text-gray-400 text-sm">AdSense Banner</span></div></div></div></section>
+  <Footer />
+</BaseLayout>

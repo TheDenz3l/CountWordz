@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CharacterCounterTool from '../components/CharacterCounterTool';
+import Sidebar from '../components/Sidebar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout 
+  title="Facebook Post Character Counter - Count Characters for Facebook Posts" 
+  description="Free Facebook character counter. Count characters for Facebook posts (63,206 chars), comments, and profile info. Optimize your Facebook content."
+>
+  <main class="layout-shell px-4 py-6">
+    <header class="mb-6">
+      <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Facebook Post Character Counter</h1>
+      <p class="text-base text-text-muted max-w-3xl">Count characters for Facebook posts, comments, and profile sections. Stay within Facebook's character limits for optimal engagement.</p>
+    </header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div class="lg:col-span-3">
+        <div class="bg-surface rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-4">
+          <CharacterCounterTool client:load />
+        </div>
+
+        <div class="mt-4 ad-slot-below-tool"><div class="bg-surface rounded-lg border border-gray-200 p-4 text-center"><p class="text-xs text-text-muted mb-2">Advertisement</p><div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded"><span class="text-gray-400 text-sm">AdSense Banner</span></div></div></div>
+        <div class="my-6 ad-slot-mid-content"><div class="bg-surface rounded-lg border border-gray-200 p-4 text-center"><p class="text-xs text-text-muted mb-2">Advertisement</p><div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded"><span class="text-gray-400 text-sm">AdSense Square</span></div></div></div>
+
+        <article class="mt-8">
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">Facebook Character Limits 2026</h2>
+            <div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4">
+              <ul class="space-y-2 text-text-primary">
+                <li class="flex justify-between"><span>Post</span><span class="font-semibold">63,206 characters</span></li>
+                <li class="flex justify-between"><span>Comment</span><span class="font-semibold">8,000 characters</span></li>
+                <li class="flex justify-between"><span>Caption (Photo)</span><span class="font-semibold">63,206 characters</span></li>
+                <li class="flex justify-between"><span>Bio (Profile)</span><span class="font-semibold">101 characters</span></li>
+                <li class="flex justify-between"><span>Headline (Profile)</span><span class="font-semibold">100 characters</span></li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">Facebook Post Tips</h2>
+            <ul class="list-disc list-inside space-y-2 text-text-primary mb-4">
+              <li>Keep posts under 250 characters for highest engagement</li>
+              <li>Longer posts (1,000+ chars) work for storytelling</li>
+              <li>Use line breaks for readability</li>
+              <li>Include a clear call-to-action</li>
+              <li>Ask questions to encourage comments</li>
+            </ul>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">FAQs</h2>
+            <h3 class="text-xl font-display font-semibold mt-4 mb-2">What's the ideal Facebook post length?</h3>
+            <p class="text-text-primary mb-4">Posts under 250 characters get 60% higher engagement. However, longer posts can work well for storytelling and building community.</p>
+            <h3 class="text-xl font-display font-semibold mt-4 mb-2">Do hashtags count toward the limit?</h3>
+            <p class="text-text-primary mb-4">Yes, hashtags count as regular characters. Use 2-3 relevant hashtags for best results on Facebook.</p>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">Related Tools</h2>
+            <ul class="space-y-2">
+              <li><a href="/instagram-caption-counter" class="text-brand-pink hover:underline">Instagram Caption Counter</a></li>
+              <li><a href="/linkedin-post-counter" class="text-brand-pink hover:underline">LinkedIn Post Counter</a></li>
+              <li><a href="/character-counter" class="text-brand-pink hover:underline">Character Counter</a></li>
+            </ul>
+          </section>
+        </article>
+      </div>
+
+      <Sidebar category="character-counter" />
+    </div>
+  </main>
+
+  <section class="py-6 bg-white">
+    <div class="layout-shell px-4">
+      <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+        <p class="text-xs text-text-muted mb-2">Advertisement</p>
+        <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+          <span class="text-gray-400 text-sm">AdSense Banner</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>

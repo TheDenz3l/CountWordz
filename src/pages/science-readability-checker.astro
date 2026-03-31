@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ReadabilityCheckerTool from '../components/ReadabilityCheckerTool';
+import Sidebar from '../components/Sidebar.astro';
+import Footer from '../components/Footer.astro';
+---
+<BaseLayout title="Science Readability Checker - Check Readability for Science Content" description="Free science readability checker. Check readability scores for science articles, research summaries, and educational content. Optimize for target audience comprehension.">
+  <main class="layout-shell px-4 py-6">
+    <header class="mb-6"><h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Science Readability Checker</h1><p class="text-base text-text-muted max-w-3xl">Check readability for science content. Optimize research summaries, articles, and educational materials for your target audience.</p></header>
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div class="lg:col-span-3">
+        <div class="bg-surface rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-4"><ReadabilityCheckerTool client:load /></div>
+        <div class="mt-4 ad-slot-below-tool"><div class="bg-surface rounded-lg border border-gray-200 p-4 text-center"><p class="text-xs text-text-muted mb-2">Advertisement</p><div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded"><span class="text-gray-400 text-sm">AdSense Banner</span></div></div></div>
+        <div class="my-6 ad-slot-mid-content"><div class="bg-surface rounded-lg border border-gray-200 p-4 text-center"><p class="text-xs text-text-muted mb-2">Advertisement</p><div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded"><span class="text-gray-400 text-sm">AdSense Square</span></div></div></div>
+        <article class="mt-8">
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">Science Content Readability Standards</h2><div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4"><ul class="space-y-2 text-text-primary"><li class="flex justify-between"><span>Popular Science</span><span class="font-semibold">Grade 8-10</span></li><li class="flex justify-between"><span>Science News</span><span class="font-semibold">Grade 10-12</span></li><li class="flex justify-between"><span>Research Papers</span><span class="font-semibold">Grade 14+</span></li><li class="flex justify-between"><span>Target Flesch Score</span><span class="font-semibold">Varies by audience</span></li></ul></div></section>
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">Science Writing Tips</h2><ul class="list-disc list-inside space-y-2 text-text-primary mb-4"><li>Know your audience's science literacy</li><li>Define technical terms clearly</li><li>Use analogies for complex concepts</li><li>Include visual aids and diagrams</li><li>Balance accuracy with accessibility</li></ul></section>
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">Related Tools</h2><ul class="space-y-2"><li><a href="/medical-readability-checker" class="text-brand-pink hover:underline">Medical Readability Checker</a></li><li><a href="/technical-readability-checker" class="text-brand-pink hover:underline">Technical Readability Checker</a></li><li><a href="/readability-checker" class="text-brand-pink hover:underline">Readability Checker</a></li></ul></section>
+        </article>
+      </div>
+      <Sidebar category="readability" />
+    </div>
+  </main>
+  <section class="py-6 bg-white"><div class="layout-shell px-4"><div class="bg-surface rounded-lg border border-gray-200 p-4 text-center"><p class="text-xs text-text-muted mb-2">Advertisement</p><div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded"><span class="text-gray-400 text-sm">AdSense Banner</span></div></div></div></section>
+  <Footer />
+</BaseLayout>

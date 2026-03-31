@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CharacterCounterTool from '../components/CharacterCounterTool';
+import Sidebar from '../components/Sidebar.astro';
+import Footer from '../components/Footer.astro';
+---
+<BaseLayout title="TikTok Bio Character Counter - Count Characters for TikTok Bios" description="Free TikTok bio character counter. Count characters for TikTok bios (80 chars). Optimize your TikTok profile for maximum followers.">
+  <main class="layout-shell px-4 py-6">
+    <header class="mb-6"><h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">TikTok Bio Character Counter</h1><p class="text-base text-text-muted max-w-3xl">Count characters for TikTok bios. Stay within the 80 character limit and optimize your profile for growth.</p></header>
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div class="lg:col-span-3">
+        <div class="bg-surface rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-4"><CharacterCounterTool client:load /></div>
+        <div class="mt-4 ad-slot-below-tool"><div class="bg-surface rounded-lg border border-gray-200 p-4 text-center"><p class="text-xs text-text-muted mb-2">Advertisement</p><div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded"><span class="text-gray-400 text-sm">AdSense Banner</span></div></div></div>
+        <div class="my-6 ad-slot-mid-content"><div class="bg-surface rounded-lg border border-gray-200 p-4 text-center"><p class="text-xs text-text-muted mb-2">Advertisement</p><div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded"><span class="text-gray-400 text-sm">AdSense Square</span></div></div></div>
+        <article class="mt-8">
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">TikTok Bio Tips</h2><ul class="list-disc list-inside space-y-2 text-text-primary mb-4"><li>Use all 80 characters wisely</li><li>Include your niche or content type</li><li>Add a call-to-action (follow, click link)</li><li>Use emojis to save space and add personality</li><li>Update regularly for new content series</li></ul></section>
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">Related Tools</h2><ul class="space-y-2"><li><a href="/tiktok-character-counter" class="text-brand-pink hover:underline">TikTok Character Counter</a></li><li><a href="/instagram-caption-counter" class="text-brand-pink hover:underline">Instagram Caption Counter</a></li><li><a href="/character-counter" class="text-brand-pink hover:underline">Character Counter</a></li></ul></section>
+        </article>
+      </div>
+      <Sidebar category="character-counter" />
+    </div>
+  </main>
+  <section class="py-6 bg-white"><div class="layout-shell px-4"><div class="bg-surface rounded-lg border border-gray-200 p-4 text-center"><p class="text-xs text-text-muted mb-2">Advertisement</p><div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded"><span class="text-gray-400 text-sm">AdSense Banner</span></div></div></div></section>
+  <Footer />
+</BaseLayout>

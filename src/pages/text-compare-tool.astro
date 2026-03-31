@@ -1,0 +1,128 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TextDiffTool from '../components/TextDiffTool';
+import Sidebar from '../components/Sidebar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout 
+  title="Text Compare Tool - Compare Two Texts and Highlight Differences" 
+  description="Free text compare and diff tool. Compare two texts side-by-side and highlight differences. See words added, removed, and changed with similarity percentage."
+>
+  <main class="layout-shell px-4 py-6">
+    <header class="mb-6">
+      <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Text Compare Tool</h1>
+      <p class="text-base text-text-muted max-w-3xl">Compare two texts side-by-side and highlight differences. Track changes between document versions with word-level accuracy.</p>
+    </header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div class="lg:col-span-3">
+        <div class="bg-surface rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-4">
+          <TextDiffTool client:load />
+        </div>
+
+        <div class="mt-4 ad-slot-below-tool">
+          <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+            <p class="text-xs text-text-muted mb-2">Advertisement</p>
+            <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+              <span class="text-gray-400 text-sm">AdSense Banner (728x90)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="my-6 ad-slot-mid-content">
+          <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+            <p class="text-xs text-text-muted mb-2">Advertisement</p>
+            <div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded">
+              <span class="text-gray-400 text-sm">AdSense Square (300x250)</span>
+            </div>
+          </div>
+        </div>
+
+        <article class="mt-8">
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">How to Use the Text Compare Tool</h2>
+            <p class="text-text-primary mb-4">
+              Paste your original text in the left box and your revised text in the right box. 
+              Click "Compare Texts" to see word-level differences highlighted side-by-side.
+            </p>
+            <ol class="list-decimal list-inside space-y-2 text-text-primary mb-4">
+              <li>Paste original text in the "Original Text" box</li>
+              <li>Paste revised text in the "Revised Text" box</li>
+              <li>Click "Compare Texts" to analyze differences</li>
+              <li>Review highlighted changes: <span class="bg-green-200 px-2 py-0.5 rounded">green = added</span>, <span class="bg-red-200 px-2 py-0.5 rounded">red = removed</span></li>
+              <li>Check summary stats for words added, removed, changed, and similarity %</li>
+            </ol>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">Common Use Cases</h2>
+            <div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4">
+              <ul class="space-y-2 text-text-primary">
+                <li class="flex items-start gap-2"><span class="text-brand-cyan">•</span> <strong>Document versioning</strong> — Track changes between draft versions</li>
+                <li class="flex items-start gap-2"><span class="text-brand-cyan">•</span> <strong>Code review</strong> — Compare code snippets before and after refactoring</li>
+                <li class="flex items-start gap-2"><span class="text-brand-cyan">•</span> <strong>Content editing</strong> — See what changed after editing</li>
+                <li class="flex items-start gap-2"><span class="text-brand-cyan">•</span> <strong>Contract comparison</strong> — Compare contract versions for changes</li>
+                <li class="flex items-start gap-2"><span class="text-brand-cyan">•</span> <strong>Student work</strong> — Check for plagiarism or unauthorized changes</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">Understanding the Results</h2>
+            <div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4">
+              <ul class="space-y-3 text-text-primary">
+                <li>
+                  <strong class="text-green-700">Words Added (Green):</strong> Words present in revised text but not in original
+                </li>
+                <li>
+                  <strong class="text-red-700">Words Removed (Red):</strong> Words present in original text but not in revised
+                </li>
+                <li>
+                  <strong class="text-brand-orange">Words Changed:</strong> Words at the same position that differ between texts
+                </li>
+                <li>
+                  <strong class="text-brand-cyan">Similarity %:</strong> Percentage of words that are identical in both texts
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">Tips for Best Results</h2>
+            <ul class="list-disc list-inside space-y-2 text-text-primary mb-4">
+              <li>Compare texts of similar length for clearer results</li>
+              <li>The tool compares word-by-word in sequence — large reordering may show many changes</li>
+              <li>For long documents, compare section by section for better clarity</li>
+              <li>Use the similarity percentage to quickly assess how much changed</li>
+            </ul>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">Related Tools</h2>
+            <ul class="space-y-2">
+              <li><a href="/word-counter" class="text-brand-pink hover:underline">Word Counter</a> — Count words in each version</li>
+              <li><a href="/keyword-density-checker" class="text-brand-pink hover:underline">Keyword Density Checker</a> — Analyze keyword usage</li>
+              <li><a href="/readability-checker" class="text-brand-pink hover:underline">Readability Checker</a> — Compare readability scores</li>
+            </ul>
+          </section>
+        </article>
+      </div>
+
+      <Sidebar category="tools" />
+    </div>
+  </main>
+
+  <section class="py-6 bg-white">
+    <div class="layout-shell px-4">
+      <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+        <p class="text-xs text-text-muted mb-2">Advertisement</p>
+        <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+          <span class="text-gray-400 text-sm">AdSense Banner (728x90)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>

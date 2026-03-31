@@ -1,0 +1,118 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import KeywordDensityChecker from '../components/KeywordDensityChecker';
+import Sidebar from '../components/Sidebar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout 
+  title="Keyword Density Checker - Analyze Word Frequency for SEO" 
+  description="Free keyword density checker tool. Analyze word and phrase frequency with density percentages. Optimize your content for SEO with overuse warnings."
+>
+  <main class="layout-shell px-4 py-6">
+    <header class="mb-6">
+      <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Keyword Density Checker</h1>
+      <p class="text-base text-text-muted max-w-3xl">Analyze word and phrase frequency with density percentages. Optimize your content for SEO and avoid keyword stuffing.</p>
+    </header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div class="lg:col-span-3">
+        <div class="bg-surface rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-4">
+          <KeywordDensityChecker client:load />
+        </div>
+
+        <div class="mt-4 ad-slot-below-tool">
+          <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+            <p class="text-xs text-text-muted mb-2">Advertisement</p>
+            <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+              <span class="text-gray-400 text-sm">AdSense Banner (728x90)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mid-Content Ad Slot -->
+        <div class="my-6 ad-slot-mid-content">
+          <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+            <p class="text-xs text-text-muted mb-2">Advertisement</p>
+            <div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded">
+              <span class="text-gray-400 text-sm">AdSense Square (300x250)</span>
+            </div>
+          </div>
+        </div>
+
+        <article class="mt-8">
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">What is Keyword Density?</h2>
+            <p class="text-text-primary mb-4">
+              Keyword density is the percentage of times a keyword or phrase appears on a page compared to the total number of words. 
+              It's calculated as: (keyword count / total words) × 100.
+            </p>
+            <div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4">
+              <p class="text-text-primary font-mono text-sm">
+                <strong>Formula:</strong> (Number of times keyword appears / Total word count) × 100 = Keyword Density %
+              </p>
+            </div>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">Ideal Keyword Density for SEO</h2>
+            <div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4">
+              <ul class="space-y-2 text-text-primary">
+                <li class="flex items-center gap-2"><span class="text-green-500">✓</span> <strong>1-2% density</strong> — Optimal range for target keywords</li>
+                <li class="flex items-center gap-2"><span class="text-yellow-500">⚠</span> <strong>2-3% density</strong> — Use sparingly, may appear over-optimized</li>
+                <li class="flex items-center gap-2"><span class="text-red-500">✗</span> <strong>3%+ density</strong> — Risk of keyword stuffing penalty</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">How to Use This Tool</h2>
+            <ol class="list-decimal list-inside space-y-2 text-text-primary mb-4">
+              <li>Paste your content into the text area above</li>
+              <li>Review the top words by density percentage</li>
+              <li>Check 2-word and 3-word phrase densities</li>
+              <li>Look for overused words (highlighted in red if >2% density)</li>
+              <li>Follow SEO recommendations to optimize your content</li>
+            </ol>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">SEO Best Practices</h2>
+            <ul class="list-disc list-inside space-y-2 text-text-primary mb-4">
+              <li>Focus on one primary keyword per page</li>
+              <li>Use synonyms and related terms (LSI keywords)</li>
+              <li>Write naturally for users, not just search engines</li>
+              <li>Avoid keyword stuffing — it can hurt rankings</li>
+              <li>Place keywords strategically: title, headings, first paragraph, meta description</li>
+            </ul>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">Related Tools</h2>
+            <ul class="space-y-2">
+              <li><a href="/word-counter" class="text-brand-pink hover:underline">Word Counter</a> — Count words and analyze text</li>
+              <li><a href="/readability-checker" class="text-brand-pink hover:underline">Readability Checker</a> — Measure content readability</li>
+              <li><a href="/blog-readability-checker" class="text-brand-pink hover:underline">Blog Readability Checker</a> — Optimize for blog audiences</li>
+            </ul>
+          </section>
+        </article>
+      </div>
+
+      <Sidebar category="seo" />
+    </div>
+  </main>
+
+  <!-- Footer Ad Banner -->
+  <section class="py-6 bg-white">
+    <div class="layout-shell px-4">
+      <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+        <p class="text-xs text-text-muted mb-2">Advertisement</p>
+        <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+          <span class="text-gray-400 text-sm">AdSense Banner (728x90)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>

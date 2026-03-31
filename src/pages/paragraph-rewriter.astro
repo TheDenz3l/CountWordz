@@ -1,0 +1,141 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ParagraphRewriter from '../components/ParagraphRewriter';
+import Sidebar from '../components/Sidebar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout 
+  title="Paragraph Rewriter - Improve Writing Clarity and Readability" 
+  description="Free paragraph rewriter tool. Get suggestions to improve sentence structure, reduce passive voice, simplify complex words, and enhance readability."
+>
+  <main class="layout-shell px-4 py-6">
+    <header class="mb-6">
+      <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Paragraph Rewriter</h1>
+      <p class="text-base text-text-muted max-w-3xl">Get intelligent suggestions to improve your writing. Fix passive voice, shorten long sentences, simplify complex words, and boost readability.</p>
+    </header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div class="lg:col-span-3">
+        <div class="bg-surface rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-4">
+          <ParagraphRewriter client:load />
+        </div>
+
+        <div class="mt-4 ad-slot-below-tool">
+          <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+            <p class="text-xs text-text-muted mb-2">Advertisement</p>
+            <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+              <span class="text-gray-400 text-sm">AdSense Banner (728x90)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="my-6 ad-slot-mid-content">
+          <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+            <p class="text-xs text-text-muted mb-2">Advertisement</p>
+            <div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded">
+              <span class="text-gray-400 text-sm">AdSense Square (300x250)</span>
+            </div>
+          </div>
+        </div>
+
+        <article class="mt-8">
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">How the Paragraph Rewriter Works</h2>
+            <p class="text-text-primary mb-4">
+              Our tool analyzes your paragraph and provides actionable suggestions to improve clarity, readability, and engagement.
+            </p>
+            <ol class="list-decimal list-inside space-y-2 text-text-primary mb-4">
+              <li>Paste your paragraph into the text area</li>
+              <li>The tool analyzes sentence structure, word choice, and readability</li>
+              <li>Review suggestions for passive voice, long sentences, complex words, and repetition</li>
+              <li>Apply suggestions to improve your writing</li>
+              <li>Compare original vs. improved readability scores</li>
+            </ol>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">What We Check</h2>
+            <div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4">
+              <ul class="space-y-3 text-text-primary">
+                <li class="flex items-start gap-2">
+                  <span class="text-yellow-600 font-bold">⚠️</span>
+                  <div>
+                    <strong>Passive Voice</strong>
+                    <p class="text-sm text-text-muted">Passive constructions make writing less direct. We suggest active voice alternatives.</p>
+                  </div>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-orange-600 font-bold">📏</span>
+                  <div>
+                    <strong>Long Sentences</strong>
+                    <p class="text-sm text-text-muted">Sentences over 25 words are hard to follow. We suggest breaking them into shorter sentences.</p>
+                  </div>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-600 font-bold">📚</span>
+                  <div>
+                    <strong>Complex Words</strong>
+                    <p class="text-sm text-text-muted">Complex vocabulary reduces readability. We suggest simpler alternatives.</p>
+                  </div>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-purple-600 font-bold">🔄</span>
+                  <div>
+                    <strong>Word Repetition</strong>
+                    <p class="text-sm text-text-muted">Repeating the same words makes writing boring. We suggest using synonyms.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">Readability Scores Explained</h2>
+            <div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4">
+              <ul class="space-y-2 text-text-primary">
+                <li><strong>Flesch Reading Ease (0-100):</strong> Higher scores = easier to read. Aim for 60-70 for general audiences.</li>
+                <li><strong>Grade Level:</strong> US school grade level needed to understand the text. Aim for grade 8-10 for web content.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">Writing Best Practices</h2>
+            <ul class="list-disc list-inside space-y-2 text-text-primary mb-4">
+              <li>Use active voice for direct, clear writing</li>
+              <li>Keep sentences between 15-20 words on average</li>
+              <li>Choose simple words over complex alternatives</li>
+              <li>Vary your vocabulary to maintain reader interest</li>
+              <li>Read your writing aloud to catch awkward phrasing</li>
+            </ul>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">Related Tools</h2>
+            <ul class="space-y-2">
+              <li><a href="/readability-checker" class="text-brand-pink hover:underline">Readability Checker</a> — Analyze full document readability</li>
+              <li><a href="/word-counter" class="text-brand-pink hover:underline">Word Counter</a> — Count words and sentences</li>
+              <li><a href="/keyword-density-checker" class="text-brand-pink hover:underline">Keyword Density Checker</a> — Optimize keyword usage</li>
+            </ul>
+          </section>
+        </article>
+      </div>
+
+      <Sidebar category="writing" />
+    </div>
+  </main>
+
+  <section class="py-6 bg-white">
+    <div class="layout-shell px-4">
+      <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+        <p class="text-xs text-text-muted mb-2">Advertisement</p>
+        <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+          <span class="text-gray-400 text-sm">AdSense Banner (728x90)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>

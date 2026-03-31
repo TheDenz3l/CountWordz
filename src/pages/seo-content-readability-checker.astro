@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ReadabilityCheckerTool from '../components/ReadabilityCheckerTool';
+import Sidebar from '../components/Sidebar.astro';
+import Footer from '../components/Footer.astro';
+---
+<BaseLayout title="SEO Content Readability Checker - Check Readability for SEO Content" description="Free SEO content readability checker. Check readability scores for SEO content and web copy. Optimize for search engines and reader engagement.">
+  <main class="layout-shell px-4 py-6">
+    <header class="mb-6"><h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">SEO Content Readability Checker</h1><p class="text-base text-text-muted max-w-3xl">Check readability for SEO content. Optimize your web copy for both search engines and reader engagement.</p></header>
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div class="lg:col-span-3">
+        <div class="bg-surface rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-4"><ReadabilityCheckerTool client:load /></div>
+        <div class="mt-4 ad-slot-below-tool"><div class="bg-surface rounded-lg border border-gray-200 p-4 text-center"><p class="text-xs text-text-muted mb-2">Advertisement</p><div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded"><span class="text-gray-400 text-sm">AdSense Banner</span></div></div></div>
+        <div class="my-6 ad-slot-mid-content"><div class="bg-surface rounded-lg border border-gray-200 p-4 text-center"><p class="text-xs text-text-muted mb-2">Advertisement</p><div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded"><span class="text-gray-400 text-sm">AdSense Square</span></div></div></div>
+        <article class="mt-8">
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">SEO Content Readability Standards</h2><div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4"><ul class="space-y-2 text-text-primary"><li class="flex justify-between"><span>Blog Posts</span><span class="font-semibold">Grade 8-10</span></li><li class="flex justify-between"><span>Landing Pages</span><span class="font-semibold">Grade 7-9</span></li><li class="flex justify-between"><span>Product Pages</span><span class="font-semibold">Grade 6-8</span></li><li class="flex justify-between"><span>Target Flesch Score</span><span class="font-semibold">60-70 (easy-moderate)</span></li></ul></div></section>
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">SEO Writing Tips</h2><ul class="list-disc list-inside space-y-2 text-text-primary mb-4"><li>Write for humans first, search engines second</li><li>Use short paragraphs (2-3 sentences)</li><li>Include subheadings with keywords</li><li>Use bullet points for scannability</li><li>Keep sentences under 20 words</li></ul></section>
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">Related Tools</h2><ul class="space-y-2"><li><a href="/blog-readability-checker" class="text-brand-pink hover:underline">Blog Readability Checker</a></li><li><a href="/marketing-readability-checker" class="text-brand-pink hover:underline">Marketing Readability Checker</a></li><li><a href="/readability-checker" class="text-brand-pink hover:underline">Readability Checker</a></li></ul></section>
+        </article>
+      </div>
+      <Sidebar category="readability" />
+    </div>
+  </main>
+  <section class="py-6 bg-white"><div class="layout-shell px-4"><div class="bg-surface rounded-lg border border-gray-200 p-4 text-center"><p class="text-xs text-text-muted mb-2">Advertisement</p><div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded"><span class="text-gray-400 text-sm">AdSense Banner</span></div></div></div></section>
+  <Footer />
+</BaseLayout>

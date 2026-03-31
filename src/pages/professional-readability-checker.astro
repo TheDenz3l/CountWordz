@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ReadabilityCheckerTool from '../components/ReadabilityCheckerTool';
+import Sidebar from '../components/Sidebar.astro';
+import Footer from '../components/Footer.astro';
+---
+<BaseLayout title="Professional Readability Checker - Check Readability for Professional Content" description="Free professional readability checker. Check readability scores for professional and business content. Optimize for workplace communication.">
+  <main class="layout-shell px-4 py-6">
+    <header class="mb-6"><h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Professional Readability Checker</h1><p class="text-base text-text-muted max-w-3xl">Check readability for professional content. Optimize your workplace communication for clarity and efficiency.</p></header>
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div class="lg:col-span-3">
+        <div class="bg-surface rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-4"><ReadabilityCheckerTool client:load /></div>
+        <div class="mt-4 ad-slot-below-tool"><div class="bg-surface rounded-lg border border-gray-200 p-4 text-center"><p class="text-xs text-text-muted mb-2">Advertisement</p><div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded"><span class="text-gray-400 text-sm">AdSense Banner</span></div></div></div>
+        <div class="my-6 ad-slot-mid-content"><div class="bg-surface rounded-lg border border-gray-200 p-4 text-center"><p class="text-xs text-text-muted mb-2">Advertisement</p><div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded"><span class="text-gray-400 text-sm">AdSense Square</span></div></div></div>
+        <article class="mt-8">
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">Professional Readability Standards</h2><div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4"><ul class="space-y-2 text-text-primary"><li class="flex justify-between"><span>Business Communication</span><span class="font-semibold">Grade 10-12</span></li><li class="flex justify-between"><span>Technical Documentation</span><span class="font-semibold">Grade 12-14</span></li><li class="flex justify-between"><span>Target Flesch Score</span><span class="font-semibold">50-60 (moderate)</span></li><li class="flex justify-between"><span>Executive Summary</span><span class="font-semibold">Grade 10-11</span></li></ul></div></section>
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">Professional Writing Tips</h2><ul class="list-disc list-inside space-y-2 text-text-primary mb-4"><li>Write for busy professionals</li><li>Get to the point quickly</li><li>Use clear headings</li><li>Avoid unnecessary jargon</li><li>Include actionable takeaways</li></ul></section>
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">Related Tools</h2><ul class="space-y-2"><li><a href="/business-readability-checker" class="text-brand-pink hover:underline">Business Readability Checker</a></li><li><a href="/business-email-readability-checker" class="text-brand-pink hover:underline">Business Email Readability Checker</a></li><li><a href="/readability-checker" class="text-brand-pink hover:underline">Readability Checker</a></li></ul></section>
+        </article>
+      </div>
+      <Sidebar category="readability" />
+    </div>
+  </main>
+  <section class="py-6 bg-white"><div class="layout-shell px-4"><div class="bg-surface rounded-lg border border-gray-200 p-4 text-center"><p class="text-xs text-text-muted mb-2">Advertisement</p><div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded"><span class="text-gray-400 text-sm">AdSense Banner</span></div></div></div></section>
+  <Footer />
+</BaseLayout>
