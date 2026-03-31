@@ -1,0 +1,146 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WordCounterTool from '../components/WordCounterTool';
+import Footer from '../components/Footer.astro';
+import Sidebar from '../components/Sidebar.astro';
+---
+
+<BaseLayout 
+  title="Essay Word Counter - Count Words for Essays & Assignments" 
+  description="Free essay word counter tool. Count words for essays, assignments, and academic papers. Track progress toward word limits with real-time updates."
+>
+  <main class="layout-shell px-4 py-6">
+    <!-- Page Header -->
+    <header class="mb-6">
+      <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Essay Word Counter</h1>
+      <p class="text-base text-text-muted max-w-3xl">Count words for essays, assignments, and academic papers. Track your progress toward word limits in real-time.</p>
+    </header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <!-- Tool Column -->
+      <div class="lg:col-span-3">
+        <div class="bg-surface rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-4">
+          <WordCounterTool client:load />
+        </div>
+
+        <!-- Below-Tool Ad Slot -->
+        <div class="mt-4 ad-slot-below-tool">
+          <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+            <p class="text-xs text-text-muted mb-2">Advertisement</p>
+            <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+              <span class="text-gray-400 text-sm">AdSense Banner (728x90)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SEO Content -->
+        <article class="mt-8">
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">How to Use the Essay Word Counter</h2>
+            <p class="text-text-primary mb-4">
+              Paste your essay text or start typing above. The counter will instantly display your word count and help you track progress toward your assignment requirements.
+            </p>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-3 mb-4">
+              <div class="bg-surface p-3 rounded-lg border border-gray-100">
+                <div class="text-brand-pink font-semibold">Word Count</div>
+                <div class="text-xs text-text-muted">Total words in essay</div>
+              </div>
+              <div class="bg-surface p-3 rounded-lg border border-gray-100">
+                <div class="text-brand-cyan font-semibold">Characters</div>
+                <div class="text-xs text-text-muted">With/without spaces</div>
+              </div>
+              <div class="bg-surface p-3 rounded-lg border border-gray-100">
+                <div class="text-brand-orange font-semibold">Reading Time</div>
+                <div class="text-xs text-text-muted">Minutes to read</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Mid-Content Ad Slot -->
+          <div class="my-6 ad-slot-mid-content">
+            <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+              <p class="text-xs text-text-muted mb-2">Advertisement</p>
+              <div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded">
+                <span class="text-gray-400 text-sm">AdSense Square (300x250)</span>
+              </div>
+            </div>
+          </div>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">Common Essay Word Limits</h2>
+            <div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4">
+              <ul class="space-y-2 text-text-primary">
+                <li class="flex justify-between"><span>High school essay</span><span class="font-semibold">500-1000 words</span></li>
+                <li class="flex justify-between"><span>College admission essay</span><span class="font-semibold">250-650 words</span></li>
+                <li class="flex justify-between"><span>Undergraduate essay</span><span class="font-semibold">1500-3000 words</span></li>
+                <li class="flex justify-between"><span>Graduate school essay</span><span class="font-semibold">2000-5000 words</span></li>
+                <li class="flex justify-between"><span>Research paper</span><span class="font-semibold">3000-8000 words</span></li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">Tips for Meeting Word Count Requirements</h2>
+            <ul class="list-disc list-inside space-y-2 text-text-primary mb-4">
+              <li>Expand on examples and evidence to support your arguments</li>
+              <li>Add counterarguments and address potential objections</li>
+              <li>Include relevant quotes and analyze them thoroughly</li>
+              <li>Break complex ideas into multiple paragraphs for clarity</li>
+              <li>Review your conclusion—does it fully synthesize your main points?</li>
+            </ul>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">Frequently Asked Questions</h2>
+            
+            <h3 class="text-xl font-display font-semibold mt-4 mb-2">What if my essay is under the word count?</h3>
+            <p class="text-text-primary mb-4">
+              Review each paragraph and ask: Can I add more evidence? Can I explain this concept more thoroughly? Can I address a counterargument? Often, expanding analysis rather than adding filler is the key.
+            </p>
+
+            <h3 class="text-xl font-display font-semibold mt-4 mb-2">What if my essay exceeds the word limit?</h3>
+            <p class="text-text-primary mb-4">
+              Look for redundant phrases, unnecessary adjectives, or tangential points. Tighten your prose by removing filler words like "very," "really," or "in order to." Consider whether every paragraph directly supports your thesis.
+            </p>
+
+            <h3 class="text-xl font-display font-semibold mt-4 mb-2">Do citations count toward the word limit?</h3>
+            <p class="text-text-primary mb-4">
+              This depends on your instructor's guidelines. Typically, in-text citations count, but the bibliography/reference page does not. Always clarify with your professor or check the assignment rubric.
+            </p>
+
+            <h3 class="text-xl font-display font-semibold mt-4 mb-2">How accurate is this word counter?</h3>
+            <p class="text-text-primary mb-4">
+              Our word counter uses the same counting method as Microsoft Word and Google Docs, making it highly accurate for academic purposes. Hyphenated words and contractions are counted as single words.
+            </p>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">Related Tools</h2>
+            <ul class="space-y-2">
+              <li><a href="/character-counter" class="text-brand-pink hover:underline">Character Counter</a> — Check character limits for titles and abstracts</li>
+              <li><a href="/sentence-counter" class="text-brand-pink hover:underline">Sentence Counter</a> — Analyze sentence structure and variety</li>
+              <li><a href="/readability-checker" class="text-brand-pink hover:underline">Readability Checker</a> — Ensure your writing is clear and accessible</li>
+              <li><a href="/paragraph-counter" class="text-brand-pink hover:underline">Paragraph Counter</a> — Track paragraph count and balance</li>
+            </ul>
+          </section>
+        </article>
+      </div>
+
+      <!-- Sidebar -->
+      <Sidebar category="word-counter" />
+    </div>
+  </main>
+  <!-- Footer Ad Banner -->
+  <section class="py-6 bg-white">
+    <div class="layout-shell px-4">
+      <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+        <p class="text-xs text-text-muted mb-2">Advertisement</p>
+        <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+          <span class="text-gray-400 text-sm">AdSense Banner (728x90)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>

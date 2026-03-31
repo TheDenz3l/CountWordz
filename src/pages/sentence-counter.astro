@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Footer from '../components/Footer.astro';
 import Sidebar from '../components/Sidebar.astro';
 import SentenceCounterTool from '../components/SentenceCounterTool';
 ---
@@ -153,4 +154,17 @@ import SentenceCounterTool from '../components/SentenceCounterTool';
       <Sidebar />
     </div>
   </main>
+  <!-- Footer Ad Banner -->
+  <section class="py-6 bg-white">
+    <div class="layout-shell px-4">
+      <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+        <p class="text-xs text-text-muted mb-2">Advertisement</p>
+        <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+          <span class="text-gray-400 text-sm">AdSense Banner (728x90)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
 </BaseLayout>

@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CharacterCounterTool from '../components/CharacterCounterTool';
+import Footer from '../components/Footer.astro';
+import Sidebar from '../components/Sidebar.astro';
+---
+<BaseLayout title="YouTube Description Counter - Count Characters for YouTube" description="Free YouTube description counter. Count characters for YouTube video descriptions and titles. Optimize for SEO.">
+  <main class="layout-shell px-4 py-6">
+    <header class="mb-6"><h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">YouTube Description Counter</h1><p class="text-base text-text-muted max-w-3xl">Count characters for YouTube video descriptions. Optimize your descriptions for search and viewer engagement.</p></header>
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div class="lg:col-span-3">
+        <div class="bg-surface rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-4"><CharacterCounterTool client:load /></div>
+        <div class="mt-4 ad-slot-below-tool"><div class="bg-surface rounded-lg border border-gray-200 p-4 text-center"><p class="text-xs text-text-muted mb-2">Advertisement</p><div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded"><span class="text-gray-400 text-sm">AdSense Banner</span></div></div></div>
+        <article class="mt-8">
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">YouTube Character Limits</h2><div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4"><ul class="space-y-2 text-text-primary"><li class="flex justify-between"><span>Video description</span><span class="font-semibold">5,000 characters</span></li><li class="flex justify-between"><span>Video title</span><span class="font-semibold">100 characters</span></li><li class="flex justify-between"><span>Visible in search</span><span class="font-semibold">~150 characters</span></li></ul></div></section>
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">YouTube Description Tips</h2><ul class="list-disc list-inside space-y-2 text-text-primary mb-4"><li>First 150 characters appear in search results</li><li>Include important keywords early</li><li>Add timestamps for longer videos</li><li>Include links to related videos and playlists</li><li>Add a call-to-action (subscribe, like, comment)</li></ul></section>
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">FAQs</h2><h3 class="text-xl font-display font-semibold mt-4 mb-2">How long should my YouTube description be?</h3><p class="text-text-primary mb-4">While you can use up to 5,000 characters, aim for at least 200-300 characters to provide context for YouTube's algorithm. Longer descriptions (1,000+) can help with SEO if they're relevant.</p><h3 class="text-xl font-display font-semibold mt-4 mb-2">Do hashtags count in the description?</h3><p class="text-text-primary mb-4">Yes. YouTube allows up to 15 hashtags in the description. The first 3 appear above your video title.</p></section>
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">Related Tools</h2><ul class="space-y-2"><li><a href="/character-counter" class="text-brand-pink hover:underline">Character Counter</a></li><li><a href="/readability-checker" class="text-brand-pink hover:underline">Readability Checker</a></li></ul></section>
+        </article>
+      </div>
+      <Sidebar category="character-counter" />
+    </div>
+  </main>
+  <!-- Footer Ad Banner -->
+  <section class="py-6 bg-white">
+    <div class="layout-shell px-4">
+      <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+        <p class="text-xs text-text-muted mb-2">Advertisement</p>
+        <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+          <span class="text-gray-400 text-sm">AdSense Banner (728x90)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>

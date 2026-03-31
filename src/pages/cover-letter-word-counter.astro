@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WordCounterTool from '../components/WordCounterTool';
+import Footer from '../components/Footer.astro';
+import Sidebar from '../components/Sidebar.astro';
+---
+<BaseLayout title="Cover Letter Word Counter - Count Words for Cover Letters" description="Free cover letter word counter tool. Count words for cover letters and job applications. Ideal length guidance included.">
+  <main class="layout-shell px-4 py-6">
+    <header class="mb-6"><h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Cover Letter Word Counter</h1><p class="text-base text-text-muted max-w-3xl">Count words for cover letters and job applications. Get your cover letter to the ideal length.</p></header>
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div class="lg:col-span-3">
+        <div class="bg-surface rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-4"><WordCounterTool client:load /></div>
+        <div class="mt-4 ad-slot-below-tool"><div class="bg-surface rounded-lg border border-gray-200 p-4 text-center"><p class="text-xs text-text-muted mb-2">Advertisement</p><div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded"><span class="text-gray-400 text-sm">AdSense Banner</span></div></div></div>
+        <article class="mt-8">
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">How to Use the Cover Letter Word Counter</h2><p class="text-text-primary mb-4">Paste your cover letter above to count words in real-time. Ensure your cover letter is the right length to make a strong impression.</p></section>
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">Ideal Cover Letter Length</h2><div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4"><ul class="space-y-2 text-text-primary"><li class="flex justify-between"><span>Recommended word count</span><span class="font-semibold">250-400 words</span></li><li class="flex justify-between"><span>Paragraphs</span><span class="font-semibold">3-4 paragraphs</span></li><li class="flex justify-between"><span>Page length</span><span class="font-semibold">3/4 to 1 full page</span></li></ul></div></section>
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">Cover Letter Structure</h2><ul class="list-disc list-inside space-y-2 text-text-primary mb-4"><li><strong>Opening (50-75 words):</strong> State the position and how you found it</li><li><strong>Body Paragraph 1 (75-100 words):</strong> Highlight relevant experience</li><li><strong>Body Paragraph 2 (75-100 words):</strong> Explain why you're interested in this company</li><li><strong>Closing (50-75 words):</strong> Call to action and sign-off</li></ul></section>
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">FAQs</h2><h3 class="text-xl font-display font-semibold mt-4 mb-2">Is 500 words too long for a cover letter?</h3><p class="text-text-primary mb-4">Yes, 500 words is generally too long. Recruiters prefer concise cover letters. Aim for 250-400 words to respect their time while still making your case.</p><h3 class="text-xl font-display font-semibold mt-4 mb-2">Should I include my address in the word count?</h3><p class="text-text-primary mb-4">The word counter counts all text you paste. Focus on the body content—header information typically isn't counted toward the recommended length.</p></section>
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">Related Tools</h2><ul class="space-y-2"><li><a href="/resume-word-counter" class="text-brand-pink hover:underline">Resume Word Counter</a></li><li><a href="/character-counter" class="text-brand-pink hover:underline">Character Counter</a></li><li><a href="/readability-checker" class="text-brand-pink hover:underline">Readability Checker</a></li></ul></section>
+        </article>
+      </div>
+      <Sidebar category="word-counter" />
+    </div>
+  </main>
+  <!-- Footer Ad Banner -->
+  <section class="py-6 bg-white">
+    <div class="layout-shell px-4">
+      <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+        <p class="text-xs text-text-muted mb-2">Advertisement</p>
+        <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+          <span class="text-gray-400 text-sm">AdSense Banner (728x90)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>

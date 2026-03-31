@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WordCounterTool from '../components/WordCounterTool';
+import Footer from '../components/Footer.astro';
+import Sidebar from '../components/Sidebar.astro';
+---
+<BaseLayout title="Resume Word Counter - Count Words for Resumes & CVs" description="Free resume word counter tool. Count words for resumes, CVs, and cover letters. Optimize your resume length for ATS and recruiters.">
+  <main class="layout-shell px-4 py-6">
+    <header class="mb-6"><h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Resume Word Counter</h1><p class="text-base text-text-muted max-w-3xl">Count words for resumes, CVs, and cover letters. Optimize your resume length for ATS and recruiters.</p></header>
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div class="lg:col-span-3">
+        <div class="bg-surface rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-4"><WordCounterTool client:load /></div>
+        <div class="mt-4 ad-slot-below-tool"><div class="bg-surface rounded-lg border border-gray-200 p-4 text-center"><p class="text-xs text-text-muted mb-2">Advertisement</p><div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded"><span class="text-gray-400 text-sm">AdSense Banner</span></div></div></div>
+        <article class="mt-8">
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">How to Use the Resume Word Counter</h2><p class="text-text-primary mb-4">Paste your resume or cover letter text above. Track your word count to ensure your resume meets industry standards and ATS requirements.</p></section>
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">Recommended Resume Lengths</h2><div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4"><ul class="space-y-2 text-text-primary"><li class="flex justify-between"><span>Entry-level resume</span><span class="font-semibold">300-500 words (1 page)</span></li><li class="flex justify-between"><span>Mid-career resume</span><span class="font-semibold">500-800 words (1-2 pages)</span></li><li class="flex justify-between"><span>Senior executive resume</span><span class="font-semibold">800-1200 words (2 pages)</span></li><li class="flex justify-between"><span>Academic CV</span><span class="font-semibold">2000+ words (multiple pages)</span></li></ul></div></section>
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">Resume Writing Tips</h2><ul class="list-disc list-inside space-y-2 text-text-primary mb-4"><li>Use action verbs to start each bullet point</li><li>Quantify achievements with numbers and percentages</li><li>Tailor your resume for each job application</li><li>Keep formatting clean and ATS-friendly</li><li>Focus on relevant experience from the last 10-15 years</li></ul></section>
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">FAQs</h2><h3 class="text-xl font-display font-semibold mt-4 mb-2">How long should my resume be?</h3><p class="text-text-primary mb-4">For most professionals, a 1-2 page resume is ideal. Entry-level candidates should aim for 1 page. Senior professionals with 10+ years of experience can use 2 pages.</p><h3 class="text-xl font-display font-semibold mt-4 mb-2">Do employers care about word count?</h3><p class="text-text-primary mb-4">Recruiters spend an average of 6-7 seconds scanning resumes. Concise, well-organized content is more important than hitting a specific word count.</p></section>
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">Related Tools</h2><ul class="space-y-2"><li><a href="/cover-letter-word-counter" class="text-brand-pink hover:underline">Cover Letter Word Counter</a></li><li><a href="/character-counter" class="text-brand-pink hover:underline">Character Counter</a></li><li><a href="/readability-checker" class="text-brand-pink hover:underline">Readability Checker</a></li></ul></section>
+        </article>
+      </div>
+      <Sidebar category="word-counter" />
+    </div>
+  </main>
+  <!-- Footer Ad Banner -->
+  <section class="py-6 bg-white">
+    <div class="layout-shell px-4">
+      <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+        <p class="text-xs text-text-muted mb-2">Advertisement</p>
+        <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+          <span class="text-gray-400 text-sm">AdSense Banner (728x90)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>

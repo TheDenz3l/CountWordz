@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CharacterCounterTool from '../components/CharacterCounterTool';
 import Sidebar from '../components/Sidebar.astro';
+import Footer from '../components/Footer.astro';
 ---
 
 <BaseLayout 
@@ -48,6 +49,38 @@ import Sidebar from '../components/Sidebar.astro';
                 <div class="text-brand-orange font-semibold">Remaining</div>
                 <div class="text-xs text-text-muted">Platform limit</div>
               </div>
+            </div>
+          </section>
+
+          <!-- Specific Use Cases -->
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">Platform-Specific Counters</h2>
+            <p class="text-text-primary mb-4">Need a character counter for a specific platform? Try our specialized tools:</p>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+              <a href="/tweet-character-counter" class="p-3 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+                <div class="text-brand-pink font-semibold text-sm">Tweet Counter</div>
+                <div class="text-xs text-text-muted mt-1">X/Twitter (280)</div>
+              </a>
+              <a href="/instagram-caption-counter" class="p-3 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+                <div class="text-brand-cyan font-semibold text-sm">Instagram</div>
+                <div class="text-xs text-text-muted mt-1">Captions (2200)</div>
+              </a>
+              <a href="/linkedin-post-counter" class="p-3 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+                <div class="text-brand-orange font-semibold text-sm">LinkedIn</div>
+                <div class="text-xs text-text-muted mt-1">Posts (3000)</div>
+              </a>
+              <a href="/youtube-description-counter" class="p-3 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+                <div class="text-brand-pink font-semibold text-sm">YouTube</div>
+                <div class="text-xs text-text-muted mt-1">Descriptions</div>
+              </a>
+              <a href="/meta-description-counter" class="p-3 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+                <div class="text-brand-cyan font-semibold text-sm">Meta Description</div>
+                <div class="text-xs text-text-muted mt-1">SEO (160)</div>
+              </a>
+              <a href="/sms-character-counter" class="p-3 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+                <div class="text-brand-orange font-semibold text-sm">SMS</div>
+                <div class="text-xs text-text-muted mt-1">Text messages</div>
+              </a>
             </div>
           </section>
 
@@ -196,4 +229,18 @@ import Sidebar from '../components/Sidebar.astro';
       <Sidebar />
     </div>
   </main>
+
+    <!-- Footer Ad Banner -->
+  <section class="py-6 bg-white">
+    <div class="layout-shell px-4">
+      <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+        <p class="text-xs text-text-muted mb-2">Advertisement</p>
+        <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+          <span class="text-gray-400 text-sm">AdSense Banner (728x90)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
 </BaseLayout>

@@ -1,0 +1,77 @@
+---
+// Footer Component - Reusable across all pages
+---
+
+<footer class="bg-gray-900 text-white py-12 mt-16">
+  <div class="layout-shell px-4">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+      <!-- Brand -->
+      <div class="md:col-span-1">
+        <h3 class="text-xl font-display font-bold mb-4">CountWordz</h3>
+        <p class="text-gray-400 text-sm">Free text utility tools for counting, analyzing, and formatting text. Fast, modern, and easy to use.</p>
+      </div>
+      
+      <!-- All Tools -->
+      <div class="md:col-span-2">
+        <h4 class="font-semibold mb-4">Tools</h4>
+        <div class="grid grid-cols-2 gap-2 text-sm">
+          <!-- Core Tools -->
+          <div>
+            <a href="/word-counter" class="block text-gray-400 hover:text-white py-1">Word Counter</a>
+            <a href="/character-counter" class="block text-gray-400 hover:text-white py-1">Character Counter</a>
+            <a href="/sentence-counter" class="block text-gray-400 hover:text-white py-1">Sentence Counter</a>
+            <a href="/paragraph-counter" class="block text-gray-400 hover:text-white py-1">Paragraph Counter</a>
+            <a href="/syllable-counter" class="block text-gray-400 hover:text-white py-1">Syllable Counter</a>
+          </div>
+          <div>
+            <a href="/reading-time-calculator" class="block text-gray-400 hover:text-white py-1">Reading Time</a>
+            <a href="/speech-time-calculator" class="block text-gray-400 hover:text-white py-1">Speech Time</a>
+            <a href="/case-converter" class="block text-gray-400 hover:text-white py-1">Case Converter</a>
+            <a href="/title-case-converter" class="block text-gray-400 hover:text-white py-1">Title Case</a>
+            <a href="/readability-checker" class="block text-gray-400 hover:text-white py-1">Readability Checker</a>
+          </div>
+          <!-- Word Counter Use Cases -->
+          <div>
+            <span class="block text-gray-500 text-xs uppercase tracking-wide mb-2 mt-2">Word Counter</span>
+            <a href="/essay-word-counter" class="block text-gray-400 hover:text-white py-1 text-xs">Essay</a>
+            <a href="/resume-word-counter" class="block text-gray-400 hover:text-white py-1 text-xs">Resume</a>
+            <a href="/cover-letter-word-counter" class="block text-gray-400 hover:text-white py-1 text-xs">Cover Letter</a>
+            <a href="/college-essay-word-counter" class="block text-gray-400 hover:text-white py-1 text-xs">College Essay</a>
+            <a href="/speech-word-counter" class="block text-gray-400 hover:text-white py-1 text-xs">Speech</a>
+            <a href="/paragraph-word-counter" class="block text-gray-400 hover:text-white py-1 text-xs">Paragraph</a>
+            <a href="/article-word-counter" class="block text-gray-400 hover:text-white py-1 text-xs">Article</a>
+          </div>
+          <!-- Character Counter Use Cases -->
+          <div>
+            <span class="block text-gray-500 text-xs uppercase tracking-wide mb-2 mt-2">Character Counter</span>
+            <a href="/tweet-character-counter" class="block text-gray-400 hover:text-white py-1 text-xs">Tweet / X</a>
+            <a href="/instagram-caption-counter" class="block text-gray-400 hover:text-white py-1 text-xs">Instagram</a>
+            <a href="/linkedin-post-counter" class="block text-gray-400 hover:text-white py-1 text-xs">LinkedIn</a>
+            <a href="/youtube-description-counter" class="block text-gray-400 hover:text-white py-1 text-xs">YouTube</a>
+            <a href="/meta-description-counter" class="block text-gray-400 hover:text-white py-1 text-xs">Meta Description</a>
+            <a href="/sms-character-counter" class="block text-gray-400 hover:text-white py-1 text-xs">SMS</a>
+          </div>
+          <!-- Reading & Readability -->
+          <div>
+            <span class="block text-gray-500 text-xs uppercase tracking-wide mb-2 mt-2">Reading & Readability</span>
+            <a href="/blog-reading-time" class="block text-gray-400 hover:text-white py-1 text-xs">Blog Reading Time</a>
+            <a href="/blog-readability-checker" class="block text-gray-400 hover:text-white py-1 text-xs">Blog Readability</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Legal -->
+      <div>
+        <h4 class="font-semibold mb-4">Legal</h4>
+        <ul class="space-y-2 text-gray-400 text-sm">
+          <li><a href="/privacy-policy" class="hover:text-white">Privacy Policy</a></li>
+          <li><a href="/terms" class="hover:text-white">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="border-t border-gray-800 pt-8 text-center text-gray-400 text-sm">
+      <p>&copy; {new Date().getFullYear()} CountWordz. All rights reserved.</p>
+    </div>
+  </div>
+</footer>

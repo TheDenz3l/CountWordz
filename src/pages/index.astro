@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import WordCounterTool from '../components/WordCounterTool';
+import Footer from '../components/Footer.astro';
 ---
 
 <BaseLayout 
@@ -30,6 +31,18 @@ import WordCounterTool from '../components/WordCounterTool';
         <div class="p-6"><div class="text-3xl font-display font-bold text-brand-cyan">100%</div><div class="text-sm text-text-muted mt-1">Free Forever</div></div>
         <div class="p-6"><div class="text-3xl font-display font-bold text-brand-orange">Real-time</div><div class="text-sm text-text-muted mt-1">Results</div></div>
         <div class="p-6"><div class="text-3xl font-display font-bold text-text-primary">No Signup</div><div class="text-sm text-text-muted mt-1">Required</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Homepage Ad Slot -->
+  <section class="py-8 bg-gray-50">
+    <div class="layout-shell px-4">
+      <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center max-w-4xl mx-auto">
+        <p class="text-xs text-text-muted mb-2">Advertisement</p>
+        <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+          <span class="text-gray-400 text-sm">AdSense Banner (728x90)</span>
+        </div>
       </div>
     </div>
   </section>
@@ -75,6 +88,47 @@ import WordCounterTool from '../components/WordCounterTool';
     </div>
   </section>
 
+  <!-- Popular Use Cases -->
+  <section class="py-12 bg-white border-y border-gray-100">
+    <div class="layout-shell px-4">
+      <h2 class="text-2xl md:text-3xl font-display font-bold text-center mb-8">Popular Use Cases</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+        <a href="/essay-word-counter" class="text-center p-4 rounded-lg hover:bg-gray-50 transition-colors">
+          <div class="text-brand-pink font-semibold mb-1">Essay Word Counter</div>
+          <div class="text-xs text-text-muted">For students & writers</div>
+        </a>
+        <a href="/resume-word-counter" class="text-center p-4 rounded-lg hover:bg-gray-50 transition-colors">
+          <div class="text-brand-cyan font-semibold mb-1">Resume Word Counter</div>
+          <div class="text-xs text-text-muted">For job seekers</div>
+        </a>
+        <a href="/tweet-character-counter" class="text-center p-4 rounded-lg hover:bg-gray-50 transition-colors">
+          <div class="text-brand-orange font-semibold mb-1">Tweet Counter</div>
+          <div class="text-xs text-text-muted">For X/Twitter</div>
+        </a>
+        <a href="/instagram-caption-counter" class="text-center p-4 rounded-lg hover:bg-gray-50 transition-colors">
+          <div class="text-brand-pink font-semibold mb-1">Instagram Counter</div>
+          <div class="text-xs text-text-muted">For captions</div>
+        </a>
+        <a href="/linkedin-post-counter" class="text-center p-4 rounded-lg hover:bg-gray-50 transition-colors">
+          <div class="text-brand-cyan font-semibold mb-1">LinkedIn Counter</div>
+          <div class="text-xs text-text-muted">For posts</div>
+        </a>
+        <a href="/blog-reading-time" class="text-center p-4 rounded-lg hover:bg-gray-50 transition-colors">
+          <div class="text-brand-orange font-semibold mb-1">Blog Reading Time</div>
+          <div class="text-xs text-text-muted">For bloggers</div>
+        </a>
+        <a href="/title-case-converter" class="text-center p-4 rounded-lg hover:bg-gray-50 transition-colors">
+          <div class="text-brand-pink font-semibold mb-1">Title Case</div>
+          <div class="text-xs text-text-muted">For headlines</div>
+        </a>
+        <a href="/blog-readability-checker" class="text-center p-4 rounded-lg hover:bg-gray-50 transition-colors">
+          <div class="text-brand-cyan font-semibold mb-1">Readability Check</div>
+          <div class="text-xs text-text-muted">For content</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- Why CountWordz -->
   <section class="py-16 bg-white">
     <div class="layout-shell px-4">
@@ -99,33 +153,29 @@ import WordCounterTool from '../components/WordCounterTool';
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-gray-900 text-white py-12">
+  <!-- Bottom Homepage Ad Slot -->
+  <section class="py-8 bg-gray-50 border-t border-gray-100">
     <div class="layout-shell px-4">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div>
-          <h3 class="text-xl font-display font-bold mb-4">CountWordz</h3>
-          <p class="text-gray-400">Free text utility tools for everyone.</p>
+      <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center max-w-4xl mx-auto">
+        <p class="text-xs text-text-muted mb-2">Advertisement</p>
+        <div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded">
+          <span class="text-gray-400 text-sm">AdSense Square (300x250)</span>
         </div>
-        <div>
-          <h4 class="font-semibold mb-4">Tools</h4>
-          <ul class="space-y-2 text-gray-400">
-            <li><a href="/word-counter" class="hover:text-white">Word Counter</a></li>
-            <li><a href="/character-counter" class="hover:text-white">Character Counter</a></li>
-            <li><a href="/readability-checker" class="hover:text-white">Readability Checker</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="font-semibold mb-4">Legal</h4>
-          <ul class="space-y-2 text-gray-400">
-            <li><a href="/privacy-policy" class="hover:text-white">Privacy Policy</a></li>
-            <li><a href="/terms" class="hover:text-white">Terms of Service</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-        <p>&copy; {new Date().getFullYear()} CountWordz. All rights reserved.</p>
       </div>
     </div>
-  </footer>
+  </section>
+
+  <!-- Footer Ad Banner -->
+  <section class="py-6 bg-white">
+    <div class="layout-shell px-4">
+      <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+        <p class="text-xs text-text-muted mb-2">Advertisement</p>
+        <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+          <span class="text-gray-400 text-sm">AdSense Banner (728x90)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
 </BaseLayout>

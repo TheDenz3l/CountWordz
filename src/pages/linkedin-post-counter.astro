@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CharacterCounterTool from '../components/CharacterCounterTool';
+import Footer from '../components/Footer.astro';
+import Sidebar from '../components/Sidebar.astro';
+---
+<BaseLayout title="LinkedIn Post Counter - Count Characters for LinkedIn Posts" description="Free LinkedIn post character counter. Count characters for LinkedIn posts, articles, and headlines. 3000 character limit.">
+  <main class="layout-shell px-4 py-6">
+    <header class="mb-6"><h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">LinkedIn Post Counter</h1><p class="text-base text-text-muted max-w-3xl">Count characters for LinkedIn posts. Stay within the 3,000 character limit for maximum engagement.</p></header>
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div class="lg:col-span-3">
+        <div class="bg-surface rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-4"><CharacterCounterTool client:load /></div>
+        <div class="mt-4 ad-slot-below-tool"><div class="bg-surface rounded-lg border border-gray-200 p-4 text-center"><p class="text-xs text-text-muted mb-2">Advertisement</p><div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded"><span class="text-gray-400 text-sm">AdSense Banner</span></div></div></div>
+        <article class="mt-8">
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">LinkedIn Character Limits</h2><div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4"><ul class="space-y-2 text-text-primary"><li class="flex justify-between"><span>Post</span><span class="font-semibold">3,000 characters</span></li><li class="flex justify-between"><span>Headline</span><span class="font-semibold">220 characters</span></li><li class="flex justify-between"><span>About section</span><span class="font-semibold">2,600 characters</span></li><li class="flex justify-between"><span>Comment</span><span class="font-semibold">1,250 characters</span></li></ul></div></section>
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">LinkedIn Post Best Practices</h2><ul class="list-disc list-inside space-y-2 text-text-primary mb-4"><li>First 3 lines are critical (before "see more")</li><li>Use white space for readability</li><li>Include a clear call-to-action</li><li>3-5 hashtags work well on LinkedIn</li><li>Posts with 1,300-1,500 characters often perform best</li></ul></section>
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">FAQs</h2><h3 class="text-xl font-display font-semibold mt-4 mb-2">What's the ideal LinkedIn post length?</h3><p class="text-text-primary mb-4">While you can use up to 3,000 characters, posts between 1,300-1,500 characters tend to get the most engagement. Long enough to provide value, short enough to maintain attention.</p><h3 class="text-xl font-display font-semibold mt-4 mb-2">Should I use hashtags on LinkedIn?</h3><p class="text-text-primary mb-4">Yes, but sparingly. 3-5 relevant hashtags work better than dozens. Place them at the end of your post.</p></section>
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">Related Tools</h2><ul class="space-y-2"><li><a href="/tweet-character-counter" class="text-brand-pink hover:underline">Tweet Character Counter</a></li><li><a href="/instagram-caption-counter" class="text-brand-pink hover:underline">Instagram Caption Counter</a></li><li><a href="/character-counter" class="text-brand-pink hover:underline">Character Counter</a></li></ul></section>
+        </article>
+      </div>
+      <Sidebar category="character-counter" />
+    </div>
+  </main>
+  <!-- Footer Ad Banner -->
+  <section class="py-6 bg-white">
+    <div class="layout-shell px-4">
+      <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+        <p class="text-xs text-text-muted mb-2">Advertisement</p>
+        <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+          <span class="text-gray-400 text-sm">AdSense Banner (728x90)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>

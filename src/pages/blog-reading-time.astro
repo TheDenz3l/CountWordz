@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ReadingTimeTool from '../components/ReadingTimeTool';
+import Footer from '../components/Footer.astro';
+import Sidebar from '../components/Sidebar.astro';
+---
+<BaseLayout title="Blog Reading Time Calculator - Estimate Reading Time for Blog Posts" description="Free blog reading time calculator. Estimate how long it takes to read your blog posts. Improve user experience with accurate read times.">
+  <main class="layout-shell px-4 py-6">
+    <header class="mb-6"><h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Blog Reading Time Calculator</h1><p class="text-base text-text-muted max-w-3xl">Estimate reading time for blog posts. Display accurate read times to improve user experience and engagement.</p></header>
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div class="lg:col-span-3">
+        <div class="bg-surface rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-4"><ReadingTimeTool client:load /></div>
+        <div class="mt-4 ad-slot-below-tool"><div class="bg-surface rounded-lg border border-gray-200 p-4 text-center"><p class="text-xs text-text-muted mb-2">Advertisement</p><div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded"><span class="text-gray-400 text-sm">AdSense Banner</span></div></div></div>
+        <article class="mt-8">
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">Why Display Reading Time on Blog Posts?</h2><ul class="list-disc list-inside space-y-2 text-text-primary mb-4"><li>Helps readers choose content that fits their schedule</li><li>Increases trust and transparency</li><li>Reduces bounce rate by setting expectations</li><li>Improves user experience on mobile devices</li><li>Professional touch that competitors may lack</li></ul></section>
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">Ideal Blog Post Lengths</h2><div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4"><ul class="space-y-2 text-text-primary"><li class="flex justify-between"><span>Quick update</span><span class="font-semibold">300-500 words (1-2 min)</span></li><li class="flex justify-between"><span>Standard blog post</span><span class="font-semibold">800-1200 words (3-5 min)</span></li><li class="flex justify-between"><span>In-depth guide</span><span class="font-semibold">2000-3000 words (8-12 min)</span></li><li class="flex justify-between"><span>Ultimate guide</span><span class="font-semibold">4000+ words (15+ min)</span></li></ul></div></section>
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">FAQs</h2><h3 class="text-xl font-display font-semibold mt-4 mb-2">How is reading time calculated?</h3><p class="text-text-primary mb-4">Reading time is calculated by dividing word count by average reading speed (typically 200-250 words per minute for adults).</p><h3 class="text-xl font-display font-semibold mt-4 mb-2">Should I show reading time on all posts?</h3><p class="text-text-primary mb-4">Yes, consistency is key. Displaying reading time on all posts helps readers develop trust in your estimates.</p></section>
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">Related Tools</h2><ul class="space-y-2"><li><a href="/word-counter" class="text-brand-pink hover:underline">Word Counter</a></li><li><a href="/readability-checker" class="text-brand-pink hover:underline">Readability Checker</a></li><li><a href="/speech-time-calculator" class="text-brand-pink hover:underline">Speech Time Calculator</a></li></ul></section>
+        </article>
+      </div>
+      <Sidebar category="reading-time" />
+    </div>
+  </main>
+  <!-- Footer Ad Banner -->
+  <section class="py-6 bg-white">
+    <div class="layout-shell px-4">
+      <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+        <p class="text-xs text-text-muted mb-2">Advertisement</p>
+        <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+          <span class="text-gray-400 text-sm">AdSense Banner (728x90)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>

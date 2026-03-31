@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import WordCounterTool from '../components/WordCounterTool';
 import Sidebar from '../components/Sidebar.astro';
+import Footer from '../components/Footer.astro';
 ---
 
 <BaseLayout 
@@ -69,6 +70,38 @@ import Sidebar from '../components/Sidebar.astro';
                 <div class="text-brand-orange font-semibold">Speaking Time</div>
                 <div class="text-xs text-text-muted">Minutes to speak</div>
               </div>
+            </div>
+          </section>
+
+          <!-- Specific Use Cases -->
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">Specific Use Cases</h2>
+            <p class="text-text-primary mb-4">Need a word counter for a specific purpose? Try our specialized tools:</p>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+              <a href="/essay-word-counter" class="p-3 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+                <div class="text-brand-pink font-semibold text-sm">Essay Word Counter</div>
+                <div class="text-xs text-text-muted mt-1">For assignments</div>
+              </a>
+              <a href="/resume-word-counter" class="p-3 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+                <div class="text-brand-cyan font-semibold text-sm">Resume Counter</div>
+                <div class="text-xs text-text-muted mt-1">For job applications</div>
+              </a>
+              <a href="/cover-letter-word-counter" class="p-3 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+                <div class="text-brand-orange font-semibold text-sm">Cover Letter</div>
+                <div class="text-xs text-text-muted mt-1">For applications</div>
+              </a>
+              <a href="/college-essay-word-counter" class="p-3 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+                <div class="text-brand-pink font-semibold text-sm">College Essay</div>
+                <div class="text-xs text-text-muted mt-1">For admissions</div>
+              </a>
+              <a href="/speech-word-counter" class="p-3 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+                <div class="text-brand-cyan font-semibold text-sm">Speech Counter</div>
+                <div class="text-xs text-text-muted mt-1">For presentations</div>
+              </a>
+              <a href="/paragraph-word-counter" class="p-3 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+                <div class="text-brand-orange font-semibold text-sm">Paragraph Count</div>
+                <div class="text-xs text-text-muted mt-1">By paragraph</div>
+              </a>
             </div>
           </section>
 
@@ -204,4 +237,18 @@ import Sidebar from '../components/Sidebar.astro';
       <Sidebar />
     </div>
   </main>
+
+    <!-- Footer Ad Banner -->
+  <section class="py-6 bg-white">
+    <div class="layout-shell px-4">
+      <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+        <p class="text-xs text-text-muted mb-2">Advertisement</p>
+        <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+          <span class="text-gray-400 text-sm">AdSense Banner (728x90)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
 </BaseLayout>

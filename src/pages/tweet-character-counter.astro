@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CharacterCounterTool from '../components/CharacterCounterTool';
+import Footer from '../components/Footer.astro';
+import Sidebar from '../components/Sidebar.astro';
+---
+<BaseLayout title="Tweet Character Counter - Count Characters for X/Twitter Posts" description="Free tweet character counter for X (Twitter). Count characters with the 280 character limit. Perfect for tweets and threads.">
+  <main class="layout-shell px-4 py-6">
+    <header class="mb-6"><h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Tweet Character Counter</h1><p class="text-base text-text-muted max-w-3xl">Count characters for X (Twitter) posts. Stay within the 280 character limit with real-time counting.</p></header>
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div class="lg:col-span-3">
+        <div class="bg-surface rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-4"><CharacterCounterTool client:load /></div>
+        <div class="mt-4 ad-slot-below-tool"><div class="bg-surface rounded-lg border border-gray-200 p-4 text-center"><p class="text-xs text-text-muted mb-2">Advertisement</p><div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded"><span class="text-gray-400 text-sm">AdSense Banner</span></div></div></div>
+        <article class="mt-8">
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">X (Twitter) Character Limit</h2><p class="text-text-primary mb-4">Twitter now allows <strong>280 characters</strong> per tweet for most accounts. Premium subscribers can post up to 25,000 characters, but standard tweets are limited to 280.</p></section>
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">Twitter Character Count Tips</h2><ul class="list-disc list-inside space-y-2 text-text-primary mb-4"><li>Links count as 23 characters regardless of length</li><li>Images, GIFs, and polls don't count toward your limit</li><li>Emojis count as 2 characters each</li><li>Retained retweets (quote tweets) include your text plus the original</li><li>Thread tweets each get their own 280 characters</li></ul></section>
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">FAQs</h2><h3 class="text-xl font-display font-semibold mt-4 mb-2">Why did Twitter increase the character limit?</h3><p class="text-text-primary mb-4">Twitter increased from 140 to 280 characters in 2017 to give users more room to express themselves while maintaining brevity.</p><h3 class="text-xl font-display font-semibold mt-4 mb-2">Do hashtags count toward the limit?</h3><p class="text-text-primary mb-4">Yes, hashtags count as regular characters. A long hashtag can use up significant space in your tweet.</p></section>
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">Related Tools</h2><ul class="space-y-2"><li><a href="/instagram-caption-counter" class="text-brand-pink hover:underline">Instagram Caption Counter</a></li><li><a href="/linkedin-post-counter" class="text-brand-pink hover:underline">LinkedIn Post Counter</a></li><li><a href="/character-counter" class="text-brand-pink hover:underline">Character Counter</a></li></ul></section>
+        </article>
+      </div>
+      <Sidebar category="character-counter" />
+    </div>
+  </main>
+  <!-- Footer Ad Banner -->
+  <section class="py-6 bg-white">
+    <div class="layout-shell px-4">
+      <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+        <p class="text-xs text-text-muted mb-2">Advertisement</p>
+        <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+          <span class="text-gray-400 text-sm">AdSense Banner (728x90)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CaseConverterTool from '../components/CaseConverterTool';
+import Footer from '../components/Footer.astro';
+import Sidebar from '../components/Sidebar.astro';
+---
+<BaseLayout title="Title Case Converter - Convert Text to Title Case" description="Free title case converter. Convert text to proper title case following APA, MLA, Chicago, and AP style rules.">
+  <main class="layout-shell px-4 py-6">
+    <header class="mb-6"><h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Title Case Converter</h1><p class="text-base text-text-muted max-w-3xl">Convert text to title case following major style guides. Perfect for headlines, titles, and headings.</p></header>
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div class="lg:col-span-3">
+        <div class="bg-surface rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-4"><CaseConverterTool client:load /></div>
+        <div class="mt-4 ad-slot-below-tool"><div class="bg-surface rounded-lg border border-gray-200 p-4 text-center"><p class="text-xs text-text-muted mb-2">Advertisement</p><div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded"><span class="text-gray-400 text-sm">AdSense Banner</span></div></div></div>
+        <article class="mt-8">
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">Title Case Rules</h2><p class="text-text-primary mb-4">Title case capitalizes major words while keeping minor words lowercase. Rules vary by style guide:</p><ul class="list-disc list-inside space-y-2 text-text-primary mb-4"><li><strong>APA/MLA:</strong> Capitalize words of 4+ letters</li><li><strong>Chicago:</strong> Capitalize all words except articles, prepositions, conjunctions</li><li><strong>AP:</strong> Capitalize words of 3+ letters</li><li>Always capitalize first and last words</li></ul></section>
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">When to Use Title Case</h2><ul class="list-disc list-inside space-y-2 text-text-primary mb-4"><li>Blog post titles and headlines</li><li>Book and article titles</li><li>Section headings</li><li>Email subject lines</li><li>Presentation titles</li></ul></section>
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">Related Tools</h2><ul class="space-y-2"><li><a href="/character-counter" class="text-brand-pink hover:underline">Character Counter</a></li><li><a href="/word-counter" class="text-brand-pink hover:underline">Word Counter</a></li></ul></section>
+        </article>
+      </div>
+      <Sidebar category="case-converter" />
+    </div>
+  </main>
+  <!-- Footer Ad Banner -->
+  <section class="py-6 bg-white">
+    <div class="layout-shell px-4">
+      <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+        <p class="text-xs text-text-muted mb-2">Advertisement</p>
+        <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+          <span class="text-gray-400 text-sm">AdSense Banner (728x90)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>

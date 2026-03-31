@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CharacterCounterTool from '../components/CharacterCounterTool';
+import Footer from '../components/Footer.astro';
+import Sidebar from '../components/Sidebar.astro';
+---
+<BaseLayout title="Instagram Caption Counter - Count Characters for Instagram" description="Free Instagram caption counter. Count characters for Instagram captions, bios, and hashtags. 2200 character limit.">
+  <main class="layout-shell px-4 py-6">
+    <header class="mb-6"><h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Instagram Caption Counter</h1><p class="text-base text-text-muted max-w-3xl">Count characters for Instagram captions. Stay within the 2,200 character limit with room for hashtags.</p></header>
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div class="lg:col-span-3">
+        <div class="bg-surface rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-4"><CharacterCounterTool client:load /></div>
+        <div class="mt-4 ad-slot-below-tool"><div class="bg-surface rounded-lg border border-gray-200 p-4 text-center"><p class="text-xs text-text-muted mb-2">Advertisement</p><div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded"><span class="text-gray-400 text-sm">AdSense Banner</span></div></div></div>
+        <article class="mt-8">
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">Instagram Character Limits</h2><div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4"><ul class="space-y-2 text-text-primary"><li class="flex justify-between"><span>Caption</span><span class="font-semibold">2,200 characters</span></li><li class="flex justify-between"><span>Bio</span><span class="font-semibold">150 characters</span></li><li class="flex justify-between"><span>Hashtags per post</span><span class="font-semibold">30 max</span></li><li class="flex justify-between"><span>Story text</span><span class="font-semibold">~100 visible</span></li></ul></div></section>
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">Instagram Caption Tips</h2><ul class="list-disc list-inside space-y-2 text-text-primary mb-4"><li>First 125 characters are most visible in feed</li><li>Use line breaks for readability (press return)</li><li>Place important info before the "more" cut-off</li><li>Hashtags can go at the end or in first comment</li><li>Emojis help break up text and add personality</li></ul></section>
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">FAQs</h2><h3 class="text-xl font-display font-semibold mt-4 mb-2">How many hashtags should I use?</h3><p class="text-text-primary mb-4">Instagram allows up to 30 hashtags. Research suggests 5-15 relevant hashtags perform better than maxing out.</p><h3 class="text-xl font-display font-semibold mt-4 mb-2">Do line breaks count as characters?</h3><p class="text-text-primary mb-4">Yes, line breaks count as 1 character each. They're worth using for readability.</p></section>
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">Related Tools</h2><ul class="space-y-2"><li><a href="/tweet-character-counter" class="text-brand-pink hover:underline">Tweet Character Counter</a></li><li><a href="/linkedin-post-counter" class="text-brand-pink hover:underline">LinkedIn Post Counter</a></li><li><a href="/character-counter" class="text-brand-pink hover:underline">Character Counter</a></li></ul></section>
+        </article>
+      </div>
+      <Sidebar category="character-counter" />
+    </div>
+  </main>
+  <!-- Footer Ad Banner -->
+  <section class="py-6 bg-white">
+    <div class="layout-shell px-4">
+      <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+        <p class="text-xs text-text-muted mb-2">Advertisement</p>
+        <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+          <span class="text-gray-400 text-sm">AdSense Banner (728x90)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>

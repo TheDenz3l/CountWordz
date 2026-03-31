@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CharacterCounterTool from '../components/CharacterCounterTool';
+import Footer from '../components/Footer.astro';
+import Sidebar from '../components/Sidebar.astro';
+---
+<BaseLayout title="Meta Description Counter - Count Characters for SEO Meta Descriptions" description="Free meta description character counter. Optimize your meta descriptions for Google search results. 160 character limit.">
+  <main class="layout-shell px-4 py-6">
+    <header class="mb-6"><h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Meta Description Counter</h1><p class="text-base text-text-muted max-w-3xl">Count characters for SEO meta descriptions. Optimize for Google's search result display limits.</p></header>
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div class="lg:col-span-3">
+        <div class="bg-surface rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-4"><CharacterCounterTool client:load /></div>
+        <div class="mt-4 ad-slot-below-tool"><div class="bg-surface rounded-lg border border-gray-200 p-4 text-center"><p class="text-xs text-text-muted mb-2">Advertisement</p><div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded"><span class="text-gray-400 text-sm">AdSense Banner</span></div></div></div>
+        <article class="mt-8">
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">Meta Description Length</h2><div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4"><ul class="space-y-2 text-text-primary"><li class="flex justify-between"><span>Recommended length</span><span class="font-semibold">150-160 characters</span></li><li class="flex justify-between"><span>Google may truncate</span><span class="font-semibold">After 160 characters</span></li><li class="flex justify-between"><span>Minimum for SEO</span><span class="font-semibold">120 characters</span></li></ul></div></section>
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">Meta Description Best Practices</h2><ul class="list-disc list-inside space-y-2 text-text-primary mb-4"><li>Include your primary keyword naturally</li><li>Write compelling copy that encourages clicks</li><li>Match the search intent of your target query</li><li>Include a call-to-action when appropriate</li><li>Make each page's description unique</li></ul></section>
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">FAQs</h2><h3 class="text-xl font-display font-semibold mt-4 mb-2">Do meta descriptions affect SEO rankings?</h3><p class="text-text-primary mb-4">Meta descriptions don't directly affect rankings, but they influence click-through rates from search results, which can indirectly impact SEO performance.</p><h3 class="text-xl font-display font-semibold mt-4 mb-2">What if Google doesn't use my meta description?</h3><p class="text-text-primary mb-4">Google sometimes rewrites meta descriptions to better match the search query. Write compelling descriptions anyway—they're still used most of the time.</p></section>
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">Related Tools</h2><ul class="space-y-2"><li><a href="/character-counter" class="text-brand-pink hover:underline">Character Counter</a></li><li><a href="/readability-checker" class="text-brand-pink hover:underline">Readability Checker</a></li></ul></section>
+        </article>
+      </div>
+      <Sidebar category="character-counter" />
+    </div>
+  </main>
+  <!-- Footer Ad Banner -->
+  <section class="py-6 bg-white">
+    <div class="layout-shell px-4">
+      <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+        <p class="text-xs text-text-muted mb-2">Advertisement</p>
+        <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+          <span class="text-gray-400 text-sm">AdSense Banner (728x90)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>

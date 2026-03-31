@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WordCounterTool from '../components/WordCounterTool';
+import Footer from '../components/Footer.astro';
+import Sidebar from '../components/Sidebar.astro';
+---
+<BaseLayout title="College Essay Word Counter - Count Words for College Applications" description="Free college essay word counter. Count words for college application essays, personal statements, and admissions essays.">
+  <main class="layout-shell px-4 py-6">
+    <header class="mb-6"><h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">College Essay Word Counter</h1><p class="text-base text-text-muted max-w-3xl">Count words for college application essays and personal statements. Stay within application limits.</p></header>
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div class="lg:col-span-3">
+        <div class="bg-surface rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-4"><WordCounterTool client:load /></div>
+        <div class="mt-4 ad-slot-below-tool"><div class="bg-surface rounded-lg border border-gray-200 p-4 text-center"><p class="text-xs text-text-muted mb-2">Advertisement</p><div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded"><span class="text-gray-400 text-sm">AdSense Banner</span></div></div></div>
+        <article class="mt-8">
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">How to Use the College Essay Word Counter</h2><p class="text-text-primary mb-4">Paste your college essay or personal statement above. Monitor your word count to stay within application requirements.</p></section>
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">Common Application Word Limits</h2><div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4"><ul class="space-y-2 text-text-primary"><li class="flex justify-between"><span>Common App Personal Statement</span><span class="font-semibold">250-650 words</span></li><li class="flex justify-between"><span>UC Personal Insight Questions</span><span class="font-semibold">350 words each</span></li><li class="flex justify-between"><span>Coalition Application</span><span class="font-semibold">500-650 words</span></li><li class="flex justify-between"><span>Supplemental essays</span><span class="font-semibold">150-400 words</span></li></ul></div></section>
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">College Essay Tips</h2><ul class="list-disc list-inside space-y-2 text-text-primary mb-4"><li>Start with a compelling hook in your first sentence</li><li>Show, don't tell—use specific examples and anecdotes</li><li>Be authentic and let your personality shine through</li><li>Proofread carefully and have others review your essay</li><li>Stay within the word limit—admissions officers notice</li></ul></section>
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">FAQs</h2><h3 class="text-xl font-display font-semibold mt-4 mb-2">Can I go over the word limit?</h3><p class="text-text-primary mb-4">It's best to stay within the limit. The Common App allows up to 650 words and won't accept more. For other applications, going slightly over (10-20 words) is usually acceptable, but respect the guidelines.</p><h3 class="text-xl font-display font-semibold mt-4 mb-2">What if I'm under the word limit?</h3><p class="text-text-primary mb-4">Quality matters more than quantity. If you've told your story effectively at 500 words, that's better than padding to reach 650. However, use the space available to add depth if needed.</p></section>
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">Related Tools</h2><ul class="space-y-2"><li><a href="/essay-word-counter" class="text-brand-pink hover:underline">Essay Word Counter</a></li><li><a href="/readability-checker" class="text-brand-pink hover:underline">Readability Checker</a></li><li><a href="/sentence-counter" class="text-brand-pink hover:underline">Sentence Counter</a></li></ul></section>
+        </article>
+      </div>
+      <Sidebar category="word-counter" />
+    </div>
+  </main>
+  <!-- Footer Ad Banner -->
+  <section class="py-6 bg-white">
+    <div class="layout-shell px-4">
+      <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+        <p class="text-xs text-text-muted mb-2">Advertisement</p>
+        <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+          <span class="text-gray-400 text-sm">AdSense Banner (728x90)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>
