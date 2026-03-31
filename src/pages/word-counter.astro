@@ -1,0 +1,139 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WordCounterTool from '../components/WordCounterTool';
+---
+
+<BaseLayout 
+  title="Word Counter - Count Words, Characters, and More" 
+  description="Free online word counter tool. Count words, characters, sentences, paragraphs, and estimate reading time in real-time. Perfect for essays, articles, and social media posts."
+>
+  <main class="container mx-auto px-4 py-8 max-w-7xl">
+    <!-- Page Header -->
+    <header class="mb-8">
+      <h1 class="text-4xl md:text-6xl font-display font-bold tracking-tighter text-text-primary mb-3">
+        Word Counter
+      </h1>
+      <p class="text-lg text-text-muted max-w-3xl">
+        Count words, characters, sentences, and more in real-time. Perfect for essays, resumes, captions, and scripts.
+      </p>
+    </header>
+
+    <!-- Main Tool Area -->
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <!-- Tool Column -->
+      <div class="lg:col-span-3">
+        <div class="bg-surface rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+          <WordCounterTool client:load />
+        </div>
+
+        <!-- Below-Tool Ad Slot -->
+        <div class="mt-6 ad-slot-below-tool">
+          <div class="bg-surface rounded-xl border border-gray-200 p-6 text-center">
+            <p class="text-sm text-text-muted mb-2">Advertisement</p>
+            <div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded-lg">
+              <span class="text-gray-400">AdSense Ad Unit</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SEO Content -->
+        <article class="mt-12 prose prose-lg max-w-none">
+          <h2>How to Use the Word Counter</h2>
+          <p>
+            Simply paste or type your text into the box above. The word counter will instantly analyze your text and display:
+          </p>
+          <ul>
+            <li><strong>Word count</strong> — Total number of words</li>
+            <li><strong>Character count</strong> — Characters with and without spaces</li>
+            <li><strong>Sentence count</strong> — Number of sentences</li>
+            <li><strong>Paragraph count</strong> — Number of paragraphs</li>
+            <li><strong>Reading time</strong> — Estimated time to read at average speed</li>
+            <li><strong>Speaking time</strong> — Estimated time to speak aloud</li>
+          </ul>
+
+          <h2>Why Use CountWordz?</h2>
+          <p>
+            CountWordz provides instant, accurate text analysis without any signup or downloads. 
+            Our word counter updates in real-time as you type, making it perfect for:
+          </p>
+          <ul>
+            <li>Students checking essay word limits</li>
+            <li>Writers tracking their daily word count</li>
+            <li>Marketers ensuring ad copy fits character limits</li>
+            <li>Job seekers optimizing resume bullets</li>
+            <li>Social media creators checking post length</li>
+          </ul>
+
+          <h2>Frequently Asked Questions</h2>
+          
+          <h3>How do you count words?</h3>
+          <p>
+            We count words by splitting your text on whitespace and filtering out empty strings. 
+            This handles multiple spaces, tabs, and newlines correctly.
+          </p>
+
+          <h3>What counts as a word?</h3>
+          <p>
+            Any sequence of characters separated by spaces counts as one word. 
+            Hyphenated words like "well-known" count as one word. 
+            Contractions like "don't" count as one word.
+          </p>
+
+          <h3>How accurate is the reading time?</h3>
+          <p>
+            Reading time is calculated based on an average reading speed of 200 words per minute. 
+            Actual reading time may vary based on text complexity and individual reading speed.
+          </p>
+
+          <h3>Is my text saved or stored?</h3>
+          <p>
+            No. All text analysis happens in your browser. Your text is never sent to our servers 
+            or stored anywhere.
+          </p>
+
+          <h2>Related Tools</h2>
+          <ul>
+            <li><a href="/character-counter">Character Counter</a> — Check character limits for social media</li>
+            <li><a href="/sentence-counter">Sentence Counter</a> — Analyze sentence structure</li>
+            <li><a href="/readability-checker">Readability Checker</a> — Measure text complexity</li>
+            <li><a href="/paragraph-counter">Paragraph Counter</a> — Count and analyze paragraphs</li>
+          </ul>
+        </article>
+      </div>
+
+      <!-- Sidebar Column (Desktop Only) -->
+      <aside class="hidden lg:block lg:col-span-1">
+        <div class="sticky top-8 space-y-6">
+          <!-- Sidebar Ad Slot -->
+          <div class="ad-slot-sidebar">
+            <div class="bg-surface rounded-xl border border-gray-200 p-6 text-center">
+              <p class="text-sm text-text-muted mb-2">Advertisement</p>
+              <div class="min-h-[600px] flex items-center justify-center bg-gray-50 rounded-lg">
+                <span class="text-gray-400">AdSense Sidebar Ad</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Related Tools -->
+          <div class="bg-surface rounded-xl border border-gray-200 p-6">
+            <h3 class="text-lg font-display font-semibold mb-4">Quick Links</h3>
+            <nav class="space-y-2">
+              <a href="/character-counter" class="block px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors text-text-primary hover:text-brand-pink">
+                Character Counter
+              </a>
+              <a href="/sentence-counter" class="block px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors text-text-primary hover:text-brand-pink">
+                Sentence Counter
+              </a>
+              <a href="/paragraph-counter" class="block px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors text-text-primary hover:text-brand-pink">
+                Paragraph Counter
+              </a>
+              <a href="/readability-checker" class="block px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors text-text-primary hover:text-brand-pink">
+                Readability Checker
+              </a>
+            </nav>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+</BaseLayout>

@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CharacterCounterTool from '../components/CharacterCounterTool';
+---
+
+<BaseLayout 
+  title="Character Counter - Check Character Limits for Social Media" 
+  description="Free online character counter tool. Count characters with and without spaces. Check limits for X (Twitter), Instagram, LinkedIn, meta descriptions, and more."
+>
+  <main class="container mx-auto px-4 py-8 max-w-7xl">
+    <header class="mb-8">
+      <h1 class="text-4xl md:text-6xl font-display font-bold tracking-tighter text-text-primary mb-3">Character Counter</h1>
+      <p class="text-lg text-text-muted max-w-3xl">Count characters with and without spaces. Check limits for social media posts, meta descriptions, and more.</p>
+    </header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div class="lg:col-span-3">
+        <div class="bg-surface rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+          <CharacterCounterTool client:load />
+        </div>
+
+        <div class="mt-6 ad-slot-below-tool">
+          <div class="bg-surface rounded-xl border border-gray-200 p-6 text-center">
+            <p class="text-sm text-text-muted mb-2">Advertisement</p>
+            <div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded-lg">
+              <span class="text-gray-400">AdSense Ad Unit</span>
+            </div>
+          </div>
+        </div>
+
+        <article class="mt-12 prose prose-lg max-w-none">
+          <h2>How to Use the Character Counter</h2>
+          <p>Paste or type your text above to see real-time character counts. Select a platform preset to see how many characters you have remaining.</p>
+          
+          <h2>Platform Character Limits</h2>
+          <ul>
+            <li><strong>X (Twitter)</strong> — 280 characters per post</li>
+            <li><strong>Instagram Caption</strong> — 2,200 characters</li>
+            <li><strong>LinkedIn Post</strong> — 3,000 characters</li>
+            <li><strong>Meta Description</strong> — 160 characters (recommended)</li>
+          </ul>
+
+          <h2>Related Tools</h2>
+          <ul>
+            <li><a href="/word-counter">Word Counter</a> — Count words and estimate reading time</li>
+            <li><a href="/sentence-counter">Sentence Counter</a> — Analyze sentence structure</li>
+            <li><a href="/readability-checker">Readability Checker</a> — Measure text complexity</li>
+          </ul>
+        </article>
+      </div>
+
+      <aside class="hidden lg:block lg:col-span-1">
+        <div class="sticky top-8 space-y-6">
+          <div class="ad-slot-sidebar">
+            <div class="bg-surface rounded-xl border border-gray-200 p-6 text-center">
+              <p class="text-sm text-text-muted mb-2">Advertisement</p>
+              <div class="min-h-[600px] flex items-center justify-center bg-gray-50 rounded-lg">
+                <span class="text-gray-400">AdSense Sidebar Ad</span>
+              </div>
+            </div>
+          </div>
+          <div class="bg-surface rounded-xl border border-gray-200 p-6">
+            <h3 class="text-lg font-display font-semibold mb-4">Quick Links</h3>
+            <nav class="space-y-2">
+              <a href="/word-counter" class="block px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors">Word Counter</a>
+              <a href="/sentence-counter" class="block px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors">Sentence Counter</a>
+              <a href="/readability-checker" class="block px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors">Readability Checker</a>
+            </nav>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+</BaseLayout>

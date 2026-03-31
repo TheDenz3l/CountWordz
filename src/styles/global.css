@@ -1,0 +1,161 @@
+/* Design Tokens - PRD Colors + taste-skill guidelines */
+@import 'tailwindcss';
+
+/* Custom CSS Variables for design tokens */
+:root {
+  /* PRD Color Palette */
+  --color-brand-cyan: #3EC1D3;
+  --color-brand-cream: #F6F7D7;
+  --color-brand-orange: #FF9A00;
+  --color-brand-pink: #FF165D;
+  
+  /* Neutral colors */
+  --color-text-primary: #171717;
+  --color-text-muted: #5B5B5B;
+  --color-surface: #FFFFFF;
+  
+  /* Typography scale */
+  --font-display: 'Syne', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  
+  /* Motion - taste-skill spring physics */
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+}
+
+/* Global styles */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  color: var(--color-text-primary);
+  background-color: var(--color-brand-cream);
+  line-height: 1.6;
+}
+
+/* Typography defaults */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-top: 0;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+h3 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  max-width: 65ch;
+}
+
+/* Focus states for accessibility */
+:focus-visible {
+  outline: 2px solid var(--color-brand-pink);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Button base styles - taste-skill tactile feedback */
+button {
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-weight: 500;
+  transition: transform 0.1s var(--ease-spring), 
+              background-color 0.2s var(--ease-spring),
+              box-shadow 0.2s var(--ease-spring);
+}
+
+button:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+/* Input base styles */
+input, textarea {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  transition: border-color 0.2s var(--ease-spring),
+              box-shadow 0.2s var(--ease-spring);
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--color-brand-pink);
+  box-shadow: 0 0 0 3px rgba(255, 22, 93, 0.1);
+}
+
+/* Utility classes */
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Animation utilities */
+@keyframes spring-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-spring-in {
+  animation: spring-in 0.5s var(--ease-spring);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+  }
+}

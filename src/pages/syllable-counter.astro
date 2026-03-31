@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SyllableCounterTool from '../components/SyllableCounterTool';
+---
+<BaseLayout title="Syllable Counter - Count Syllables in Words" description="Free syllable counter tool. Count total syllables and average syllables per word.">
+  <main class="container mx-auto px-4 py-8 max-w-7xl">
+    <header class="mb-8"><h1 class="text-4xl md:text-6xl font-display font-bold tracking-tighter mb-3">Syllable Counter</h1><p class="text-lg text-text-muted">Count syllables in your text.</p></header>
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div class="lg:col-span-3">
+        <div class="bg-surface rounded-2xl shadow-sm border border-gray-100 overflow-hidden"><SyllableCounterTool client:load /></div>
+        <div class="mt-6 ad-slot-below-tool"><div class="bg-surface rounded-xl border border-gray-200 p-6 text-center"><p class="text-sm text-text-muted mb-2">Advertisement</p><div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded-lg"><span class="text-gray-400">AdSense Ad Unit</span></div></div></div>
+        <article class="mt-12 prose prose-lg"><h2>How to Use</h2><p>Paste text to see syllable counts. Syllable counting is estimated based on English pronunciation rules.</p><h2>Related Tools</h2><ul><li><a href="/word-counter">Word Counter</a></li><li><a href="/readability-checker">Readability Checker</a></li></ul></article>
+      </div>
+      <aside class="hidden lg:block lg:col-span-1"><div class="sticky top-8"><div class="ad-slot-sidebar"><div class="bg-surface rounded-xl border border-gray-200 p-6 text-center"><p class="text-sm text-text-muted mb-2">Advertisement</p><div class="min-h-[600px] flex items-center justify-center bg-gray-50 rounded-lg"><span class="text-gray-400">AdSense Sidebar Ad</span></div></div></div></div></aside>
+    </div>
+  </main>
+</BaseLayout>

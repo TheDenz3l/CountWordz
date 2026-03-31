@@ -1,0 +1,242 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  toolId: string;
+}
+
+const { title, description = '', toolId } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <main class="container mx-auto px-4 py-8 max-w-7xl">
+    <!-- Page Header -->
+    <header class="mb-8">
+      <h1 class="text-4xl md:text-6xl font-display font-bold tracking-tighter text-text-primary mb-3">
+        {title}
+      </h1>
+      {description && (
+        <p class="text-lg text-text-muted max-w-3xl">
+          {description}
+        </p>
+      )}
+    </header>
+
+    <!-- Main Tool Area -->
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <!-- Tool Column -->
+      <div class="lg:col-span-3">
+        <div class="bg-surface rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+          <!-- Toolbar -->
+          <div class="border-b border-gray-100 p-4 bg-gray-50">
+            <div class="flex flex-wrap items-center gap-2" id="toolbar-{toolId}">
+              <button
+                type="button"
+                class="px-4 py-2 bg-brand-cyan text-white rounded-lg font-medium hover:bg-opacity-90 transition-all active:translate-y-[1px] active:scale-[0.98]"
+                data-action="paste"
+              >
+                Paste
+              </button>
+              <button
+                type="button"
+                class="px-4 py-2 bg-brand-pink text-white rounded-lg font-medium hover:bg-opacity-90 transition-all active:translate-y-[1px] active:scale-[0.98]"
+                data-action="clear"
+              >
+                Clear
+              </button>
+              <button
+                type="button"
+                class="px-4 py-2 bg-brand-orange text-white rounded-lg font-medium hover:bg-opacity-90 transition-all active:translate-y-[1px] active:scale-[0.98]"
+                data-action="copy"
+              >
+                Copy
+              </button>
+              <button
+                type="button"
+                class="px-4 py-2 bg-gray-200 text-text-primary rounded-lg font-medium hover:bg-gray-300 transition-all active:translate-y-[1px] active:scale-[0.98]"
+                data-action="sample"
+              >
+                Sample Text
+              </button>
+              <button
+                type="button"
+                class="px-4 py-2 bg-gray-200 text-text-primary rounded-lg font-medium hover:bg-gray-300 transition-all active:translate-y-[1px] active:scale-[0.98]"
+                data-action="undo"
+                disabled
+              >
+                Undo
+              </button>
+            </div>
+          </div>
+
+          <!-- Text Input Area -->
+          <div class="p-4">
+            <textarea
+              id="text-input-{toolId}"
+              class="w-full h-64 md:h-80 p-4 border border-gray-200 rounded-xl resize-none focus:border-brand-pink focus:ring-2 focus:ring-brand-pink/10 transition-all text-text-primary placeholder:text-text-muted/50"
+              placeholder="Paste or type your text here..."
+              spellcheck="false"
+            ></textarea>
+          </div>
+
+          <!-- Stats Panel -->
+          <div class="border-t border-gray-100 p-4 bg-gray-50">
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4" id="stats-panel-{toolId}">
+              <!-- Stats will be injected here by client components -->
+              <div class="text-center p-3 bg-surface rounded-lg">
+                <div class="text-2xl md:text-3xl font-display font-bold text-brand-pink" data-stat="primary">0</div>
+                <div class="text-xs text-text-muted mt-1 uppercase tracking-wide">Primary</div>
+              </div>
+              <div class="text-center p-3 bg-surface rounded-lg">
+                <div class="text-xl md:text-2xl font-display font-semibold text-brand-cyan" data-stat="secondary">0</div>
+                <div class="text-xs text-text-muted mt-1 uppercase tracking-wide">Secondary</div>
+              </div>
+              <div class="text-center p-3 bg-surface rounded-lg">
+                <div class="text-xl md:text-2xl font-display font-semibold text-brand-orange" data-stat="tertiary">0</div>
+                <div class="text-xs text-text-muted mt-1 uppercase tracking-wide">Tertiary</div>
+              </div>
+              <div class="text-center p-3 bg-surface rounded-lg">
+                <div class="text-lg font-display font-medium text-text-primary" data-stat="quaternary">0</div>
+                <div class="text-xs text-text-muted mt-1 uppercase tracking-wide">Extra</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Below-Tool Ad Slot (Mobile & Desktop) -->
+        <div class="mt-6 ad-slot-below-tool">
+          <div class="bg-surface rounded-xl border border-gray-200 p-6 text-center">
+            <p class="text-sm text-text-muted mb-2">Advertisement</p>
+            <!-- AdSense ad unit will be inserted here -->
+            <div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded-lg">
+              <span class="text-gray-400">AdSense Ad Unit</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tool Description / SEO Content -->
+        <article class="mt-12 prose prose-lg max-w-none">
+          <slot name="content" />
+        </article>
+      </div>
+
+      <!-- Sidebar Column (Desktop Only) -->
+      <aside class="hidden lg:block lg:col-span-1">
+        <!-- Sidebar Ad Slot -->
+        <div class="sticky top-8 space-y-6">
+          <div class="ad-slot-sidebar">
+            <div class="bg-surface rounded-xl border border-gray-200 p-6 text-center">
+              <p class="text-sm text-text-muted mb-2">Advertisement</p>
+              <!-- AdSense ad unit will be inserted here -->
+              <div class="min-h-[600px] flex items-center justify-center bg-gray-50 rounded-lg">
+                <span class="text-gray-400">AdSense Sidebar Ad</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Related Tools -->
+          <div class="bg-surface rounded-xl border border-gray-200 p-6">
+            <h3 class="text-lg font-display font-semibold mb-4">Related Tools</h3>
+            <nav class="space-y-2">
+              <a href="/word-counter" class="block px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors text-text-primary hover:text-brand-pink">
+                Word Counter
+              </a>
+              <a href="/character-counter" class="block px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors text-text-primary hover:text-brand-pink">
+                Character Counter
+              </a>
+              <a href="/sentence-counter" class="block px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors text-text-primary hover:text-brand-pink">
+                Sentence Counter
+              </a>
+              <a href="/readability-checker" class="block px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors text-text-primary hover:text-brand-pink">
+                Readability Checker
+              </a>
+            </nav>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Toolbar Actions Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const toolId = '{toolId}';
+      const textarea = document.getElementById(`text-input-${toolId}`);
+      const toolbar = document.getElementById(`toolbar-${toolId}`);
+      const undoButton = toolbar.querySelector('[data-action="undo"]');
+      
+      let clipboardHistory: string[] = [];
+      let historyIndex = -1;
+
+      // Paste action
+      toolbar.querySelector('[data-action="paste"]')?.addEventListener('click', async () => {
+        try {
+          const text = await navigator.clipboard.readText();
+          textarea.value = text;
+          textarea.dispatchEvent(new Event('input', { bubbles: true }));
+          textarea.focus();
+        } catch (err) {
+          console.error('Failed to paste:', err);
+        }
+      });
+
+      // Clear action
+      toolbar.querySelector('[data-action="clear"]')?.addEventListener('click', () => {
+        if (textarea.value) {
+          clipboardHistory.push(textarea.value);
+          historyIndex = clipboardHistory.length - 1;
+          undoButton.disabled = false;
+          textarea.value = '';
+          textarea.dispatchEvent(new Event('input', { bubbles: true }));
+          textarea.focus();
+        }
+      });
+
+      // Copy action
+      toolbar.querySelector('[data-action="copy"]')?.addEventListener('click', async () => {
+        if (textarea.value) {
+          try {
+            await navigator.clipboard.writeText(textarea.value);
+            textarea.focus();
+          } catch (err) {
+            console.error('Failed to copy:', err);
+          }
+        }
+      });
+
+      // Sample Text action
+      toolbar.querySelector('[data-action="sample"]')?.addEventListener('click', () => {
+        const sampleText = "The quick brown fox jumps over the lazy dog. This sentence contains every letter in the English alphabet and is commonly used for typing practice and font demonstrations. Writing clear, concise content is essential for effective communication in today's fast-paced digital world.";
+        textarea.value = sampleText;
+        textarea.dispatchEvent(new Event('input', { bubbles: true }));
+        textarea.focus();
+      });
+
+      // Undo action
+      undoButton?.addEventListener('click', () => {
+        if (clipboardHistory.length > 0 && historyIndex >= 0) {
+          textarea.value = clipboardHistory[historyIndex];
+          historyIndex--;
+          textarea.dispatchEvent(new Event('input', { bubbles: true }));
+          
+          if (historyIndex < 0) {
+            undoButton.disabled = true;
+          }
+          textarea.focus();
+        }
+      });
+
+      // Track input for stats updates (placeholder for client components)
+      textarea.addEventListener('input', () => {
+        // Client components will listen to this event for real-time stats
+        const event = new CustomEvent('text-change', {
+          bubbles: true,
+          detail: { text: textarea.value }
+        });
+        document.dispatchEvent(event);
+      });
+    });
+  </script>
+</BaseLayout>

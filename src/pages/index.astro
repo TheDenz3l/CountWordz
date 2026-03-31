@@ -1,0 +1,131 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WordCounterTool from '../components/WordCounterTool';
+---
+
+<BaseLayout 
+  title="CountWordz - Free Text Utility Tools" 
+  description="Free online text tools: word counter, character counter, sentence counter, readability checker, and more. Fast, modern, and easy to use."
+>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-brand-cream to-white py-16 md:py-24">
+    <div class="container mx-auto px-4 max-w-7xl">
+      <div class="text-center mb-12">
+        <h1 class="text-5xl md:text-7xl font-display font-bold tracking-tighter text-text-primary mb-4">CountWordz</h1>
+        <p class="text-xl text-text-muted max-w-2xl mx-auto">Free text utility tools for counting, analyzing, and formatting text. Fast, modern, and easy to use.</p>
+      </div>
+      
+      <!-- Homepage Word Counter Widget -->
+      <div class="max-w-4xl mx-auto bg-surface rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
+        <WordCounterTool client:load />
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Stats Row -->
+  <section class="py-12 bg-white">
+    <div class="container mx-auto px-4 max-w-7xl">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div class="p-6"><div class="text-3xl font-display font-bold text-brand-pink">8</div><div class="text-sm text-text-muted mt-1">Free Tools</div></div>
+        <div class="p-6"><div class="text-3xl font-display font-bold text-brand-cyan">100%</div><div class="text-sm text-text-muted mt-1">Free Forever</div></div>
+        <div class="p-6"><div class="text-3xl font-display font-bold text-brand-orange">Real-time</div><div class="text-sm text-text-muted mt-1">Results</div></div>
+        <div class="p-6"><div class="text-3xl font-display font-bold text-text-primary">No Signup</div><div class="text-sm text-text-muted mt-1">Required</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Top Tools Grid -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4 max-w-7xl">
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-center mb-12">All Tools</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <a href="/word-counter" class="bg-surface p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block">
+          <h3 class="text-xl font-display font-semibold mb-2 text-brand-pink">Word Counter</h3>
+          <p class="text-text-muted">Count words, characters, sentences, and estimate reading time.</p>
+        </a>
+        <a href="/character-counter" class="bg-surface p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block">
+          <h3 class="text-xl font-display font-semibold mb-2 text-brand-cyan">Character Counter</h3>
+          <p class="text-text-muted">Check character limits for X, Instagram, LinkedIn, and meta descriptions.</p>
+        </a>
+        <a href="/sentence-counter" class="bg-surface p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block">
+          <h3 class="text-xl font-display font-semibold mb-2 text-brand-orange">Sentence Counter</h3>
+          <p class="text-text-muted">Count sentences and analyze sentence structure.</p>
+        </a>
+        <a href="/syllable-counter" class="bg-surface p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block">
+          <h3 class="text-xl font-display font-semibold mb-2 text-brand-pink">Syllable Counter</h3>
+          <p class="text-text-muted">Count syllables in words and text.</p>
+        </a>
+        <a href="/paragraph-counter" class="bg-surface p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block">
+          <h3 class="text-xl font-display font-semibold mb-2 text-brand-cyan">Paragraph Counter</h3>
+          <p class="text-text-muted">Count paragraphs and average words per paragraph.</p>
+        </a>
+        <a href="/reading-time-calculator" class="bg-surface p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block">
+          <h3 class="text-xl font-display font-semibold mb-2 text-brand-orange">Reading Time Calculator</h3>
+          <p class="text-text-muted">Estimate reading and speaking time for your text.</p>
+        </a>
+        <a href="/case-converter" class="bg-surface p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block">
+          <h3 class="text-xl font-display font-semibold mb-2 text-brand-pink">Case Converter</h3>
+          <p class="text-text-muted">Convert text between lowercase, UPPERCASE, Title Case, and more.</p>
+        </a>
+        <a href="/readability-checker" class="bg-surface p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block">
+          <h3 class="text-xl font-display font-semibold mb-2 text-brand-cyan">Readability Checker</h3>
+          <p class="text-text-muted">Measure text readability with Flesch scores and grade levels.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why CountWordz -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4 max-w-7xl">
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-center mb-12">Why CountWordz?</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="text-4xl mb-4">⚡</div>
+          <h3 class="text-xl font-display font-semibold mb-2">Instant Results</h3>
+          <p class="text-text-muted">Real-time analysis as you type. No waiting, no page reloads.</p>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl mb-4">🔒</div>
+          <h3 class="text-xl font-display font-semibold mb-2">Private & Secure</h3>
+          <p class="text-text-muted">All processing happens in your browser. Your text is never stored or sent.</p>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl mb-4">✨</div>
+          <h3 class="text-xl font-display font-semibold mb-2">Modern Design</h3>
+          <p class="text-text-muted">Clean, intuitive interface that's a pleasure to use.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="container mx-auto px-4 max-w-7xl">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <h3 class="text-xl font-display font-bold mb-4">CountWordz</h3>
+          <p class="text-gray-400">Free text utility tools for everyone.</p>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4">Tools</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="/word-counter" class="hover:text-white">Word Counter</a></li>
+            <li><a href="/character-counter" class="hover:text-white">Character Counter</a></li>
+            <li><a href="/readability-checker" class="hover:text-white">Readability Checker</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-4">Legal</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="/privacy-policy" class="hover:text-white">Privacy Policy</a></li>
+            <li><a href="/terms" class="hover:text-white">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+        <p>&copy; {new Date().getFullYear()} CountWordz. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</BaseLayout>
