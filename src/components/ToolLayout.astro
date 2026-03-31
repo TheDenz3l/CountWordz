@@ -11,7 +11,7 @@ const { title, description = '', toolId } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description}>
-  <main class="container mx-auto px-4 py-8 max-w-7xl">
+  <main class="layout-shell px-4 py-8">
     <!-- Page Header -->
     <header class="mb-8">
       <h1 class="text-4xl md:text-6xl font-display font-bold tracking-tighter text-text-primary mb-3">
@@ -130,7 +130,7 @@ const { title, description = '', toolId } = Astro.props;
             <div class="bg-surface rounded-xl border border-gray-200 p-6 text-center">
               <p class="text-sm text-text-muted mb-2">Advertisement</p>
               <!-- AdSense ad unit will be inserted here -->
-              <div class="min-h-[600px] flex items-center justify-center bg-gray-50 rounded-lg">
+              <div class="min-h-[300px] flex items-center justify-center bg-gray-50 rounded-lg">
                 <span class="text-gray-400">AdSense Sidebar Ad</span>
               </div>
             </div>

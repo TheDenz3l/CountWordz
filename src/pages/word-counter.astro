@@ -1,19 +1,20 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import WordCounterTool from '../components/WordCounterTool';
+import Sidebar from '../components/Sidebar.astro';
 ---
 
 <BaseLayout 
   title="Word Counter - Count Words, Characters, and More" 
   description="Free online word counter tool. Count words, characters, sentences, paragraphs, and estimate reading time in real-time. Perfect for essays, articles, and social media posts."
 >
-  <main class="container mx-auto px-4 py-8 max-w-7xl">
+  <main class="layout-shell px-4 py-6">
     <!-- Page Header -->
-    <header class="mb-8">
-      <h1 class="text-4xl md:text-6xl font-display font-bold tracking-tighter text-text-primary mb-3">
+    <header class="mb-6">
+      <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">
         Word Counter
       </h1>
-      <p class="text-lg text-text-muted max-w-3xl">
+      <p class="text-base text-text-muted max-w-3xl">
         Count words, characters, sentences, and more in real-time. Perfect for essays, resumes, captions, and scripts.
       </p>
     </header>
@@ -27,113 +28,180 @@ import WordCounterTool from '../components/WordCounterTool';
         </div>
 
         <!-- Below-Tool Ad Slot -->
-        <div class="mt-6 ad-slot-below-tool">
-          <div class="bg-surface rounded-xl border border-gray-200 p-6 text-center">
-            <p class="text-sm text-text-muted mb-2">Advertisement</p>
-            <div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded-lg">
-              <span class="text-gray-400">AdSense Ad Unit</span>
+        <div class="mt-4 ad-slot-below-tool">
+          <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+            <p class="text-xs text-text-muted mb-2">Advertisement</p>
+            <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+              <span class="text-gray-400 text-sm">AdSense Banner (728x90)</span>
             </div>
           </div>
         </div>
 
         <!-- SEO Content -->
-        <article class="mt-12 prose prose-lg max-w-none">
-          <h2>How to Use the Word Counter</h2>
-          <p>
-            Simply paste or type your text into the box above. The word counter will instantly analyze your text and display:
-          </p>
-          <ul>
-            <li><strong>Word count</strong> — Total number of words</li>
-            <li><strong>Character count</strong> — Characters with and without spaces</li>
-            <li><strong>Sentence count</strong> — Number of sentences</li>
-            <li><strong>Paragraph count</strong> — Number of paragraphs</li>
-            <li><strong>Reading time</strong> — Estimated time to read at average speed</li>
-            <li><strong>Speaking time</strong> — Estimated time to speak aloud</li>
-          </ul>
+        <article class="mt-8">
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">How to Use the Word Counter</h2>
+            <p class="text-text-primary mb-4">
+              Simply paste or type your text into the box above. The word counter will instantly analyze your text and display accurate counts for:
+            </p>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-3 mb-4">
+              <div class="bg-surface p-3 rounded-lg border border-gray-100">
+                <div class="text-brand-pink font-semibold">Word Count</div>
+                <div class="text-xs text-text-muted">Total words</div>
+              </div>
+              <div class="bg-surface p-3 rounded-lg border border-gray-100">
+                <div class="text-brand-cyan font-semibold">Characters</div>
+                <div class="text-xs text-text-muted">With/without spaces</div>
+              </div>
+              <div class="bg-surface p-3 rounded-lg border border-gray-100">
+                <div class="text-brand-orange font-semibold">Sentences</div>
+                <div class="text-xs text-text-muted">Sentence count</div>
+              </div>
+              <div class="bg-surface p-3 rounded-lg border border-gray-100">
+                <div class="text-brand-pink font-semibold">Paragraphs</div>
+                <div class="text-xs text-text-muted">Paragraph count</div>
+              </div>
+              <div class="bg-surface p-3 rounded-lg border border-gray-100">
+                <div class="text-brand-cyan font-semibold">Reading Time</div>
+                <div class="text-xs text-text-muted">Minutes to read</div>
+              </div>
+              <div class="bg-surface p-3 rounded-lg border border-gray-100">
+                <div class="text-brand-orange font-semibold">Speaking Time</div>
+                <div class="text-xs text-text-muted">Minutes to speak</div>
+              </div>
+            </div>
+          </section>
 
-          <h2>Why Use CountWordz?</h2>
-          <p>
-            CountWordz provides instant, accurate text analysis without any signup or downloads. 
-            Our word counter updates in real-time as you type, making it perfect for:
-          </p>
-          <ul>
-            <li>Students checking essay word limits</li>
-            <li>Writers tracking their daily word count</li>
-            <li>Marketers ensuring ad copy fits character limits</li>
-            <li>Job seekers optimizing resume bullets</li>
-            <li>Social media creators checking post length</li>
-          </ul>
-
-          <h2>Frequently Asked Questions</h2>
-          
-          <h3>How do you count words?</h3>
-          <p>
-            We count words by splitting your text on whitespace and filtering out empty strings. 
-            This handles multiple spaces, tabs, and newlines correctly.
-          </p>
-
-          <h3>What counts as a word?</h3>
-          <p>
-            Any sequence of characters separated by spaces counts as one word. 
-            Hyphenated words like "well-known" count as one word. 
-            Contractions like "don't" count as one word.
-          </p>
-
-          <h3>How accurate is the reading time?</h3>
-          <p>
-            Reading time is calculated based on an average reading speed of 200 words per minute. 
-            Actual reading time may vary based on text complexity and individual reading speed.
-          </p>
-
-          <h3>Is my text saved or stored?</h3>
-          <p>
-            No. All text analysis happens in your browser. Your text is never sent to our servers 
-            or stored anywhere.
-          </p>
-
-          <h2>Related Tools</h2>
-          <ul>
-            <li><a href="/character-counter">Character Counter</a> — Check character limits for social media</li>
-            <li><a href="/sentence-counter">Sentence Counter</a> — Analyze sentence structure</li>
-            <li><a href="/readability-checker">Readability Checker</a> — Measure text complexity</li>
-            <li><a href="/paragraph-counter">Paragraph Counter</a> — Count and analyze paragraphs</li>
-          </ul>
-        </article>
-      </div>
-
-      <!-- Sidebar Column (Desktop Only) -->
-      <aside class="hidden lg:block lg:col-span-1">
-        <div class="sticky top-8 space-y-6">
-          <!-- Sidebar Ad Slot -->
-          <div class="ad-slot-sidebar">
-            <div class="bg-surface rounded-xl border border-gray-200 p-6 text-center">
-              <p class="text-sm text-text-muted mb-2">Advertisement</p>
-              <div class="min-h-[600px] flex items-center justify-center bg-gray-50 rounded-lg">
-                <span class="text-gray-400">AdSense Sidebar Ad</span>
+          <!-- Mid-Content Ad Slot -->
+          <div class="my-6 ad-slot-mid-content">
+            <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+              <p class="text-xs text-text-muted mb-2">Advertisement</p>
+              <div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded">
+                <span class="text-gray-400 text-sm">AdSense Square (300x250)</span>
               </div>
             </div>
           </div>
 
-          <!-- Related Tools -->
-          <div class="bg-surface rounded-xl border border-gray-200 p-6">
-            <h3 class="text-lg font-display font-semibold mb-4">Quick Links</h3>
-            <nav class="space-y-2">
-              <a href="/character-counter" class="block px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors text-text-primary hover:text-brand-pink">
-                Character Counter
-              </a>
-              <a href="/sentence-counter" class="block px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors text-text-primary hover:text-brand-pink">
-                Sentence Counter
-              </a>
-              <a href="/paragraph-counter" class="block px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors text-text-primary hover:text-brand-pink">
-                Paragraph Counter
-              </a>
-              <a href="/readability-checker" class="block px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors text-text-primary hover:text-brand-pink">
-                Readability Checker
-              </a>
-            </nav>
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">Why Use CountWordz?</h2>
+            <p class="text-text-primary mb-4">
+              CountWordz provides instant, accurate text analysis without any signup or downloads. Our word counter updates in real-time as you type, making it perfect for professionals, students, and content creators who need precise text metrics.
+            </p>
+            <div class="bg-brand-cream rounded-xl p-5 mb-4">
+              <h3 class="text-lg font-display font-semibold mb-3">Perfect For:</h3>
+              <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 text-text-primary">
+                <li class="flex items-center gap-2">
+                  <span class="text-brand-pink">✓</span>
+                  <span>Students checking essay word limits</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-brand-pink">✓</span>
+                  <span>Writers tracking daily word count</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-brand-pink">✓</span>
+                  <span>Marketers optimizing ad copy</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-brand-pink">✓</span>
+                  <span>Job seekers crafting resumes</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-brand-pink">✓</span>
+                  <span>Social media creators</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-brand-pink">✓</span>
+                  <span>Bloggers and content writers</span>
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-4">Frequently Asked Questions</h2>
+            
+            <div class="mb-4">
+              <h3 class="text-lg font-display font-semibold mb-2">How do you count words?</h3>
+              <p class="text-text-primary">
+                We count words by splitting your text on whitespace and filtering out empty strings. This handles multiple spaces, tabs, and newlines correctly. Our algorithm is designed to match the word counting logic used by popular word processors like Microsoft Word and Google Docs.
+              </p>
+            </div>
+
+            <div class="mb-4">
+              <h3 class="text-lg font-display font-semibold mb-2">What counts as a word?</h3>
+              <p class="text-text-primary">
+                Any sequence of characters separated by spaces counts as one word. Hyphenated words like "well-known" count as one word. Contractions like "don't" count as one word. Numbers and symbols separated by spaces also count as words.
+              </p>
+            </div>
+
+            <!-- Inline Ad Slot -->
+            <div class="my-6 ad-slot-inline">
+              <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+                <p class="text-xs text-text-muted mb-2">Advertisement</p>
+                <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+                  <span class="text-gray-400 text-sm">AdSense Banner</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <h3 class="text-lg font-display font-semibold mb-2">How accurate is the reading time?</h3>
+              <p class="text-text-primary">
+                Reading time is calculated based on an average reading speed of 200 words per minute. This is the standard reading speed used by most readability tools. Actual reading time may vary based on text complexity, formatting, and individual reading speed. Technical or academic content may take longer to read.
+              </p>
+            </div>
+
+            <div class="mb-4">
+              <h3 class="text-lg font-display font-semibold mb-2">Is my text saved or stored?</h3>
+              <p class="text-text-primary">
+                No. All text analysis happens entirely in your browser using JavaScript. Your text is never sent to our servers or stored anywhere. This means your data remains private and secure, and the tool works even without an internet connection.
+              </p>
+            </div>
+
+            <div class="mb-4">
+              <h3 class="text-lg font-display font-semibold mb-2">Can I use this for social media posts?</h3>
+              <p class="text-text-primary">
+                Absolutely! Our word counter is perfect for checking social media post lengths. Twitter/X allows 280 characters, Instagram captions allow 2,200 characters, and LinkedIn posts allow 3,000 characters. Use our character counter alongside this tool to stay within platform limits.
+              </p>
+            </div>
+          </section>
+
+          <!-- Bottom Ad Slot Before Related Tools -->
+          <div class="my-6 ad-slot-bottom">
+            <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+              <p class="text-xs text-text-muted mb-2">Advertisement</p>
+              <div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded">
+                <span class="text-gray-400 text-sm">AdSense Square</span>
+              </div>
+            </div>
           </div>
-        </div>
-      </aside>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-4">Related Tools</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <a href="/character-counter" class="bg-surface p-4 rounded-lg border border-gray-200 hover:border-brand-pink transition-colors">
+                <div class="font-semibold text-text-primary">Character Counter</div>
+                <div class="text-sm text-text-muted">Check character limits for social media</div>
+              </a>
+              <a href="/sentence-counter" class="bg-surface p-4 rounded-lg border border-gray-200 hover:border-brand-pink transition-colors">
+                <div class="font-semibold text-text-primary">Sentence Counter</div>
+                <div class="text-sm text-text-muted">Analyze sentence structure</div>
+              </a>
+              <a href="/readability-checker" class="bg-surface p-4 rounded-lg border border-gray-200 hover:border-brand-pink transition-colors">
+                <div class="font-semibold text-text-primary">Readability Checker</div>
+                <div class="text-sm text-text-muted">Measure text complexity</div>
+              </a>
+              <a href="/paragraph-counter" class="bg-surface p-4 rounded-lg border border-gray-200 hover:border-brand-pink transition-colors">
+                <div class="font-semibold text-text-primary">Paragraph Counter</div>
+                <div class="text-sm text-text-muted">Count and analyze paragraphs</div>
+              </a>
+            </div>
+          </section>
+        </article>
+      </div>
+
+      <Sidebar />
     </div>
   </main>
 </BaseLayout>

@@ -1,17 +1,156 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Sidebar from '../components/Sidebar.astro';
 import ParagraphCounterTool from '../components/ParagraphCounterTool';
 ---
 <BaseLayout title="Paragraph Counter - Count Paragraphs" description="Free paragraph counter tool. Count paragraphs and average words per paragraph.">
-  <main class="container mx-auto px-4 py-8 max-w-7xl">
-    <header class="mb-8"><h1 class="text-4xl md:text-6xl font-display font-bold tracking-tighter mb-3">Paragraph Counter</h1><p class="text-lg text-text-muted">Count paragraphs in your text.</p></header>
+  <main class="layout-shell px-4 py-6">
+    <header class="mb-6">
+      <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter mb-2">Paragraph Counter</h1>
+      <p class="text-base text-text-muted">Count paragraphs and analyze paragraph structure in your text.</p>
+    </header>
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
       <div class="lg:col-span-3">
-        <div class="bg-surface rounded-2xl shadow-sm border border-gray-100 overflow-hidden"><ParagraphCounterTool client:load /></div>
-        <div class="mt-6 ad-slot-below-tool"><div class="bg-surface rounded-xl border border-gray-200 p-6 text-center"><p class="text-sm text-text-muted mb-2">Advertisement</p><div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded-lg"><span class="text-gray-400">AdSense Ad Unit</span></div></div></div>
-        <article class="mt-12 prose prose-lg"><h2>How to Use</h2><p>Paste text to count paragraphs. Paragraphs are separated by blank lines.</p><h2>Related Tools</h2><ul><li><a href="/word-counter">Word Counter</a></li><li><a href="/sentence-counter">Sentence Counter</a></li></ul></article>
+        <div class="bg-surface rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+          <ParagraphCounterTool client:load />
+        </div>
+        <div class="mt-4 ad-slot-below-tool">
+          <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+            <p class="text-xs text-text-muted mb-2">Advertisement</p>
+            <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+              <span class="text-gray-400 text-sm">AdSense Banner (728x90)</span>
+            </div>
+          </div>
+        </div>
+        <article class="mt-8">
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">How to Use the Paragraph Counter</h2>
+            <p class="text-text-primary mb-4">
+              Paste or type your text above to instantly count paragraphs and calculate average words per paragraph. Paragraphs are detected by blank lines between text blocks.
+            </p>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-3 mb-4">
+              <div class="bg-surface p-3 rounded-lg border border-gray-100">
+                <div class="text-brand-pink font-semibold">Paragraph Count</div>
+                <div class="text-xs text-text-muted">Total paragraphs</div>
+              </div>
+              <div class="bg-surface p-3 rounded-lg border border-gray-100">
+                <div class="text-brand-cyan font-semibold">Avg Words</div>
+                <div class="text-xs text-text-muted">Per paragraph</div>
+              </div>
+              <div class="bg-surface p-3 rounded-lg border border-gray-100">
+                <div class="text-brand-orange font-semibold">Structure</div>
+                <div class="text-xs text-text-muted">Paragraph analysis</div>
+              </div>
+            </div>
+          </section>
+
+          <div class="my-6 ad-slot-mid-content">
+            <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+              <p class="text-xs text-text-muted mb-2">Advertisement</p>
+              <div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded">
+                <span class="text-gray-400 text-sm">AdSense Square (300x250)</span>
+              </div>
+            </div>
+          </div>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-4">Paragraph Writing Guidelines</h2>
+            <p class="text-text-primary mb-4">
+              Well-structured paragraphs improve readability and comprehension. Each paragraph should focus on one main idea, with a clear topic sentence and supporting details.
+            </p>
+            <div class="bg-brand-cream rounded-xl p-5 mb-4">
+              <h3 class="text-lg font-display font-semibold mb-3">Recommended Paragraph Length:</h3>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <div class="bg-surface p-4 rounded-lg border border-gray-200">
+                  <div class="text-brand-pink font-bold text-2xl">3-8</div>
+                  <div class="text-sm text-text-muted">Sentences per paragraph</div>
+                </div>
+                <div class="bg-surface p-4 rounded-lg border border-gray-200">
+                  <div class="text-brand-cyan font-bold text-2xl">50-150</div>
+                  <div class="text-sm text-text-muted">Words per paragraph</div>
+                </div>
+                <div class="bg-surface p-4 rounded-lg border border-gray-200">
+                  <div class="text-brand-orange font-bold text-2xl">1</div>
+                  <div class="text-sm text-text-muted">Main idea per paragraph</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <div class="my-6 ad-slot-inline">
+            <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+              <p class="text-xs text-text-muted mb-2">Advertisement</p>
+              <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+                <span class="text-gray-400 text-sm">AdSense Banner</span>
+              </div>
+            </div>
+          </div>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-4">Frequently Asked Questions</h2>
+            
+            <div class="mb-4">
+              <h3 class="text-lg font-display font-semibold mb-2">How do you detect paragraphs?</h3>
+              <p class="text-text-primary">
+                Paragraphs are detected by blank lines (double line breaks) between blocks of text. This is the standard format for most writing platforms and word processors.
+              </p>
+            </div>
+
+            <div class="mb-4">
+              <h3 class="text-lg font-display font-semibold mb-2">What is a good paragraph length?</h3>
+              <p class="text-text-primary">
+                For web content, 50-150 words per paragraph works well. Academic writing may have longer paragraphs (150-250 words). Short paragraphs (1-3 sentences) work well for introductions and conclusions.
+              </p>
+            </div>
+
+            <div class="mb-4">
+              <h3 class="text-lg font-display font-semibold mb-2">Why does paragraph structure matter?</h3>
+              <p class="text-text-primary">
+                Clear paragraph structure helps readers follow your argument. Each paragraph should have one main idea, introduced in the topic sentence, with supporting details following.
+              </p>
+            </div>
+
+            <div class="mb-4">
+              <h3 class="text-lg font-display font-semibold mb-2">Can I use this for essays?</h3>
+              <p class="text-text-primary">
+                Yes! Paragraph counting is essential for essay writing. Most essays follow a 5-paragraph structure (introduction, 3 body paragraphs, conclusion). Use our tool to ensure balanced paragraph lengths.
+              </p>
+            </div>
+          </section>
+
+          <div class="my-6 ad-slot-bottom">
+            <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+              <p class="text-xs text-text-muted mb-2">Advertisement</p>
+              <div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded">
+                <span class="text-gray-400 text-sm">AdSense Square</span>
+              </div>
+            </div>
+          </div>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-4">Related Tools</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <a href="/word-counter" class="bg-surface p-4 rounded-lg border border-gray-200 hover:border-brand-pink transition-colors">
+                <div class="font-semibold text-text-primary">Word Counter</div>
+                <div class="text-sm text-text-muted">Count words and estimate reading time</div>
+              </a>
+              <a href="/sentence-counter" class="bg-surface p-4 rounded-lg border border-gray-200 hover:border-brand-pink transition-colors">
+                <div class="font-semibold text-text-primary">Sentence Counter</div>
+                <div class="text-sm text-text-muted">Analyze sentence structure</div>
+              </a>
+              <a href="/readability-checker" class="bg-surface p-4 rounded-lg border border-gray-200 hover:border-brand-pink transition-colors">
+                <div class="font-semibold text-text-primary">Readability Checker</div>
+                <div class="text-sm text-text-muted">Measure text complexity</div>
+              </a>
+              <a href="/character-counter" class="bg-surface p-4 rounded-lg border border-gray-200 hover:border-brand-pink transition-colors">
+                <div class="font-semibold text-text-primary">Character Counter</div>
+                <div class="text-sm text-text-muted">Check character limits</div>
+              </a>
+            </div>
+          </section>
+        </article>
       </div>
-      <aside class="hidden lg:block lg:col-span-1"><div class="sticky top-8"><div class="ad-slot-sidebar"><div class="bg-surface rounded-xl border border-gray-200 p-6 text-center"><p class="text-sm text-text-muted mb-2">Advertisement</p><div class="min-h-[600px] flex items-center justify-center bg-gray-50 rounded-lg"><span class="text-gray-400">AdSense Sidebar Ad</span></div></div></div></div></aside>
+      <Sidebar />
     </div>
   </main>
 </BaseLayout>

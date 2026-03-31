@@ -88,34 +88,34 @@ export default function WordCounterTool() {
   };
 
   return (
-    <div class="w-full">
+    <div className="w-full">
       {/* Toolbar */}
-      <div class="flex flex-wrap items-center gap-2 mb-4 p-4 bg-gray-50 border-b border-gray-100 rounded-t-xl">
+      <div className="flex flex-wrap items-center gap-2 mb-4 p-4 bg-gray-50 border-b border-gray-100 rounded-t-xl">
         <button
           type="button"
           onClick={handlePaste}
-          class="px-4 py-2 bg-brand-cyan text-white rounded-lg font-medium hover:bg-opacity-90 transition-all active:translate-y-[1px] active:scale-[0.98]"
+          className="px-4 py-2 bg-brand-cyan text-white rounded-lg font-medium hover:bg-opacity-90 transition-all active:translate-y-[1px] active:scale-[0.98]"
         >
           Paste
         </button>
         <button
           type="button"
           onClick={handleClear}
-          class="px-4 py-2 bg-brand-pink text-white rounded-lg font-medium hover:bg-opacity-90 transition-all active:translate-y-[1px] active:scale-[0.98]"
+          className="px-4 py-2 bg-brand-pink text-white rounded-lg font-medium hover:bg-opacity-90 transition-all active:translate-y-[1px] active:scale-[0.98]"
         >
           Clear
         </button>
         <button
           type="button"
           onClick={handleCopy}
-          class="px-4 py-2 bg-brand-orange text-white rounded-lg font-medium hover:bg-opacity-90 transition-all active:translate-y-[1px] active:scale-[0.98]"
+          className="px-4 py-2 bg-brand-orange text-white rounded-lg font-medium hover:bg-opacity-90 transition-all active:translate-y-[1px] active:scale-[0.98]"
         >
           Copy
         </button>
         <button
           type="button"
           onClick={handleSampleText}
-          class="px-4 py-2 bg-gray-200 text-text-primary rounded-lg font-medium hover:bg-gray-300 transition-all active:translate-y-[1px] active:scale-[0.98]"
+          className="px-4 py-2 bg-gray-200 text-text-primary rounded-lg font-medium hover:bg-gray-300 transition-all active:translate-y-[1px] active:scale-[0.98]"
         >
           Sample Text
         </button>
@@ -123,7 +123,7 @@ export default function WordCounterTool() {
           type="button"
           onClick={handleUndo}
           disabled={historyIndex < 0}
-          class="px-4 py-2 bg-gray-200 text-text-primary rounded-lg font-medium hover:bg-gray-300 transition-all active:translate-y-[1px] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
+          className="px-4 py-2 bg-gray-200 text-text-primary rounded-lg font-medium hover:bg-gray-300 transition-all active:translate-y-[1px] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
         >
           Undo
         </button>
@@ -134,43 +134,43 @@ export default function WordCounterTool() {
         value={text}
         onChange={(e) => setText(e.target.value)}
         placeholder="Paste or type your text here..."
-        class="w-full h-64 md:h-80 p-4 border border-gray-200 rounded-b-xl resize-none focus:border-brand-pink focus:ring-2 focus:ring-brand-pink/10 transition-all text-text-primary placeholder:text-text-muted/50"
-        spellcheck="false"
+        className="w-full h-64 md:h-80 p-4 border border-gray-200 rounded-b-xl resize-none focus:border-brand-pink focus:ring-2 focus:ring-brand-pink/10 transition-all text-text-primary placeholder:text-text-muted/50"
+        spellCheck="false"
       />
 
       {/* Stats Panel */}
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mt-6 p-4 bg-gray-50 rounded-xl">
-        <div class="text-center p-3 bg-surface rounded-lg">
-          <div class="text-2xl md:text-3xl font-display font-bold text-brand-pink">{stats.words.toLocaleString()}</div>
-          <div class="text-xs text-text-muted mt-1 uppercase tracking-wide">Words</div>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mt-6 p-4 bg-gray-50 rounded-xl">
+        <div className="text-center p-3 bg-surface rounded-lg">
+          <div className="text-2xl md:text-3xl font-display font-bold text-brand-pink">{stats.words.toLocaleString()}</div>
+          <div className="text-xs text-text-muted mt-1 uppercase tracking-wide">Words</div>
         </div>
-        <div class="text-center p-3 bg-surface rounded-lg">
-          <div class="text-xl md:text-2xl font-display font-semibold text-brand-cyan">{stats.charactersWithSpaces.toLocaleString()}</div>
-          <div class="text-xs text-text-muted mt-1 uppercase tracking-wide">Chars (w/ spaces)</div>
+        <div className="text-center p-3 bg-surface rounded-lg">
+          <div className="text-xl md:text-2xl font-display font-semibold text-brand-cyan">{stats.charactersWithSpaces.toLocaleString()}</div>
+          <div className="text-xs text-text-muted mt-1 uppercase tracking-wide">Chars (w/ spaces)</div>
         </div>
-        <div class="text-center p-3 bg-surface rounded-lg">
-          <div class="text-xl md:text-2xl font-display font-semibold text-brand-cyan">{stats.charactersWithoutSpaces.toLocaleString()}</div>
-          <div class="text-xs text-text-muted mt-1 uppercase tracking-wide">Chars (no spaces)</div>
+        <div className="text-center p-3 bg-surface rounded-lg">
+          <div className="text-xl md:text-2xl font-display font-semibold text-brand-cyan">{stats.charactersWithoutSpaces.toLocaleString()}</div>
+          <div className="text-xs text-text-muted mt-1 uppercase tracking-wide">Chars (no spaces)</div>
         </div>
-        <div class="text-center p-3 bg-surface rounded-lg">
-          <div class="text-lg font-display font-medium text-text-primary">{stats.sentences.toLocaleString()}</div>
-          <div class="text-xs text-text-muted mt-1 uppercase tracking-wide">Sentences</div>
+        <div className="text-center p-3 bg-surface rounded-lg">
+          <div className="text-lg font-display font-medium text-text-primary">{stats.sentences.toLocaleString()}</div>
+          <div className="text-xs text-text-muted mt-1 uppercase tracking-wide">Sentences</div>
         </div>
-        <div class="text-center p-3 bg-surface rounded-lg">
-          <div class="text-lg font-display font-medium text-text-primary">{stats.paragraphs.toLocaleString()}</div>
-          <div class="text-xs text-text-muted mt-1 uppercase tracking-wide">Paragraphs</div>
+        <div className="text-center p-3 bg-surface rounded-lg">
+          <div className="text-lg font-display font-medium text-text-primary">{stats.paragraphs.toLocaleString()}</div>
+          <div className="text-xs text-text-muted mt-1 uppercase tracking-wide">Paragraphs</div>
         </div>
-        <div class="text-center p-3 bg-surface rounded-lg">
-          <div class="text-lg font-display font-medium text-text-primary">{formatTime(stats.readingTime.minutes, stats.readingTime.seconds)}</div>
-          <div class="text-xs text-text-muted mt-1 uppercase tracking-wide">Reading Time</div>
+        <div className="text-center p-3 bg-surface rounded-lg">
+          <div className="text-lg font-display font-medium text-text-primary">{formatTime(stats.readingTime.minutes, stats.readingTime.seconds)}</div>
+          <div className="text-xs text-text-muted mt-1 uppercase tracking-wide">Reading Time</div>
         </div>
       </div>
 
       {/* Speaking Time (extra row) */}
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mt-4">
-        <div class="col-span-2 md:col-span-3 lg:col-span-6 text-center p-3 bg-surface rounded-xl border border-gray-100">
-          <div class="text-lg font-display font-medium text-brand-orange">{formatTime(stats.speakingTime.minutes, stats.speakingTime.seconds)}</div>
-          <div class="text-xs text-text-muted mt-1 uppercase tracking-wide">Speaking Time</div>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mt-4">
+        <div className="col-span-2 md:col-span-3 lg:col-span-6 text-center p-3 bg-surface rounded-xl border border-gray-100">
+          <div className="text-lg font-display font-medium text-brand-orange">{formatTime(stats.speakingTime.minutes, stats.speakingTime.seconds)}</div>
+          <div className="text-xs text-text-muted mt-1 uppercase tracking-wide">Speaking Time</div>
         </div>
       </div>
     </div>

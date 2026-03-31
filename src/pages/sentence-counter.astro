@@ -1,17 +1,156 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Sidebar from '../components/Sidebar.astro';
 import SentenceCounterTool from '../components/SentenceCounterTool';
 ---
 <BaseLayout title="Sentence Counter - Analyze Sentence Structure" description="Free sentence counter tool. Count sentences, average words per sentence, and analyze text structure.">
-  <main class="container mx-auto px-4 py-8 max-w-7xl">
-    <header class="mb-8"><h1 class="text-4xl md:text-6xl font-display font-bold tracking-tighter mb-3">Sentence Counter</h1><p class="text-lg text-text-muted">Count sentences and analyze sentence structure.</p></header>
+  <main class="layout-shell px-4 py-6">
+    <header class="mb-6">
+      <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter mb-2">Sentence Counter</h1>
+      <p class="text-base text-text-muted">Count sentences and analyze sentence structure in your text.</p>
+    </header>
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
       <div class="lg:col-span-3">
-        <div class="bg-surface rounded-2xl shadow-sm border border-gray-100 overflow-hidden"><SentenceCounterTool client:load /></div>
-        <div class="mt-6 ad-slot-below-tool"><div class="bg-surface rounded-xl border border-gray-200 p-6 text-center"><p class="text-sm text-text-muted mb-2">Advertisement</p><div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded-lg"><span class="text-gray-400">AdSense Ad Unit</span></div></div></div>
-        <article class="mt-12 prose prose-lg"><h2>How to Use</h2><p>Paste or type text to see sentence count and average words per sentence.</p><h2>Related Tools</h2><ul><li><a href="/word-counter">Word Counter</a></li><li><a href="/character-counter">Character Counter</a></li><li><a href="/readability-checker">Readability Checker</a></li></ul></article>
+        <div class="bg-surface rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+          <SentenceCounterTool client:load />
+        </div>
+        <div class="mt-4 ad-slot-below-tool">
+          <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+            <p class="text-xs text-text-muted mb-2">Advertisement</p>
+            <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+              <span class="text-gray-400 text-sm">AdSense Banner (728x90)</span>
+            </div>
+          </div>
+        </div>
+        <article class="mt-8">
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">How to Use the Sentence Counter</h2>
+            <p class="text-text-primary mb-4">
+              Paste or type your text above to instantly count sentences and calculate average words per sentence. Our tool uses advanced sentence detection to accurately identify sentence boundaries.
+            </p>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-3 mb-4">
+              <div class="bg-surface p-3 rounded-lg border border-gray-100">
+                <div class="text-brand-pink font-semibold">Sentence Count</div>
+                <div class="text-xs text-text-muted">Total sentences</div>
+              </div>
+              <div class="bg-surface p-3 rounded-lg border border-gray-100">
+                <div class="text-brand-cyan font-semibold">Avg Words</div>
+                <div class="text-xs text-text-muted">Per sentence</div>
+              </div>
+              <div class="bg-surface p-3 rounded-lg border border-gray-100">
+                <div class="text-brand-orange font-semibold">Sentence Types</div>
+                <div class="text-xs text-text-muted">Structure analysis</div>
+              </div>
+            </div>
+          </section>
+
+          <div class="my-6 ad-slot-mid-content">
+            <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+              <p class="text-xs text-text-muted mb-2">Advertisement</p>
+              <div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded">
+                <span class="text-gray-400 text-sm">AdSense Square (300x250)</span>
+              </div>
+            </div>
+          </div>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-4">Why Sentence Counting Matters</h2>
+            <p class="text-text-primary mb-4">
+              Sentence length directly impacts readability. Short sentences are easier to understand, while varied sentence length creates engaging rhythm. Professional writers and editors use sentence analysis to improve clarity.
+            </p>
+            <div class="bg-brand-cream rounded-xl p-5 mb-4">
+              <h3 class="text-lg font-display font-semibold mb-3">Recommended Sentence Length:</h3>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <div class="bg-surface p-4 rounded-lg border border-gray-200">
+                  <div class="text-brand-pink font-bold text-2xl">15-20</div>
+                  <div class="text-sm text-text-muted">Words per sentence (ideal)</div>
+                </div>
+                <div class="bg-surface p-4 rounded-lg border border-gray-200">
+                  <div class="text-brand-cyan font-bold text-2xl">&lt;25</div>
+                  <div class="text-sm text-text-muted">Words (acceptable)</div>
+                </div>
+                <div class="bg-surface p-4 rounded-lg border border-gray-200">
+                  <div class="text-brand-orange font-bold text-2xl">&gt;30</div>
+                  <div class="text-sm text-text-muted">Words (too long)</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <div class="my-6 ad-slot-inline">
+            <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+              <p class="text-xs text-text-muted mb-2">Advertisement</p>
+              <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+                <span class="text-gray-400 text-sm">AdSense Banner</span>
+              </div>
+            </div>
+          </div>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-4">Frequently Asked Questions</h2>
+            
+            <div class="mb-4">
+              <h3 class="text-lg font-display font-semibold mb-2">How do you detect sentences?</h3>
+              <p class="text-text-primary">
+                We detect sentences by identifying terminal punctuation (periods, question marks, exclamation points) followed by spaces or end of text. Our algorithm handles abbreviations like "Mr." and "Dr." to avoid false positives.
+              </p>
+            </div>
+
+            <div class="mb-4">
+              <h3 class="text-lg font-display font-semibold mb-2">What is a good average sentence length?</h3>
+              <p class="text-text-primary">
+                For general writing, 15-20 words per sentence is ideal. Academic writing often averages 20-25 words. Journalism and web content tend toward shorter sentences (10-15 words) for better readability.
+              </p>
+            </div>
+
+            <div class="mb-4">
+              <h3 class="text-lg font-display font-semibold mb-2">Why does sentence length matter?</h3>
+              <p class="text-text-primary">
+                Long sentences can confuse readers and reduce comprehension. Short sentences create impact and clarity. Mixing sentence lengths creates rhythm and maintains reader interest.
+              </p>
+            </div>
+
+            <div class="mb-4">
+              <h3 class="text-lg font-display font-semibold mb-2">Can I use this for academic writing?</h3>
+              <p class="text-text-primary">
+                Yes! Sentence analysis is crucial for academic writing. Many style guides recommend keeping sentences under 25 words. Use our tool to identify overly complex sentences that may need revision.
+              </p>
+            </div>
+          </section>
+
+          <div class="my-6 ad-slot-bottom">
+            <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+              <p class="text-xs text-text-muted mb-2">Advertisement</p>
+              <div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded">
+                <span class="text-gray-400 text-sm">AdSense Square</span>
+              </div>
+            </div>
+          </div>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-4">Related Tools</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <a href="/word-counter" class="bg-surface p-4 rounded-lg border border-gray-200 hover:border-brand-pink transition-colors">
+                <div class="font-semibold text-text-primary">Word Counter</div>
+                <div class="text-sm text-text-muted">Count words and estimate reading time</div>
+              </a>
+              <a href="/character-counter" class="bg-surface p-4 rounded-lg border border-gray-200 hover:border-brand-pink transition-colors">
+                <div class="font-semibold text-text-primary">Character Counter</div>
+                <div class="text-sm text-text-muted">Check character limits for social media</div>
+              </a>
+              <a href="/readability-checker" class="bg-surface p-4 rounded-lg border border-gray-200 hover:border-brand-pink transition-colors">
+                <div class="font-semibold text-text-primary">Readability Checker</div>
+                <div class="text-sm text-text-muted">Measure text complexity</div>
+              </a>
+              <a href="/paragraph-counter" class="bg-surface p-4 rounded-lg border border-gray-200 hover:border-brand-pink transition-colors">
+                <div class="font-semibold text-text-primary">Paragraph Counter</div>
+                <div class="text-sm text-text-muted">Count and analyze paragraphs</div>
+              </a>
+            </div>
+          </section>
+        </article>
       </div>
-      <aside class="hidden lg:block lg:col-span-1"><div class="sticky top-8 space-y-6"><div class="ad-slot-sidebar"><div class="bg-surface rounded-xl border border-gray-200 p-6 text-center"><p class="text-sm text-text-muted mb-2">Advertisement</p><div class="min-h-[600px] flex items-center justify-center bg-gray-50 rounded-lg"><span class="text-gray-400">AdSense Sidebar Ad</span></div></div></div></div></aside>
+      <Sidebar />
     </div>
   </main>
 </BaseLayout>

@@ -1,17 +1,168 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Sidebar from '../components/Sidebar.astro';
 import SyllableCounterTool from '../components/SyllableCounterTool';
 ---
-<BaseLayout title="Syllable Counter - Count Syllables in Words" description="Free syllable counter tool. Count total syllables and average syllables per word.">
-  <main class="container mx-auto px-4 py-8 max-w-7xl">
-    <header class="mb-8"><h1 class="text-4xl md:text-6xl font-display font-bold tracking-tighter mb-3">Syllable Counter</h1><p class="text-lg text-text-muted">Count syllables in your text.</p></header>
+<BaseLayout title="Syllable Counter - Count Syllables in Text" description="Free syllable counter tool. Count syllables in words and text for poetry, lyrics, and readability analysis.">
+  <main class="layout-shell px-4 py-6">
+    <header class="mb-6">
+      <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter mb-2">Syllable Counter</h1>
+      <p class="text-base text-text-muted">Count syllables in words and text for poetry, lyrics, and readability.</p>
+    </header>
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
       <div class="lg:col-span-3">
-        <div class="bg-surface rounded-2xl shadow-sm border border-gray-100 overflow-hidden"><SyllableCounterTool client:load /></div>
-        <div class="mt-6 ad-slot-below-tool"><div class="bg-surface rounded-xl border border-gray-200 p-6 text-center"><p class="text-sm text-text-muted mb-2">Advertisement</p><div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded-lg"><span class="text-gray-400">AdSense Ad Unit</span></div></div></div>
-        <article class="mt-12 prose prose-lg"><h2>How to Use</h2><p>Paste text to see syllable counts. Syllable counting is estimated based on English pronunciation rules.</p><h2>Related Tools</h2><ul><li><a href="/word-counter">Word Counter</a></li><li><a href="/readability-checker">Readability Checker</a></li></ul></article>
+        <div class="bg-surface rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+          <SyllableCounterTool client:load />
+        </div>
+        <div class="mt-4 ad-slot-below-tool">
+          <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+            <p class="text-xs text-text-muted mb-2">Advertisement</p>
+            <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+              <span class="text-gray-400 text-sm">AdSense Banner (728x90)</span>
+            </div>
+          </div>
+        </div>
+        <article class="mt-8">
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">How to Use the Syllable Counter</h2>
+            <p class="text-text-primary mb-4">
+              Paste or type your text above to count syllables in real-time. Our tool uses English pronunciation rules to estimate syllable count for words and complete texts.
+            </p>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-3 mb-4">
+              <div class="bg-surface p-3 rounded-lg border border-gray-100">
+                <div class="text-brand-pink font-semibold">Total Syllables</div>
+                <div class="text-xs text-text-muted">All syllables</div>
+              </div>
+              <div class="bg-surface p-3 rounded-lg border border-gray-100">
+                <div class="text-brand-cyan font-semibold">Avg per Word</div>
+                <div class="text-xs text-text-muted">Syllable average</div>
+              </div>
+              <div class="bg-surface p-3 rounded-lg border border-gray-100">
+                <div class="text-brand-orange font-semibold">Complex Words</div>
+                <div class="text-xs text-text-muted">3+ syllables</div>
+              </div>
+            </div>
+          </section>
+
+          <div class="my-6 ad-slot-mid-content">
+            <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+              <p class="text-xs text-text-muted mb-2">Advertisement</p>
+              <div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded">
+                <span class="text-gray-400 text-sm">AdSense Square (300x250)</span>
+              </div>
+            </div>
+          </div>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-4">Why Count Syllables?</h2>
+            <p class="text-text-primary mb-4">
+              Syllable counting is essential for poetry, songwriting, and readability analysis. Many readability formulas (like Flesch-Kincaid) use syllable count to determine text complexity.
+            </p>
+            <div class="bg-brand-cream rounded-xl p-5 mb-4">
+              <h3 class="text-lg font-display font-semibold mb-3">Common Uses:</h3>
+              <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 text-text-primary">
+                <li class="flex items-center gap-2">
+                  <span class="text-brand-pink">✓</span>
+                  <span>Writing haiku (5-7-5 syllables)</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-brand-pink">✓</span>
+                  <span>Creating song lyrics and rhymes</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-brand-pink">✓</span>
+                  <span>Readability analysis</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-brand-pink">✓</span>
+                  <span>Teaching phonics and reading</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-brand-pink">✓</span>
+                  <span>Writing limericks and verse</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-brand-pink">✓</span>
+                  <span>Speech therapy exercises</span>
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <div class="my-6 ad-slot-inline">
+            <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+              <p class="text-xs text-text-muted mb-2">Advertisement</p>
+              <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+                <span class="text-gray-400 text-sm">AdSense Banner</span>
+              </div>
+            </div>
+          </div>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-4">Frequently Asked Questions</h2>
+            
+            <div class="mb-4">
+              <h3 class="text-lg font-display font-semibold mb-2">How do you count syllables?</h3>
+              <p class="text-text-primary">
+                We use English pronunciation rules based on vowel patterns, silent letters, and common exceptions. While not 100% perfect (English has many irregularities), our algorithm is accurate for most words.
+              </p>
+            </div>
+
+            <div class="mb-4">
+              <h3 class="text-lg font-display font-semibold mb-2">What is a syllable?</h3>
+              <p class="text-text-primary">
+                A syllable is a unit of sound containing a vowel sound. Words like "cat" have one syllable. "Water" has two (wa-ter). "Beautiful" has three (beau-ti-ful).
+              </p>
+            </div>
+
+            <div class="mb-4">
+              <h3 class="text-lg font-display font-semibold mb-2">How many syllables does a haiku need?</h3>
+              <p class="text-text-primary">
+                A traditional haiku has three lines with a 5-7-5 syllable pattern: 5 syllables in the first line, 7 in the second, and 5 in the third. Total: 17 syllables.
+              </p>
+            </div>
+
+            <div class="mb-4">
+              <h3 class="text-lg font-display font-semibold mb-2">Why do readability formulas use syllables?</h3>
+              <p class="text-text-primary">
+                Words with more syllables tend to be longer and more complex. Readability formulas like Flesch-Kincaid use average syllables per word to estimate text difficulty.
+              </p>
+            </div>
+          </section>
+
+          <div class="my-6 ad-slot-bottom">
+            <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+              <p class="text-xs text-text-muted mb-2">Advertisement</p>
+              <div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded">
+                <span class="text-gray-400 text-sm">AdSense Square</span>
+              </div>
+            </div>
+          </div>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-4">Related Tools</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <a href="/word-counter" class="bg-surface p-4 rounded-lg border border-gray-200 hover:border-brand-pink transition-colors">
+                <div class="font-semibold text-text-primary">Word Counter</div>
+                <div class="text-sm text-text-muted">Count words and estimate reading time</div>
+              </a>
+              <a href="/readability-checker" class="bg-surface p-4 rounded-lg border border-gray-200 hover:border-brand-pink transition-colors">
+                <div class="font-semibold text-text-primary">Readability Checker</div>
+                <div class="text-sm text-text-muted">Measure text complexity</div>
+              </a>
+              <a href="/character-counter" class="bg-surface p-4 rounded-lg border border-gray-200 hover:border-brand-pink transition-colors">
+                <div class="font-semibold text-text-primary">Character Counter</div>
+                <div class="text-sm text-text-muted">Check character limits</div>
+              </a>
+              <a href="/sentence-counter" class="bg-surface p-4 rounded-lg border border-gray-200 hover:border-brand-pink transition-colors">
+                <div class="font-semibold text-text-primary">Sentence Counter</div>
+                <div class="text-sm text-text-muted">Analyze sentence structure</div>
+              </a>
+            </div>
+          </section>
+        </article>
       </div>
-      <aside class="hidden lg:block lg:col-span-1"><div class="sticky top-8"><div class="ad-slot-sidebar"><div class="bg-surface rounded-xl border border-gray-200 p-6 text-center"><p class="text-sm text-text-muted mb-2">Advertisement</p><div class="min-h-[600px] flex items-center justify-center bg-gray-50 rounded-lg"><span class="text-gray-400">AdSense Sidebar Ad</span></div></div></div></div></aside>
+      <Sidebar />
     </div>
   </main>
 </BaseLayout>

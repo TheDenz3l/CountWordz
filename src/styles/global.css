@@ -48,6 +48,7 @@
   --duration-fast: 150ms;
   --duration-normal: 300ms;
   --duration-slow: 500ms;
+  --layout-max-width: 96rem;
 }
 
 /* Global styles */
@@ -68,6 +69,11 @@ body {
   color: var(--color-text-primary);
   background-color: var(--color-brand-cream);
   line-height: 1.6;
+}
+
+.layout-shell {
+  width: min(100%, var(--layout-max-width));
+  margin-inline: auto;
 }
 
 /* Typography defaults */
@@ -130,14 +136,6 @@ input:focus, textarea:focus {
   outline: none;
   border-color: var(--color-brand-pink);
   box-shadow: 0 0 0 3px rgba(255, 22, 93, 0.1);
-}
-
-/* Utility classes */
-.container {
-  width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 1rem;
 }
 
 /* Animation utilities - using Tailwind v4 @theme keyframes */

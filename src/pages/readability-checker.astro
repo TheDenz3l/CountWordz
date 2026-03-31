@@ -1,33 +1,183 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Sidebar from '../components/Sidebar.astro';
 import ReadabilityCheckerTool from '../components/ReadabilityCheckerTool';
 ---
-<BaseLayout title="Readability Checker - Flesch Reading Ease & Grade Level" description="Free readability checker tool. Calculate Flesch Reading Ease and Flesch-Kincaid Grade Level scores.">
-  <main class="container mx-auto px-4 py-8 max-w-7xl">
-    <header class="mb-8"><h1 class="text-4xl md:text-6xl font-display font-bold tracking-tighter mb-3">Readability Checker</h1><p class="text-lg text-text-muted">Measure text readability with Flesch scores.</p></header>
+<BaseLayout title="Readability Checker - Measure Text Complexity" description="Free readability checker tool. Calculate Flesch-Kincaid, Gunning Fog, and other readability scores.">
+  <main class="layout-shell px-4 py-6">
+    <header class="mb-6">
+      <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter mb-2">Readability Checker</h1>
+      <p class="text-base text-text-muted">Measure text complexity and readability scores for your content.</p>
+    </header>
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
       <div class="lg:col-span-3">
-        <div class="bg-surface rounded-2xl shadow-sm border border-gray-100 overflow-hidden"><ReadabilityCheckerTool client:load /></div>
-        <div class="mt-6 ad-slot-below-tool"><div class="bg-surface rounded-xl border border-gray-200 p-6 text-center"><p class="text-sm text-text-muted mb-2">Advertisement</p><div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded-lg"><span class="text-gray-400">AdSense Ad Unit</span></div></div></div>
-        <article class="mt-12 prose prose-lg">
-          <h2>How to Use</h2>
-          <p>Paste text to see Flesch Reading Ease score and Flesch-Kincaid Grade Level.</p>
-          <h2>Understanding the Scores</h2>
-          <h3>Flesch Reading Ease</h3>
-          <ul>
-            <li>90-100: Very Easy (5th grade)</li>
-            <li>80-89: Easy (6th-7th grade)</li>
-            <li>70-79: Fairly Easy (8th-9th grade)</li>
-            <li>60-69: Moderate (10th-12th grade)</li>
-            <li>50-59: Fairly Difficult (College)</li>
-            <li>30-49: Difficult (College graduate)</li>
-            <li>0-29: Very Difficult (Professional)</li>
-          </ul>
-          <h2>Related Tools</h2>
-          <ul><li><a href="/word-counter">Word Counter</a></li><li><a href="/sentence-counter">Sentence Counter</a></li></ul>
+        <div class="bg-surface rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+          <ReadabilityCheckerTool client:load />
+        </div>
+        <div class="mt-4 ad-slot-below-tool">
+          <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+            <p class="text-xs text-text-muted mb-2">Advertisement</p>
+            <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+              <span class="text-gray-400 text-sm">AdSense Banner (728x90)</span>
+            </div>
+          </div>
+        </div>
+        <article class="mt-8">
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">How to Use the Readability Checker</h2>
+            <p class="text-text-primary mb-4">
+              Paste or type your text above to calculate multiple readability scores. Our tool analyzes sentence length, word complexity, and syllable count to determine reading difficulty.
+            </p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
+              <div class="bg-surface p-3 rounded-lg border border-gray-100">
+                <div class="text-brand-pink font-semibold">Flesch-Kincaid</div>
+                <div class="text-xs text-text-muted">Grade level</div>
+              </div>
+              <div class="bg-surface p-3 rounded-lg border border-gray-100">
+                <div class="text-brand-cyan font-semibold">Gunning Fog</div>
+                <div class="text-xs text-text-muted">Complexity index</div>
+              </div>
+              <div class="bg-surface p-3 rounded-lg border border-gray-100">
+                <div class="text-brand-orange font-semibold">SMOG</div>
+                <div class="text-xs text-text-muted">Readability score</div>
+              </div>
+              <div class="bg-surface p-3 rounded-lg border border-gray-100">
+                <div class="text-brand-pink font-semibold">Coleman-Liau</div>
+                <div class="text-xs text-text-muted">Grade estimate</div>
+              </div>
+            </div>
+          </section>
+
+          <div class="my-6 ad-slot-mid-content">
+            <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+              <p class="text-xs text-text-muted mb-2">Advertisement</p>
+              <div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded">
+                <span class="text-gray-400 text-sm">AdSense Square (300x250)</span>
+              </div>
+            </div>
+          </div>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-4">Understanding Readability Scores</h2>
+            <p class="text-text-primary mb-4">
+              Readability scores estimate the education level needed to understand your text. Lower scores indicate easier reading, while higher scores suggest more complex content.
+            </p>
+            <div class="bg-brand-cream rounded-xl p-5 mb-4">
+              <h3 class="text-lg font-display font-semibold mb-3">Readability Score Guide:</h3>
+              <div class="space-y-3">
+                <div class="bg-surface p-4 rounded-lg border border-gray-200">
+                  <div class="flex justify-between items-center mb-2">
+                    <span class="font-semibold text-text-primary">90-100 (Very Easy)</span>
+                    <span class="text-brand-pink font-bold">5th grade</span>
+                  </div>
+                  <div class="text-sm text-text-muted">Easy to read for most audiences. Ideal for general content.</div>
+                </div>
+                <div class="bg-surface p-4 rounded-lg border border-gray-200">
+                  <div class="flex justify-between items-center mb-2">
+                    <span class="font-semibold text-text-primary">70-80 (Easy)</span>
+                    <span class="text-brand-cyan font-bold">7th grade</span>
+                  </div>
+                  <div class="text-sm text-text-muted">Conversational and accessible. Good for web content.</div>
+                </div>
+                <div class="bg-surface p-4 rounded-lg border border-gray-200">
+                  <div class="flex justify-between items-center mb-2">
+                    <span class="font-semibold text-text-primary">60-70 (Standard)</span>
+                    <span class="text-brand-orange font-bold">8th-9th grade</span>
+                  </div>
+                  <div class="text-sm text-text-muted">Plain English. Suitable for most adult audiences.</div>
+                </div>
+                <div class="bg-surface p-4 rounded-lg border border-gray-200">
+                  <div class="flex justify-between items-center mb-2">
+                    <span class="font-semibold text-text-primary">50-60 (Fairly Difficult)</span>
+                    <span class="text-brand-pink font-bold">10th-12th grade</span>
+                  </div>
+                  <div class="text-sm text-text-muted">More complex vocabulary and sentence structure.</div>
+                </div>
+                <div class="bg-surface p-4 rounded-lg border border-gray-200">
+                  <div class="flex justify-between items-center mb-2">
+                    <span class="font-semibold text-text-primary">0-50 (Difficult)</span>
+                    <span class="text-brand-cyan font-bold">College+</span>
+                  </div>
+                  <div class="text-sm text-text-muted">Academic or technical writing. Challenging for general readers.</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <div class="my-6 ad-slot-inline">
+            <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+              <p class="text-xs text-text-muted mb-2">Advertisement</p>
+              <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+                <span class="text-gray-400 text-sm">AdSense Banner</span>
+              </div>
+            </div>
+          </div>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-4">Frequently Asked Questions</h2>
+            
+            <div class="mb-4">
+              <h3 class="text-lg font-display font-semibold mb-2">What is the Flesch-Kincaid score?</h3>
+              <p class="text-text-primary">
+                The Flesch-Kincaid Grade Level indicates the U.S. school grade level needed to understand your text. A score of 8 means an 8th grader could read it comfortably.
+              </p>
+            </div>
+
+            <div class="mb-4">
+              <h3 class="text-lg font-display font-semibold mb-2">What is a good readability score?</h3>
+              <p class="text-text-primary">
+                For web content, aim for 60-70 (8th-9th grade level). For general audiences, 70-80 is ideal. Academic writing typically scores 50-60. Technical documentation may be lower.
+              </p>
+            </div>
+
+            <div class="mb-4">
+              <h3 class="text-lg font-display font-semibold mb-2">How can I improve readability?</h3>
+              <p class="text-text-primary">
+                Use shorter sentences, simpler words, and active voice. Break up long paragraphs. Use bullet points and headings. Avoid jargon unless writing for specialists.
+              </p>
+            </div>
+
+            <div class="mb-4">
+              <h3 class="text-lg font-display font-semibold mb-2">Which readability formula is best?</h3>
+              <p class="text-text-primary">
+                Each formula has strengths. Flesch-Kincaid is widely used. Gunning Fog is good for business writing. SMOG works well for health materials. Use multiple scores for best results.
+              </p>
+            </div>
+          </section>
+
+          <div class="my-6 ad-slot-bottom">
+            <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+              <p class="text-xs text-text-muted mb-2">Advertisement</p>
+              <div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded">
+                <span class="text-gray-400 text-sm">AdSense Square</span>
+              </div>
+            </div>
+          </div>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-4">Related Tools</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <a href="/word-counter" class="bg-surface p-4 rounded-lg border border-gray-200 hover:border-brand-pink transition-colors">
+                <div class="font-semibold text-text-primary">Word Counter</div>
+                <div class="text-sm text-text-muted">Count words and estimate reading time</div>
+              </a>
+              <a href="/sentence-counter" class="bg-surface p-4 rounded-lg border border-gray-200 hover:border-brand-pink transition-colors">
+                <div class="font-semibold text-text-primary">Sentence Counter</div>
+                <div class="text-sm text-text-muted">Analyze sentence structure</div>
+              </a>
+              <a href="/character-counter" class="bg-surface p-4 rounded-lg border border-gray-200 hover:border-brand-pink transition-colors">
+                <div class="font-semibold text-text-primary">Character Counter</div>
+                <div class="text-sm text-text-muted">Check character limits</div>
+              </a>
+              <a href="/syllable-counter" class="bg-surface p-4 rounded-lg border border-gray-200 hover:border-brand-pink transition-colors">
+                <div class="font-semibold text-text-primary">Syllable Counter</div>
+                <div class="text-sm text-text-muted">Count syllables in text</div>
+              </a>
+            </div>
+          </section>
         </article>
       </div>
-      <aside class="hidden lg:block lg:col-span-1"><div class="sticky top-8"><div class="ad-slot-sidebar"><div class="bg-surface rounded-xl border border-gray-200 p-6 text-center"><p class="text-sm text-text-muted mb-2">Advertisement</p><div class="min-h-[600px] flex items-center justify-center bg-gray-50 rounded-lg"><span class="text-gray-400">AdSense Sidebar Ad</span></div></div></div></div></aside>
+      <Sidebar />
     </div>
   </main>
 </BaseLayout>

@@ -1,17 +1,176 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Sidebar from '../components/Sidebar.astro';
 import ReadingTimeTool from '../components/ReadingTimeTool';
 ---
-<BaseLayout title="Reading Time Calculator - Estimate Reading & Speaking Time" description="Free reading time calculator. Estimate how long it takes to read or speak your text.">
-  <main class="container mx-auto px-4 py-8 max-w-7xl">
-    <header class="mb-8"><h1 class="text-4xl md:text-6xl font-display font-bold tracking-tighter mb-3">Reading Time Calculator</h1><p class="text-lg text-text-muted">Estimate reading and speaking time for your text.</p></header>
+<BaseLayout title="Reading Time Calculator - Estimate Reading & Speaking Time" description="Free reading time calculator. Estimate how long it takes to read or speak any text.">
+  <main class="layout-shell px-4 py-6">
+    <header class="mb-6">
+      <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter mb-2">Reading Time Calculator</h1>
+      <p class="text-base text-text-muted">Estimate reading and speaking time for any text.</p>
+    </header>
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
       <div class="lg:col-span-3">
-        <div class="bg-surface rounded-2xl shadow-sm border border-gray-100 overflow-hidden"><ReadingTimeTool client:load /></div>
-        <div class="mt-6 ad-slot-below-tool"><div class="bg-surface rounded-xl border border-gray-200 p-6 text-center"><p class="text-sm text-text-muted mb-2">Advertisement</p><div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded-lg"><span class="text-gray-400">AdSense Ad Unit</span></div></div></div>
-        <article class="mt-12 prose prose-lg"><h2>How to Use</h2><p>Paste text to estimate reading and speaking time. Adjust reading speed for more accurate estimates.</p><h2>Related Tools</h2><ul><li><a href="/word-counter">Word Counter</a></li><li><a href="/readability-checker">Readability Checker</a></li></ul></article>
+        <div class="bg-surface rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+          <ReadingTimeTool client:load />
+        </div>
+        <div class="mt-4 ad-slot-below-tool">
+          <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+            <p class="text-xs text-text-muted mb-2">Advertisement</p>
+            <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+              <span class="text-gray-400 text-sm">AdSense Banner (728x90)</span>
+            </div>
+          </div>
+        </div>
+        <article class="mt-8">
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">How to Use the Reading Time Calculator</h2>
+            <p class="text-text-primary mb-4">
+              Paste or type your text above to instantly calculate reading and speaking time. Our tool uses industry-standard word-per-minute rates for accurate estimates.
+            </p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
+              <div class="bg-surface p-3 rounded-lg border border-gray-100">
+                <div class="text-brand-pink font-semibold">Reading Time</div>
+                <div class="text-xs text-text-muted">At 200 WPM</div>
+              </div>
+              <div class="bg-surface p-3 rounded-lg border border-gray-100">
+                <div class="text-brand-cyan font-semibold">Speaking Time</div>
+                <div class="text-xs text-text-muted">At 130 WPM</div>
+              </div>
+              <div class="bg-surface p-3 rounded-lg border border-gray-100">
+                <div class="text-brand-orange font-semibold">Word Count</div>
+                <div class="text-xs text-text-muted">Total words</div>
+              </div>
+              <div class="bg-surface p-3 rounded-lg border border-gray-100">
+                <div class="text-brand-pink font-semibold">Custom Speed</div>
+                <div class="text-xs text-text-muted">Adjustable WPM</div>
+              </div>
+            </div>
+          </section>
+
+          <div class="my-6 ad-slot-mid-content">
+            <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+              <p class="text-xs text-text-muted mb-2">Advertisement</p>
+              <div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded">
+                <span class="text-gray-400 text-sm">AdSense Square (300x250)</span>
+              </div>
+            </div>
+          </div>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-4">Reading & Speaking Speed Standards</h2>
+            <p class="text-text-primary mb-4">
+              Different activities require different reading speeds. Understanding these helps you plan presentations, podcasts, and content length effectively.
+            </p>
+            <div class="bg-brand-cream rounded-xl p-5 mb-4">
+              <h3 class="text-lg font-display font-semibold mb-3">Average Speeds:</h3>
+              <div class="space-y-3">
+                <div class="bg-surface p-4 rounded-lg border border-gray-200">
+                  <div class="flex justify-between items-center mb-2">
+                    <span class="font-semibold text-text-primary">Silent Reading</span>
+                    <span class="text-brand-pink font-bold">200-250 WPM</span>
+                  </div>
+                  <div class="text-sm text-text-muted">Average adult reading speed for comprehension.</div>
+                </div>
+                <div class="bg-surface p-4 rounded-lg border border-gray-200">
+                  <div class="flex justify-between items-center mb-2">
+                    <span class="font-semibold text-text-primary">Speaking (Presentation)</span>
+                    <span class="text-brand-cyan font-bold">130-150 WPM</span>
+                  </div>
+                  <div class="text-sm text-text-muted">Comfortable pace for speeches and presentations.</div>
+                </div>
+                <div class="bg-surface p-4 rounded-lg border border-gray-200">
+                  <div class="flex justify-between items-center mb-2">
+                    <span class="font-semibold text-text-primary">Speaking (Podcast/Audiobook)</span>
+                    <span class="text-brand-orange font-bold">150-160 WPM</span>
+                  </div>
+                  <div class="text-sm text-text-muted">Engaging pace for audio content.</div>
+                </div>
+                <div class="bg-surface p-4 rounded-lg border border-gray-200">
+                  <div class="flex justify-between items-center mb-2">
+                    <span class="font-semibold text-text-primary">Speed Reading</span>
+                    <span class="text-brand-pink font-bold">400-700 WPM</span>
+                  </div>
+                  <div class="text-sm text-text-muted">Skimming or speed reading for quick overview.</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <div class="my-6 ad-slot-inline">
+            <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+              <p class="text-xs text-text-muted mb-2">Advertisement</p>
+              <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+                <span class="text-gray-400 text-sm">AdSense Banner</span>
+              </div>
+            </div>
+          </div>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-4">Frequently Asked Questions</h2>
+            
+            <div class="mb-4">
+              <h3 class="text-lg font-display font-semibold mb-2">How accurate is the reading time estimate?</h3>
+              <p class="text-text-primary">
+                Reading time is calculated at 200 words per minute, the average adult reading speed. Actual time varies based on text complexity, familiarity with the topic, and individual reading ability.
+              </p>
+            </div>
+
+            <div class="mb-4">
+              <h3 class="text-lg font-display font-semibold mb-2">What speaking speed should I use?</h3>
+              <p class="text-text-primary">
+                For presentations, aim for 130-150 WPM. For podcasts or audiobooks, 150-160 WPM works well. Slower speeds (100-120 WPM) are better for complex or technical content.
+              </p>
+            </div>
+
+            <div class="mb-4">
+              <h3 class="text-lg font-display font-semibold mb-2">How long should my blog post be?</h3>
+              <p class="text-text-primary">
+                For SEO, 1500-2500 words (7-12 minute read) performs well. Quick posts (500-800 words, 2-4 min) work for news. In-depth guides (3000+ words, 15+ min) establish authority.
+              </p>
+            </div>
+
+            <div class="mb-4">
+              <h3 class="text-lg font-display font-semibold mb-2">How do I calculate speaking time for a speech?</h3>
+              <p class="text-text-primary">
+                Divide your word count by 130-150 for presentation time. A 5-minute speech needs 650-750 words. A 10-minute talk requires 1300-1500 words. Practice to find your natural pace.
+              </p>
+            </div>
+          </section>
+
+          <div class="my-6 ad-slot-bottom">
+            <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+              <p class="text-xs text-text-muted mb-2">Advertisement</p>
+              <div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded">
+                <span class="text-gray-400 text-sm">AdSense Square</span>
+              </div>
+            </div>
+          </div>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-4">Related Tools</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <a href="/word-counter" class="bg-surface p-4 rounded-lg border border-gray-200 hover:border-brand-pink transition-colors">
+                <div class="font-semibold text-text-primary">Word Counter</div>
+                <div class="text-sm text-text-muted">Count words and analyze text</div>
+              </a>
+              <a href="/readability-checker" class="bg-surface p-4 rounded-lg border border-gray-200 hover:border-brand-pink transition-colors">
+                <div class="font-semibold text-text-primary">Readability Checker</div>
+                <div class="text-sm text-text-muted">Measure text complexity</div>
+              </a>
+              <a href="/sentence-counter" class="bg-surface p-4 rounded-lg border border-gray-200 hover:border-brand-pink transition-colors">
+                <div class="font-semibold text-text-primary">Sentence Counter</div>
+                <div class="text-sm text-text-muted">Analyze sentence structure</div>
+              </a>
+              <a href="/character-counter" class="bg-surface p-4 rounded-lg border border-gray-200 hover:border-brand-pink transition-colors">
+                <div class="font-semibold text-text-primary">Character Counter</div>
+                <div class="text-sm text-text-muted">Check character limits</div>
+              </a>
+            </div>
+          </section>
+        </article>
       </div>
-      <aside class="hidden lg:block lg:col-span-1"><div class="sticky top-8"><div class="ad-slot-sidebar"><div class="bg-surface rounded-xl border border-gray-200 p-6 text-center"><p class="text-sm text-text-muted mb-2">Advertisement</p><div class="min-h-[600px] flex items-center justify-center bg-gray-50 rounded-lg"><span class="text-gray-400">AdSense Sidebar Ad</span></div></div></div></div></aside>
+      <Sidebar />
     </div>
   </main>
 </BaseLayout>
