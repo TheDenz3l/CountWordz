@@ -1,24 +1,48 @@
 /* Design Tokens - PRD Colors + taste-skill guidelines */
 @import 'tailwindcss';
 
-/* Custom CSS Variables for design tokens */
-:root {
+/* Tailwind v4 Theme Configuration */
+@theme {
   /* PRD Color Palette */
   --color-brand-cyan: #3EC1D3;
   --color-brand-cream: #F6F7D7;
   --color-brand-orange: #FF9A00;
   --color-brand-pink: #FF165D;
   
-  /* Neutral colors */
+  /* Neutral colors for text */
   --color-text-primary: #171717;
   --color-text-muted: #5B5B5B;
   --color-surface: #FFFFFF;
   
-  /* Typography scale */
+  /* Typography - font families */
   --font-display: 'Syne', system-ui, sans-serif;
   --font-body: 'Inter', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
   
+  /* Motion - taste-skill spring physics */
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+  
+  /* Animation */
+  --animate-spring-in: spring-in 0.5s var(--ease-spring);
+  --animate-fade-in: fade-in 0.3s ease-out;
+  
+  /* Keyframes */
+  @keyframes spring-in {
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes fade-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+}
+
+/* Custom CSS Variables for non-Tailwind usage */
+:root {
   /* Motion - taste-skill spring physics */
   --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
   --duration-fast: 150ms;
@@ -116,29 +140,9 @@ input:focus, textarea:focus {
   padding: 0 1rem;
 }
 
-/* Animation utilities */
-@keyframes spring-in {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
+/* Animation utilities - using Tailwind v4 @theme keyframes */
 .animate-spring-in {
   animation: spring-in 0.5s var(--ease-spring);
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
 }
 
 .animate-fade-in {
