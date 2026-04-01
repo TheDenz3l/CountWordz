@@ -18,7 +18,7 @@ import Footer from '../components/Footer.astro';
       
       <!-- Homepage Word Counter Widget -->
       <div class="max-w-4xl mx-auto bg-surface rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
-        <WordCounterTool client:load />
+        <WordCounterTool locale="en" client:load />
       </div>
     </div>
   </section>
@@ -135,50 +135,6 @@ import Footer from '../components/Footer.astro';
       <h2 class="text-3xl md:text-4xl font-display font-bold text-center mb-12">Why CountWordz?</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div class="text-center">
-          <div class="text-4xl mb-4">⚡</div>
-          <h3 class="text-xl font-display font-semibold mb-2">Instant Results</h3>
-          <p class="text-text-muted">Real-time analysis as you type. No waiting, no page reloads.</p>
-        </div>
-        <div class="text-center">
-          <div class="text-4xl mb-4">🔒</div>
-          <h3 class="text-xl font-display font-semibold mb-2">Private & Secure</h3>
-          <p class="text-text-muted">All processing happens in your browser. Your text is never stored or sent.</p>
-        </div>
-        <div class="text-center">
-          <div class="text-4xl mb-4">✨</div>
-          <h3 class="text-xl font-display font-semibold mb-2">Modern Design</h3>
-          <p class="text-text-muted">Clean, intuitive interface that's a pleasure to use.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Bottom Homepage Ad Slot -->
-  <section class="py-8 bg-gray-50 border-t border-gray-100">
-    <div class="layout-shell px-4">
-      <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center max-w-4xl mx-auto">
-        <p class="text-xs text-text-muted mb-2">Advertisement</p>
-        <div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded">
-          <span class="text-gray-400 text-sm">AdSense Square (300x250)</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer Ad Banner -->
-  <section class="py-6 bg-white">
-    <div class="layout-shell px-4">
-      <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
-        <p class="text-xs text-text-muted mb-2">Advertisement</p>
-        <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
-          <span class="text-gray-400 text-sm">AdSense Banner (728x90)</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <Footer />
-</BaseLayout>
           <div class="text-4xl mb-4">⚡</div>
           <h3 class="text-xl font-display font-semibold mb-2">Instant Results</h3>
           <p class="text-text-muted">Real-time analysis as you type. No waiting, no page reloads.</p>

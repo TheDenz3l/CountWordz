@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Footer from '../components/Footer.astro';
+
+const page = {
+  title: 'Terms of Service',
+  description: 'Read the basic terms for using CountWordz and its text analysis tools.',
+  h1: 'Terms of Service',
+  updated: 'Last updated: April 1, 2026',
+  intro: 'These terms describe the basic conditions for using CountWordz. By using the site, you agree to use the tools lawfully and responsibly.',
+  sections: [
+    {
+      heading: 'Use of the tools',
+      body: 'CountWordz is provided for general writing, counting, formatting, and readability assistance. You are responsible for how you use the output and for reviewing any text before publishing or submitting it.',
+    },
+    {
+      heading: 'No guarantee of uninterrupted service',
+      body: 'We aim to keep the site available and accurate, but we do not guarantee uninterrupted access, permanent availability, or suitability for any specific legal, academic, or professional requirement.',
+    },
+    {
+      heading: 'Third-party services and advertising',
+      body: 'Some pages may include analytics, advertising, fonts, or other third-party resources. Those third parties may apply their own terms and policies.',
+    },
+    {
+      heading: 'Acceptable use',
+      body: 'You agree not to misuse the site, interfere with its operation, attempt unauthorized access, or use the service in a way that violates applicable law or the rights of others.',
+    },
+    {
+      heading: 'Updates',
+      body: 'These terms may change as the product evolves. Continued use of the site after changes are published means you accept the updated version.',
+    },
+  ],
+};
+---
+
+<BaseLayout title={`${page.title} — CountWordz`} description={page.description}>
+  <main class="layout-shell px-4 py-10">
+    <div class="max-w-4xl mx-auto">
+      <header class="mb-8">
+        <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-3">{page.h1}</h1>
+        <p class="text-sm text-text-muted">{page.updated}</p>
+      </header>
+
+      <article class="bg-surface rounded-2xl border border-gray-100 p-6 md:p-8 space-y-8">
+        <p class="text-text-primary leading-7">{page.intro}</p>
+
+        {page.sections.map((section) => (
+          <section>
+            <h2 class="text-2xl font-display font-bold mb-3">{section.heading}</h2>
+            <p class="text-text-primary leading-7">{section.body}</p>
+          </section>
+        ))}
+      </article>
+    </div>
+  </main>
+
+  <Footer locale="en" />
+</BaseLayout>

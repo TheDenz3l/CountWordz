@@ -1,0 +1,80 @@
+{
+  "site": {
+    "title": "CountWordz",
+    "description": "Free text utility tools for counting, analyzing, and formatting text. Fast, modern, and easy to use.",
+    "tagline": "Free text utility tools for counting, analyzing, and formatting text."
+  },
+  "navigation": {
+    "home": "Home",
+    "tools": "All Tools",
+    "browseAll": "Browse All 103 Tools"
+  },
+  "homepage": {
+    "heroTitle": "CountWordz",
+    "heroSubtitle": "Free text utility tools for counting, analyzing, and formatting text. Fast, modern, and easy to use.",
+    "stats": {
+      "tools": "Free Tools",
+      "free": "Free Forever",
+      "realtime": "Real-time",
+      "nosignup": "No Signup Required"
+    },
+    "coreToolsTitle": "Core Tools",
+    "coreToolsSubtitle": "Start with our essential text analysis tools, or",
+    "browseAllButton": "Browse All 103 Tools →",
+    "popularUseCases": "Popular Use Cases"
+  },
+  "footer": {
+    "description": "Free text utility tools for counting, analyzing, and formatting text. Fast, modern, and easy to use.",
+    "coreTools": "Core Tools",
+    "viewAllTools": "View All 103 Tools →",
+    "legal": "Legal",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "copyright": "All rights reserved."
+  },
+  "tools": {
+    "title": "All Text Tools",
+    "subtitle": "Browse all 103 free text tools organized by category. Find the perfect tool for your writing, editing, and content optimization needs.",
+    "coreTools": "Core Tools",
+    "platformCounters": "Platform Character Counters",
+    "documentCounters": "Word Counters by Document Type",
+    "readabilityCheckers": "Readability Checkers by Industry",
+    "readingTimeCalculators": "Reading Time Calculators",
+    "statsTitle": "103 Free Text Tools",
+    "statsSubtitle": "All tools are 100% free, work in your browser, and require no signup. Start using any tool above instantly.",
+    "backToHome": "Back to Homepage"
+  },
+  "tools_list": {
+    "wordCounter": "Word Counter",
+    "wordCounterDesc": "Count words, characters, sentences, and more",
+    "characterCounter": "Character Counter",
+    "characterCounterDesc": "Check character limits for social media",
+    "sentenceCounter": "Sentence Counter",
+    "sentenceCounterDesc": "Count sentences and analyze structure",
+    "paragraphCounter": "Paragraph Counter",
+    "paragraphCounterDesc": "Count paragraphs and average words",
+    "syllableCounter": "Syllable Counter",
+    "syllableCounterDesc": "Count syllables in words and text",
+    "readingTime": "Reading Time Calculator",
+    "readingTimeDesc": "Estimate reading and speaking time",
+    "caseConverter": "Case Converter",
+    "caseConverterDesc": "Convert text between different cases",
+    "titleCase": "Title Case Converter",
+    "titleCaseDesc": "Convert to proper title case",
+    "readabilityChecker": "Readability Checker",
+    "readabilityCheckerDesc": "Measure text readability scores",
+    "keywordDensity": "Keyword Density Checker",
+    "keywordDensityDesc": "Analyze word and phrase frequency",
+    "textCompare": "Text Compare Tool",
+    "textCompareDesc": "Compare two texts and highlight differences",
+    "paragraphRewriter": "Paragraph Rewriter",
+    "paragraphRewriterDesc": "Get suggestions to improve writing"
+  },
+  "common": {
+    "advertisement": "Advertisement",
+    "relatedTools": "Related Tools",
+    "howToUse": "How to Use",
+    "tips": "Tips",
+    "faqs": "FAQs"
+  }
+}

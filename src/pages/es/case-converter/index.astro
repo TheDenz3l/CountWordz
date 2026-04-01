@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import CaseConverterTool from '../../../components/CaseConverterTool';
+import Sidebar from '../../../components/Sidebar.astro';
+import Footer from '../../../components/Footer.astro';
+---
+
+<BaseLayout 
+  title="Convertidor de Mayúsculas - Convierte entre Formatos de Texto" 
+  description="Convertidor de mayúsculas gratuito. Convierte texto entre minúsculas, MAYÚSCULAS, Título, Oración y más."
+>
+  <main class="layout-shell px-4 py-6">
+    <header class="mb-6">
+      <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Convertidor de Mayúsculas</h1>
+      <p class="text-base text-text-muted max-w-3xl">Convierte texto entre diferentes formatos de mayúsculas y minúsculas. Perfecto para formatear títulos y encabezados.</p>
+    </header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div class="lg:col-span-3">
+        <div class="bg-surface rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-4">
+          <CaseConverterTool locale="es" client:load />
+        </div>
+
+        <div class="mt-4 ad-slot-below-tool">
+          <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+            <p class="text-xs text-text-muted mb-2">Publicidad</p>
+            <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+              <span class="text-gray-400 text-sm">Espacio Publicitario</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="my-6 ad-slot-mid-content">
+          <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+            <p class="text-xs text-text-muted mb-2">Publicidad</p>
+            <div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded">
+              <span class="text-gray-400 text-sm">Espacio Publicitario</span>
+            </div>
+          </div>
+        </div>
+
+        <article class="mt-8">
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">Formatos Disponibles</h2>
+            <div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4">
+              <ul class="space-y-2 text-text-primary">
+                <li><strong>minúsculas</strong> — Todo el texto en minúsculas</li>
+                <li><strong>MAYÚSCULAS</strong> — Todo el texto en mayúsculas</li>
+                <li><strong>Título</strong> — Primera letra de cada palabra en mayúscula</li>
+                <li><strong>Oración</strong> — Primera letra de la oración en mayúscula</li>
+                <li><strong>aLTERNADO</strong> — Alterna entre mayúsculas y minúsculas</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">Herramientas Relacionadas</h2>
+            <ul class="space-y-2">
+              <li><a href="/es/word-counter" class="text-brand-pink hover:underline">Contador de Palabras</a></li>
+              <li><a href="/es/title-case-converter" class="text-brand-pink hover:underline">Convertidor a Título</a></li>
+              <li><a href="/es/character-counter" class="text-brand-pink hover:underline">Contador de Caracteres</a></li>
+            </ul>
+          </section>
+        </article>
+      </div>
+
+      <Sidebar category="case-converter" />
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

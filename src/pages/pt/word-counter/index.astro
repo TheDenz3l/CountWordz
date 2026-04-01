@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import WordCounterTool from '../../../components/WordCounterTool';
+import Sidebar from '../../../components/Sidebar.astro';
+import Footer from '../../../components/Footer.astro';
+---
+
+<BaseLayout 
+  title="Contador de Palavras - Conte Palavras, Caracteres e Mais" 
+  description="Contador de palavras gratuito. Conte palavras, caracteres, frases, parágrafos e estime tempo de leitura em tempo real."
+>
+  <main class="layout-shell px-4 py-6">
+    <header class="mb-6">
+      <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Contador de Palavras</h1>
+      <p class="text-base text-text-muted max-w-3xl">Conte palavras, caracteres, frases e mais em tempo real. Perfeito para ensaios, currículos e publicações.</p>
+    </header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div class="lg:col-span-3">
+        <div class="bg-surface rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-4">
+          <WordCounterTool locale="pt" client:load />
+        </div>
+
+        <div class="mt-4 ad-slot-below-tool">
+          <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+            <p class="text-xs text-text-muted mb-2">Publicidade</p>
+            <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+              <span class="text-gray-400 text-sm">Espaço Publicitário</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="my-6 ad-slot-mid-content">
+          <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+            <p class="text-xs text-text-muted mb-2">Publicidade</p>
+            <div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded">
+              <span class="text-gray-400 text-sm">Espaço Publicitário</span>
+            </div>
+          </div>
+        </div>
+
+        <article class="mt-8">
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">Como Usar</h2>
+            <p class="text-text-primary mb-4">Cole ou digite seu texto acima. O contador mostrará instantaneamente:</p>
+            <ul class="list-disc list-inside space-y-2 text-text-primary">
+              <li><strong>Contagem de palavras</strong> — Total de palavras</li>
+              <li><strong>Contagem de caracteres</strong> — Com e sem espaços</li>
+              <li><strong>Contagem de frases</strong> — Número de frases</li>
+              <li><strong>Contagem de parágrafos</strong> — Número de parágrafos</li>
+              <li><strong>Tempo de leitura</strong> — Tempo estimado de leitura</li>
+              <li><strong>Tempo de fala</strong> — Tempo estimado de fala</li>
+            </ul>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">Limites Comuns</h2>
+            <div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4">
+              <ul class="space-y-2 text-text-primary">
+                <li class="flex justify-between"><span>Ensaio escolar</span><span class="font-semibold">500-1000 palavras</span></li>
+                <li class="flex justify-between"><span>Ensaio universitário</span><span class="font-semibold">1500-3000 palavras</span></li>
+                <li class="flex justify-between"><span>Post de blog</span><span class="font-semibold">800-1200 palavras</span></li>
+                <li class="flex justify-between"><span>Currículo</span><span class="font-semibold">400-600 palavras</span></li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">Perguntas Frequentes</h2>
+            <h3 class="text-xl font-display font-semibold mt-4 mb-2">Como as palavras são contadas?</h3>
+            <p class="text-text-primary mb-4">Contamos palavras dividindo o texto por espaços. Palavras com hífen contam como uma palavra.</p>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">Ferramentas Relacionadas</h2>
+            <ul class="space-y-2">
+              <li><a href="/pt/character-counter" class="text-brand-pink hover:underline">Contador de Caracteres</a></li>
+              <li><a href="/pt/sentence-counter" class="text-brand-pink hover:underline">Contador de Frases</a></li>
+              <li><a href="/pt/readability-checker" class="text-brand-pink hover:underline">Verificador de Legibilidade</a></li>
+            </ul>
+          </section>
+        </article>
+      </div>
+
+      <Sidebar category="word-counter" />
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

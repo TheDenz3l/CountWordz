@@ -1,52 +1,57 @@
 ---
-// Footer Component - Reusable across all pages
+import { getTranslation } from '../i18n/translations.js';
+import { getLocalizedStaticPath, normalizeLocale } from '../lib/locale-routes';
+
+const props = Astro.props || {};
+const propLocale = props.locale;
+const pathname = Astro.url.pathname;
+const first = pathname.split('/')[1] || 'en';
+const locale = normalizeLocale(propLocale || first);
+const t = (key) => getTranslation(locale, key);
+const tools = t('footerTools') || [];
+const legalLinks = [
+  [t('privacyPolicy'), getLocalizedStaticPath(locale, 'privacy-policy')],
+  [t('termsOfService'), getLocalizedStaticPath(locale, 'terms')],
+];
 ---
 
 <footer class="bg-gray-900 text-white py-12 mt-16">
   <div class="layout-shell px-4">
     <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-      <!-- Brand -->
       <div class="md:col-span-1">
         <h3 class="text-xl font-display font-bold mb-4">CountWordz</h3>
-        <p class="text-gray-400 text-sm">Free text utility tools for counting, analyzing, and formatting text. Fast, modern, and easy to use.</p>
+        <p class="text-gray-400 text-sm">{t('footerBrandDescription')}</p>
       </div>
-      
-      <!-- All Tools -->
+
       <div class="md:col-span-2">
-        <h4 class="font-semibold mb-4">Core Tools</h4>
+        <h4 class="font-semibold mb-4">{t('coreTools')}</h4>
         <div class="grid grid-cols-2 gap-2 text-sm mb-4">
           <div>
-            <a href="/word-counter" class="block text-gray-400 hover:text-white py-1">Word Counter</a>
-            <a href="/character-counter" class="block text-gray-400 hover:text-white py-1">Character Counter</a>
-            <a href="/sentence-counter" class="block text-gray-400 hover:text-white py-1">Sentence Counter</a>
-            <a href="/paragraph-counter" class="block text-gray-400 hover:text-white py-1">Paragraph Counter</a>
-            <a href="/syllable-counter" class="block text-gray-400 hover:text-white py-1">Syllable Counter</a>
-            <a href="/reading-time-calculator" class="block text-gray-400 hover:text-white py-1">Reading Time</a>
+            {tools.slice(0, 6).map(([name, slug]) => (
+              <a href={getLocalizedStaticPath(locale, slug)} class="block text-gray-400 hover:text-white py-1">{name}</a>
+            ))}
           </div>
           <div>
-            <a href="/case-converter" class="block text-gray-400 hover:text-white py-1">Case Converter</a>
-            <a href="/title-case-converter" class="block text-gray-400 hover:text-white py-1">Title Case</a>
-            <a href="/readability-checker" class="block text-gray-400 hover:text-white py-1">Readability Checker</a>
-            <a href="/keyword-density-checker" class="block text-gray-400 hover:text-white py-1">Keyword Density</a>
-            <a href="/text-compare-tool" class="block text-gray-400 hover:text-white py-1">Text Compare</a>
-            <a href="/paragraph-rewriter" class="block text-gray-400 hover:text-white py-1">Paragraph Rewriter</a>
+            {tools.slice(6, 12).map(([name, slug]) => (
+              <a href={getLocalizedStaticPath(locale, slug)} class="block text-gray-400 hover:text-white py-1">{name}</a>
+            ))}
           </div>
         </div>
-        <a href="/tools" class="inline-block px-4 py-2 bg-brand-pink text-white rounded-lg text-sm font-semibold hover:bg-opacity-90 transition-all">View All 103 Tools →</a>
+        <a href={getLocalizedStaticPath(locale, 'tools')} class="inline-block px-4 py-2 bg-brand-pink text-white rounded-lg text-sm font-semibold hover:bg-opacity-90 transition-all">{t('viewAllTools')}</a>
       </div>
-      
-      <!-- Legal -->
+
       <div>
-        <h4 class="font-semibold mb-4">Legal</h4>
+        <h4 class="font-semibold mb-4">{t('legal')}</h4>
         <ul class="space-y-2 text-gray-400 text-sm">
-          <li><a href="/privacy-policy" class="hover:text-white">Privacy Policy</a></li>
-          <li><a href="/terms" class="hover:text-white">Terms of Service</a></li>
+          {legalLinks.map(([label, href]) => (
+            <li><a href={href} class="hover:text-white">{label}</a></li>
+          ))}
         </ul>
       </div>
     </div>
-    
+
     <div class="border-t border-gray-800 pt-8 text-center text-gray-400 text-sm">
-      <p>&copy; {new Date().getFullYear()} CountWordz. All rights reserved.</p>
+      <p>&copy; {new Date().getFullYear()} CountWordz. {t('allRightsReserved')}</p>
     </div>
   </div>
 </footer>

@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ReadingTimeTool from '../../../components/ReadingTimeTool';
+import Sidebar from '../../../components/Sidebar.astro';
+import Footer from '../../../components/Footer.astro';
+import { getLocalizedToolPath } from '../../../lib/locale-routes';
+---
+
+<BaseLayout 
+  title="Calculateur de Temps de Lecture - Estime le Temps de Lecture" 
+  description="Calculateur de temps de lecture gratuit. Estime combien de temps il faut pour lire votre texte. Optimisez la longueur de votre contenu."
+>
+  <main class="layout-shell px-4 py-6">
+    <header class="mb-6">
+      <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Calculateur de Temps de Lecture</h1>
+      <p class="text-base text-text-muted max-w-3xl">Estimez le temps de lecture et de parole pour votre texte. Optimisez la longueur de votre contenu.</p>
+    </header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div class="lg:col-span-3">
+        <div class="bg-surface rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-4">
+          <ReadingTimeTool locale="fr" client:load />
+        </div>
+
+        <div class="mt-4 ad-slot-below-tool">
+          <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+            <p class="text-xs text-text-muted mb-2">Publicité</p>
+            <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+              <span class="text-gray-400 text-sm">Espace Publicitaire</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="my-6 ad-slot-mid-content">
+          <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+            <p class="text-xs text-text-muted mb-2">Publicité</p>
+            <div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded">
+              <span class="text-gray-400 text-sm">Espace Publicitaire</span>
+            </div>
+          </div>
+        </div>
+
+        <article class="mt-8">
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">Vitesses de Lecture</h2>
+            <div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4">
+              <ul class="space-y-2 text-text-primary">
+                <li class="flex justify-between"><span>Lecteur lent</span><span class="font-semibold">150-200 MPM</span></li>
+                <li class="flex justify-between"><span>Moyen</span><span class="font-semibold">200-250 MPM</span></li>
+                <li class="flex justify-between"><span>Lecteur rapide</span><span class="font-semibold">250-300 MPM</span></li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">Outils Connexes</h2>
+            <ul class="space-y-2">
+              <li><a href="/fr/word-counter" class="text-brand-pink hover:underline">Compteur de Mots</a></li>
+              <li><a href={getLocalizedToolPath('fr', 'speech-time-calculator')} class="text-brand-pink hover:underline">Temps de Parole</a></li>
+              <li><a href={getLocalizedToolPath('fr', 'blog-reading-time')} class="text-brand-pink hover:underline">Temps de Blog</a></li>
+            </ul>
+          </section>
+        </article>
+      </div>
+
+      <Sidebar category="reading-time" />
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

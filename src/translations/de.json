@@ -1,0 +1,80 @@
+{
+  "site": {
+    "title": "CountWordz",
+    "description": "Kostenlose Text-Tools zum Zählen, Analysieren und Formatieren von Text. Schnell, modern und einfach zu bedienen.",
+    "tagline": "Kostenlose Text-Tools zum Zählen, Analysieren und Formatieren von Text."
+  },
+  "navigation": {
+    "home": "Startseite",
+    "tools": "Alle Tools",
+    "browseAll": "Alle 103 Tools Anzeigen"
+  },
+  "homepage": {
+    "heroTitle": "CountWordz",
+    "heroSubtitle": "Kostenlose Text-Tools zum Zählen, Analysieren und Formatieren von Text. Schnell, modern und einfach zu bedienen.",
+    "stats": {
+      "tools": "Kostenlose Tools",
+      "free": "100% Kostenlos",
+      "realtime": "Echtzeit",
+      "nosignup": "Keine Anmeldung"
+    },
+    "coreToolsTitle": "Haupt-Tools",
+    "coreToolsSubtitle": "Beginnen Sie mit unseren essentiellen Textanalyse-Tools, oder",
+    "browseAllButton": "Alle 103 Tools Anzeigen →",
+    "popularUseCases": "Beliebte Anwendungsfälle"
+  },
+  "footer": {
+    "description": "Kostenlose Text-Tools zum Zählen, Analysieren und Formatieren von Text. Schnell, modern und einfach zu bedienen.",
+    "coreTools": "Haupt-Tools",
+    "viewAllTools": "Alle 103 Tools Anzeigen →",
+    "legal": "Rechtliches",
+    "privacy": "Datenschutzrichtlinie",
+    "terms": "Nutzungsbedingungen",
+    "copyright": "Alle Rechte vorbehalten."
+  },
+  "tools": {
+    "title": "Alle Text-Tools",
+    "subtitle": "Durchsuchen Sie alle 103 kostenlosen Text-Tools nach Kategorie. Finden Sie das perfekte Tool für Ihr Schreiben, Ihre Bearbeitung und Content-Optimierung.",
+    "coreTools": "Haupt-Tools",
+    "platformCounters": "Zeichenzähler nach Plattform",
+    "documentCounters": "Wortzähler nach Dokumenttyp",
+    "readabilityCheckers": "Lesbarkeitsprüfer nach Branche",
+    "readingTimeCalculators": "Lesezeit-Rechner",
+    "statsTitle": "103 Kostenlose Text-Tools",
+    "statsSubtitle": "Alle Tools sind 100% kostenlos, funktionieren in Ihrem Browser und erfordern keine Anmeldung. Beginnen Sie sofort mit der Verwendung eines beliebigen Tools oben.",
+    "backToHome": "Zurück zur Startseite"
+  },
+  "tools_list": {
+    "wordCounter": "Wortzähler",
+    "wordCounterDesc": "Zählt Wörter, Zeichen, Sätze und mehr",
+    "characterCounter": "Zeichenzähler",
+    "characterCounterDesc": "Überprüft Zeichenlimits für soziale Medien",
+    "sentenceCounter": "Satzanzahl",
+    "sentenceCounterDesc": "Zählt Sätze und analysiert Struktur",
+    "paragraphCounter": "Absatzzähler",
+    "paragraphCounterDesc": "Zählt Absätze und Durchschnittswörter",
+    "syllableCounter": "Silbenzähler",
+    "syllableCounterDesc": "Zählt Silben in Wörtern und Text",
+    "readingTime": "Lesezeit-Rechner",
+    "readingTimeDesc": "Schätzt Lese- und Sprechzeit",
+    "caseConverter": "Groß-/Kleinschreibung-Konverter",
+    "caseConverterDesc": "Konvertiert Text zwischen verschiedenen Formaten",
+    "titleCase": "Titel-Konverter",
+    "titleCaseDesc": "Konvertiert in geeignetes Titelformat",
+    "readabilityChecker": "Lesbarkeitsprüfer",
+    "readabilityCheckerDesc": "Misst Lesbarkeitswerte",
+    "keywordDensity": "Keyword-Dichte-Prüfer",
+    "keywordDensityDesc": "Analysiert Wort- und Phrasenhäufigkeit",
+    "textCompare": "Textvergleichs-Tool",
+    "textCompareDesc": "Vergleicht zwei Texte und hebt Unterschiede hervor",
+    "paragraphRewriter": "Absatz-Überarbeiter",
+    "paragraphRewriterDesc": "Erhalten Sie Vorschläge zur Verbesserung des Schreibens"
+  },
+  "common": {
+    "advertisement": "Werbung",
+    "relatedTools": "Ähnliche Tools",
+    "howToUse": "Wie Man Verwendet",
+    "tips": "Tipps",
+    "faqs": "FAQ"
+  }
+}

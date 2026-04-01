@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import { getTranslation } from '../i18n/translations.js';
+import { getLocaleSwitchPath, normalizeLocale } from '../lib/locale-routes';
 
 interface Props {
   title: string;
@@ -7,27 +9,54 @@ interface Props {
 }
 
 const { title, description = 'Free SEO-driven text utility website for word counting, character counting, and text analysis tools.' } = Astro.props;
+const pathname = Astro.url.pathname;
+const localeFromPath = pathname.split('/')[1] || 'en';
+const currentLocale = normalizeLocale(localeFromPath);
+const t = (key) => getTranslation(currentLocale, key);
+
+const languages = [
+  { code: 'en', name: 'English', flag: '🇺🇸' },
+  { code: 'es', name: 'Español', flag: '🇪🇸' },
+  { code: 'fr', name: 'Français', flag: '🇫🇷' },
+  { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
+  { code: 'pt', name: 'Português', flag: '🇵🇹' },
+];
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={currentLocale}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <meta name="generator" content="Astro" />
-    
-    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
-    
     <title>{title} — CountWordz</title>
   </head>
   <body class="bg-brand-cream text-text-primary font-body min-h-[100dvh]">
+    <div class="bg-gray-800 text-white py-2 px-4">
+      <div class="layout-shell flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+        <span class="text-sm">{t('languageSwitcherLabel')}</span>
+        <div class="flex flex-wrap gap-2">
+          {languages.map((lang) => (
+            <a
+              href={getLocaleSwitchPath(pathname, lang.code)}
+              class={`px-3 py-1 rounded text-sm transition-all ${
+                currentLocale === lang.code
+                  ? 'bg-brand-pink text-white'
+                  : 'bg-gray-700 hover:bg-gray-600'
+              }`}
+            >
+              {lang.flag} {lang.name}
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+
     <slot />
   </body>
 </html>

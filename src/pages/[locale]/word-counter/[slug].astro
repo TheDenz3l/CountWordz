@@ -1,0 +1,146 @@
+---
+import { getPageData, getAvailableSlugs } from '../../../data/pages.js';
+import { getTranslation, locales } from '../../../i18n/translations.js';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import WordCounterTool from '../../../components/WordCounterTool';
+import Sidebar from '../../../components/Sidebar.astro';
+import Footer from '../../../components/Footer.astro';
+
+export function getStaticPaths() {
+  const slugs = getAvailableSlugs('word-counter');
+  
+  return locales.flatMap(locale => 
+    slugs.map(slug => ({
+      params: { locale, slug },
+      props: { pageData: getPageData('word-counter', slug, locale), locale, slug },
+    }))
+  );
+}
+
+const { locale, slug } = Astro.params;
+const { pageData } = Astro.props;
+
+if (!pageData) {
+  return Astro.redirect(`/${locale}/tools`);
+}
+
+const t = (key) => getTranslation(locale, key);
+---
+
+<BaseLayout 
+  title={pageData.title} 
+  description={pageData.description}
+>
+  <main class="layout-shell px-4 py-6">
+    <header class="mb-6">
+      <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">{pageData.h1}</h1>
+      <p class="text-base text-text-muted max-w-3xl">{pageData.subtitle}</p>
+    </header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div class="lg:col-span-3">
+        <div class="bg-surface rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-4">
+          <WordCounterTool locale={locale} client:load />
+        </div>
+
+        <div class="mt-4 ad-slot-below-tool">
+          <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+            <p class="text-xs text-text-muted mb-2">{t('advertisement')}</p>
+            <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+              <span class="text-gray-400 text-sm">{t('adSpace')}</span>
+            </div>
+          </div>
+        </div>
+
+        <article class="mt-8">
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">{t('howToUse')}</h2>
+            <p class="text-text-primary mb-4">{pageData.subtitle}</p>
+          </section>
+
+          <!-- Mid-Content Ad Slot -->
+          <div class="my-6 ad-slot-mid-content">
+            <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+              <p class="text-xs text-text-muted mb-2">{t('advertisement')}</p>
+              <div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded">
+                <span class="text-gray-400 text-sm">{t('adSpace')}</span>
+              </div>
+            </div>
+          </div>
+
+          {pageData.limits && (
+            <section class="mb-6">
+              <h2 class="text-2xl font-display font-bold mb-3">{locale === 'es' ? 'Límites Comunes' : locale === 'fr' ? 'Limites Communes' : locale === 'de' ? 'Häufige Limits' : locale === 'pt' ? 'Limites Comuns' : 'Common Limits'}</h2>
+              <div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4">
+                <ul class="space-y-2 text-text-primary">
+                  {Object.entries(pageData.limits).map(([key, value]) => (
+                    <li class="flex justify-between">
+                      <span>{key}</span>
+                      <span class="font-semibold">{value}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </section>
+          )}
+
+          <!-- Inline Ad Slot -->
+          <div class="my-6 ad-slot-inline">
+            <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+              <p class="text-xs text-text-muted mb-2">{t('advertisement')}</p>
+              <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+                <span class="text-gray-400 text-sm">{t('adSpace')}</span>
+              </div>
+            </div>
+          </div>
+
+          {pageData.tips && (
+            <section class="mb-6">
+              <h2 class="text-2xl font-display font-bold mb-3">{t('tips')}</h2>
+              <ul class="list-disc list-inside space-y-2 text-text-primary mb-4">
+                {pageData.tips.map((tip, i) => (
+                  <li key={i}>{tip}</li>
+                ))}
+              </ul>
+            </section>
+          )}
+
+          <!-- Bottom Ad Slot Before Related Tools -->
+          <div class="my-6 ad-slot-bottom">
+            <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+              <p class="text-xs text-text-muted mb-2">{t('advertisement')}</p>
+              <div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded">
+                <span class="text-gray-400 text-sm">{t('adSpace')}</span>
+              </div>
+            </div>
+          </div>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">{t('relatedTools')}</h2>
+            <ul class="space-y-2">
+              <li><a href={`/${locale}/word-counter`} class="text-brand-pink hover:underline">{locale === 'es' ? 'Contador de Palabras' : locale === 'fr' ? 'Compteur de Mots' : locale === 'de' ? 'Wortzähler' : locale === 'pt' ? 'Contador de Palavras' : 'Word Counter'}</a></li>
+              <li><a href={`/${locale}/character-counter`} class="text-brand-pink hover:underline">{locale === 'es' ? 'Contador de Caracteres' : locale === 'fr' ? 'Compteur de Caractères' : locale === 'de' ? 'Zeichenzähler' : locale === 'pt' ? 'Contador de Caracteres' : 'Character Counter'}</a></li>
+              <li><a href={`/${locale}/readability-checker`} class="text-brand-pink hover:underline">{locale === 'es' ? 'Verificador de Legibilidad' : locale === 'fr' ? 'Vérificateur de Lisibilité' : locale === 'de' ? 'Lesbarkeitsprüfer' : locale === 'pt' ? 'Verificador de Legibilidade' : 'Readability Checker'}</a></li>
+            </ul>
+          </section>
+        </article>
+      </div>
+
+      <Sidebar category="word-counter" locale={locale} />
+    </div>
+  </main>
+
+  <!-- Footer Ad Banner -->
+  <section class="py-6 bg-white">
+    <div class="layout-shell px-4">
+      <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+        <p class="text-xs text-text-muted mb-2">{t('advertisement')}</p>
+        <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+          <span class="text-gray-400 text-sm">{t('adSpace')}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer locale={locale} />
+</BaseLayout>

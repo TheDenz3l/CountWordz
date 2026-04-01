@@ -1,0 +1,185 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Footer from '../../components/Footer.astro';
+import { VALID_LOCALES, normalizeLocale } from '../../lib/locale-routes';
+
+export function getStaticPaths() {
+  return VALID_LOCALES.filter((locale) => locale !== 'en').map((locale) => ({ params: { locale } }));
+}
+
+const locale = normalizeLocale(Astro.params.locale);
+
+const content = {
+  en: {
+    title: 'Terms of Service',
+    description: 'Read the basic terms for using CountWordz and its text analysis tools.',
+    h1: 'Terms of Service',
+    updated: 'Last updated: April 1, 2026',
+    intro: 'These terms describe the basic conditions for using CountWordz. By using the site, you agree to use the tools lawfully and responsibly.',
+    sections: [
+      {
+        heading: 'Use of the tools',
+        body: 'CountWordz is provided for general writing, counting, formatting, and readability assistance. You are responsible for how you use the output and for reviewing any text before publishing or submitting it.',
+      },
+      {
+        heading: 'No guarantee of uninterrupted service',
+        body: 'We aim to keep the site available and accurate, but we do not guarantee uninterrupted access, permanent availability, or suitability for any specific legal, academic, or professional requirement.',
+      },
+      {
+        heading: 'Third-party services and advertising',
+        body: 'Some pages may include analytics, advertising, fonts, or other third-party resources. Those third parties may apply their own terms and policies.',
+      },
+      {
+        heading: 'Acceptable use',
+        body: 'You agree not to misuse the site, interfere with its operation, attempt unauthorized access, or use the service in a way that violates applicable law or the rights of others.',
+      },
+      {
+        heading: 'Updates',
+        body: 'These terms may change as the product evolves. Continued use of the site after changes are published means you accept the updated version.',
+      },
+    ],
+  },
+  es: {
+    title: 'Términos de Servicio',
+    description: 'Lee los términos básicos para usar CountWordz y sus herramientas de análisis de texto.',
+    h1: 'Términos de Servicio',
+    updated: 'Última actualización: 1 de abril de 2026',
+    intro: 'Estos términos describen las condiciones básicas para usar CountWordz. Al usar el sitio, aceptas utilizar las herramientas de manera legal y responsable.',
+    sections: [
+      {
+        heading: 'Uso de las herramientas',
+        body: 'CountWordz se ofrece para asistencia general de escritura, conteo, formato y legibilidad. Eres responsable de cómo utilizas los resultados y de revisar cualquier texto antes de publicarlo o enviarlo.',
+      },
+      {
+        heading: 'Sin garantía de servicio ininterrumpido',
+        body: 'Buscamos mantener el sitio disponible y preciso, pero no garantizamos acceso ininterrumpido, disponibilidad permanente ni adecuación para requisitos legales, académicos o profesionales específicos.',
+      },
+      {
+        heading: 'Servicios de terceros y publicidad',
+        body: 'Algunas páginas pueden incluir analíticas, publicidad, tipografías u otros recursos de terceros. Esos terceros pueden aplicar sus propios términos y políticas.',
+      },
+      {
+        heading: 'Uso aceptable',
+        body: 'Aceptas no hacer un mal uso del sitio, no interferir con su funcionamiento, no intentar accesos no autorizados y no usar el servicio de una manera que viole la ley aplicable o los derechos de terceros.',
+      },
+      {
+        heading: 'Actualizaciones',
+        body: 'Estos términos pueden cambiar a medida que el producto evoluciona. El uso continuado del sitio después de publicar cambios significa que aceptas la versión actualizada.',
+      },
+    ],
+  },
+  fr: {
+    title: 'Conditions d’Utilisation',
+    description: 'Consultez les conditions de base applicables à l’utilisation de CountWordz et de ses outils de texte.',
+    h1: 'Conditions d’Utilisation',
+    updated: 'Dernière mise à jour : 1 avril 2026',
+    intro: 'Ces conditions décrivent les règles de base pour utiliser CountWordz. En utilisant le site, vous acceptez d’utiliser les outils de manière licite et responsable.',
+    sections: [
+      {
+        heading: 'Utilisation des outils',
+        body: 'CountWordz est fourni pour l’assistance générale à l’écriture, au comptage, au formatage et à la lisibilité. Vous êtes responsable de l’usage que vous faites des résultats et de la révision de tout texte avant publication ou soumission.',
+      },
+      {
+        heading: 'Aucune garantie de service ininterrompu',
+        body: 'Nous cherchons à maintenir le site disponible et fiable, mais nous ne garantissons ni un accès ininterrompu, ni une disponibilité permanente, ni l’adéquation du service à une exigence légale, académique ou professionnelle particulière.',
+      },
+      {
+        heading: 'Services tiers et publicité',
+        body: 'Certaines pages peuvent inclure des outils d’analyse, de la publicité, des polices ou d’autres ressources tierces. Ces tiers peuvent appliquer leurs propres conditions et politiques.',
+      },
+      {
+        heading: 'Utilisation acceptable',
+        body: 'Vous acceptez de ne pas détourner le site de son usage, de ne pas perturber son fonctionnement, de ne pas tenter d’accès non autorisé et de ne pas utiliser le service d’une manière contraire à la loi applicable ou aux droits d’autrui.',
+      },
+      {
+        heading: 'Mises à jour',
+        body: 'Ces conditions peuvent évoluer avec le produit. En continuant à utiliser le site après publication des modifications, vous acceptez la version mise à jour.',
+      },
+    ],
+  },
+  de: {
+    title: 'Nutzungsbedingungen',
+    description: 'Lesen Sie die grundlegenden Bedingungen für die Nutzung von CountWordz und seiner Textwerkzeuge.',
+    h1: 'Nutzungsbedingungen',
+    updated: 'Zuletzt aktualisiert: 1. April 2026',
+    intro: 'Diese Bedingungen beschreiben die grundlegenden Regeln für die Nutzung von CountWordz. Durch die Nutzung der Website erklären Sie sich damit einverstanden, die Tools rechtmäßig und verantwortungsvoll zu verwenden.',
+    sections: [
+      {
+        heading: 'Nutzung der Tools',
+        body: 'CountWordz wird für allgemeine Unterstützung beim Schreiben, Zählen, Formatieren und bei der Lesbarkeit bereitgestellt. Sie sind dafür verantwortlich, wie Sie die Ergebnisse verwenden, und dafür, jeden Text vor Veröffentlichung oder Einreichung selbst zu prüfen.',
+      },
+      {
+        heading: 'Keine Gewähr für unterbrechungsfreien Dienst',
+        body: 'Wir bemühen uns, die Website verfügbar und zuverlässig zu halten, garantieren jedoch weder ununterbrochenen Zugriff noch dauerhafte Verfügbarkeit oder Eignung für bestimmte rechtliche, akademische oder berufliche Anforderungen.',
+      },
+      {
+        heading: 'Drittanbieter-Dienste und Werbung',
+        body: 'Einige Seiten können Analysen, Werbung, Schriftarten oder andere Drittanbieter-Ressourcen enthalten. Diese Drittanbieter können eigene Bedingungen und Richtlinien anwenden.',
+      },
+      {
+        heading: 'Zulässige Nutzung',
+        body: 'Sie stimmen zu, die Website nicht missbräuchlich zu verwenden, ihren Betrieb nicht zu stören, keinen unbefugten Zugriff zu versuchen und den Dienst nicht in einer Weise zu nutzen, die gegen geltendes Recht oder die Rechte Dritter verstößt.',
+      },
+      {
+        heading: 'Änderungen',
+        body: 'Diese Bedingungen können sich mit der Weiterentwicklung des Produkts ändern. Wenn Sie die Website nach Veröffentlichung von Änderungen weiter nutzen, akzeptieren Sie die aktualisierte Version.',
+      },
+    ],
+  },
+  pt: {
+    title: 'Termos de Serviço',
+    description: 'Leia os termos básicos para usar CountWordz e suas ferramentas de análise de texto.',
+    h1: 'Termos de Serviço',
+    updated: 'Última atualização: 1 de abril de 2026',
+    intro: 'Estes termos descrevem as condições básicas para usar CountWordz. Ao usar o site, você concorda em utilizar as ferramentas de forma legal e responsável.',
+    sections: [
+      {
+        heading: 'Uso das ferramentas',
+        body: 'CountWordz é fornecido para apoio geral à escrita, contagem, formatação e legibilidade. Você é responsável pela forma como utiliza os resultados e por revisar qualquer texto antes de publicar ou enviar.',
+      },
+      {
+        heading: 'Sem garantia de serviço ininterrupto',
+        body: 'Buscamos manter o site disponível e confiável, mas não garantimos acesso ininterrupto, disponibilidade permanente ou adequação a requisitos legais, acadêmicos ou profissionais específicos.',
+      },
+      {
+        heading: 'Serviços de terceiros e publicidade',
+        body: 'Algumas páginas podem incluir análises, publicidade, fontes ou outros recursos de terceiros. Esses terceiros podem aplicar seus próprios termos e políticas.',
+      },
+      {
+        heading: 'Uso aceitável',
+        body: 'Você concorda em não fazer mau uso do site, não interferir em seu funcionamento, não tentar acesso não autorizado e não usar o serviço de forma que viole a lei aplicável ou os direitos de terceiros.',
+      },
+      {
+        heading: 'Atualizações',
+        body: 'Estes termos podem mudar conforme o produto evolui. O uso contínuo do site após a publicação de alterações significa que você aceita a versão atualizada.',
+      },
+    ],
+  },
+};
+
+const page = content[locale] ?? content.en;
+---
+
+<BaseLayout title={`${page.title} — CountWordz`} description={page.description}>
+  <main class="layout-shell px-4 py-10">
+    <div class="max-w-4xl mx-auto">
+      <header class="mb-8">
+        <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-3">{page.h1}</h1>
+        <p class="text-sm text-text-muted">{page.updated}</p>
+      </header>
+
+      <article class="bg-surface rounded-2xl border border-gray-100 p-6 md:p-8 space-y-8">
+        <p class="text-text-primary leading-7">{page.intro}</p>
+
+        {page.sections.map((section) => (
+          <section>
+            <h2 class="text-2xl font-display font-bold mb-3">{section.heading}</h2>
+            <p class="text-text-primary leading-7">{section.body}</p>
+          </section>
+        ))}
+      </article>
+    </div>
+  </main>
+
+  <Footer locale={locale} />
+</BaseLayout>

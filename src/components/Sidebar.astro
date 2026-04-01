@@ -1,44 +1,35 @@
-<!-- Sidebar with Ad and Quick Links - Desktop Only -->
+---
+import { getTranslation } from '../i18n/translations.js';
+import { getLocalizedStaticPath, normalizeLocale } from '../lib/locale-routes';
+
+const props = Astro.props || {};
+const propLocale = props.locale;
+const pathname = Astro.url.pathname;
+const first = pathname.split('/')[1] || 'en';
+const locale = normalizeLocale(propLocale || first);
+const t = (key) => getTranslation(locale, key);
+const links = t('sidebarLinks') || [];
+---
+
 <aside class="hidden lg:block lg:col-span-1">
   <div class="sticky top-6 space-y-4">
-    <!-- Sidebar Ad Slot -->
     <div class="ad-slot-sidebar">
       <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
-        <p class="text-xs text-text-muted mb-2">Advertisement</p>
+        <p class="text-xs text-text-muted mb-2">{t('advertisement')}</p>
         <div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded">
-          <span class="text-gray-400 text-sm">AdSense Sidebar Ad</span>
+          <span class="text-gray-400 text-sm">{t('adSpace')}</span>
         </div>
       </div>
     </div>
 
-    <!-- Quick Links -->
     <div class="bg-surface rounded-lg border border-gray-200 p-4">
-      <h3 class="text-base font-display font-semibold mb-3">Quick Links</h3>
+      <h3 class="text-base font-display font-semibold mb-3">{t('quickLinks')}</h3>
       <nav class="space-y-1">
-        <a href="/word-counter" class="block px-3 py-2 rounded hover:bg-gray-50 transition-colors text-text-primary hover:text-brand-pink text-sm">
-          Word Counter
-        </a>
-        <a href="/character-counter" class="block px-3 py-2 rounded hover:bg-gray-50 transition-colors text-text-primary hover:text-brand-pink text-sm">
-          Character Counter
-        </a>
-        <a href="/sentence-counter" class="block px-3 py-2 rounded hover:bg-gray-50 transition-colors text-text-primary hover:text-brand-pink text-sm">
-          Sentence Counter
-        </a>
-        <a href="/paragraph-counter" class="block px-3 py-2 rounded hover:bg-gray-50 transition-colors text-text-primary hover:text-brand-pink text-sm">
-          Paragraph Counter
-        </a>
-        <a href="/readability-checker" class="block px-3 py-2 rounded hover:bg-gray-50 transition-colors text-text-primary hover:text-brand-pink text-sm">
-          Readability Checker
-        </a>
-        <a href="/reading-time-calculator" class="block px-3 py-2 rounded hover:bg-gray-50 transition-colors text-text-primary hover:text-brand-pink text-sm">
-          Reading Time Calculator
-        </a>
-        <a href="/syllable-counter" class="block px-3 py-2 rounded hover:bg-gray-50 transition-colors text-text-primary hover:text-brand-pink text-sm">
-          Syllable Counter
-        </a>
-        <a href="/case-converter" class="block px-3 py-2 rounded hover:bg-gray-50 transition-colors text-text-primary hover:text-brand-pink text-sm">
-          Case Converter
-        </a>
+        {links.map(([label, slug]) => (
+          <a href={getLocalizedStaticPath(locale, slug)} class="block px-3 py-2 rounded hover:bg-gray-50 transition-colors text-text-primary hover:text-brand-pink text-sm">
+            {label}
+          </a>
+        ))}
       </nav>
     </div>
   </div>

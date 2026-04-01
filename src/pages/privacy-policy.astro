@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Footer from '../components/Footer.astro';
+
+const page = {
+  title: 'Privacy Policy',
+  description: 'Learn how CountWordz handles text, analytics, and privacy across the site.',
+  h1: 'Privacy Policy',
+  updated: 'Last updated: April 1, 2026',
+  intro: 'CountWordz is designed to work in the browser without requiring an account. This page explains what data we collect, what we do not collect, and how we handle basic site analytics.',
+  sections: [
+    {
+      heading: 'Text you enter',
+      body: 'Text entered into the tools is processed in your browser for counting, readability, comparison, and formatting features. We do not require you to create an account to use the tools.',
+    },
+    {
+      heading: 'Analytics',
+      body: 'We may use privacy-conscious analytics and search performance tools to understand site usage, popular pages, and product quality. Those tools may collect aggregate usage information such as page views, referrers, and device/browser metadata.',
+    },
+    {
+      heading: 'Cookies and third-party services',
+      body: 'The site may use cookies or similar technologies for analytics, advertising, and performance. Third-party services may apply their own privacy policies when they are loaded on the site.',
+    },
+    {
+      heading: 'Your choices',
+      body: 'You can stop using the site at any time, block cookies in your browser, or use browser privacy controls and content blockers if you prefer to limit third-party scripts.',
+    },
+    {
+      heading: 'Contact',
+      body: 'If you have a privacy question about CountWordz, contact the site operator through the appropriate support or contact channel associated with the site.',
+    },
+  ],
+};
+---
+
+<BaseLayout title={`${page.title} — CountWordz`} description={page.description}>
+  <main class="layout-shell px-4 py-10">
+    <div class="max-w-4xl mx-auto">
+      <header class="mb-8">
+        <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-3">{page.h1}</h1>
+        <p class="text-sm text-text-muted">{page.updated}</p>
+      </header>
+
+      <article class="bg-surface rounded-2xl border border-gray-100 p-6 md:p-8 space-y-8">
+        <p class="text-text-primary leading-7">{page.intro}</p>
+
+        {page.sections.map((section) => (
+          <section>
+            <h2 class="text-2xl font-display font-bold mb-3">{section.heading}</h2>
+            <p class="text-text-primary leading-7">{section.body}</p>
+          </section>
+        ))}
+      </article>
+    </div>
+  </main>
+
+  <Footer locale="en" />
+</BaseLayout>

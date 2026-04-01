@@ -1,0 +1,183 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Footer from '../../components/Footer.astro';
+import { getLocalizedStaticPath, getLocalizedToolPath, getLocaleHomePath } from '../../lib/locale-routes';
+import { getLongTailDirectoryEntries, readabilityDirectorySlugs, readingTimeDirectorySlugs } from '../../lib/tools-directory';
+
+const locale = 'de';
+const readabilityTools = getLongTailDirectoryEntries(locale, readabilityDirectorySlugs);
+const readingTimeTools = getLongTailDirectoryEntries(locale, readingTimeDirectorySlugs);
+
+const coreTools = [
+  { slug: 'word-counter', title: 'Wortzähler', description: 'Zählt Wörter, Zeichen, Sätze und mehr', accent: 'text-brand-pink' },
+  { slug: 'character-counter', title: 'Zeichenzähler', description: 'Prüft Zeichenlimits für soziale Netzwerke', accent: 'text-brand-cyan' },
+  { slug: 'sentence-counter', title: 'Satzzähler', description: 'Zählt Sätze und analysiert die Struktur', accent: 'text-brand-orange' },
+  { slug: 'paragraph-counter', title: 'Absatzzähler', description: 'Zählt Absätze und die Wortzahl pro Absatz', accent: 'text-brand-pink' },
+  { slug: 'syllable-counter', title: 'Silbenzähler', description: 'Zählt Silben in Wörtern und Texten', accent: 'text-brand-cyan' },
+  { slug: 'reading-time-calculator', title: 'Lesezeit-Rechner', description: 'Schätzt Lese- und Sprechzeit', accent: 'text-brand-orange' },
+  { slug: 'case-converter', title: 'Groß-/Kleinschreibung', description: 'Wandelt Text in verschiedene Formate um', accent: 'text-brand-pink' },
+  { slug: 'title-case-converter', title: 'Titel-Konverter', description: 'Bringt Titel ins passende Format', accent: 'text-brand-cyan' },
+  { slug: 'readability-checker', title: 'Lesbarkeitsprüfer', description: 'Misst Lesbarkeit mit wichtigen Kennzahlen', accent: 'text-brand-orange' },
+  { slug: 'keyword-density-checker', title: 'Keyword-Dichte', description: 'Analysiert Wort- und Phrasenhäufigkeit', accent: 'text-brand-pink' },
+  { slug: 'text-compare-tool', title: 'Textvergleich', description: 'Vergleicht zwei Texte und markiert Unterschiede', accent: 'text-brand-cyan' },
+  { slug: 'paragraph-rewriter', title: 'Absatz-Umschreiber', description: 'Verbessert Klarheit und Lesefluss', accent: 'text-brand-orange' },
+];
+
+const platformTools = [
+  { slug: 'tweet-character-counter', title: 'Tweet-Zähler', description: 'X / Twitter (280 Zeichen)' },
+  { slug: 'instagram-caption-counter', title: 'Instagram-Beschriftung', description: '2.200 Zeichen' },
+  { slug: 'linkedin-post-counter', title: 'LinkedIn-Beitrag', description: '3.000 Zeichen' },
+  { slug: 'tiktok-character-counter', title: 'TikTok', description: 'Bio und Captions' },
+  { slug: 'facebook-post-counter', title: 'Facebook-Beitrag', description: '63.206 Zeichen' },
+  { slug: 'pinterest-pin-counter', title: 'Pinterest-Pin', description: 'Titel und Beschreibung' },
+  { slug: 'youtube-title-counter', title: 'YouTube-Titel', description: '100 Zeichen' },
+  { slug: 'youtube-tag-counter', title: 'YouTube-Tags', description: '500 Zeichen' },
+  { slug: 'email-subject-counter', title: 'E-Mail-Betreff', description: '60-70 Zeichen' },
+  { slug: 'linkedin-headline-counter', title: 'LinkedIn-Headline', description: '220 Zeichen' },
+  { slug: 'meta-title-counter', title: 'Meta-Titel', description: '60 Zeichen (SEO)' },
+  { slug: 'instagram-story-counter', title: 'Instagram-Story', description: '250 Zeichen' },
+  { slug: 'tweet-thread-counter', title: 'X-Thread', description: '280 pro Beitrag' },
+  { slug: 'whatsapp-message-counter', title: 'WhatsApp-Nachricht', description: '4.096 Zeichen' },
+  { slug: 'telegram-message-counter', title: 'Telegram-Nachricht', description: '4.096 Zeichen' },
+  { slug: 'discord-message-counter', title: 'Discord-Nachricht', description: '2.000 Zeichen' },
+  { slug: 'reddit-post-counter', title: 'Reddit-Beitrag', description: '300 für den Titel, 40k für den Post' },
+  { slug: 'sms-character-counter', title: 'SMS', description: '160 Zeichen' },
+  { slug: 'tiktok-bio-counter', title: 'TikTok-Bio', description: '80 Zeichen' },
+];
+
+const wordTools = [
+  { slug: 'essay-word-counter', title: 'Aufsatz-Zähler', description: 'Für Schüler und Autoren' },
+  { slug: 'resume-word-counter', title: 'Lebenslauf-Zähler', description: 'Für Bewerbungen' },
+  { slug: 'cover-letter-word-counter', title: 'Anschreiben', description: 'Für überzeugende Bewerbungen' },
+  { slug: 'college-essay-word-counter', title: 'Uni-Essay', description: 'Für Zulassungen' },
+  { slug: 'speech-word-counter', title: 'Rede', description: 'Für Vorträge und Präsentationen' },
+  { slug: 'paragraph-word-counter', title: 'Abschnittszähler', description: 'Für einzelne Textabschnitte' },
+  { slug: 'article-word-counter', title: 'Artikel', description: 'Für redaktionelle Inhalte' },
+  { slug: 'thesis-word-counter', title: 'Masterarbeit', description: 'Für akademische Arbeiten' },
+  { slug: 'dissertation-word-counter', title: 'Dissertation', description: 'Für lange Forschungsarbeiten' },
+  { slug: 'grant-proposal-word-counter', title: 'Förderantrag', description: 'Für Finanzierungsanträge' },
+  { slug: 'book-chapter-word-counter', title: 'Buchkapitel', description: 'Für Autoren' },
+  { slug: 'blog-post-word-counter', title: 'Blogbeitrag', description: 'Für Blogs und Newsletter' },
+  { slug: 'email-word-counter', title: 'E-Mail', description: 'Für geschäftliche Nachrichten' },
+  { slug: 'report-word-counter', title: 'Bericht', description: 'Für Business-Dokumente' },
+  { slug: 'whitepaper-word-counter', title: 'Whitepaper', description: 'Für Experteninhalte' },
+  { slug: 'script-word-counter', title: 'Skript', description: 'Für Video und Produktion' },
+  { slug: 'podcast-script-word-counter', title: 'Podcast-Skript', description: 'Für Audio-Episoden' },
+  { slug: 'youtube-script-word-counter', title: 'YouTube-Skript', description: 'Für Video-Content' },
+  { slug: 'presentation-word-counter', title: 'Präsentation', description: 'Für Slides und Vorträge' },
+  { slug: 'case-study-word-counter', title: 'Fallstudie', description: 'Für Marketing und Kundenbeweise' },
+  { slug: 'press-release-word-counter', title: 'Pressemitteilung', description: 'Für PR und Medien' },
+  { slug: 'product-description-word-counter', title: 'Produktbeschreibung', description: 'Für E-Commerce' },
+];
+---
+
+<BaseLayout 
+  title="Alle Text-Tools - Vollständige Liste der 103 kostenlosen Tools" 
+  description="Vollständige Liste der 103 kostenlosen Text-Tools auf CountWordz. Durchsuchen Sie Wortzähler, Zeichenzähler, Lesbarkeitsprüfer, Lesezeit-Rechner und mehr."
+>
+  <main class="layout-shell px-4 py-6">
+    <header class="mb-8">
+      <h1 class="text-4xl md:text-6xl font-display font-bold tracking-tighter text-text-primary mb-3">Alle Text-Tools</h1>
+      <p class="text-lg text-text-muted max-w-3xl">Durchsuchen Sie alle 103 kostenlosen Text-Tools nach Kategorie. Finden Sie das passende Tool für Schreiben, Bearbeitung und Inhaltsoptimierung.</p>
+    </header>
+
+    <section class="py-6 bg-gray-50 mb-8">
+      <div class="layout-shell px-4">
+        <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+          <p class="text-xs text-text-muted mb-2">Werbung</p>
+          <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+            <span class="text-gray-400 text-sm">Werbeplatz (728x90)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-2xl md:text-3xl font-display font-bold mb-6 pb-2 border-b-2 border-brand-pink">Haupt-Tools</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {coreTools.map((tool) => (
+          <a href={getLocalizedStaticPath(locale, tool.slug)} class="p-4 bg-surface rounded-lg border border-gray-100 hover:border-brand-pink hover:shadow-md transition-all">
+            <h3 class={`font-semibold ${tool.accent}`}>{tool.title}</h3>
+            <p class="text-sm text-text-muted mt-1">{tool.description}</p>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="py-6 bg-white mb-12">
+      <div class="layout-shell px-4">
+        <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+          <p class="text-xs text-text-muted mb-2">Werbung</p>
+          <div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded">
+            <span class="text-gray-400 text-sm">Werbeplatz (300x250)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-2xl md:text-3xl font-display font-bold mb-6 pb-2 border-b-2 border-brand-cyan">Zeichenzähler nach Plattform</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {platformTools.map((tool) => (
+          <a href={getLocalizedToolPath(locale, tool.slug, 'character-counter')} class="p-3 bg-surface rounded-lg border border-gray-100 hover:border-brand-cyan transition-all">
+            <h3 class="font-medium text-brand-cyan">{tool.title}</h3>
+            <p class="text-xs text-text-muted mt-1">{tool.description}</p>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-2xl md:text-3xl font-display font-bold mb-6 pb-2 border-b-2 border-brand-orange">Wortzähler nach Dokumenttyp</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {wordTools.map((tool) => (
+          <a href={getLocalizedToolPath(locale, tool.slug, 'word-counter')} class="p-3 bg-surface rounded-lg border border-gray-100 hover:border-brand-orange transition-all">
+            <h3 class="font-medium text-brand-orange">{tool.title}</h3>
+            <p class="text-xs text-text-muted mt-1">{tool.description}</p>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-2xl md:text-3xl font-display font-bold mb-6 pb-2 border-b-2 border-brand-pink">Lesbarkeitsprüfer nach Branche</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {readabilityTools.map((tool) => (
+          <a href={getLocalizedToolPath(locale, tool.slug)} class="p-3 bg-surface rounded-lg border border-gray-100 hover:border-brand-pink transition-all">
+            <h3 class="font-medium text-brand-pink">{tool.title}</h3>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-2xl md:text-3xl font-display font-bold mb-6 pb-2 border-b-2 border-brand-cyan">Lesezeit-Rechner</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {readingTimeTools.map((tool) => (
+          <a href={getLocalizedToolPath(locale, tool.slug)} class="p-3 bg-surface rounded-lg border border-gray-100 hover:border-brand-cyan transition-all">
+            <h3 class="font-medium text-brand-cyan">{tool.title}</h3>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="py-6 bg-gray-50 mb-12">
+      <div class="layout-shell px-4">
+        <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+          <p class="text-xs text-text-muted mb-2">Werbung</p>
+          <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+            <span class="text-gray-400 text-sm">Werbeplatz (728x90)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-brand-cream rounded-2xl p-8 text-center">
+      <h2 class="text-2xl font-display font-bold mb-4">103 kostenlose Text-Tools</h2>
+      <p class="text-text-muted mb-6 max-w-2xl mx-auto">Alle Tools sind 100% kostenlos, funktionieren im Browser und erfordern keine Anmeldung. Starten Sie sofort mit dem Tool, das Sie brauchen.</p>
+      <a href={getLocaleHomePath(locale)} class="inline-block px-8 py-3 bg-brand-pink text-white rounded-lg font-semibold hover:bg-opacity-90 transition-all">Zurück zur Startseite</a>
+    </section>
+  </main>
+
+  <Footer locale={locale} />
+</BaseLayout>

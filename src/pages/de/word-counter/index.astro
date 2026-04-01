@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import WordCounterTool from '../../../components/WordCounterTool';
+import Sidebar from '../../../components/Sidebar.astro';
+import Footer from '../../../components/Footer.astro';
+---
+
+<BaseLayout 
+  title="Wortzähler - Wörter, Zeichen und Mehr Zählen" 
+  description="Kostenloser Wortzähler. Zählen Sie Wörter, Zeichen, Sätze, Absätze und schätzen Sie Lesezeit in Echtzeit."
+>
+  <main class="layout-shell px-4 py-6">
+    <header class="mb-6">
+      <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Wortzähler</h1>
+      <p class="text-base text-text-muted max-w-3xl">Zählen Sie Wörter, Zeichen, Sätze und mehr in Echtzeit. Perfekt für Aufsätze, Lebensläufe und Beiträge.</p>
+    </header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div class="lg:col-span-3">
+        <div class="bg-surface rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-4">
+          <WordCounterTool locale="de" client:load />
+        </div>
+
+        <div class="mt-4 ad-slot-below-tool">
+          <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+            <p class="text-xs text-text-muted mb-2">Werbung</p>
+            <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+              <span class="text-gray-400 text-sm">Werbeplatz</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="my-6 ad-slot-mid-content">
+          <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+            <p class="text-xs text-text-muted mb-2">Werbung</p>
+            <div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded">
+              <span class="text-gray-400 text-sm">Werbeplatz</span>
+            </div>
+          </div>
+        </div>
+
+        <article class="mt-8">
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">Wie Man Verwendet</h2>
+            <p class="text-text-primary mb-4">Fügen Sie Ihren Text ein oder tippen Sie ihn ein. Der Zähler zeigt sofort:</p>
+            <ul class="list-disc list-inside space-y-2 text-text-primary">
+              <li><strong>Wortanzahl</strong> — Gesamtzahl der Wörter</li>
+              <li><strong>Zeichenanzahl</strong> — Mit und ohne Leerzeichen</li>
+              <li><strong>Satzanzahl</strong> — Anzahl der Sätze</li>
+              <li><strong>Absatzanzahl</strong> — Anzahl der Absätze</li>
+              <li><strong>Lesezeit</strong> — Geschätzte Lesezeit</li>
+              <li><strong>Sprechzeit</strong> — Geschätzte Sprechzeit</li>
+            </ul>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">Häufige Limits</h2>
+            <div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4">
+              <ul class="space-y-2 text-text-primary">
+                <li class="flex justify-between"><span>Schulaufsatz</span><span class="font-semibold">500-1000 Wörter</span></li>
+                <li class="flex justify-between"><span>Universitätsaufsatz</span><span class="font-semibold">1500-3000 Wörter</span></li>
+                <li class="flex justify-between"><span>Blog-Beitrag</span><span class="font-semibold">800-1200 Wörter</span></li>
+                <li class="flex justify-between"><span>Lebenslauf</span><span class="font-semibold">400-600 Wörter</span></li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">FAQ</h2>
+            <h3 class="text-xl font-display font-semibold mt-4 mb-2">Wie werden Wörter gezählt?</h3>
+            <p class="text-text-primary mb-4">Wir zählen Wörter durch Teilen des Textes an Leerzeichen. Wörter mit Bindestrich zählen als ein Wort.</p>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">Ähnliche Tools</h2>
+            <ul class="space-y-2">
+              <li><a href="/de/character-counter" class="text-brand-pink hover:underline">Zeichenzähler</a></li>
+              <li><a href="/de/sentence-counter" class="text-brand-pink hover:underline">Satzanzahl</a></li>
+              <li><a href="/de/readability-checker" class="text-brand-pink hover:underline">Lesbarkeitsprüfer</a></li>
+            </ul>
+          </section>
+        </article>
+      </div>
+
+      <Sidebar category="word-counter" />
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

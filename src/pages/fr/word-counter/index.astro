@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import WordCounterTool from '../../../components/WordCounterTool';
+import Sidebar from '../../../components/Sidebar.astro';
+import Footer from '../../../components/Footer.astro';
+---
+
+<BaseLayout 
+  title="Compteur de Mots - Compter les Mots, Caractères et Plus" 
+  description="Compteur de mots gratuit. Comptez les mots, caractères, phrases, paragraphes et estimez le temps de lecture en temps réel."
+>
+  <main class="layout-shell px-4 py-6">
+    <header class="mb-6">
+      <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Compteur de Mots</h1>
+      <p class="text-base text-text-muted max-w-3xl">Comptez les mots, caractères, phrases et plus en temps réel. Parfait pour les essais, CV, publications et scripts.</p>
+    </header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div class="lg:col-span-3">
+        <div class="bg-surface rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-4">
+          <WordCounterTool locale="fr" client:load />
+        </div>
+
+        <div class="mt-4 ad-slot-below-tool">
+          <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+            <p class="text-xs text-text-muted mb-2">Publicité</p>
+            <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+              <span class="text-gray-400 text-sm">Espace Publicitaire</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="my-6 ad-slot-mid-content">
+          <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+            <p class="text-xs text-text-muted mb-2">Publicité</p>
+            <div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded">
+              <span class="text-gray-400 text-sm">Espace Publicitaire</span>
+            </div>
+          </div>
+        </div>
+
+        <article class="mt-8">
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">Comment Utiliser</h2>
+            <p class="text-text-primary mb-4">Collez ou tapez votre texte ci-dessus. Le compteur affichera instantanément :</p>
+            <ul class="list-disc list-inside space-y-2 text-text-primary">
+              <li><strong>Nombre de mots</strong> — Total des mots</li>
+              <li><strong>Nombre de caractères</strong> — Avec et sans espaces</li>
+              <li><strong>Nombre de phrases</strong> — Nombre de phrases</li>
+              <li><strong>Nombre de paragraphes</strong> — Nombre de paragraphes</li>
+              <li><strong>Temps de lecture</strong> — Temps estimé de lecture</li>
+              <li><strong>Temps de parole</strong> — Temps estimé de parole</li>
+            </ul>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">Limites Communes</h2>
+            <div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4">
+              <ul class="space-y-2 text-text-primary">
+                <li class="flex justify-between"><span>Essai scolaire</span><span class="font-semibold">500-1000 mots</span></li>
+                <li class="flex justify-between"><span>Essai universitaire</span><span class="font-semibold">1500-3000 mots</span></li>
+                <li class="flex justify-between"><span>Article de blog</span><span class="font-semibold">800-1200 mots</span></li>
+                <li class="flex justify-between"><span>CV</span><span class="font-semibold">400-600 mots</span></li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">FAQ</h2>
+            <h3 class="text-xl font-display font-semibold mt-4 mb-2">Comment les mots sont-ils comptés ?</h3>
+            <p class="text-text-primary mb-4">Nous comptons les mots en divisant le texte par les espaces. Les mots avec tiret comme "bien-aimé" comptent comme un mot.</p>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">Outils Connexes</h2>
+            <ul class="space-y-2">
+              <li><a href="/fr/character-counter" class="text-brand-pink hover:underline">Compteur de Caractères</a></li>
+              <li><a href="/fr/sentence-counter" class="text-brand-pink hover:underline">Compteur de Phrases</a></li>
+              <li><a href="/fr/readability-checker" class="text-brand-pink hover:underline">Vérificateur de Lisibilité</a></li>
+            </ul>
+          </section>
+        </article>
+      </div>
+
+      <Sidebar category="word-counter" />
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

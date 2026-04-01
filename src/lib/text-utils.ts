@@ -1,7 +1,16 @@
-/**
- * Text Processing Utilities
- * Core counting functions for CountWordz text analysis tools
- */
+import type { Locale } from './i18n';
+
+const SENTENCE_ABBREVIATIONS: Record<Locale, string[]> = {
+  en: ['Mr', 'Mrs', 'Ms', 'Dr', 'Prof', 'Sr', 'Jr', 'vs', 'etc', 'i.e', 'e.g', 'a.m', 'p.m', 'am', 'pm'],
+  es: ['Sr', 'Sra', 'Srta', 'Dr', 'Dra', 'Prof', 'Ing', 'Lic', 'Ud', 'Uds', 'etc', 'p.ej', 'aprox', 'av'],
+  fr: ['M', 'Mme', 'Mlle', 'Dr', 'Pr', 'etc', 'p.ex', 'av'],
+  de: ['Hr', 'Fr', 'Dr', 'Prof', 'bzw', 'z.B', 'u.a', 'ca', 'etc'],
+  pt: ['Sr', 'Sra', 'Srta', 'Dr', 'Dra', 'Prof', 'etc', 'p.ex', 'aprox'],
+};
+
+function escapeRegex(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
 
 /**
  * Count words in text
@@ -9,10 +18,23 @@
  */
 export function countWords(text: string): number {
   if (!text || text.trim() === '') return 0;
-  
-  // Split on whitespace, filter out empty strings
+
   const words = text.trim().split(/\s+/).filter(word => word.length > 0);
   return words.length;
+}
+
+/**
+ * Extract word-like tokens while preserving accented Latin characters.
+ * Useful for analysis tasks where punctuation should not become part of the token.
+ */
+export function extractWordTokens(text: string): string[] {
+  if (!text || text.trim() === '') return [];
+
+  const matches = text.normalize('NFC').match(/\p{L}[\p{L}\p{M}'’.-]*/gu) ?? [];
+
+  return matches
+    .map(token => token.replace(/^[\-'’.]+|[\-'’.]+$/gu, ''))
+    .filter(Boolean);
 }
 
 /**
@@ -31,29 +53,34 @@ export function countCharsWithoutSpaces(text: string): number {
 
 /**
  * Count sentences in text
- * Handles abbreviations (Mr., Dr., etc.) and decimals (3.14) without false splits
+ * Handles locale-specific abbreviations and decimals without false splits
  */
-export function countSentences(text: string): number {
+export function countSentences(text: string, locale: Locale = 'en'): number {
   if (!text || text.trim() === '') return 0;
-  
-  // Protect common abbreviations and decimals
-  let protectedText = text;
-  
-  // Protect common titles/abbreviations (including time abbreviations)
-  const abbreviations = ['Mr', 'Mrs', 'Ms', 'Dr', 'Prof', 'Sr', 'Jr', 'vs', 'etc', 'i.e', 'e.g', 'a.m', 'p.m', 'am', 'pm'];
-  abbreviations.forEach(abbr => {
-    protectedText = protectedText.replace(new RegExp(`${abbr}\\.`, 'gi'), `${abbr}__ABBREV__`);
-  });
-  
-  // Protect decimals (numbers with periods)
-  protectedText = protectedText.replace(/\d+\.\d+/g, match => match.replace(/\./g, '__DECIMAL__'));
-  
-  // Split on sentence-ending punctuation followed by space or end of string
+
+  let protectedText = text.normalize('NFC');
+  const abbreviations = SENTENCE_ABBREVIATIONS[locale] ?? SENTENCE_ABBREVIATIONS.en;
+
+  abbreviations
+    .slice()
+    .sort((a, b) => b.length - a.length)
+    .forEach((abbr) => {
+      const pattern = new RegExp(`\\b${escapeRegex(abbr)}\\.`, 'giu');
+      protectedText = protectedText.replace(pattern, `${abbr}__ABBREV__`);
+    });
+
+  protectedText = protectedText.replace(/(?<=\d)\.(?=\d)/gu, '__DECIMAL__');
+
   const sentences = protectedText
-    .split(/[.!?]+(\s|$)/)
-    .filter(s => s.trim().length > 0);
-  
-  return sentences.length;
+    .split(/[.!?]+(?=\s+|$)/u)
+    .map(sentence => sentence.replace(/__ABBREV__/g, '.').replace(/__DECIMAL__/g, '.').trim())
+    .filter(sentence => sentence.length > 0);
+
+  if (sentences.length > 0) {
+    return sentences.length;
+  }
+
+  return text.trim().length > 0 ? 1 : 0;
 }
 
 /**
@@ -62,52 +89,48 @@ export function countSentences(text: string): number {
  */
 export function countParagraphs(text: string): number {
   if (!text || text.trim() === '') return 0;
-  
-  // Split on one or more blank lines (multiple newlines)
+
   const paragraphs = text.trim().split(/\n\s*\n/).filter(p => p.trim().length > 0);
   return paragraphs.length;
 }
 
 /**
  * Estimate reading time in minutes and seconds
- * Based on average reading speed of 200-250 words per minute
  */
 export function estimateReadingTime(text: string, wpm: number = 200): { minutes: number; seconds: number; totalSeconds: number } {
   const words = countWords(text);
   const totalSeconds = Math.ceil((words / wpm) * 60);
   const minutes = Math.floor(totalSeconds / 60);
   const seconds = totalSeconds % 60;
-  
+
   return { minutes, seconds, totalSeconds };
 }
 
 /**
  * Estimate speaking time in minutes and seconds
- * Based on average speaking speed of 130-150 words per minute
  */
 export function estimateSpeakingTime(text: string, wpm: number = 140): { minutes: number; seconds: number; totalSeconds: number } {
   const words = countWords(text);
   const totalSeconds = Math.ceil((words / wpm) * 60);
   const minutes = Math.floor(totalSeconds / 60);
   const seconds = totalSeconds % 60;
-  
+
   return { minutes, seconds, totalSeconds };
 }
 
 /**
  * Get comprehensive text statistics
- * Returns all basic stats in one call for efficiency
  */
-export function getTextStats(text: string) {
+export function getTextStats(text: string, locale: Locale = 'en') {
   const words = countWords(text);
   const readingTime = estimateReadingTime(text);
   const speakingTime = estimateSpeakingTime(text);
-  
+
   return {
     words,
     charactersWithSpaces: countCharsWithSpaces(text),
     charactersWithoutSpaces: countCharsWithoutSpaces(text),
-    sentences: countSentences(text),
+    sentences: countSentences(text, locale),
     paragraphs: countParagraphs(text),
     readingTime,
     speakingTime,

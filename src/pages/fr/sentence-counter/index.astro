@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import SentenceCounterTool from '../../../components/SentenceCounterTool';
+import Sidebar from '../../../components/Sidebar.astro';
+import Footer from '../../../components/Footer.astro';
+---
+
+<BaseLayout 
+  title="Compteur de Phrases - Compte et Analyse les Phrases" 
+  description="Compteur de phrases gratuit. Comptez les phrases, la moyenne de mots par phrase et analysez la structure du texte."
+>
+  <main class="layout-shell px-4 py-6">
+    <header class="mb-6">
+      <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Compteur de Phrases</h1>
+      <p class="text-base text-text-muted max-w-3xl">Comptez les phrases et analysez la structure des phrases. Parfait pour améliorer la clarté de votre écriture.</p>
+    </header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div class="lg:col-span-3">
+        <div class="bg-surface rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-4">
+          <SentenceCounterTool locale="fr" client:load />
+        </div>
+
+        <div class="mt-4 ad-slot-below-tool">
+          <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+            <p class="text-xs text-text-muted mb-2">Publicité</p>
+            <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+              <span class="text-gray-400 text-sm">Espace Publicitaire</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="my-6 ad-slot-mid-content">
+          <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+            <p class="text-xs text-text-muted mb-2">Publicité</p>
+            <div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded">
+              <span class="text-gray-400 text-sm">Espace Publicitaire</span>
+            </div>
+          </div>
+        </div>
+
+        <article class="mt-8">
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">Comment Ça Marche</h2>
+            <p class="text-text-primary mb-4">Notre compteur détecte les phrases basées sur la ponctuation tout en ignorant les abréviations courantes.</p>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">Outils Connexes</h2>
+            <ul class="space-y-2">
+              <li><a href="/fr/word-counter" class="text-brand-pink hover:underline">Compteur de Mots</a></li>
+              <li><a href="/fr/paragraph-counter" class="text-brand-pink hover:underline">Compteur de Paragraphes</a></li>
+              <li><a href="/fr/readability-checker" class="text-brand-pink hover:underline">Vérificateur de Lisibilité</a></li>
+            </ul>
+          </section>
+        </article>
+      </div>
+
+      <Sidebar category="sentence-counter" />
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

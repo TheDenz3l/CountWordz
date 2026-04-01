@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import WordCounterTool from '../../../components/WordCounterTool';
+import Sidebar from '../../../components/Sidebar.astro';
+import Footer from '../../../components/Footer.astro';
+---
+
+<BaseLayout 
+  title="Contador de Palabras - Cuenta Palabras, Caracteres y Más" 
+  description="Contador de palabras gratuito. Cuenta palabras, caracteres, oraciones, párrafos y estima el tiempo de lectura en tiempo real."
+>
+  <main class="layout-shell px-4 py-6">
+    <header class="mb-6">
+      <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Contador de Palabras</h1>
+      <p class="text-base text-text-muted max-w-3xl">Cuenta palabras, caracteres, oraciones y más en tiempo real. Perfecto para ensayos, currículums, publicaciones y scripts.</p>
+    </header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div class="lg:col-span-3">
+        <div class="bg-surface rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-4">
+          <WordCounterTool locale="es" client:load />
+        </div>
+
+        <div class="mt-4 ad-slot-below-tool">
+          <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+            <p class="text-xs text-text-muted mb-2">Publicidad</p>
+            <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+              <span class="text-gray-400 text-sm">Espacio Publicitario</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="my-6 ad-slot-mid-content">
+          <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+            <p class="text-xs text-text-muted mb-2">Publicidad</p>
+            <div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded">
+              <span class="text-gray-400 text-sm">Espacio Publicitario</span>
+            </div>
+          </div>
+        </div>
+
+        <article class="mt-8">
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">Cómo Usar el Contador de Palabras</h2>
+            <p class="text-text-primary mb-4">Simplemente pega o escribe tu texto arriba. El contador mostrará instantáneamente:</p>
+            <ul class="list-disc list-inside space-y-2 text-text-primary">
+              <li><strong>Conteo de palabras</strong> — Número total de palabras</li>
+              <li><strong>Conteo de caracteres</strong> — Con y sin espacios</li>
+              <li><strong>Conteo de oraciones</strong> — Número de oraciones</li>
+              <li><strong>Conteo de párrafos</strong> — Número de párrafos</li>
+              <li><strong>Tiempo de lectura</strong> — Tiempo estimado para leer</li>
+              <li><strong>Tiempo de habla</strong> — Tiempo estimado para hablar</li>
+            </ul>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">Límites de Palabras Comunes</h2>
+            <div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4">
+              <ul class="space-y-2 text-text-primary">
+                <li class="flex justify-between"><span>Ensayo escolar</span><span class="font-semibold">500-1000 palabras</span></li>
+                <li class="flex justify-between"><span>Ensayo universitario</span><span class="font-semibold">1500-3000 palabras</span></li>
+                <li class="flex justify-between"><span>Publicación de blog</span><span class="font-semibold">800-1200 palabras</span></li>
+                <li class="flex justify-between"><span>Currículum</span><span class="font-semibold">400-600 palabras</span></li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">Preguntas Frecuentes</h2>
+            <h3 class="text-xl font-display font-semibold mt-4 mb-2">¿Cómo cuentan las palabras?</h3>
+            <p class="text-text-primary mb-4">Contamos palabras dividiendo el texto por espacios y filtrando cadenas vacías. Las palabras con guión como "bien conocido" cuentan como una palabra.</p>
+            <h3 class="text-xl font-display font-semibold mt-4 mb-2">¿Es preciso el tiempo de lectura?</h3>
+            <p class="text-text-primary mb-4">El tiempo de lectura se calcula basándose en una velocidad promedio de 200 palabras por minuto. El tiempo real puede variar según la complejidad.</p>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">Herramientas Relacionadas</h2>
+            <ul class="space-y-2">
+              <li><a href="/es/character-counter" class="text-brand-pink hover:underline">Contador de Caracteres</a></li>
+              <li><a href="/es/sentence-counter" class="text-brand-pink hover:underline">Contador de Oraciones</a></li>
+              <li><a href="/es/readability-checker" class="text-brand-pink hover:underline">Verificador de Legibilidad</a></li>
+            </ul>
+          </section>
+        </article>
+      </div>
+
+      <Sidebar category="word-counter" />
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

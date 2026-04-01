@@ -1,0 +1,162 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import WordCounterTool from '../../components/WordCounterTool';
+import Sidebar from '../../components/Sidebar.astro';
+import Footer from '../../components/Footer.astro';
+import { getLocalizedToolPath } from '../../lib/locale-routes';
+---
+
+<BaseLayout 
+  title="CountWordz - Herramientas de Texto Gratuitas" 
+  description="Herramientas de texto gratuitas: contador de palabras, contador de caracteres, verificador de legibilidad y más. Rápido, moderno y fácil de usar."
+>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-brand-cream to-white py-16 md:py-24">
+    <div class="layout-shell px-4">
+      <div class="text-center mb-12">
+        <h1 class="text-5xl md:text-7xl font-display font-bold tracking-tighter text-text-primary mb-4">CountWordz</h1>
+        <p class="text-xl text-text-muted max-w-2xl mx-auto">Herramientas de texto gratuitas para contar, analizar y formatear texto. Rápido, moderno y fácil de usar.</p>
+      </div>
+      
+      <div class="max-w-4xl mx-auto bg-surface rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
+        <WordCounterTool locale="es" client:load />
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Stats Row -->
+  <section class="py-12 bg-white">
+    <div class="layout-shell px-4">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div class="p-6"><div class="text-3xl font-display font-bold text-brand-pink">103</div><div class="text-sm text-text-muted mt-1">Herramientas Gratuitas</div></div>
+        <div class="p-6"><div class="text-3xl font-display font-bold text-brand-cyan">100%</div><div class="text-sm text-text-muted mt-1">Gratis Para Siempre</div></div>
+        <div class="p-6"><div class="text-3xl font-display font-bold text-brand-orange">Tiempo Real</div><div class="text-sm text-text-muted mt-1">Resultados</div></div>
+        <div class="p-6"><div class="text-3xl font-display font-bold text-text-primary">Sin Registro</div><div class="text-sm text-text-muted mt-1">Requerido</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Homepage Ad Slot 1 -->
+  <section class="py-8 bg-gray-50">
+    <div class="layout-shell px-4">
+      <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center max-w-4xl mx-auto">
+        <p class="text-xs text-text-muted mb-2">Publicidad</p>
+        <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+          <span class="text-gray-400 text-sm">Espacio Publicitario (728x90)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Top Tools Grid -->
+  <section class="py-16 bg-gray-50">
+    <div class="layout-shell px-4">
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-center mb-4">Herramientas Principales</h2>
+      <p class="text-center text-text-muted mb-12 max-w-2xl mx-auto">Comienza con nuestras herramientas esenciales de análisis de texto, o <a href="/es/tools" class="text-brand-pink hover:underline font-semibold">ver las 103 herramientas →</a></p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <a href="/es/word-counter" class="bg-surface p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block">
+          <h3 class="text-xl font-display font-semibold mb-2 text-brand-pink">Contador de Palabras</h3>
+          <p class="text-text-muted">Cuenta palabras, caracteres, oraciones y estima tiempo de lectura.</p>
+        </a>
+        <a href="/es/character-counter" class="bg-surface p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block">
+          <h3 class="text-xl font-display font-semibold mb-2 text-brand-cyan">Contador de Caracteres</h3>
+          <p class="text-text-muted">Verifica límites de caracteres para X, Instagram, LinkedIn y meta descripciones.</p>
+        </a>
+        <a href="/es/sentence-counter" class="bg-surface p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block">
+          <h3 class="text-xl font-display font-semibold mb-2 text-brand-orange">Contador de Oraciones</h3>
+          <p class="text-text-muted">Cuenta oraciones y analiza la estructura de las oraciones.</p>
+        </a>
+        <a href="/es/paragraph-counter" class="bg-surface p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block">
+          <h3 class="text-xl font-display font-semibold mb-2 text-brand-pink">Contador de Párrafos</h3>
+          <p class="text-text-muted">Cuenta párrafos y promedio de palabras por párrafo.</p>
+        </a>
+        <a href="/es/syllable-counter" class="bg-surface p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block">
+          <h3 class="text-xl font-display font-semibold mb-2 text-brand-cyan">Contador de Sílabas</h3>
+          <p class="text-text-muted">Cuenta sílabas en palabras y texto.</p>
+        </a>
+        <a href="/es/reading-time-calculator" class="bg-surface p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block">
+          <h3 class="text-xl font-display font-semibold mb-2 text-brand-orange">Calculadora de Tiempo de Lectura</h3>
+          <p class="text-text-muted">Estima el tiempo de lectura y habla para tu texto.</p>
+        </a>
+        <a href="/es/case-converter" class="bg-surface p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block">
+          <h3 class="text-xl font-display font-semibold mb-2 text-brand-pink">Convertidor de Mayúsculas</h3>
+          <p class="text-text-muted">Convierte texto entre minúsculas, MAYÚSCULAS, Título, Oración y más.</p>
+        </a>
+        <a href="/es/title-case-converter" class="bg-surface p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block">
+          <h3 class="text-xl font-display font-semibold mb-2 text-brand-cyan">Convertidor a Título</h3>
+          <p class="text-text-muted">Convierte texto a formato de título siguiendo guías de estilo APA, MLA, Chicago y AP.</p>
+        </a>
+        <a href="/es/readability-checker" class="bg-surface p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block">
+          <h3 class="text-xl font-display font-semibold mb-2 text-brand-orange">Verificador de Legibilidad</h3>
+          <p class="text-text-muted">Mide la legibilidad del texto con puntuaciones Flesch y niveles de grado.</p>
+        </a>
+        <a href="/es/keyword-density-checker" class="bg-surface p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block">
+          <h3 class="text-xl font-display font-semibold mb-2 text-brand-pink">Densidad de Palabras Clave</h3>
+          <p class="text-text-muted">Analiza la frecuencia de palabras y frases en tu texto. Optimiza tu contenido para SEO.</p>
+        </a>
+        <a href="/es/text-compare-tool" class="bg-surface p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block">
+          <h3 class="text-xl font-display font-semibold mb-2 text-brand-cyan">Comparador de Texto</h3>
+          <p class="text-text-muted">Compara dos textos lado a lado y resalta las diferencias. Rastrea cambios entre versiones de documentos.</p>
+        </a>
+        <a href="/es/paragraph-rewriter" class="bg-surface p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block">
+          <h3 class="text-xl font-display font-semibold mb-2 text-brand-orange">Reescritor de Párrafos</h3>
+          <p class="text-text-muted">Obtén sugerencias inteligentes para mejorar tu escritura. Corrige voz pasiva, acorta oraciones largas.</p>
+        </a>
+      </div>
+      <div class="text-center mt-12">
+        <a href="/es/tools" class="inline-block px-8 py-3 bg-brand-pink text-white rounded-lg font-semibold hover:bg-opacity-90 transition-all">Ver las 103 Herramientas →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Homepage Ad Slot 2 -->
+  <section class="py-8 bg-white">
+    <div class="layout-shell px-4">
+      <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center max-w-4xl mx-auto">
+        <p class="text-xs text-text-muted mb-2">Publicidad</p>
+        <div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded">
+          <span class="text-gray-400 text-sm">Espacio Publicitario (300x250)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Popular Use Cases -->
+  <section class="py-12 bg-gray-50 border-y border-gray-100">
+    <div class="layout-shell px-4">
+      <h2 class="text-2xl md:text-3xl font-display font-bold text-center mb-8">Casos de Uso Populares</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+        <a href={getLocalizedToolPath('es', 'essay-word-counter', 'word-counter')} class="text-center p-4 rounded-lg hover:bg-gray-50 transition-colors">
+          <div class="text-brand-pink font-semibold mb-1">Contador de Ensayos</div>
+          <div class="text-xs text-text-muted">Para estudiantes y escritores</div>
+        </a>
+        <a href={getLocalizedToolPath('es', 'resume-word-counter', 'word-counter')} class="text-center p-4 rounded-lg hover:bg-gray-50 transition-colors">
+          <div class="text-brand-cyan font-semibold mb-1">Contador de Currículums</div>
+          <div class="text-xs text-text-muted">Para buscadores de empleo</div>
+        </a>
+        <a href={getLocalizedToolPath('es', 'tweet-character-counter', 'character-counter')} class="text-center p-4 rounded-lg hover:bg-gray-50 transition-colors">
+          <div class="text-brand-orange font-semibold mb-1">Contador de Tweets</div>
+          <div class="text-xs text-text-muted">Para X/Twitter</div>
+        </a>
+        <a href={getLocalizedToolPath('es', 'instagram-caption-counter', 'character-counter')} class="text-center p-4 rounded-lg hover:bg-gray-50 transition-colors">
+          <div class="text-brand-pink font-semibold mb-1">Contador de Instagram</div>
+          <div class="text-xs text-text-muted">Para pies de foto</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Homepage Ad Slot 3 -->
+  <section class="py-8 bg-white">
+    <div class="layout-shell px-4">
+      <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center max-w-4xl mx-auto">
+        <p class="text-xs text-text-muted mb-2">Publicidad</p>
+        <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+          <span class="text-gray-400 text-sm">Espacio Publicitario (728x90)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer locale="es" />
+</BaseLayout>

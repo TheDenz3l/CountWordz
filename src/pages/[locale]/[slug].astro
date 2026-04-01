@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Footer from '../../components/Footer.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import WordCounterTool from '../../components/WordCounterTool';
+import CharacterCounterTool from '../../components/CharacterCounterTool';
+import ReadabilityCheckerTool from '../../components/ReadabilityCheckerTool';
+import ReadingTimeTool from '../../components/ReadingTimeTool';
+import { getTranslation } from '../../i18n/translations.js';
+import { getLocalizedLongTailStaticPaths, getLongTailPageContent } from '../../lib/long-tail-pages';
+import { getDynamicCategoryForSlug, getLocalizedToolPath, inferLongTailCategory, normalizeLocale } from '../../lib/locale-routes';
+
+export function getStaticPaths() {
+  return getLocalizedLongTailStaticPaths();
+}
+
+const { locale, slug } = Astro.params;
+const resolvedLocale = normalizeLocale(locale);
+const page = getLongTailPageContent(slug, resolvedLocale);
+const longTailCategory = inferLongTailCategory(slug);
+const dynamicCategory = getDynamicCategoryForSlug(slug);
+
+if (!page) {
+  return Astro.redirect(getLocalizedToolPath(resolvedLocale, 'tools'));
+}
+
+if (dynamicCategory) {
+  return Astro.redirect(getLocalizedToolPath(resolvedLocale, slug, dynamicCategory));
+}
+
+const t = (key) => getTranslation(resolvedLocale, key);
+---
+
+<BaseLayout title={page.title} description={page.description}>
+  <main class="layout-shell px-4 py-6">
+    <header class="mb-6">
+      <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">{page.h1}</h1>
+      <p class="text-base text-text-muted max-w-3xl">{page.subtitle}</p>
+    </header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div class="lg:col-span-3">
+        <div class="bg-surface rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-4">
+          {longTailCategory === 'reading-time' ? (
+            <ReadingTimeTool locale={resolvedLocale} client:load />
+          ) : longTailCategory === 'character-counter' ? (
+            <CharacterCounterTool locale={resolvedLocale} client:load />
+          ) : longTailCategory === 'readability' ? (
+            <ReadabilityCheckerTool locale={resolvedLocale} client:load />
+          ) : (
+            <WordCounterTool locale={resolvedLocale} client:load />
+          )}
+        </div>
+
+        <div class="mt-4 ad-slot-below-tool">
+          <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+            <p class="text-xs text-text-muted mb-2">{t('advertisement')}</p>
+            <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+              <span class="text-gray-400 text-sm">{t('adSpace')}</span>
+            </div>
+          </div>
+        </div>
+
+        <article class="mt-8" set:html={page.articleHtml} />
+      </div>
+
+      <Sidebar category={longTailCategory ?? 'word-counter'} locale={resolvedLocale} />
+    </div>
+  </main>
+
+  <section class="py-6 bg-white">
+    <div class="layout-shell px-4">
+      <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+        <p class="text-xs text-text-muted mb-2">{t('advertisement')}</p>
+        <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+          <span class="text-gray-400 text-sm">{t('adSpace')}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer locale={resolvedLocale} />
+</BaseLayout>

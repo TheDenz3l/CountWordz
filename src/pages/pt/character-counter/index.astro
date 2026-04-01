@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import CharacterCounterTool from '../../../components/CharacterCounterTool';
+import Sidebar from '../../../components/Sidebar.astro';
+import Footer from '../../../components/Footer.astro';
+import { getLocalizedToolPath } from '../../../lib/locale-routes';
+---
+
+<BaseLayout 
+  title="Contador de Caracteres - Verifica Limites para Redes Sociais" 
+  description="Contador de caracteres gratuito. Conte caracteres com e sem espaços. Verifique limites para X, Instagram, LinkedIn e mais."
+>
+  <main class="layout-shell px-4 py-6">
+    <header class="mb-6">
+      <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Contador de Caracteres</h1>
+      <p class="text-base text-text-muted max-w-3xl">Conte caracteres com e sem espaços. Verifique limites para publicações em redes sociais.</p>
+    </header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div class="lg:col-span-3">
+        <div class="bg-surface rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-4">
+          <CharacterCounterTool locale="pt" client:load />
+        </div>
+
+        <div class="mt-4 ad-slot-below-tool">
+          <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+            <p class="text-xs text-text-muted mb-2">Publicidade</p>
+            <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+              <span class="text-gray-400 text-sm">Espaço Publicitário</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="my-6 ad-slot-mid-content">
+          <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+            <p class="text-xs text-text-muted mb-2">Publicidade</p>
+            <div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded">
+              <span class="text-gray-400 text-sm">Espaço Publicitário</span>
+            </div>
+          </div>
+        </div>
+
+        <article class="mt-8">
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">Limites por Plataforma</h2>
+            <div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4">
+              <ul class="space-y-2 text-text-primary">
+                <li class="flex justify-between"><span>X (Twitter)</span><span class="font-semibold">280 caracteres</span></li>
+                <li class="flex justify-between"><span>Instagram Caption</span><span class="font-semibold">2,200 caracteres</span></li>
+                <li class="flex justify-between"><span>LinkedIn Post</span><span class="font-semibold">3,000 caracteres</span></li>
+                <li class="flex justify-between"><span>Meta Description</span><span class="font-semibold">160 caracteres</span></li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">Como Usar</h2>
+            <p class="text-text-primary mb-4">Cole ou digite seu texto acima. O contador mostrará:</p>
+            <ul class="list-disc list-inside space-y-2 text-text-primary">
+              <li><strong>Caracteres com espaços</strong> — Todos os caracteres</li>
+              <li><strong>Caracteres sem espaços</strong> — Apenas letras</li>
+              <li><strong>Contagem de palavras</strong> — Total de palavras</li>
+            </ul>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">Ferramentas Relacionadas</h2>
+            <ul class="space-y-2">
+              <li><a href={getLocalizedToolPath('pt', 'tweet-character-counter', 'character-counter')} class="text-brand-pink hover:underline">Contador de Tweets</a></li>
+              <li><a href={getLocalizedToolPath('pt', 'instagram-caption-counter', 'character-counter')} class="text-brand-pink hover:underline">Instagram Caption</a></li>
+              <li><a href="/pt/word-counter" class="text-brand-pink hover:underline">Contador de Palavras</a></li>
+            </ul>
+          </section>
+        </article>
+      </div>
+
+      <Sidebar category="character-counter" />
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

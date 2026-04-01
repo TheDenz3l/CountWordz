@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ReadabilityCheckerTool from '../../../components/ReadabilityCheckerTool';
+import Sidebar from '../../../components/Sidebar.astro';
+import Footer from '../../../components/Footer.astro';
+import { getLocalizedToolPath } from '../../../lib/locale-routes';
+---
+
+<BaseLayout 
+  title="Lesbarkeitsprüfer - Misst die Lesbarkeit von Text" 
+  description="Kostenloser Lesbarkeitsprüfer. Berechnet Flesch Reading Ease und Flesch-Kincaid Scores. Optimieren Sie Ihren Inhalt für Ihre Zielgruppe."
+>
+  <main class="layout-shell px-4 py-6">
+    <header class="mb-6">
+      <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Lesbarkeitsprüfer</h1>
+      <p class="text-base text-text-muted max-w-3xl">Messen Sie die Lesbarkeit von Text mit Flesch-Scores und Grade-Levels. Optimieren Sie Ihren Inhalt.</p>
+    </header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div class="lg:col-span-3">
+        <div class="bg-surface rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-4">
+          <ReadabilityCheckerTool locale="de" client:load />
+        </div>
+
+        <div class="mt-4 ad-slot-below-tool">
+          <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+            <p class="text-xs text-text-muted mb-2">Werbung</p>
+            <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+              <span class="text-gray-400 text-sm">Werbeplatz</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="my-6 ad-slot-mid-content">
+          <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+            <p class="text-xs text-text-muted mb-2">Werbung</p>
+            <div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded">
+              <span class="text-gray-400 text-sm">Werbeplatz</span>
+            </div>
+          </div>
+        </div>
+
+        <article class="mt-8">
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">Lesbarkeits-Scores</h2>
+            <div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4">
+              <ul class="space-y-2 text-text-primary">
+                <li class="flex justify-between"><span>Sehr Einfach (90-100)</span><span class="font-semibold">5. Klasse</span></li>
+                <li class="flex justify-between"><span>Einfach (80-89)</span><span class="font-semibold">6.-7. Klasse</span></li>
+                <li class="flex justify-between"><span>Moderat (60-69)</span><span class="font-semibold">10.-12. Klasse</span></li>
+                <li class="flex justify-between"><span>Schwierig (30-49)</span><span class="font-semibold">Universität</span></li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">Ähnliche Tools</h2>
+            <ul class="space-y-2">
+              <li><a href="/de/word-counter" class="text-brand-pink hover:underline">Wortzähler</a></li>
+              <li><a href="/de/sentence-counter" class="text-brand-pink hover:underline">Satzanzahl</a></li>
+              <li><a href={getLocalizedToolPath('de', 'blog-readability-checker', 'readability')} class="text-brand-pink hover:underline">Blog-Lesbarkeit</a></li>
+            </ul>
+          </section>
+        </article>
+      </div>
+
+      <Sidebar category="readability" />
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

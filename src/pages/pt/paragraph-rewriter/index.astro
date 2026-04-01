@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ParagraphRewriter from '../../../components/ParagraphRewriter';
+import Sidebar from '../../../components/Sidebar.astro';
+import Footer from '../../../components/Footer.astro';
+---
+
+<BaseLayout 
+  title="Reescritor de Parágrafos - Melhora a Clareza da sua Escrita" 
+  description="Ferramenta de reescrita de parágrafos gratuita. Obtenha sugestões para melhorar a clareza, legibilidade e estrutura da sua escrita."
+>
+  <main class="layout-shell px-4 py-6">
+    <header class="mb-6">
+      <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Reescritor de Parágrafos</h1>
+      <p class="text-base text-text-muted max-w-3xl">Obtenha sugestões inteligentes para melhorar sua escrita. Corrija voz passiva, encurte frases longas, simplifique palavras complexas.</p>
+    </header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div class="lg:col-span-3">
+        <div class="bg-surface rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-4">
+          <ParagraphRewriter locale="pt" client:load />
+        </div>
+
+        <div class="mt-4 ad-slot-below-tool">
+          <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+            <p class="text-xs text-text-muted mb-2">Publicidade</p>
+            <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+              <span class="text-gray-400 text-sm">Espaço Publicitário</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="my-6 ad-slot-mid-content">
+          <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+            <p class="text-xs text-text-muted mb-2">Publicidade</p>
+            <div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded">
+              <span class="text-gray-400 text-sm">Espaço Publicitário</span>
+            </div>
+          </div>
+        </div>
+
+        <article class="mt-8">
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">O que Esta Ferramenta Melhora</h2>
+            <div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4">
+              <ul class="space-y-2 text-text-primary">
+                <li><strong>Voz passiva</strong> — Sugere mudar para voz ativa</li>
+                <li><strong>Frases longas</strong> — Recomenda dividir frases com mais de 25 palavras</li>
+                <li><strong>Palavras complexas</strong> — Sugere alternativas mais simples</li>
+                <li><strong>Repetição</strong> — Identifica palavras usadas em excesso</li>
+                <li><strong>Legibilidade</strong> — Mostra pontuações de legibilidade melhoradas</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">Ferramentas Relacionadas</h2>
+            <ul class="space-y-2">
+              <li><a href="/pt/word-counter" class="text-brand-pink hover:underline">Contador de Palavras</a></li>
+              <li><a href="/pt/text-compare-tool" class="text-brand-pink hover:underline">Comparador de Texto</a></li>
+              <li><a href="/pt/readability-checker" class="text-brand-pink hover:underline">Verificador de Legibilidade</a></li>
+            </ul>
+          </section>
+        </article>
+      </div>
+
+      <Sidebar category="paragraph-rewriter" />
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

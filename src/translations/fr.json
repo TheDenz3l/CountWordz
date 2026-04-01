@@ -1,0 +1,80 @@
+{
+  "site": {
+    "title": "CountWordz",
+    "description": "Outils de texte gratuits pour compter, analyser et formater le texte. Rapide, moderne et facile à utiliser.",
+    "tagline": "Outils de texte gratuits pour compter, analyser et formater le texte."
+  },
+  "navigation": {
+    "home": "Accueil",
+    "tools": "Tous les Outils",
+    "browseAll": "Voir les 103 Outils"
+  },
+  "homepage": {
+    "heroTitle": "CountWordz",
+    "heroSubtitle": "Outils de texte gratuits pour compter, analyser et formater le texte. Rapide, moderne et facile à utiliser.",
+    "stats": {
+      "tools": "Outils Gratuits",
+      "free": "100% Gratuit",
+      "realtime": "Temps Réel",
+      "nosignup": "Sans Inscription"
+    },
+    "coreToolsTitle": "Outils Principaux",
+    "coreToolsSubtitle": "Commencez par nos outils essentiels d'analyse de texte, ou",
+    "browseAllButton": "Voir les 103 Outils →",
+    "popularUseCases": "Cas d'Usage Populaires"
+  },
+  "footer": {
+    "description": "Outils de texte gratuits pour compter, analyser et formater le texte. Rapide, moderne et facile à utiliser.",
+    "coreTools": "Outils Principaux",
+    "viewAllTools": "Voir les 103 Outils →",
+    "legal": "Légal",
+    "privacy": "Politique de Confidentialité",
+    "terms": "Conditions d'Utilisation",
+    "copyright": "Tous droits réservés."
+  },
+  "tools": {
+    "title": "Tous les Outils de Texte",
+    "subtitle": "Parcourez les 103 outils de texte gratuits organisés par catégorie. Trouvez l'outil parfait pour votre écriture, édition et optimisation de contenu.",
+    "coreTools": "Outils Principaux",
+    "platformCounters": "Compteurs de Caractères par Plateforme",
+    "documentCounters": "Compteurs de Mots par Type de Document",
+    "readabilityCheckers": "Vérificateurs de Lisibilité par Industrie",
+    "readingTimeCalculators": "Calculateurs de Temps de Lecture",
+    "statsTitle": "103 Outils de Texte Gratuits",
+    "statsSubtitle": "Tous les outils sont 100% gratuits, fonctionnent dans votre navigateur et ne nécessitent aucune inscription. Commencez à utiliser n'importe quel outil ci-dessus instantanément.",
+    "backToHome": "Retour à l'Accueil"
+  },
+  "tools_list": {
+    "wordCounter": "Compteur de Mots",
+    "wordCounterDesc": "Compte mots, caractères, phrases et plus",
+    "characterCounter": "Compteur de Caractères",
+    "characterCounterDesc": "Vérifie les limites de caractères pour les réseaux sociaux",
+    "sentenceCounter": "Compteur de Phrases",
+    "sentenceCounterDesc": "Compte les phrases et analyse la structure",
+    "paragraphCounter": "Compteur de Paragraphes",
+    "paragraphCounterDesc": "Compte les paragraphes et moyenne de mots",
+    "syllableCounter": "Compteur de Syllabes",
+    "syllableCounterDesc": "Compte les syllabes dans les mots et le texte",
+    "readingTime": "Calculateur de Temps de Lecture",
+    "readingTimeDesc": "Estime le temps de lecture et de parole",
+    "caseConverter": "Convertisseur de Casse",
+    "caseConverterDesc": "Convertit le texte entre différents formats",
+    "titleCase": "Convertisseur en Titre",
+    "titleCaseDesc": "Convertit au format de titre approprié",
+    "readabilityChecker": "Vérificateur de Lisibilité",
+    "readabilityCheckerDesc": "Mesure les scores de lisibilité",
+    "keywordDensity": "Vérificateur de Densité de Mots-clés",
+    "keywordDensityDesc": "Analyse la fréquence des mots et expressions",
+    "textCompare": "Outil de Comparaison de Texte",
+    "textCompareDesc": "Compare deux textes et surligne les différences",
+    "paragraphRewriter": "Réécriveur de Paragraphes",
+    "paragraphRewriterDesc": "Obtenez des suggestions pour améliorer l'écriture"
+  },
+  "common": {
+    "advertisement": "Publicité",
+    "relatedTools": "Outils Connexes",
+    "howToUse": "Comment Utiliser",
+    "tips": "Conseils",
+    "faqs": "FAQ"
+  }
+}

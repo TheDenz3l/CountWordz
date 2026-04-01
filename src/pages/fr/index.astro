@@ -1,0 +1,138 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import WordCounterTool from '../../components/WordCounterTool';
+import Footer from '../../components/Footer.astro';
+import { getLocalizedStaticPath, getLocalizedToolPath } from '../../lib/locale-routes';
+
+const locale = 'fr';
+
+const stats = [
+  { value: '103', label: 'Outils gratuits', accent: 'text-brand-pink' },
+  { value: '100%', label: 'Gratuit', accent: 'text-brand-cyan' },
+  { value: 'Temps réel', label: 'Résultats', accent: 'text-brand-orange' },
+  { value: 'Sans inscription', label: 'Requis', accent: 'text-text-primary' },
+];
+
+const topTools = [
+  { slug: 'word-counter', title: 'Compteur de mots', description: 'Comptez les mots, caractères, phrases et estimez le temps de lecture.', accent: 'text-brand-pink' },
+  { slug: 'character-counter', title: 'Compteur de caractères', description: 'Vérifiez les limites pour X, Instagram, LinkedIn et les balises meta.', accent: 'text-brand-cyan' },
+  { slug: 'sentence-counter', title: 'Compteur de phrases', description: 'Comptez les phrases et analysez la structure du texte.', accent: 'text-brand-orange' },
+  { slug: 'paragraph-counter', title: 'Compteur de paragraphes', description: 'Comptez les paragraphes et la moyenne de mots par paragraphe.', accent: 'text-brand-pink' },
+  { slug: 'syllable-counter', title: 'Compteur de syllabes', description: 'Comptez les syllabes dans les mots et dans le texte.', accent: 'text-brand-cyan' },
+  { slug: 'reading-time-calculator', title: 'Calculateur de temps de lecture', description: 'Estimez le temps de lecture et de parole pour votre contenu.', accent: 'text-brand-orange' },
+  { slug: 'case-converter', title: 'Convertisseur de casse', description: 'Passez rapidement du texte en minuscules, MAJUSCULES, titre ou phrase.', accent: 'text-brand-pink' },
+  { slug: 'title-case-converter', title: 'Convertisseur de titre', description: 'Mettez un titre au bon format selon les principaux guides de style.', accent: 'text-brand-cyan' },
+  { slug: 'readability-checker', title: 'Vérificateur de lisibilité', description: 'Mesurez la lisibilité avec les scores Flesch et le niveau scolaire.', accent: 'text-brand-orange' },
+  { slug: 'keyword-density-checker', title: 'Densité de mots-clés', description: 'Analysez la fréquence des mots et expressions pour le SEO.', accent: 'text-brand-pink' },
+  { slug: 'text-compare-tool', title: 'Comparateur de texte', description: 'Comparez deux versions d’un texte et repérez rapidement les différences.', accent: 'text-brand-cyan' },
+  { slug: 'paragraph-rewriter', title: 'Réécriture de paragraphe', description: 'Obtenez des suggestions pour clarifier et améliorer votre écriture.', accent: 'text-brand-orange' },
+];
+
+const popularUseCases = [
+  { slug: 'essay-word-counter', category: 'word-counter', title: 'Compteur d’essais', description: 'Pour étudiants et rédacteurs', accent: 'text-brand-pink' },
+  { slug: 'resume-word-counter', category: 'word-counter', title: 'Compteur de CV', description: 'Pour candidatures', accent: 'text-brand-cyan' },
+  { slug: 'tweet-character-counter', category: 'character-counter', title: 'Compteur de tweets', description: 'Pour X / Twitter', accent: 'text-brand-orange' },
+  { slug: 'instagram-caption-counter', category: 'character-counter', title: 'Légende Instagram', description: 'Pour publications sociales', accent: 'text-brand-pink' },
+];
+---
+
+<BaseLayout
+  title="CountWordz - Outils de texte gratuits"
+  description="Outils de texte gratuits : compteur de mots, compteur de caractères, vérificateur de lisibilité et plus. Rapide, moderne et facile à utiliser."
+>
+  <section class="bg-gradient-to-br from-brand-cream to-white py-16 md:py-24">
+    <div class="layout-shell px-4">
+      <div class="text-center mb-12">
+        <h1 class="text-5xl md:text-7xl font-display font-bold tracking-tighter text-text-primary mb-4">CountWordz</h1>
+        <p class="text-xl text-text-muted max-w-2xl mx-auto">Outils de texte gratuits pour compter, analyser et formater le texte. Rapide, moderne et facile à utiliser.</p>
+      </div>
+
+      <div class="max-w-4xl mx-auto bg-surface rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
+        <WordCounterTool locale={locale} client:load />
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 bg-white">
+    <div class="layout-shell px-4">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        {stats.map((item) => (
+          <div class="p-6">
+            <div class={`text-3xl font-display font-bold ${item.accent}`}>{item.value}</div>
+            <div class="text-sm text-text-muted mt-1">{item.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-8 bg-gray-50">
+    <div class="layout-shell px-4">
+      <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center max-w-4xl mx-auto">
+        <p class="text-xs text-text-muted mb-2">Publicité</p>
+        <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+          <span class="text-gray-400 text-sm">Espace publicitaire (728x90)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-gray-50">
+    <div class="layout-shell px-4">
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-center mb-4">Outils principaux</h2>
+      <p class="text-center text-text-muted mb-12 max-w-2xl mx-auto">
+        Commencez par nos outils essentiels d’analyse de texte, ou
+        <a href={getLocalizedStaticPath(locale, 'tools')} class="text-brand-pink hover:underline font-semibold"> voir les 103 outils →</a>
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {topTools.map((tool) => (
+          <a href={getLocalizedStaticPath(locale, tool.slug)} class="bg-surface p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block">
+            <h3 class={`text-xl font-display font-semibold mb-2 ${tool.accent}`}>{tool.title}</h3>
+            <p class="text-text-muted">{tool.description}</p>
+          </a>
+        ))}
+      </div>
+      <div class="text-center mt-12">
+        <a href={getLocalizedStaticPath(locale, 'tools')} class="inline-block px-8 py-3 bg-brand-pink text-white rounded-lg font-semibold hover:bg-opacity-90 transition-all">Voir les 103 outils →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-8 bg-white">
+    <div class="layout-shell px-4">
+      <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center max-w-4xl mx-auto">
+        <p class="text-xs text-text-muted mb-2">Publicité</p>
+        <div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded">
+          <span class="text-gray-400 text-sm">Espace publicitaire (300x250)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 bg-gray-50 border-y border-gray-100">
+    <div class="layout-shell px-4">
+      <h2 class="text-2xl md:text-3xl font-display font-bold text-center mb-8">Cas d’usage populaires</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+        {popularUseCases.map((item) => (
+          <a href={getLocalizedToolPath(locale, item.slug, item.category)} class="text-center p-4 rounded-lg hover:bg-gray-50 transition-colors">
+            <div class={`${item.accent} font-semibold mb-1`}>{item.title}</div>
+            <div class="text-xs text-text-muted">{item.description}</div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-8 bg-white">
+    <div class="layout-shell px-4">
+      <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center max-w-4xl mx-auto">
+        <p class="text-xs text-text-muted mb-2">Publicité</p>
+        <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+          <span class="text-gray-400 text-sm">Espace publicitaire (728x90)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer locale={locale} />
+</BaseLayout>

@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import TextDiffTool from '../../../components/TextDiffTool';
+import Sidebar from '../../../components/Sidebar.astro';
+import Footer from '../../../components/Footer.astro';
+---
+
+<BaseLayout 
+  title="Comparateur de Texte - Compare Deux Textes" 
+  description="Outil de comparaison de texte gratuit. Comparez deux textes côte à côte et surlignez les différences. Voyez les mots ajoutés, supprimés et changés."
+>
+  <main class="layout-shell px-4 py-6">
+    <header class="mb-6">
+      <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Comparateur de Texte</h1>
+      <p class="text-base text-text-muted max-w-3xl">Comparez deux textes côte à côte et surlignez les différences. Suivez les changements entre versions de documents.</p>
+    </header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div class="lg:col-span-3">
+        <div class="bg-surface rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-4">
+          <TextDiffTool locale="fr" client:load />
+        </div>
+
+        <div class="mt-4 ad-slot-below-tool">
+          <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+            <p class="text-xs text-text-muted mb-2">Publicité</p>
+            <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
+              <span class="text-gray-400 text-sm">Espace Publicitaire</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="my-6 ad-slot-mid-content">
+          <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
+            <p class="text-xs text-text-muted mb-2">Publicité</p>
+            <div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded">
+              <span class="text-gray-400 text-sm">Espace Publicitaire</span>
+            </div>
+          </div>
+        </div>
+
+        <article class="mt-8">
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">Comment Ça Marche</h2>
+            <p class="text-text-primary mb-4">Collez le texte original dans le premier cadre et le texte révisé dans le second. L'outil surlignera les différences : ajoutés en vert, supprimés en rouge.</p>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-3">Outils Connexes</h2>
+            <ul class="space-y-2">
+              <li><a href="/fr/word-counter" class="text-brand-pink hover:underline">Compteur de Mots</a></li>
+              <li><a href="/fr/paragraph-rewriter" class="text-brand-pink hover:underline">Réécriveur de Paragraphes</a></li>
+              <li><a href="/fr/readability-checker" class="text-brand-pink hover:underline">Vérificateur de Lisibilité</a></li>
+            </ul>
+          </section>
+        </article>
+      </div>
+
+      <Sidebar category="text-compare" />
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

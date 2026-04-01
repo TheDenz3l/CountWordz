@@ -1,0 +1,80 @@
+{
+  "site": {
+    "title": "CountWordz",
+    "description": "Ferramentas de texto gratuitas para contar, analisar e formatar texto. Rápido, moderno e fácil de usar.",
+    "tagline": "Ferramentas de texto gratuitas para contar, analisar e formatar texto."
+  },
+  "navigation": {
+    "home": "Início",
+    "tools": "Todas as Ferramentas",
+    "browseAll": "Ver as 103 Ferramentas"
+  },
+  "homepage": {
+    "heroTitle": "CountWordz",
+    "heroSubtitle": "Ferramentas de texto gratuitas para contar, analisar e formatar texto. Rápido, moderno e fácil de usar.",
+    "stats": {
+      "tools": "Ferramentas Gratuitas",
+      "free": "100% Grátis",
+      "realtime": "Tempo Real",
+      "nosignup": "Sem Cadastro"
+    },
+    "coreToolsTitle": "Ferramentas Principais",
+    "coreToolsSubtitle": "Comece com nossas ferramentas essenciais de análise de texto, ou",
+    "browseAllButton": "Ver as 103 Ferramentas →",
+    "popularUseCases": "Casos de Uso Populares"
+  },
+  "footer": {
+    "description": "Ferramentas de texto gratuitas para contar, analisar e formatar texto. Rápido, moderno e fácil de usar.",
+    "coreTools": "Ferramentas Principais",
+    "viewAllTools": "Ver as 103 Ferramentas →",
+    "legal": "Legal",
+    "privacy": "Política de Privacidade",
+    "terms": "Termos de Serviço",
+    "copyright": "Todos os direitos reservados."
+  },
+  "tools": {
+    "title": "Todas as Ferramentas de Texto",
+    "subtitle": "Navegue pelas 103 ferramentas de texto gratuitas organizadas por categoria. Encontre a ferramenta perfeita para sua escrita, edição e otimização de conteúdo.",
+    "coreTools": "Ferramentas Principais",
+    "platformCounters": "Contadores de Caracteres por Plataforma",
+    "documentCounters": "Contadores de Palavras por Tipo de Documento",
+    "readabilityCheckers": "Verificadores de Legibilidade por Indústria",
+    "readingTimeCalculators": "Calculadoras de Tempo de Leitura",
+    "statsTitle": "103 Ferramentas de Texto Gratuitas",
+    "statsSubtitle": "Todas as ferramentas são 100% gratuitas, funcionam no seu navegador e não exigem cadastro. Comece a usar qualquer ferramenta acima instantaneamente.",
+    "backToHome": "Voltar ao Início"
+  },
+  "tools_list": {
+    "wordCounter": "Contador de Palavras",
+    "wordCounterDesc": "Conta palavras, caracteres, frases e mais",
+    "characterCounter": "Contador de Caracteres",
+    "characterCounterDesc": "Verifica limites de caracteres para redes sociais",
+    "sentenceCounter": "Contador de Frases",
+    "sentenceCounterDesc": "Conta frases e analisa estrutura",
+    "paragraphCounter": "Contador de Parágrafos",
+    "paragraphCounterDesc": "Conta parágrafos e média de palavras",
+    "syllableCounter": "Contador de Sílabas",
+    "syllableCounterDesc": "Conta sílabas em palavras e texto",
+    "readingTime": "Calculadora de Tempo de Leitura",
+    "readingTimeDesc": "Estima tempo de leitura e fala",
+    "caseConverter": "Conversor de Caixa",
+    "caseConverterDesc": "Converte texto entre diferentes formatos",
+    "titleCase": "Conversor para Título",
+    "titleCaseDesc": "Converte para formato de título apropriado",
+    "readabilityChecker": "Verificador de Legibilidade",
+    "readabilityCheckerDesc": "Mede pontuações de legibilidade",
+    "keywordDensity": "Verificador de Densidade de Palavras-chave",
+    "keywordDensityDesc": "Analisa frequência de palavras e frases",
+    "textCompare": "Ferramenta de Comparação de Texto",
+    "textCompareDesc": "Compara dois textos e destaca diferenças",
+    "paragraphRewriter": "Reescritor de Parágrafos",
+    "paragraphRewriterDesc": "Obtenha sugestões para melhorar a escrita"
+  },
+  "common": {
+    "advertisement": "Publicidade",
+    "relatedTools": "Ferramentas Relacionadas",
+    "howToUse": "Como Usar",
+    "tips": "Dicas",
+    "faqs": "Perguntas Frequentes"
+  }
+}

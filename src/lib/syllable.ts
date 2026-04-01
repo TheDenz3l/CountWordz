@@ -1,29 +1,82 @@
-/**
- * Syllable Counting Utility
- * Wrapper around the syllable library with error handling and estimation labeling
- */
-
 import { syllable } from 'syllable';
+import type { Locale } from './i18n';
+import { extractWordTokens } from './text-utils';
+
+const VOWELS_BY_LOCALE: Record<Locale, Set<string>> = {
+  en: new Set(['a', 'e', 'i', 'o', 'u', 'y']),
+  es: new Set(['a', 'e', 'i', 'o', 'u', 'á', 'é', 'í', 'ó', 'ú', 'ü', 'y']),
+  fr: new Set(['a', 'e', 'i', 'o', 'u', 'y', 'à', 'â', 'ä', 'æ', 'é', 'è', 'ê', 'ë', 'î', 'ï', 'ô', 'œ', 'ù', 'û', 'ü', 'ÿ']),
+  de: new Set(['a', 'e', 'i', 'o', 'u', 'y', 'ä', 'ö', 'ü']),
+  pt: new Set(['a', 'e', 'i', 'o', 'u', 'á', 'à', 'â', 'ã', 'é', 'ê', 'í', 'ó', 'ô', 'õ', 'ú', 'ü']),
+};
+
+function cleanWord(word: string): string {
+  return word.normalize('NFC').replace(/[^\p{L}]/gu, '');
+}
+
+function isAsciiWord(word: string): boolean {
+  return /^[A-Za-z]+$/.test(word);
+}
+
+function preprocessForLocale(word: string, locale: Locale): string {
+  let normalized = word.toLowerCase();
+
+  if (locale === 'es' || locale === 'pt' || locale === 'fr') {
+    normalized = normalized
+      .replace(/qu(?=[eiéèêí])/gu, 'q')
+      .replace(/gu(?=[eiéèêí])/gu, 'g');
+  }
+
+  return normalized;
+}
+
+function countHeuristicSyllables(word: string, locale: Locale): number {
+  const lower = preprocessForLocale(cleanWord(word), locale);
+  if (!lower) return 0;
+
+  const vowels = VOWELS_BY_LOCALE[locale] ?? VOWELS_BY_LOCALE.en;
+  const chars = Array.from(lower);
+  let groups = 0;
+  let previousWasVowel = false;
+
+  for (const char of chars) {
+    const isVowel = vowels.has(char);
+    if (isVowel && !previousWasVowel) {
+      groups += 1;
+    }
+    previousWasVowel = isVowel;
+  }
+
+  if (locale === 'fr' && groups > 1) {
+    if (/(e|es|ent)$/u.test(lower)) {
+      groups -= 1;
+    }
+  }
+
+  return Math.max(1, groups);
+}
 
 /**
  * Count syllables in a single word
- * Uses the syllable library for accurate English syllable counting
+ * Uses the library for plain-English words and a unicode-aware heuristic fallback elsewhere.
  */
-export function countSyllablesInWord(word: string): number {
+export function countSyllablesInWord(word: string, locale: Locale = 'en'): number {
   if (!word || word.trim() === '') return 0;
-  
-  // Clean the word - remove non-alphabetic characters
-  const cleanWord = word.replace(/[^a-zA-Z]/g, '');
-  if (cleanWord.length === 0) return 0;
-  
-  return syllable(cleanWord);
+
+  const clean = cleanWord(word);
+  if (clean.length === 0) return 0;
+
+  if (locale === 'en' && isAsciiWord(clean)) {
+    return syllable(clean);
+  }
+
+  return countHeuristicSyllables(clean, locale);
 }
 
 /**
  * Count total syllables in text
- * Returns total syllable count and per-word breakdown
  */
-export function countSyllables(text: string): {
+export function countSyllables(text: string, locale: Locale = 'en'): {
   total: number;
   words: Array<{ word: string; syllables: number }>;
   average: number;
@@ -31,65 +84,58 @@ export function countSyllables(text: string): {
   if (!text || text.trim() === '') {
     return { total: 0, words: [], average: 0 };
   }
-  
-  // Split into words (alphabetic only)
-  const words = text.trim().split(/\s+/).filter(w => w.length > 0);
-  
-  const wordSyllables = words.map(word => {
-    const cleanWord = word.replace(/[^a-zA-Z]/g, '');
-    const syllables = cleanWord.length > 0 ? syllable(cleanWord) : 0;
-    return {
-      word: cleanWord,
-      syllables,
-    };
-  }).filter(w => w.word.length > 0);
-  
-  const total = wordSyllables.reduce((sum, w) => sum + w.syllables, 0);
-  const average = wordSyllables.length > 0 
-    ? total / wordSyllables.length 
-    : 0;
-  
+
+  const tokens = extractWordTokens(text);
+
+  const wordSyllables = tokens
+    .map((word) => {
+      const clean = cleanWord(word);
+      return {
+        word: clean,
+        syllables: countSyllablesInWord(clean, locale),
+      };
+    })
+    .filter((entry) => entry.word.length > 0);
+
+  const total = wordSyllables.reduce((sum, item) => sum + item.syllables, 0);
+  const average = wordSyllables.length > 0 ? total / wordSyllables.length : 0;
+
   return {
     total,
     words: wordSyllables,
-    average: Math.round(average * 100) / 100, // Round to 2 decimal places
+    average: Math.round(average * 100) / 100,
   };
 }
 
 /**
  * Get syllable distribution
- * Returns count of words by syllable count (1 syllable, 2 syllables, 3+ syllables)
  */
-export function getSyllableDistribution(text: string): {
+export function getSyllableDistribution(text: string, locale: Locale = 'en'): {
   oneSyllable: number;
   twoSyllables: number;
   threeOrMoreSyllables: number;
   totalWords: number;
 } {
-  const { words } = countSyllables(text);
-  
+  const { words } = countSyllables(text, locale);
+
   const distribution = {
     oneSyllable: 0,
     twoSyllables: 0,
     threeOrMoreSyllables: 0,
     totalWords: words.length,
   };
-  
-  words.forEach(w => {
-    if (w.syllables === 1) {
-      distribution.oneSyllable++;
-    } else if (w.syllables === 2) {
-      distribution.twoSyllables++;
-    } else if (w.syllables >= 3) {
-      distribution.threeOrMoreSyllables++;
+
+  words.forEach((word) => {
+    if (word.syllables === 1) {
+      distribution.oneSyllable += 1;
+    } else if (word.syllables === 2) {
+      distribution.twoSyllables += 1;
+    } else if (word.syllables >= 3) {
+      distribution.threeOrMoreSyllables += 1;
     }
   });
-  
+
   return distribution;
 }
 
-/**
- * Disclaimer text for UI display
- * Syllable counting is inherently imperfect for English
- */
-export const SYLLABLE_DISCLAIMER = 'Estimated syllable count. English syllable rules are complex and may vary by dialect.';
+export const SYLLABLE_DISCLAIMER = 'Estimated syllable count. Syllable rules vary by language and dialect.';
