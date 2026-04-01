@@ -2,17 +2,39 @@
 import '../styles/global.css';
 import { getTranslation } from '../i18n/translations.js';
 import { getLocaleSwitchPath, normalizeLocale } from '../lib/locale-routes';
+import { SEO } from 'astro-seo';
+import { generateSeoMetadata, generateWebsiteSchema } from '../lib/seo-metadata';
 
 interface Props {
   title: string;
   description?: string;
+  pathname?: string;
+  image?: string;
+  type?: string;
+  jsonLD?: Record<string, unknown> | Array<Record<string, unknown>>;
 }
 
-const { title, description = 'Free SEO-driven text utility website for word counting, character counting, and text analysis tools.' } = Astro.props;
-const pathname = Astro.url.pathname;
+const {
+  title,
+  description = 'Free SEO-driven text utility website for word counting, character counting, and text analysis tools.',
+  pathname = Astro.url.pathname,
+  image = '/og-default.png',
+  type = 'website',
+  jsonLD,
+} = Astro.props;
+
 const localeFromPath = pathname.split('/')[1] || 'en';
 const currentLocale = normalizeLocale(localeFromPath);
 const t = (key) => getTranslation(currentLocale, key);
+
+const seo = generateSeoMetadata({
+  title,
+  description,
+  pathname,
+  image,
+  type,
+  jsonLD: jsonLD || generateWebsiteSchema(),
+});
 
 const languages = [
   { code: 'en', name: 'English', flag: '🇺🇸' },
@@ -28,13 +50,23 @@ const languages = [
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={description} />
-    <meta name="generator" content="Astro" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
-    <title>{title} — CountWordz</title>
+    <SEO
+      title={seo.title}
+      description={seo.description}
+      canonical={seo.canonical}
+      openGraph={seo.openGraph}
+      twitter={seo.twitter}
+    />
+    {seo.jsonLD && (
+      <script
+        type="application/ld+json"
+        set:html={seo.jsonLD}
+      />
+    )}
   </head>
   <body class="bg-brand-cream text-text-primary font-body min-h-[100dvh]">
     <div class="bg-gray-800 text-white py-2 px-4">
