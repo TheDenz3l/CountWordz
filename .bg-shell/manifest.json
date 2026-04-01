@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "id": "ecbf3e7a",
+    "label": "CounterWordz dev server",
+    "command": "cd /Users/bmar/Desktop/counterwordz && npm run dev",
+    "cwd": "/Users/bmar/Desktop/counterwordz",
+    "ownerSessionFile": "/Users/bmar/.gsd/sessions/--Users-bmar-Desktop-counterwordz--/2026-03-31T07-28-39-890Z_5a63c823-a982-49a4-a665-b92bd79c0e37.jsonl",
+    "persistAcrossSessions": false,
+    "startedAt": 1774955894896,
+    "processType": "server",
+    "group": null,
+    "readyPattern": "ready in",
+    "readyPort": null,
+    "pid": 81227
+  }
+]

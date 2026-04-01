@@ -3,11 +3,42 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import WordCounterTool from '../components/WordCounterTool';
 import Footer from '../components/Footer.astro';
 import Sidebar from '../components/Sidebar.astro';
+import { generateSoftwareApplicationSchema, generateFAQPageSchema } from '../lib/seo-metadata';
+
+const softwareSchema = generateSoftwareApplicationSchema({
+  name: 'Essay Word Counter',
+  description: 'Free essay word counter tool. Count words for essays, assignments, and academic papers. Track progress toward word limits with real-time updates.',
+  pathname: '/essay-word-counter',
+  applicationCategory: 'SEO',
+  operatingSystem: 'All',
+});
+
+const faqSchema = generateFAQPageSchema({
+  mainEntity: [
+    {
+      question: 'What if my essay is under the word count?',
+      answer: 'Review each paragraph and ask: Can I add more evidence? Can I explain this concept more thoroughly? Can I address a counterargument? Often, expanding analysis rather than adding filler is the key.',
+    },
+    {
+      question: 'What if my essay exceeds the word limit?',
+      answer: 'Look for redundant phrases, unnecessary adjectives, or tangential points. Tighten your prose by removing filler words like "very," "really," or "in order to." Consider whether every paragraph directly supports your thesis.',
+    },
+    {
+      question: 'Do citations count toward the word limit?',
+      answer: 'This depends on your instructor\'s guidelines. Typically, in-text citations count, but the bibliography/reference page does not. Always clarify with your professor or check the assignment rubric.',
+    },
+    {
+      question: 'How accurate is this word counter?',
+      answer: 'Our word counter uses the same counting method as Microsoft Word and Google Docs, making it highly accurate for academic purposes. Hyphenated words and contractions are counted as single words.',
+    },
+  ],
+});
 ---
 
 <BaseLayout 
   title="Essay Word Counter - Count Words for Essays & Assignments" 
   description="Free essay word counter tool. Count words for essays, assignments, and academic papers. Track progress toward word limits with real-time updates."
+  jsonLD={[softwareSchema, faqSchema]}
 >
   <main class="layout-shell px-4 py-6">
     <!-- Page Header -->
