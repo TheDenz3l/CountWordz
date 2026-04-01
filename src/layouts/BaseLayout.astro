@@ -27,13 +27,16 @@ const localeFromPath = pathname.split('/')[1] || 'en';
 const currentLocale = normalizeLocale(localeFromPath);
 const t = (key) => getTranslation(currentLocale, key);
 
+// Use provided jsonLD or default to website schema
+const schemasToRender = jsonLD || generateWebsiteSchema();
+const jsonLdString = typeof schemasToRender === 'string' ? schemasToRender : JSON.stringify(schemasToRender);
+
 const seo = generateSeoMetadata({
   title,
   description,
   pathname,
   image,
   type,
-  jsonLD: jsonLD || generateWebsiteSchema(),
 });
 
 const languages = [
@@ -61,10 +64,10 @@ const languages = [
       openGraph={seo.openGraph}
       twitter={seo.twitter}
     />
-    {seo.jsonLD && (
+    {jsonLdString && (
       <script
         type="application/ld+json"
-        set:html={seo.jsonLD}
+        set:html={jsonLdString}
       />
     )}
   </head>

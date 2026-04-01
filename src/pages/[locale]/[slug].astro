@@ -7,8 +7,9 @@ import CharacterCounterTool from '../../components/CharacterCounterTool';
 import ReadabilityCheckerTool from '../../components/ReadabilityCheckerTool';
 import ReadingTimeTool from '../../components/ReadingTimeTool';
 import { getTranslation } from '../../i18n/translations.js';
-import { getLocalizedLongTailStaticPaths, getLongTailPageContent } from '../../lib/long-tail-pages';
+import { getLocalizedLongTailStaticPaths, getLongTailPageContent, generateLongTailPageSchemas } from '../../lib/long-tail-pages';
 import { getDynamicCategoryForSlug, getLocalizedToolPath, inferLongTailCategory, normalizeLocale } from '../../lib/locale-routes';
+import { generateWebsiteSchema } from '../../lib/seo-metadata';
 
 export function getStaticPaths() {
   return getLocalizedLongTailStaticPaths();
@@ -31,7 +32,7 @@ if (dynamicCategory) {
 const t = (key) => getTranslation(resolvedLocale, key);
 ---
 
-<BaseLayout title={page.title} description={page.description}>
+<BaseLayout title={page.title} description={page.description} jsonLD={[generateWebsiteSchema(), ...generateLongTailPageSchemas(slug, resolvedLocale)]}>
   <main class="layout-shell px-4 py-6">
     <header class="mb-6">
       <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">{page.h1}</h1>

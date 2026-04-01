@@ -9,6 +9,7 @@ import {
   type LocaleCode,
   type LongTailCategory,
 } from './locale-routes';
+import { generateSoftwareApplicationSchema, generateFAQPageSchema } from './seo-metadata';
 
 export interface LongTailPageContent {
   slug: string;
@@ -1374,6 +1375,61 @@ function buildLocalizedArticle(slug: string, locale: LocaleCode): string {
       </ul>
     </section>
   `;
+}
+
+/**
+ * Generate JSON-LD schema markup for a long-tail page.
+ * Returns both SoftwareApplication and FAQPage schemas.
+ */
+export function generateLongTailPageSchemas(slug: string, locale: LocaleCode = 'en') {
+  const category = inferLongTailCategory(slug) ?? 'word-counter';
+  const subject = translateSubject(slug, locale, category);
+  const toolLabel = getCategoryToolLabel(locale, category);
+  const kind = getSubjectKind(category, slug);
+
+  // Build localized tool name and description
+  let name: string;
+  let description: string;
+
+  if (locale === 'es') {
+    name = `${toolLabel} para ${subject}`;
+    description = `Herramienta gratuita para ${subject.toLowerCase()}. Analiza tu texto con resultados instantáneos.`;
+  } else if (locale === 'fr') {
+    name = `${toolLabel} pour ${subject}`;
+    description = `Outil gratuit pour ${subject.toLowerCase()}. Analysez votre texte avec des résultats immédiats.`;
+  } else if (locale === 'de') {
+    name = `${toolLabel} für ${subject}`;
+    description = `Kostenloses Tool für ${subject.toLowerCase()}. Analysieren Sie Ihren Text mit sofortigen Ergebnissen.`;
+  } else if (locale === 'pt') {
+    name = `${toolLabel} para ${subject}`;
+    description = `Ferramenta gratuita para ${subject.toLowerCase()}. Analise seu texto com resultados imediatos.`;
+  } else {
+    name = `${toolLabel} for ${subject}`;
+    description = `Free tool for ${subject.toLowerCase()}. Analyze your text with instant results.`;
+  }
+
+  // Generate pathname based on locale
+  const pathname = locale === 'en' ? `/${slug}` : `/${locale}/${slug}`;
+
+  // Generate SoftwareApplication schema
+  const softwareSchema = generateSoftwareApplicationSchema({
+    name,
+    description,
+    pathname,
+    applicationCategory: 'SEO',
+    operatingSystem: 'All',
+  });
+
+  // Generate FAQPage schema from localized FAQ items
+  const faqItems = buildFaqItems(locale, category, kind, subject);
+  const faqSchema = generateFAQPageSchema({
+    mainEntity: faqItems.map((item) => ({
+      question: item.q,
+      answer: item.a,
+    })),
+  });
+
+  return [softwareSchema, faqSchema];
 }
 
 export function getStandaloneLongTailSlugs(): string[] {

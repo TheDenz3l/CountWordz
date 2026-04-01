@@ -98,7 +98,7 @@ export function generateSeoMetadata(options: SeoMetadataOptions): SeoMetadata {
       description,
       image: fullImageUrl,
     },
-    jsonLD: jsonLD ? JSON.stringify(jsonLD) : undefined,
+    jsonLD: jsonLD ? (typeof jsonLD === 'string' ? jsonLD : JSON.stringify(jsonLD)) : undefined,
   };
 }
 
