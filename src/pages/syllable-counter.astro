@@ -3,8 +3,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Footer from '../components/Footer.astro';
 import Sidebar from '../components/Sidebar.astro';
 import SyllableCounterTool from '../components/SyllableCounterTool';
+import { generateSoftwareApplicationSchema } from '../lib/seo-metadata';
+
+const softwareSchema = generateSoftwareApplicationSchema({
+  name: 'Syllable Counter',
+  description: 'Free syllable counter tool. Count syllables in words and text for poetry, lyrics, and readability analysis.',
+  pathname: '/syllable-counter',
+  applicationCategory: 'SEO',
+  operatingSystem: 'All',
+});
 ---
-<BaseLayout title="Syllable Counter - Count Syllables in Text" description="Free syllable counter tool. Count syllables in words and text for poetry, lyrics, and readability analysis.">
+<BaseLayout title="Syllable Counter - Count Syllables in Text" description="Free syllable counter tool. Count syllables in words and text for poetry, lyrics, and readability analysis." jsonLD={[softwareSchema]}>
   <main class="layout-shell px-4 py-6">
     <header class="mb-6">
       <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter mb-2">Syllable Counter</h1>

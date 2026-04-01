@@ -3,8 +3,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Footer from '../components/Footer.astro';
 import Sidebar from '../components/Sidebar.astro';
 import SentenceCounterTool from '../components/SentenceCounterTool';
+import { generateSoftwareApplicationSchema } from '../lib/seo-metadata';
+
+const softwareSchema = generateSoftwareApplicationSchema({
+  name: 'Sentence Counter',
+  description: 'Free sentence counter tool. Count sentences, average words per sentence, and analyze text structure.',
+  pathname: '/sentence-counter',
+  applicationCategory: 'SEO',
+  operatingSystem: 'All',
+});
 ---
-<BaseLayout title="Sentence Counter - Analyze Sentence Structure" description="Free sentence counter tool. Count sentences, average words per sentence, and analyze text structure.">
+<BaseLayout title="Sentence Counter - Analyze Sentence Structure" description="Free sentence counter tool. Count sentences, average words per sentence, and analyze text structure." jsonLD={[softwareSchema]}>
   <main class="layout-shell px-4 py-6">
     <header class="mb-6">
       <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter mb-2">Sentence Counter</h1>

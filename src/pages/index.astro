@@ -2,11 +2,23 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import WordCounterTool from '../components/WordCounterTool';
 import Footer from '../components/Footer.astro';
+import { generateWebsiteSchema, generateSoftwareApplicationSchema } from '../lib/seo-metadata';
+
+const webSiteSchema = generateWebsiteSchema();
+
+const softwareSchema = generateSoftwareApplicationSchema({
+  name: 'CountWordz',
+  description: 'Free online text tools: word counter, character counter, sentence counter, readability checker, and more. Fast, modern, and easy to use.',
+  pathname: '/',
+  applicationCategory: 'SEO',
+  operatingSystem: 'All',
+});
 ---
 
 <BaseLayout 
   title="CountWordz - Free Text Utility Tools" 
   description="Free online text tools: word counter, character counter, sentence counter, readability checker, and more. Fast, modern, and easy to use."
+  jsonLD={[webSiteSchema, softwareSchema]}
 >
   <!-- Hero Section -->
   <section class="bg-gradient-to-br from-brand-cream to-white py-16 md:py-24">

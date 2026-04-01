@@ -3,8 +3,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Footer from '../components/Footer.astro';
 import Sidebar from '../components/Sidebar.astro';
 import ReadingTimeTool from '../components/ReadingTimeTool';
+import { generateSoftwareApplicationSchema } from '../lib/seo-metadata';
+
+const softwareSchema = generateSoftwareApplicationSchema({
+  name: 'Reading Time Calculator',
+  description: 'Free reading time calculator. Estimate how long it takes to read or speak any text.',
+  pathname: '/reading-time-calculator',
+  applicationCategory: 'SEO',
+  operatingSystem: 'All',
+});
 ---
-<BaseLayout title="Reading Time Calculator - Estimate Reading & Speaking Time" description="Free reading time calculator. Estimate how long it takes to read or speak any text.">
+<BaseLayout title="Reading Time Calculator - Estimate Reading & Speaking Time" description="Free reading time calculator. Estimate how long it takes to read or speak any text." jsonLD={[softwareSchema]}>
   <main class="layout-shell px-4 py-6">
     <header class="mb-6">
       <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter mb-2">Reading Time Calculator</h1>

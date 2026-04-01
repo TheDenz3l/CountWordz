@@ -3,11 +3,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import CharacterCounterTool from '../components/CharacterCounterTool';
 import Sidebar from '../components/Sidebar.astro';
 import Footer from '../components/Footer.astro';
+import { generateSoftwareApplicationSchema } from '../lib/seo-metadata';
+
+const softwareSchema = generateSoftwareApplicationSchema({
+  name: 'Character Counter',
+  description: 'Free online character counter tool. Count characters with and without spaces. Check limits for X (Twitter), Instagram, LinkedIn, meta descriptions, and more.',
+  pathname: '/character-counter',
+  applicationCategory: 'SEO',
+  operatingSystem: 'All',
+});
 ---
 
 <BaseLayout 
   title="Character Counter - Check Character Limits for Social Media" 
   description="Free online character counter tool. Count characters with and without spaces. Check limits for X (Twitter), Instagram, LinkedIn, meta descriptions, and more."
+  jsonLD={[softwareSchema]}
 >
   <main class="layout-shell px-4 py-6">
     <header class="mb-6">

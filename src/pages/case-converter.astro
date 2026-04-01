@@ -3,8 +3,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Footer from '../components/Footer.astro';
 import Sidebar from '../components/Sidebar.astro';
 import CaseConverterTool from '../components/CaseConverterTool';
+import { generateSoftwareApplicationSchema } from '../lib/seo-metadata';
+
+const softwareSchema = generateSoftwareApplicationSchema({
+  name: 'Case Converter',
+  description: 'Free case converter tool. Convert text to lowercase, UPPERCASE, Title Case, Sentence case, and more.',
+  pathname: '/case-converter',
+  applicationCategory: 'SEO',
+  operatingSystem: 'All',
+});
 ---
-<BaseLayout title="Case Converter - Convert Text Case" description="Free case converter tool. Convert text to lowercase, UPPERCASE, Title Case, Sentence case, and more.">
+<BaseLayout title="Case Converter - Convert Text Case" description="Free case converter tool. Convert text to lowercase, UPPERCASE, Title Case, Sentence case, and more." jsonLD={[softwareSchema]}>
   <main class="layout-shell px-4 py-6">
     <header class="mb-6">
       <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter mb-2">Case Converter</h1>

@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "id": "d3f52df1",
+    "label": "astro-preview",
+    "command": "npm run preview -- --host 127.0.0.1 --port 4321",
+    "cwd": "/Users/bmar/Desktop/counterwordz",
+    "ownerSessionFile": "/Users/bmar/.gsd/sessions/--Users-bmar-Desktop-counterwordz--/2026-03-31T23-02-34-527Z_dc6b8956-9b29-4409-917e-5127a8cb05e4.jsonl",
+    "persistAcrossSessions": false,
+    "startedAt": 1775004778125,
+    "processType": "server",
+    "group": "counterwordz",
+    "readyPattern": "Local",
+    "readyPort": 4321,
+    "pid": 8208
+  }
+]

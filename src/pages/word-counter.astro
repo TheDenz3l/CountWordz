@@ -3,11 +3,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import WordCounterTool from '../components/WordCounterTool';
 import Sidebar from '../components/Sidebar.astro';
 import Footer from '../components/Footer.astro';
+import { generateSoftwareApplicationSchema } from '../lib/seo-metadata';
+
+const softwareSchema = generateSoftwareApplicationSchema({
+  name: 'Word Counter',
+  description: 'Free online word counter tool. Count words, characters, sentences, paragraphs, and estimate reading time in real-time. Perfect for essays, articles, and social media posts.',
+  pathname: '/word-counter',
+  applicationCategory: 'SEO',
+  operatingSystem: 'All',
+});
 ---
 
 <BaseLayout 
   title="Word Counter - Count Words, Characters, and More" 
   description="Free online word counter tool. Count words, characters, sentences, paragraphs, and estimate reading time in real-time. Perfect for essays, articles, and social media posts."
+  jsonLD={[softwareSchema]}
 >
   <main class="layout-shell px-4 py-6">
     <!-- Page Header -->

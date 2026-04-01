@@ -3,8 +3,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import CaseConverterTool from '../components/CaseConverterTool';
 import Footer from '../components/Footer.astro';
 import Sidebar from '../components/Sidebar.astro';
+import { generateSoftwareApplicationSchema } from '../lib/seo-metadata';
+
+const softwareSchema = generateSoftwareApplicationSchema({
+  name: 'Title Case Converter',
+  description: 'Free title case converter. Convert text to proper title case following APA, MLA, Chicago, and AP style rules.',
+  pathname: '/title-case-converter',
+  applicationCategory: 'SEO',
+  operatingSystem: 'All',
+});
 ---
-<BaseLayout title="Title Case Converter - Convert Text to Title Case" description="Free title case converter. Convert text to proper title case following APA, MLA, Chicago, and AP style rules.">
+<BaseLayout title="Title Case Converter - Convert Text to Title Case" description="Free title case converter. Convert text to proper title case following APA, MLA, Chicago, and AP style rules." jsonLD={[softwareSchema]}>
   <main class="layout-shell px-4 py-6">
     <header class="mb-6"><h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Title Case Converter</h1><p class="text-base text-text-muted max-w-3xl">Convert text to title case following major style guides. Perfect for headlines, titles, and headings.</p></header>
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
