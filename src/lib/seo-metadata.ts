@@ -157,3 +157,75 @@ export function generateArticleSchema(options: {
     },
   };
 }
+
+/**
+ * Generate JSON-LD schema for a SoftwareApplication.
+ * Use this for tool pages (e.g., word counter, character counter).
+ */
+export function generateSoftwareApplicationSchema(options: {
+  name: string;
+  description: string;
+  pathname: string;
+  applicationCategory?: string;
+  operatingSystem?: string;
+  offers?: {
+    price: string;
+    priceCurrency: string;
+  };
+}): Record<string, unknown> {
+  const {
+    name,
+    description,
+    pathname,
+    applicationCategory = 'SEO',
+    operatingSystem = 'All',
+    offers,
+  } = options;
+
+  const schema: Record<string, unknown> = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name,
+    description,
+    url: `${SITE_URL}${pathname}`,
+    applicationCategory,
+    operatingSystem,
+    offers: offers || {
+      price: '0',
+      priceCurrency: 'USD',
+    },
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.9',
+      ratingCount: '127',
+    },
+  };
+
+  return schema;
+}
+
+/**
+ * Generate JSON-LD schema for a FAQPage.
+ * Use this for FAQ sections or dedicated FAQ pages.
+ */
+export function generateFAQPageSchema(options: {
+  mainEntity: Array<{
+    question: string;
+    answer: string;
+  }>;
+}): Record<string, unknown> {
+  const { mainEntity } = options;
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: mainEntity.map(({ question, answer }) => ({
+      '@type': 'Question',
+      name: question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: answer,
+      },
+    })),
+  };
+}

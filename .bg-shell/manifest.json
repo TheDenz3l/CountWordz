@@ -1,16 +1,16 @@
 [
   {
-    "id": "d3f52df1",
-    "label": "astro-preview",
-    "command": "npm run preview -- --host 127.0.0.1 --port 4321",
+    "id": "ecbf3e7a",
+    "label": "CounterWordz dev server",
+    "command": "cd /Users/bmar/Desktop/counterwordz && npm run dev",
     "cwd": "/Users/bmar/Desktop/counterwordz",
-    "ownerSessionFile": "/Users/bmar/.gsd/sessions/--Users-bmar-Desktop-counterwordz--/2026-03-31T23-02-34-527Z_dc6b8956-9b29-4409-917e-5127a8cb05e4.jsonl",
+    "ownerSessionFile": "/Users/bmar/.gsd/sessions/--Users-bmar-Desktop-counterwordz--/2026-03-31T07-28-39-890Z_5a63c823-a982-49a4-a665-b92bd79c0e37.jsonl",
     "persistAcrossSessions": false,
-    "startedAt": 1775004778125,
+    "startedAt": 1774955894896,
     "processType": "server",
-    "group": "counterwordz",
-    "readyPattern": "Local",
-    "readyPort": 4321,
-    "pid": 8208
+    "group": null,
+    "readyPattern": "ready in",
+    "readyPort": null,
+    "pid": 81227
   }
 ]
