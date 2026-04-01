@@ -2,9 +2,12 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 
 import react from '@astrojs/react';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://countwordz.com',
+
   vite: {
     plugins: [tailwindcss()],
     server: {
@@ -20,5 +23,19 @@ export default defineConfig({
     inlineStylesheets: 'auto',
   },
 
-  integrations: [react()],
+  integrations: [
+    react(),
+    sitemap({
+      i18n: {
+        defaultLocale: 'en',
+        locales: {
+          en: 'en-US',
+          es: 'es-ES',
+          fr: 'fr-FR',
+          de: 'de-DE',
+          pt: 'pt-PT',
+        },
+      },
+    }),
+  ],
 });
