@@ -4,16 +4,65 @@ import ReadabilityCheckerTool from '../../../components/ReadabilityCheckerTool';
 import Sidebar from '../../../components/Sidebar.astro';
 import Footer from '../../../components/Footer.astro';
 import { getLocalizedToolPath } from '../../../lib/locale-routes';
+import Icon from '../../../components/Icon.astro';
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: '¿Qué mide un verificador de legibilidad?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Mide qué tan fácil o difícil es leer un texto usando métricas como Flesch Reading Ease y Flesch-Kincaid, además de señales estructurales del contenido.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Qué puntuación de legibilidad es buena?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Depende de la audiencia. Para público general, suele funcionar bien una puntuación media que favorezca frases claras y vocabulario accesible.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Sirve para SEO?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sí. Un texto más claro suele mejorar la experiencia del usuario y puede ayudar a que el contenido sea más fácil de consumir.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Puedo usarlo en artículos y emails?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sí. Es útil para artículos de blog, newsletters, páginas de venta, documentación y cualquier pieza que deba ser comprensible para su audiencia.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Necesito registrarme?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'No. La herramienta es gratuita y puedes usarla de inmediato sin crear una cuenta.',
+      },
+    },
+  ],
+};
 ---
 
 <BaseLayout 
   title="Verificador de Legibilidad - Mide la Legibilidad del Texto" 
   description="Verificador de legibilidad gratuito. Calcula puntuaciones Flesch Reading Ease y Flesch-Kincaid. Optimiza tu contenido para tu audiencia."
+  jsonLD={[faqSchema]}
 >
   <main class="layout-shell px-4 py-6">
     <header class="mb-6">
       <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Verificador de Legibilidad</h1>
-      <p class="text-base text-text-muted max-w-3xl">Mide la legibilidad del texto con puntuaciones Flesch y niveles de grado. Optimiza tu contenido para tu audiencia objetivo.</p>
+      <p class="text-base text-text-muted max-w-3xl">Mide la legibilidad del texto con puntuaciones Flesch y niveles de grado. Optimiza claridad, estructura y adecuación para tu audiencia.</p>
     </header>
 
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
@@ -53,13 +102,44 @@ import { getLocalizedToolPath } from '../../../lib/locale-routes';
             </div>
           </section>
 
-          <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Herramientas Relacionadas</h2>
-            <ul class="space-y-2">
-              <li><a href="/es/word-counter" class="text-brand-pink hover:underline">Contador de Palabras</a></li>
-              <li><a href="/es/sentence-counter" class="text-brand-pink hover:underline">Contador de Oraciones</a></li>
-              <li><a href={getLocalizedToolPath('es', 'blog-readability-checker', 'readability')} class="text-brand-pink hover:underline">Legibilidad de Blog</a></li>
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Ideal Para</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div><h3 class="font-semibold text-brand-pink mb-2">Bloggers y Creadores</h3><p class="text-text-muted text-sm">Ajusta el tono y la claridad para que tu audiencia entienda el mensaje sin esfuerzo.</p></div>
+              <div><h3 class="font-semibold text-brand-cyan mb-2">Equipos de Marketing</h3><p class="text-text-muted text-sm">Mejora landing pages, emails y materiales promocionales para aumentar comprensión y conversión.</p></div>
+              <div><h3 class="font-semibold text-brand-orange mb-2">Educadores</h3><p class="text-text-muted text-sm">Comprueba si los textos están alineados con el nivel lector esperado para tus alumnos.</p></div>
+              <div><h3 class="font-semibold text-brand-pink mb-2">Especialistas SEO</h3><p class="text-text-muted text-sm">Evalúa si el contenido es claro, escaneable y adecuado para usuarios que llegan desde buscadores.</p></div>
+            </div>
+          </section>
+
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Consejos Prácticos</h2>
+            <ul class="space-y-4">
+              <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Acorta frases largas:</strong> dividir oraciones complejas suele mejorar la lectura sin perder profundidad.</span></li>
+              <li class="flex gap-3"><span class="text-brand-cyan font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Usa palabras concretas:</strong> reemplaza términos vagos o rebuscados por expresiones más directas.</span></li>
+              <li class="flex gap-3"><span class="text-brand-orange font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Piensa en tu audiencia:</strong> no todos los textos necesitan ser simples, pero sí adecuados para quien los va a leer.</span></li>
+              <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Revisa estructura y subtítulos:</strong> la legibilidad no depende solo de palabras y frases, también del orden del contenido.</span></li>
+              <li class="flex gap-3"><span class="text-brand-cyan font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Combínalo con el contador de oraciones:</strong> ambos datos ayudan a detectar densidad y ritmo de lectura.</span></li>
             </ul>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-4">Preguntas Frecuentes</h2>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">¿Qué mide un verificador de legibilidad?<span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Evalúa qué tan fácil es leer un texto usando métricas de longitud de frases, complejidad y fórmulas como Flesch.</p></details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">¿Qué puntuación es buena?<span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Depende del público. Un texto para audiencia general suele beneficiarse de puntuaciones medias o altas y frases más claras.</p></details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">¿Sirve para SEO?<span class="text-brand-orange group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Sí. Un contenido claro suele ofrecer mejor experiencia de lectura y favorecer el consumo del contenido.</p></details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">¿Funciona para artículos y emails?<span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Sí. Es útil para casi cualquier formato donde la comprensión rápida sea importante.</p></details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">¿Necesito registrarme?<span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">No. Puedes usar la herramienta gratis y al momento.</p></details>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-4">Herramientas Relacionadas</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <a href="/es/word-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="chart" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-pink">Contador de Palabras</h3><p class="text-xs text-text-muted">Mide longitud total</p></a>
+              <a href="/es/sentence-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="note" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-cyan">Contador de Oraciones</h3><p class="text-xs text-text-muted">Evalúa estructura</p></a>
+              <a href={getLocalizedToolPath('es', 'blog-readability-checker', 'readability')} class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="file" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-orange">Legibilidad de Blog</h3><p class="text-xs text-text-muted">Enfocado en artículos</p></a>
+              <a href="/es/character-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="text" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-pink">Contador de Caracteres</h3><p class="text-xs text-text-muted">Controla límites</p></a>
+            </div>
           </section>
         </article>
       </div>

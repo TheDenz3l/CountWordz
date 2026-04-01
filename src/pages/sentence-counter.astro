@@ -4,6 +4,7 @@ import Footer from '../components/Footer.astro';
 import Sidebar from '../components/Sidebar.astro';
 import SentenceCounterTool from '../components/SentenceCounterTool';
 import { generateSoftwareApplicationSchema } from '../lib/seo-metadata';
+import Icon from '../components/Icon.astro';
 
 const softwareSchema = generateSoftwareApplicationSchema({
   name: 'Sentence Counter',
@@ -96,27 +97,27 @@ const softwareSchema = generateSoftwareApplicationSchema({
               <h3 class="text-lg font-display font-semibold mb-3">Perfect For:</h3>
               <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 text-text-primary">
                 <li class="flex items-center gap-2">
-                  <span class="text-brand-pink">✓</span>
+                  <span class="text-brand-pink"><Icon name="check" size={18} /></span>
                   <span>Writers improving readability</span>
                 </li>
                 <li class="flex items-center gap-2">
-                  <span class="text-brand-pink">✓</span>
+                  <span class="text-brand-pink"><Icon name="check" size={18} /></span>
                   <span>Students editing essays</span>
                 </li>
                 <li class="flex items-center gap-2">
-                  <span class="text-brand-pink">✓</span>
+                  <span class="text-brand-pink"><Icon name="check" size={18} /></span>
                   <span>Content creators optimizing blogs</span>
                 </li>
                 <li class="flex items-center gap-2">
-                  <span class="text-brand-pink">✓</span>
+                  <span class="text-brand-pink"><Icon name="check" size={18} /></span>
                   <span>Editors refining manuscripts</span>
                 </li>
                 <li class="flex items-center gap-2">
-                  <span class="text-brand-pink">✓</span>
+                  <span class="text-brand-pink"><Icon name="check" size={18} /></span>
                   <span>Non-native English writers</span>
                 </li>
                 <li class="flex items-center gap-2">
-                  <span class="text-brand-pink">✓</span>
+                  <span class="text-brand-pink"><Icon name="check" size={18} /></span>
                   <span>Technical writers simplifying docs</span>
                 </li>
               </ul>

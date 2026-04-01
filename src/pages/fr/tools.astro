@@ -2,7 +2,9 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Footer from '../../components/Footer.astro';
 import { getLocalizedStaticPath, getLocalizedToolPath, getLocaleHomePath } from '../../lib/locale-routes';
+import { generateFAQPageSchema } from '../../lib/seo-metadata';
 import { getLongTailDirectoryEntries, readabilityDirectorySlugs, readingTimeDirectorySlugs } from '../../lib/tools-directory';
+import Icon from '../../components/Icon.astro';
 
 const locale = 'fr';
 const readabilityTools = getLongTailDirectoryEntries(locale, readabilityDirectorySlugs);
@@ -69,11 +71,24 @@ const wordTools = [
   { slug: 'press-release-word-counter', title: 'Communiqué de presse', description: 'Pour médias et RP' },
   { slug: 'product-description-word-counter', title: 'Description produit', description: 'Pour e-commerce' },
 ];
+
+
+const faqSchema = generateFAQPageSchema({
+  mainEntity: [
+    { question: 'Que contient cette page d’outils ?', answer: 'Elle regroupe les principales catégories de CountWordz ainsi que des accès rapides vers les outils adaptés à différents formats de texte.' },
+    { question: 'Tous les outils sont-ils gratuits ?', answer: 'Oui. Tous les outils listés ici sont gratuits et fonctionnent directement dans le navigateur.' },
+    { question: 'Comment trouver le bon outil ?', answer: 'Commencez par la catégorie correspondant à votre besoin, puis ouvrez l’outil le plus adapté à votre type de contenu.' },
+    { question: 'Y a-t-il aussi des outils spécialisés ?', answer: 'Oui. En plus des outils principaux, cette page relie des outils dédiés au SEO, aux réseaux sociaux, à la lisibilité et à plusieurs types de documents.' },
+    { question: 'Dois-je m’inscrire ?', answer: 'Non. Aucun compte n’est nécessaire.' },
+  ],
+});
+
 ---
 
 <BaseLayout 
   title="Tous les outils de texte - Liste complète des 103 outils gratuits" 
   description="Liste complète des 103 outils de texte gratuits sur CountWordz. Explorez par catégorie : compteurs de mots, compteurs de caractères, vérificateurs de lisibilité, calculateurs de temps de lecture et plus encore."
+  jsonLD={[faqSchema]}
 >
   <main class="layout-shell px-4 py-6">
     <header class="mb-8">
@@ -159,6 +174,33 @@ const wordTools = [
           </a>
         ))}
       </div>
+    </section>
+
+    <section class="mb-12 bg-surface rounded-2xl p-8 border border-gray-100">
+      <h2 class="text-2xl md:text-3xl font-display font-bold mb-4">Comment utiliser ce répertoire</h2>
+      <p class="text-text-primary mb-4">Cette page sert de point d’entrée pour trouver rapidement l’outil adapté selon votre objectif : mesurer, comparer, réécrire, vérifier la lisibilité ou optimiser un texte.</p>
+      <p class="text-text-primary">Plutôt que de chercher outil par outil, parcourez d’abord les catégories puis ouvrez la page la plus proche de votre format de contenu.</p>
+    </section>
+
+    <section class="mb-12 bg-surface rounded-2xl p-8 border border-gray-100">
+      <h2 class="text-2xl md:text-3xl font-display font-bold mb-4">Idéal pour</h2>
+      <p class="text-text-primary">Rédacteurs, marketeurs, étudiants, équipes SEO et toute personne qui travaille régulièrement sur plusieurs formats de texte.</p>
+    </section>
+
+    <section class="mb-12 bg-surface rounded-2xl p-8 border border-gray-100">
+      <h2 class="text-2xl md:text-3xl font-display font-bold mb-4">Conseils pratiques</h2>
+      <ul class="space-y-4 text-text-primary">
+        <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span>Commencez par la catégorie qui correspond à votre besoin plutôt que par le nom d’un outil.</span></li>
+        <li class="flex gap-3"><span class="text-brand-cyan font-bold"><Icon name="check" size={18} /></span><span>Combinez plusieurs outils pour une révision plus complète : mots, lisibilité, caractères, temps de lecture.</span></li>
+        <li class="flex gap-3"><span class="text-brand-orange font-bold"><Icon name="check" size={18} /></span><span>Gardez cette page comme index de travail si vous utilisez souvent plusieurs outils dans la même journée.</span></li>
+      </ul>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-2xl md:text-3xl font-display font-bold mb-4">Questions Fréquentes</h2>
+      <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">Que trouve-t-on sur cette page ?<span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Vous y trouverez les outils principaux ainsi que des pages spécialisées organisées par usage et catégorie.</p></details>
+      <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">Tous les outils sont-ils gratuits ?<span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Oui. Les outils listés ici sont accessibles gratuitement sans inscription.</p></details>
+      <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">Comment trouver le bon outil ?<span class="text-brand-orange group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Commencez par la catégorie correspondant à votre besoin, puis choisissez l’outil adapté au type de contenu.</p></details>
     </section>
 
     <section class="py-6 bg-gray-50 mb-12">

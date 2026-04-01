@@ -3,16 +3,65 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import ParagraphRewriter from '../../../components/ParagraphRewriter';
 import Sidebar from '../../../components/Sidebar.astro';
 import Footer from '../../../components/Footer.astro';
+import Icon from '../../../components/Icon.astro';
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'O que esta ferramenta melhora?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Ela pode sinalizar voz passiva, frases longas, palavras complexas e repetição.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Ela reescreve automaticamente?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Ela oferece sugestões; a decisão final continua sendo sua.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Serve para blogs e ensaios?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sim, tanto para conteúdo editorial quanto acadêmico.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Preciso aceitar todas as mudanças?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Não, cada sugestão deve ser revisada conforme tom e objetivo do texto.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Preciso de cadastro?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Não.',
+      },
+    },
+  ],
+};
+
 ---
 
 <BaseLayout 
-  title="Reescritor de Parágrafos - Melhora a Clareza da sua Escrita" 
-  description="Ferramenta de reescrita de parágrafos gratuita. Obtenha sugestões para melhorar a clareza, legibilidade e estrutura da sua escrita."
+  title="Reescritor de Parágrafos - Melhora a Clareza da Escrita" 
+  description="Receba sugestões para melhorar clareza, estrutura e legibilidade do texto."
+  jsonLD={[faqSchema]}
 >
   <main class="layout-shell px-4 py-6">
     <header class="mb-6">
       <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Reescritor de Parágrafos</h1>
-      <p class="text-base text-text-muted max-w-3xl">Obtenha sugestões inteligentes para melhorar sua escrita. Corrija voz passiva, encurte frases longas, simplifique palavras complexas.</p>
+      <p class="text-base text-text-muted max-w-3xl">Receba sugestões para melhorar clareza, estrutura e legibilidade do texto.</p>
     </header>
 
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
@@ -41,25 +90,79 @@ import Footer from '../../../components/Footer.astro';
 
         <article class="mt-8">
           <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">O que Esta Ferramenta Melhora</h2>
-            <div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4">
-              <ul class="space-y-2 text-text-primary">
-                <li><strong>Voz passiva</strong> — Sugere mudar para voz ativa</li>
-                <li><strong>Frases longas</strong> — Recomenda dividir frases com mais de 25 palavras</li>
-                <li><strong>Palavras complexas</strong> — Sugere alternativas mais simples</li>
-                <li><strong>Repetição</strong> — Identifica palavras usadas em excesso</li>
-                <li><strong>Legibilidade</strong> — Mostra pontuações de legibilidade melhoradas</li>
-              </ul>
-            </div>
+            <h2 class="text-2xl font-display font-bold mb-3">Reescritor de Parágrafos</h2>
+            <p class="text-text-primary mb-4">A ferramenta revisa voz passiva, frases longas, repetição e complexidade para ajudar a reescrever parágrafos com mais clareza.</p>
+          </section>
+
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Ideal Para</h2>
+            <p class="text-text-primary">Rascunhos, artigos, textos acadêmicos, páginas de venda e qualquer conteúdo que precise de uma segunda revisão de clareza.</p>
+          </section>
+
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Dicas Práticas</h2>
+            <ul class="space-y-4">
+              <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted">Revise as sugestões antes de aplicá-las.</span></li>
+              <li class="flex gap-3"><span class="text-brand-cyan font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted">Priorize clareza acima de mudanças apenas cosméticas.</span></li>
+              <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted">Compare a versão original com a revisada.</span></li>
+            </ul>
           </section>
 
           <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Ferramentas Relacionadas</h2>
-            <ul class="space-y-2">
-              <li><a href="/pt/word-counter" class="text-brand-pink hover:underline">Contador de Palavras</a></li>
-              <li><a href="/pt/text-compare-tool" class="text-brand-pink hover:underline">Comparador de Texto</a></li>
-              <li><a href="/pt/readability-checker" class="text-brand-pink hover:underline">Verificador de Legibilidade</a></li>
-            </ul>
+            <h2 class="text-2xl font-display font-bold mb-4">Perguntas Frequentes</h2>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                O que esta ferramenta melhora?
+                <span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Ela pode sinalizar voz passiva, frases longas, palavras complexas e repetição.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Ela reescreve automaticamente?
+                <span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Ela oferece sugestões; a decisão final continua sendo sua.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Serve para blogs e ensaios?
+                <span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Sim, tanto para conteúdo editorial quanto acadêmico.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Preciso aceitar todas as mudanças?
+                <span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Não, cada sugestão deve ser revisada conforme tom e objetivo do texto.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Preciso de cadastro?
+                <span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Não.</p>
+            </details>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-4">Ferramentas Relacionadas</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <a href="/pt/word-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="chart" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-pink">Contador de Palavras</h3>
+              </a>
+              <a href="/pt/text-compare-tool" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="text" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-cyan">Comparador de Texto</h3>
+              </a>
+              <a href="/pt/readability-checker" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="book" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-orange">Verificador de Legibilidade</h3>
+              </a>
+            </div>
           </section>
         </article>
       </div>

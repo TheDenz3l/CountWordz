@@ -4,16 +4,65 @@ import ReadingTimeTool from '../../../components/ReadingTimeTool';
 import Sidebar from '../../../components/Sidebar.astro';
 import Footer from '../../../components/Footer.astro';
 import { getLocalizedToolPath } from '../../../lib/locale-routes';
+import Icon from '../../../components/Icon.astro';
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Quelle est la précision de l’estimation ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'C’est une référence utile fondée sur des vitesses moyennes.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Est-ce utile pour les présentations ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Oui, notamment avec le temps de parole.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Cela convient-il aux blogs ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Oui, cela aide à anticiper la durée de consommation du contenu.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Faut-il remesurer après édition ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Oui, car de petits changements modifient vite la durée finale.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Dois-je m’inscrire ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Non, l’outil est gratuit.',
+      },
+    },
+  ],
+};
+
 ---
 
 <BaseLayout 
   title="Calculateur de Temps de Lecture - Estime le Temps de Lecture" 
-  description="Calculateur de temps de lecture gratuit. Estime combien de temps il faut pour lire votre texte. Optimisez la longueur de votre contenu."
+  description="Estimez le temps de lecture et de parole de votre texte. Idéal pour planifier la longueur du contenu."
+  jsonLD={[faqSchema]}
 >
   <main class="layout-shell px-4 py-6">
     <header class="mb-6">
       <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Calculateur de Temps de Lecture</h1>
-      <p class="text-base text-text-muted max-w-3xl">Estimez le temps de lecture et de parole pour votre texte. Optimisez la longueur de votre contenu.</p>
+      <p class="text-base text-text-muted max-w-3xl">Estimez le temps de lecture et de parole de votre texte. Idéal pour planifier la longueur du contenu.</p>
     </header>
 
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
@@ -42,23 +91,83 @@ import { getLocalizedToolPath } from '../../../lib/locale-routes';
 
         <article class="mt-8">
           <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Vitesses de Lecture</h2>
-            <div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4">
-              <ul class="space-y-2 text-text-primary">
-                <li class="flex justify-between"><span>Lecteur lent</span><span class="font-semibold">150-200 MPM</span></li>
-                <li class="flex justify-between"><span>Moyen</span><span class="font-semibold">200-250 MPM</span></li>
-                <li class="flex justify-between"><span>Lecteur rapide</span><span class="font-semibold">250-300 MPM</span></li>
-              </ul>
-            </div>
+            <h2 class="text-2xl font-display font-bold mb-3">Calculateur de Temps de Lecture</h2>
+            <p class="text-text-primary mb-4">L’outil estime le temps de lecture et de parole pour vous aider à adapter la longueur du contenu à son usage.</p>
+          </section>
+
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Idéal Pour</h2>
+            <p class="text-text-primary">Articles, newsletters, présentations, scripts et tout texte dont la durée influence l’expérience du lecteur ou de l’auditeur.</p>
+          </section>
+
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Conseils Pratiques</h2>
+            <ul class="space-y-4">
+              <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted">Utilisez le temps de lecture pour la consommation silencieuse et le temps de parole pour l’oral.</span></li>
+              <li class="flex gap-3"><span class="text-brand-cyan font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted">Ajustez la longueur selon le canal.</span></li>
+              <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted">Mesurez de nouveau après révision.</span></li>
+            </ul>
           </section>
 
           <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Outils Connexes</h2>
-            <ul class="space-y-2">
-              <li><a href="/fr/word-counter" class="text-brand-pink hover:underline">Compteur de Mots</a></li>
-              <li><a href={getLocalizedToolPath('fr', 'speech-time-calculator')} class="text-brand-pink hover:underline">Temps de Parole</a></li>
-              <li><a href={getLocalizedToolPath('fr', 'blog-reading-time')} class="text-brand-pink hover:underline">Temps de Blog</a></li>
-            </ul>
+            <h2 class="text-2xl font-display font-bold mb-4">Questions Fréquentes</h2>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Quelle est la précision de l’estimation ?
+                <span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">C’est une référence utile fondée sur des vitesses moyennes.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Est-ce utile pour les présentations ?
+                <span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Oui, notamment avec le temps de parole.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Cela convient-il aux blogs ?
+                <span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Oui, cela aide à anticiper la durée de consommation du contenu.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Faut-il remesurer après édition ?
+                <span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Oui, car de petits changements modifient vite la durée finale.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Dois-je m’inscrire ?
+                <span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Non, l’outil est gratuit.</p>
+            </details>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-4">Outils Connexes</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <a href="/fr/word-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="chart" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-pink">Compteur de Mots</h3>
+              </a>
+              <a href="/fr/readability-checker" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="text" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-cyan">Vérificateur de Lisibilité</h3>
+              </a>
+              <a href="/fr/sentence-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="book" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-orange">Compteur de Phrases</h3>
+              </a>
+              <a href="/fr/character-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="pencil" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-pink">Compteur de Caractères</h3>
+              </a>
+            </div>
           </section>
         </article>
       </div>

@@ -3,16 +3,65 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import CaseConverterTool from '../../../components/CaseConverterTool';
 import Sidebar from '../../../components/Sidebar.astro';
 import Footer from '../../../components/Footer.astro';
+import Icon from '../../../components/Icon.astro';
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Wofür ist ein Groß-/Kleinschreibungs-Konverter nützlich?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Er wandelt Text schnell in Kleinbuchstaben, GROSSBUCHSTABEN, Titel- oder Satzschreibweise um und spart Zeit bei Redaktion, Marketing und Alltagsaufgaben.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Was ist der Unterschied zwischen Titel- und Satzschreibweise?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Die Titelschreibweise hebt wichtige Wörter in Überschriften hervor. Die Satzschreibweise orientiert sich stärker an normalem Fließtext mit großem Satzanfang.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Kann ich bereits geschriebenen Text korrigieren?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Ja. Fügen Sie einfach den vorhandenen Text ein und wählen Sie das gewünschte Format für die sofortige Umwandlung.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Ist das für Überschriften und Social Media nützlich?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Ja. Es hilft, Titel, Unterzeilen, CTA-Texte und kurze Beiträge konsistent zu formatieren.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Brauche ich ein Konto?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Nein. Das Tool ist kostenlos und ohne Anmeldung sofort einsatzbereit.',
+      },
+    },
+  ],
+};
 ---
 
 <BaseLayout 
   title="Groß-/Kleinschreibung-Konverter - Konvertiert Textformate" 
   description="Kostenloser Groß-/Kleinschreibung-Konverter. Konvertiert Text zwischen klein, GROSS, Titel, Satz und mehr."
+  jsonLD={[faqSchema]}
 >
   <main class="layout-shell px-4 py-6">
     <header class="mb-6">
       <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Groß-/Kleinschreibung</h1>
-      <p class="text-base text-text-muted max-w-3xl">Konvertieren Sie Text zwischen verschiedenen Groß- und Kleinschreibungsformaten. Perfekt für Titel.</p>
+      <p class="text-base text-text-muted max-w-3xl">Konvertieren Sie Text zwischen verschiedenen Schreibweisen. Ideal für Überschriften, CTA-Texte, Webinhalte und alles, was ein einheitliches Format braucht.</p>
     </header>
 
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
@@ -44,22 +93,53 @@ import Footer from '../../../components/Footer.astro';
             <h2 class="text-2xl font-display font-bold mb-3">Verfügbare Formate</h2>
             <div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4">
               <ul class="space-y-2 text-text-primary">
-                <li><strong>klein</strong> — Alles klein</li>
-                <li><strong>GROSS</strong> — Alles groß</li>
-                <li><strong>Titel</strong> — Erster Buchstabe jedes Wortes groß</li>
-                <li><strong>Satz</strong> — Erster Buchstabe des Satzes groß</li>
-                <li><strong>aLTERNIEREND</strong> — Wechselt zwischen groß und klein</li>
+                <li><strong>klein</strong> — alles in Kleinbuchstaben</li>
+                <li><strong>GROSS</strong> — alles in Großbuchstaben</li>
+                <li><strong>Titel</strong> — typische Titelschreibweise für Überschriften</li>
+                <li><strong>Satz</strong> — Satzanfang groß, natürlicher Fließtext</li>
+                <li><strong>aLtErNiErEnD</strong> — wechselnde Groß- und Kleinschreibung</li>
               </ul>
             </div>
           </section>
 
-          <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Ähnliche Tools</h2>
-            <ul class="space-y-2">
-              <li><a href="/de/word-counter" class="text-brand-pink hover:underline">Wortzähler</a></li>
-              <li><a href="/de/title-case-converter" class="text-brand-pink hover:underline">Titel-Konverter</a></li>
-              <li><a href="/de/character-counter" class="text-brand-pink hover:underline">Zeichenzähler</a></li>
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Ideal für</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div><h3 class="font-semibold text-brand-pink mb-2">Redaktion und Content</h3><p class="text-text-muted text-sm">Vereinheitlichen Sie Überschriften, Zwischenzeilen und Textbausteine vor der Veröffentlichung.</p></div>
+              <div><h3 class="font-semibold text-brand-cyan mb-2">Marketing-Teams</h3><p class="text-text-muted text-sm">Bringen Sie CTA-Texte, Anzeigen und Social-Media-Bausteine in ein konsistentes Format.</p></div>
+              <div><h3 class="font-semibold text-brand-orange mb-2">Studierende</h3><p class="text-text-muted text-sm">Korrigieren Sie schnell Titel und Formatierungen in Präsentationen, Hausarbeiten und Dokumenten.</p></div>
+              <div><h3 class="font-semibold text-brand-pink mb-2">Alltag und Büro</h3><p class="text-text-muted text-sm">Sparen Sie Zeit, wenn Sie schlecht formatierte Texte aus Mails, PDFs oder alten Dokumenten übernehmen.</p></div>
+            </div>
+          </section>
+
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Praktische Tipps</h2>
+            <ul class="space-y-4">
+              <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Das richtige Format wählen:</strong> Titelschreibweise eignet sich für Überschriften, Satzschreibweise für normalen Text, GROSSBUCHSTABEN nur gezielt.</span></li>
+              <li class="flex gap-3"><span class="text-brand-cyan font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Namen und Marken prüfen:</strong> einige Eigennamen brauchen nach der Konvertierung eine manuelle Kontrolle.</span></li>
+              <li class="flex gap-3"><span class="text-brand-orange font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>CTA-Texte angleichen:</strong> ein einheitlicher Stil verbessert die Wahrnehmung Ihrer Marke.</span></li>
+              <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Copy-Paste sauber machen:</strong> besonders nützlich nach dem Einfügen aus PDFs, Tabellen oder Fremdquellen.</span></li>
+              <li class="flex gap-3"><span class="text-brand-cyan font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Mit Zeichenzähler kombinieren:</strong> so prüfen Sie Format und Länge in einem Arbeitsgang.</span></li>
             </ul>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-4">Häufig gestellte Fragen</h2>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">Wofür ist der Konverter nützlich?<span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Er hilft dabei, Texte schnell in das gewünschte Format zu bringen und redaktionelle Arbeit zu beschleunigen.</p></details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">Was ist der Unterschied zwischen Titel- und Satzschreibweise?<span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Die Titelschreibweise ist auf Überschriften ausgelegt, die Satzschreibweise auf normalen Lesefluss im Fließtext.</p></details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">Kann ich bestehenden Text korrigieren?<span class="text-brand-orange group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Ja. Text einfügen, gewünschte Umwandlung wählen und das Ergebnis sofort übernehmen.</p></details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">Ist das für Social Media geeignet?<span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Ja. Es hilft beim Vereinheitlichen von Titeln, Beiträgen und CTA-Elementen.</p></details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">Brauche ich ein Konto?<span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Nein. Das Tool ist sofort und kostenlos nutzbar.</p></details>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-4">Ähnliche Tools</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <a href="/de/word-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="chart" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-pink">Wortzähler</h3><p class="text-xs text-text-muted">Textlänge messen</p></a>
+              <a href="/de/title-case-converter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="tag" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-cyan">Titel-Konverter</h3><p class="text-xs text-text-muted">Überschriften verfeinern</p></a>
+              <a href="/de/character-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="text" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-orange">Zeichenzähler</h3><p class="text-xs text-text-muted">Zeichenlimits prüfen</p></a>
+              <a href="/de/readability-checker" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="book" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-pink">Lesbarkeit</h3><p class="text-xs text-text-muted">Klarheit bewerten</p></a>
+            </div>
           </section>
         </article>
       </div>

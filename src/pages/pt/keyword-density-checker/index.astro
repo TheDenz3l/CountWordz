@@ -4,16 +4,65 @@ import KeywordDensityChecker from '../../../components/KeywordDensityChecker';
 import Sidebar from '../../../components/Sidebar.astro';
 import Footer from '../../../components/Footer.astro';
 import { getLocalizedToolPath } from '../../../lib/locale-routes';
+import Icon from '../../../components/Icon.astro';
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'O que é densidade de palavras-chave?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'É a frequência relativa de uma palavra ou expressão em relação ao texto todo.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Qual faixa é útil?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Como referência, 1% a 2% costuma ser suficiente.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Isso ajuda em SEO?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sim, desde que o texto permaneça natural.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Devo evitar repetição excessiva?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sim, porque o conteúdo pode soar artificial.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Preciso de cadastro?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Não.',
+      },
+    },
+  ],
+};
+
 ---
 
 <BaseLayout 
   title="Densidade de Palavras-chave - Analisa Frequência de Palavras" 
-  description="Verificador de densidade de palavras-chave gratuito. Analise frequência de palavras para otimização SEO."
+  description="Analise a frequência de palavras e frases para otimização SEO."
+  jsonLD={[faqSchema]}
 >
   <main class="layout-shell px-4 py-6">
     <header class="mb-6">
       <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Densidade de Palavras-chave</h1>
-      <p class="text-base text-text-muted max-w-3xl">Analise a frequência de palavras no seu texto. Otimize seu conteúdo para SEO.</p>
+      <p class="text-base text-text-muted max-w-3xl">Analise a frequência de palavras e frases para otimização SEO.</p>
     </header>
 
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
@@ -42,23 +91,79 @@ import { getLocalizedToolPath } from '../../../lib/locale-routes';
 
         <article class="mt-8">
           <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Densidade de Palavras-chave Ótima</h2>
-            <div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4">
-              <ul class="space-y-2 text-text-primary">
-                <li class="flex justify-between"><span>Ótima</span><span class="font-semibold">1-2%</span></li>
-                <li class="flex justify-between"><span>Aceitável</span><span class="font-semibold">2-3%</span></li>
-                <li class="flex justify-between"><span>Muito alto</span><span class="font-semibold">3%+</span></li>
-              </ul>
-            </div>
+            <h2 class="text-2xl font-display font-bold mb-3">Densidade de Palavras-chave</h2>
+            <p class="text-text-primary mb-4">A densidade de palavras-chave ajuda a detectar repetições excessivas e equilibrar a presença de termos importantes no texto.</p>
+          </section>
+
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Ideal Para</h2>
+            <p class="text-text-primary">Textos SEO, landing pages, artigos, descrições de produto e qualquer conteúdo em que repetição de termos precise ser controlada.</p>
+          </section>
+
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Dicas Práticas</h2>
+            <ul class="space-y-4">
+              <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted">Não persiga um percentual fixo a qualquer custo.</span></li>
+              <li class="flex gap-3"><span class="text-brand-cyan font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted">Combine termos principais com variantes e sinônimos.</span></li>
+              <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted">Priorize clareza antes de repetição artificial.</span></li>
+            </ul>
           </section>
 
           <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Ferramentas Relacionadas</h2>
-            <ul class="space-y-2">
-              <li><a href="/pt/word-counter" class="text-brand-pink hover:underline">Contador de Palavras</a></li>
-              <li><a href="/pt/readability-checker" class="text-brand-pink hover:underline">Verificador de Legibilidade</a></li>
-              <li><a href={getLocalizedToolPath('pt', 'seo-content-readability-checker')} class="text-brand-pink hover:underline">Legibilidade SEO</a></li>
-            </ul>
+            <h2 class="text-2xl font-display font-bold mb-4">Perguntas Frequentes</h2>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                O que é densidade de palavras-chave?
+                <span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">É a frequência relativa de uma palavra ou expressão em relação ao texto todo.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Qual faixa é útil?
+                <span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Como referência, 1% a 2% costuma ser suficiente.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Isso ajuda em SEO?
+                <span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Sim, desde que o texto permaneça natural.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Devo evitar repetição excessiva?
+                <span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Sim, porque o conteúdo pode soar artificial.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Preciso de cadastro?
+                <span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Não.</p>
+            </details>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-4">Ferramentas Relacionadas</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <a href="/pt/word-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="chart" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-pink">Contador de Palavras</h3>
+              </a>
+              <a href="/pt/readability-checker" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="text" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-cyan">Verificador de Legibilidade</h3>
+              </a>
+              <a href={getLocalizedToolPath('pt', 'seo-content-readability-checker')} class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="book" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-orange">Legibilidade SEO</h3>
+              </a>
+            </div>
           </section>
         </article>
       </div>

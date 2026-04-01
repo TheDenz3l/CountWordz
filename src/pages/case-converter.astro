@@ -4,6 +4,7 @@ import Footer from '../components/Footer.astro';
 import Sidebar from '../components/Sidebar.astro';
 import CaseConverterTool from '../components/CaseConverterTool';
 import { generateSoftwareApplicationSchema } from '../lib/seo-metadata';
+import Icon from '../components/Icon.astro';
 
 const softwareSchema = generateSoftwareApplicationSchema({
   name: 'Case Converter',
@@ -121,27 +122,27 @@ const softwareSchema = generateSoftwareApplicationSchema({
               <h3 class="text-lg font-display font-semibold mb-3">Perfect For:</h3>
               <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 text-text-primary">
                 <li class="flex items-center gap-2">
-                  <span class="text-brand-pink">✓</span>
+                  <span class="text-brand-pink"><Icon name="check" size={18} /></span>
                   <span>Writers formatting titles and headings</span>
                 </li>
                 <li class="flex items-center gap-2">
-                  <span class="text-brand-pink">✓</span>
+                  <span class="text-brand-pink"><Icon name="check" size={18} /></span>
                   <span>Developers converting variable names</span>
                 </li>
                 <li class="flex items-center gap-2">
-                  <span class="text-brand-pink">✓</span>
+                  <span class="text-brand-pink"><Icon name="check" size={18} /></span>
                   <span>Content creators optimizing headlines</span>
                 </li>
                 <li class="flex items-center gap-2">
-                  <span class="text-brand-pink">✓</span>
+                  <span class="text-brand-pink"><Icon name="check" size={18} /></span>
                   <span>Students formatting citations</span>
                 </li>
                 <li class="flex items-center gap-2">
-                  <span class="text-brand-pink">✓</span>
+                  <span class="text-brand-pink"><Icon name="check" size={18} /></span>
                   <span>Editors standardizing document formatting</span>
                 </li>
                 <li class="flex items-center gap-2">
-                  <span class="text-brand-pink">✓</span>
+                  <span class="text-brand-pink"><Icon name="check" size={18} /></span>
                   <span>Marketers creating ad copy variations</span>
                 </li>
               </ul>

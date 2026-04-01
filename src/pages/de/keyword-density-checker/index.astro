@@ -4,16 +4,65 @@ import KeywordDensityChecker from '../../../components/KeywordDensityChecker';
 import Sidebar from '../../../components/Sidebar.astro';
 import Footer from '../../../components/Footer.astro';
 import { getLocalizedToolPath } from '../../../lib/locale-routes';
+import Icon from '../../../components/Icon.astro';
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Was ist Keyword-Dichte?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sie beschreibt, wie häufig ein Begriff im Verhältnis zum Gesamttext vorkommt.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Welcher Bereich ist sinnvoll?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Als grobe Orientierung reichen oft 1 % bis 2 %.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Ist das für SEO nützlich?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Ja, solange der Text natürlich bleibt.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Sollte man hohe Wiederholung vermeiden?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Ja, weil der Text sonst schnell unnatürlich wirkt.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Brauche ich ein Konto?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Nein.',
+      },
+    },
+  ],
+};
+
 ---
 
 <BaseLayout 
   title="Keyword-Dichte - Analysiert Worthäufigkeit" 
-  description="Kostenloser Keyword-Dichte-Prüfer. Analysieren Sie Worthäufigkeit für SEO-Optimierung."
+  description="Analysieren Sie Worthäufigkeit und Phrasen für die SEO-Optimierung."
+  jsonLD={[faqSchema]}
 >
   <main class="layout-shell px-4 py-6">
     <header class="mb-6">
       <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Keyword-Dichte</h1>
-      <p class="text-base text-text-muted max-w-3xl">Analysieren Sie die Worthäufigkeit in Ihrem Text. Optimieren Sie Ihren Inhalt für SEO.</p>
+      <p class="text-base text-text-muted max-w-3xl">Analysieren Sie Worthäufigkeit und Phrasen für die SEO-Optimierung.</p>
     </header>
 
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
@@ -42,23 +91,79 @@ import { getLocalizedToolPath } from '../../../lib/locale-routes';
 
         <article class="mt-8">
           <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Optimale Keyword-Dichte</h2>
-            <div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4">
-              <ul class="space-y-2 text-text-primary">
-                <li class="flex justify-between"><span>Optimal</span><span class="font-semibold">1-2%</span></li>
-                <li class="flex justify-between"><span>Akzeptabel</span><span class="font-semibold">2-3%</span></li>
-                <li class="flex justify-between"><span>Zu hoch</span><span class="font-semibold">3%+</span></li>
-              </ul>
-            </div>
+            <h2 class="text-2xl font-display font-bold mb-3">Keyword-Dichte</h2>
+            <p class="text-text-primary mb-4">Die Keyword-Dichte hilft dabei, Überoptimierung zu erkennen und wichtige Begriffe ausgewogen im Text zu verteilen.</p>
+          </section>
+
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Ideal für</h2>
+            <p class="text-text-primary">SEO-Texte, Landingpages, Artikel, Produktbeschreibungen und alle Inhalte, bei denen Begriffswiederholung relevant ist.</p>
+          </section>
+
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Praktische Tipps</h2>
+            <ul class="space-y-4">
+              <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted">Jagen Sie keiner starren Prozentzahl hinterher.</span></li>
+              <li class="flex gap-3"><span class="text-brand-cyan font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted">Kombinieren Sie Hauptbegriffe mit Varianten und Synonymen.</span></li>
+              <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted">Verständlichkeit ist wichtiger als künstliche Wiederholung.</span></li>
+            </ul>
           </section>
 
           <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Ähnliche Tools</h2>
-            <ul class="space-y-2">
-              <li><a href="/de/word-counter" class="text-brand-pink hover:underline">Wortzähler</a></li>
-              <li><a href="/de/readability-checker" class="text-brand-pink hover:underline">Lesbarkeitsprüfer</a></li>
-              <li><a href={getLocalizedToolPath('de', 'seo-content-readability-checker')} class="text-brand-pink hover:underline">SEO-Lesbarkeit</a></li>
-            </ul>
+            <h2 class="text-2xl font-display font-bold mb-4">Häufig gestellte Fragen</h2>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Was ist Keyword-Dichte?
+                <span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Sie beschreibt, wie häufig ein Begriff im Verhältnis zum Gesamttext vorkommt.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Welcher Bereich ist sinnvoll?
+                <span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Als grobe Orientierung reichen oft 1 % bis 2 %.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Ist das für SEO nützlich?
+                <span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Ja, solange der Text natürlich bleibt.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Sollte man hohe Wiederholung vermeiden?
+                <span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Ja, weil der Text sonst schnell unnatürlich wirkt.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Brauche ich ein Konto?
+                <span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Nein.</p>
+            </details>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-4">Ähnliche Tools</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <a href="/de/word-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="chart" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-pink">Wortzähler</h3>
+              </a>
+              <a href="/de/readability-checker" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="text" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-cyan">Lesbarkeitsprüfer</h3>
+              </a>
+              <a href={getLocalizedToolPath('de', 'seo-content-readability-checker')} class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="book" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-orange">SEO-Lesbarkeit</h3>
+              </a>
+            </div>
           </section>
         </article>
       </div>

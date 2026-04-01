@@ -2,7 +2,9 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Footer from '../../components/Footer.astro';
 import { getLocalizedStaticPath, getLocalizedToolPath, getLocaleHomePath } from '../../lib/locale-routes';
+import { generateFAQPageSchema } from '../../lib/seo-metadata';
 import { getLongTailDirectoryEntries, readabilityDirectorySlugs, readingTimeDirectorySlugs } from '../../lib/tools-directory';
+import Icon from '../../components/Icon.astro';
 
 const locale = 'pt';
 const readabilityTools = getLongTailDirectoryEntries(locale, readabilityDirectorySlugs);
@@ -69,11 +71,24 @@ const wordTools = [
   { slug: 'press-release-word-counter', title: 'Comunicado de imprensa', description: 'Para mídia e relações públicas' },
   { slug: 'product-description-word-counter', title: 'Descrição de produto', description: 'Para e-commerce' },
 ];
+
+
+const faqSchema = generateFAQPageSchema({
+  mainEntity: [
+    { question: 'O que esta página de ferramentas inclui?', answer: 'Ela reúne as principais categorias da CountWordz e atalhos para ferramentas adequadas a diferentes tipos de texto e objetivos.' },
+    { question: 'Todas as ferramentas são gratuitas?', answer: 'Sim. Todas as ferramentas listadas aqui funcionam gratuitamente no navegador.' },
+    { question: 'Como encontro a ferramenta certa?', answer: 'Comece pela categoria que melhor combina com sua necessidade e depois abra a ferramenta específica mais adequada ao seu conteúdo.' },
+    { question: 'Também há ferramentas especializadas?', answer: 'Sim. Além das ferramentas principais, esta página aponta para utilidades de SEO, redes sociais, legibilidade e vários tipos de documento.' },
+    { question: 'Preciso de cadastro?', answer: 'Não. Nenhuma conta é necessária.' },
+  ],
+});
+
 ---
 
 <BaseLayout 
   title="Todas as ferramentas de texto - Lista completa das 103 ferramentas gratuitas" 
   description="Lista completa das 103 ferramentas de texto gratuitas da CountWordz. Explore contadores de palavras, contadores de caracteres, verificadores de legibilidade, calculadoras de tempo de leitura e muito mais."
+  jsonLD={[faqSchema]}
 >
   <main class="layout-shell px-4 py-6">
     <header class="mb-8">
@@ -159,6 +174,33 @@ const wordTools = [
           </a>
         ))}
       </div>
+    </section>
+
+    <section class="mb-12 bg-surface rounded-2xl p-8 border border-gray-100">
+      <h2 class="text-2xl md:text-3xl font-display font-bold mb-4">Como usar este diretório</h2>
+      <p class="text-text-primary mb-4">Esta página funciona como índice rápido para localizar a ferramenta certa de acordo com sua tarefa, canal ou formato de conteúdo.</p>
+      <p class="text-text-primary">Comece pela categoria e depois escolha a página especializada mais próxima do texto que você está produzindo ou revisando.</p>
+    </section>
+
+    <section class="mb-12 bg-surface rounded-2xl p-8 border border-gray-100">
+      <h2 class="text-2xl md:text-3xl font-display font-bold mb-4">Ideal Para</h2>
+      <p class="text-text-primary">Redatores, profissionais de marketing, estudantes, equipes de SEO e qualquer pessoa que trabalhe com vários formatos de texto no dia a dia.</p>
+    </section>
+
+    <section class="mb-12 bg-surface rounded-2xl p-8 border border-gray-100">
+      <h2 class="text-2xl md:text-3xl font-display font-bold mb-4">Dicas Práticas</h2>
+      <ul class="space-y-4 text-text-primary">
+        <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span>Comece pela categoria quando ainda não souber qual métrica ou ferramenta precisa usar.</span></li>
+        <li class="flex gap-3"><span class="text-brand-cyan font-bold"><Icon name="check" size={18} /></span><span>Combine ferramentas como contador de palavras, legibilidade e caracteres para uma revisão mais completa.</span></li>
+        <li class="flex gap-3"><span class="text-brand-orange font-bold"><Icon name="check" size={18} /></span><span>Mantenha esta página como índice de trabalho se você alterna entre vários tipos de texto durante o dia.</span></li>
+      </ul>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-2xl md:text-3xl font-display font-bold mb-4">Perguntas Frequentes</h2>
+      <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">O que esta página reúne?<span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Ela concentra as principais categorias e páginas especializadas da CountWordz em um só lugar.</p></details>
+      <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">Todas as ferramentas são gratuitas?<span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Sim. Todas as ferramentas listadas aqui são gratuitas e funcionam no navegador.</p></details>
+      <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">Como encontro a ferramenta certa?<span class="text-brand-orange group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Comece pela categoria que combina com sua necessidade e depois siga para a ferramenta específica mais adequada.</p></details>
     </section>
 
     <section class="py-6 bg-gray-50 mb-12">

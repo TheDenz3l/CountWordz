@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import WordCounterTool from '../../components/WordCounterTool';
 import Footer from '../../components/Footer.astro';
+import Icon from '../../components/Icon.astro';
 import { getLocalizedStaticPath, getLocalizedToolPath } from '../../lib/locale-routes';
 
 const locale = 'pt';
@@ -119,6 +120,156 @@ const popularUseCases = [
             <div class="text-xs text-text-muted">{item.description}</div>
           </a>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Como Usar CountWordz -->
+  <section class="py-16 bg-gray-50">
+    <div class="layout-shell px-4">
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-center mb-12">Como Usar CountWordz</h2>
+      <div class="max-w-4xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          <div class="bg-surface p-6 rounded-xl border border-gray-100">
+            <div class="text-4xl mb-4"><Icon name="note" size={36} /></div>
+            <h3 class="text-xl font-display font-semibold mb-3">1. Cole ou Digite Seu Texto</h3>
+            <p class="text-text-muted">Insira seu conteúdo diretamente na área de texto de qualquer ferramenta, ou cole da sua área de transferência. Toda a análise ocorre instantaneamente enquanto você digita.</p>
+          </div>
+          <div class="bg-surface p-6 rounded-xl border border-gray-100">
+            <div class="text-4xl mb-4"><Icon name="chart" size={36} /></div>
+            <h3 class="text-xl font-display font-semibold mb-3">2. Obtenha Análise Instantânea</h3>
+            <p class="text-text-muted">Visualize métricas em tempo real incluindo contagem de palavras, contagem de caracteres, tempo de leitura, pontuações de legibilidade e mais dependendo da ferramenta.</p>
+          </div>
+          <div class="bg-surface p-6 rounded-xl border border-gray-100">
+            <div class="text-4xl mb-4"><Icon name="save" size={36} /></div>
+            <h3 class="text-xl font-display font-semibold mb-3">3. Copie ou Exporte Resultados</h3>
+            <p class="text-text-muted">Copie seu texto formatado, exporte métricas ou use as informações para melhorar sua escrita. Nenhum cadastro necessário.</p>
+          </div>
+        </div>
+        
+        <!-- Ideal Para Section -->
+        <div class="bg-surface rounded-2xl p-8 border border-gray-100">
+          <h3 class="text-2xl font-display font-bold mb-6 text-center">Ideal Para</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <h4 class="font-semibold text-brand-pink mb-2">Estudantes e Educadores</h4>
+              <p class="text-text-muted text-sm">Verifique a contagem de palavras de ensaios, analise níveis de leitura e garanta que as tarefas atendam aos requisitos. Perfeito para escrita acadêmica e planejamento de aulas.</p>
+            </div>
+            <div>
+              <h4 class="font-semibold text-brand-cyan mb-2">Criadores de Conteúdo</h4>
+              <p class="text-text-muted text-sm">Otimize posts de blog, legendas de redes sociais e textos de marketing. Mantenha-se dentro dos limites de caracteres para X, Instagram, LinkedIn e mais.</p>
+            </div>
+            <div>
+              <h4 class="font-semibold text-brand-orange mb-2">Escritores Profissionais</h4>
+              <p class="text-text-muted text-sm">Acompanhe metas de escrita, analise legibilidade e mantenha qualidade consistente de conteúdo. Ideal para jornalistas, redatores publicitários e autores.</p>
+            </div>
+            <div>
+              <h4 class="font-semibold text-brand-pink mb-2">Especialistas em SEO</h4>
+              <p class="text-text-muted text-sm">Garanta que meta descrições, tags de título e comprimentos de conteúdo sigam as melhores práticas de SEO. Melhore classificações de pesquisa com conteúdo otimizado.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dicas Práticas Section -->
+        <div class="mt-8 bg-surface rounded-2xl p-8 border border-gray-100">
+          <h3 class="text-2xl font-display font-bold mb-6 text-center">Dicas Práticas</h3>
+          <ul class="space-y-4">
+            <li class="flex gap-3">
+              <span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span>
+              <span class="text-text-muted"><strong>Use a ferramenta certa para seu objetivo:</strong> Contador de palavras para ensaios, contador de caracteres para redes sociais, verificador de legibilidade para posts de blog.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="text-brand-cyan font-bold"><Icon name="check" size={18} /></span>
+              <span class="text-text-muted"><strong>Verifique as pontuações de legibilidade:</strong> Almeje uma pontuação Flesch de 60-70 para audiências gerais. Pontuações mais baixas indicam texto mais complexo.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="text-brand-orange font-bold"><Icon name="check" size={18} /></span>
+              <span class="text-text-muted"><strong>Monitore o comprimento das frases:</strong> Um comprimento médio de frase de 15-20 palavras melhora a legibilidade. Use o contador de frases para acompanhar isso.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span>
+              <span class="text-text-muted"><strong>Otimize para sua plataforma:</strong> Cada plataforma social tem limites diferentes. Use nossos contadores específicos para X, Instagram e LinkedIn.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="text-brand-cyan font-bold"><Icon name="check" size={18} /></span>
+              <span class="text-text-muted"><strong>Verifique o tempo de leitura:</strong> Posts de blog devem ter tempo de leitura de 3-7 minutos para engajamento ideal. Ajuste o comprimento do conteúdo conforme necessário.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ferramentas Relacionadas -->
+  <section class="py-16 bg-white">
+    <div class="layout-shell px-4">
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-center mb-4">Ferramentas Relacionadas</h2>
+      <p class="text-center text-text-muted mb-12 max-w-2xl mx-auto">Explore nossas ferramentas de análise de texto mais populares</p>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+        <a href="/pt/word-counter" class="bg-surface p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+          <div class="text-3xl mb-3"><Icon name="chart" size={30} /></div>
+          <h3 class="text-lg font-display font-semibold mb-2 text-brand-pink">Contador de Palavras</h3>
+          <p class="text-sm text-text-muted">Conta palavras, caracteres e estima tempo de leitura</p>
+        </a>
+        <a href="/pt/character-counter" class="bg-surface p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+          <div class="text-3xl mb-3"><Icon name="text" size={30} /></div>
+          <h3 class="text-lg font-display font-semibold mb-2 text-brand-cyan">Contador de Caracteres</h3>
+          <p class="text-sm text-text-muted">Verifica limites de caracteres para redes sociais</p>
+        </a>
+        <a href="/pt/readability-checker" class="bg-surface p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+          <div class="text-3xl mb-3"><Icon name="book" size={30} /></div>
+          <h3 class="text-lg font-display font-semibold mb-2 text-brand-orange">Verificador de Legibilidade</h3>
+          <p class="text-sm text-text-muted">Mede legibilidade e nível escolar</p>
+        </a>
+        <a href="/pt/case-converter" class="bg-surface p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+          <div class="text-3xl mb-3"><Icon name="text" size={30} /></div>
+          <h3 class="text-lg font-display font-semibold mb-2 text-brand-pink">Conversor de Caixa</h3>
+          <p class="text-sm text-text-muted">Converte texto entre diferentes casos</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Perguntas Frequentes -->
+  <section class="py-16 bg-gray-50">
+    <div class="layout-shell px-4">
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-center mb-12">Perguntas Frequentes</h2>
+      <div class="max-w-3xl mx-auto space-y-4">
+        <details class="bg-surface rounded-xl border border-gray-100 p-6 group">
+          <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+            O CountWordz é realmente gratuito?
+            <span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="text-text-muted mt-4">Sim! O CountWordz é 100% gratuita para sempre. Sem cadastro, sem taxas ocultas, sem níveis premium. As 103+ ferramentas estão disponíveis sem custo com uso ilimitado.</p>
+        </details>
+        <details class="bg-surface rounded-xl border border-gray-100 p-6 group">
+          <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+            Meus dados de texto são seguros e privados?
+            <span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="text-text-muted mt-4">Absolutamente. Todo o processamento de texto ocorre localmente no seu navegador usando JavaScript. Seu conteúdo nunca é enviado para nossos servidores, armazenado ou compartilhado com terceiros.</p>
+        </details>
+        <details class="bg-surface rounded-xl border border-gray-100 p-6 group">
+          <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+            Qual é a precisão das contagens de palavras e caracteres?
+            <span class="text-brand-orange group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="text-text-muted mt-4">Nossos algoritmos de contagem seguem métodos padrão da indústria. A contagem de palavras trata palavras com hífen como uma única palavra e conta contrações corretamente.</p>
+        </details>
+        <details class="bg-surface rounded-xl border border-gray-100 p-6 group">
+          <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+            Posso usar o CountWordz em dispositivos móveis?
+            <span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="text-text-muted mt-4">Sim! O CountWordz é totalmente responsivo e funciona perfeitamente em smartphones, tablets e computadores desktop. A interface se adapta a qualquer tamanho de tela.</p>
+        </details>
+        <details class="bg-surface rounded-xl border border-gray-100 p-6 group">
+          <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+            Preciso instalar algum software ou extensão?
+            <span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="text-text-muted mt-4">Nenhuma instalação necessária. O CountWordz é executado inteiramente no seu navegador web. Basta visitar o site e começar a usar qualquer ferramenta imediatamente.</p>
+        </details>
       </div>
     </div>
   </section>

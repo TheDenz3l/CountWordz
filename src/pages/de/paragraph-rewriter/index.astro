@@ -3,16 +3,65 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import ParagraphRewriter from '../../../components/ParagraphRewriter';
 import Sidebar from '../../../components/Sidebar.astro';
 import Footer from '../../../components/Footer.astro';
+import Icon from '../../../components/Icon.astro';
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Was verbessert dieses Tool?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Es markiert Passivkonstruktionen, lange Sätze, komplexe Wörter und Wiederholungen.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Schreibt es automatisch um?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Es macht Vorschläge; die endgültige Entscheidung bleibt bei Ihnen.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Ist es für Blogs und Aufsätze geeignet?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Ja, sowohl für redaktionelle als auch für akademische Texte.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Sollte man alle Änderungen übernehmen?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Nein, jede Empfehlung sollte zum Ton und Ziel des Textes passen.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Brauche ich ein Konto?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Nein.',
+      },
+    },
+  ],
+};
+
 ---
 
 <BaseLayout 
-  title="Überarbeiter - Verbessert die Klarheit Ihres Schreibens" 
-  description="Kostenloser Absatz-Überarbeiter. Erhalten Sie Vorschläge zur Verbesserung der Klarheit, Lesbarkeit und Struktur Ihres Schreibens."
+  title="Absatz-Umschreiber - Verbessert Klarheit und Struktur" 
+  description="Erhalten Sie Vorschläge zur Verbesserung von Klarheit, Struktur und Lesbarkeit."
+  jsonLD={[faqSchema]}
 >
   <main class="layout-shell px-4 py-6">
     <header class="mb-6">
-      <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Überarbeiter</h1>
-      <p class="text-base text-text-muted max-w-3xl">Erhalten Sie intelligente Vorschläge zur Verbesserung Ihres Schreibens. Korrigieren Sie Passiv, kürzen Sie lange Sätze, vereinfachen Sie komplexe Wörter.</p>
+      <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Absatz-Umschreiber</h1>
+      <p class="text-base text-text-muted max-w-3xl">Erhalten Sie Vorschläge zur Verbesserung von Klarheit, Struktur und Lesbarkeit.</p>
     </header>
 
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
@@ -41,25 +90,79 @@ import Footer from '../../../components/Footer.astro';
 
         <article class="mt-8">
           <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Was Dieses Tool Verbessert</h2>
-            <div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4">
-              <ul class="space-y-2 text-text-primary">
-                <li><strong>Passiv</strong> — Schlägt Umwandlung in Aktiv vor</li>
-                <li><strong>Lange Sätze</strong> — Empfiehlt Teilung von Sätzen über 25 Wörtern</li>
-                <li><strong>Komplexe Wörter</strong> — Schlägt einfachere Alternativen vor</li>
-                <li><strong>Wiederholung</strong> — Identifiziert übermäßig verwendete Wörter</li>
-                <li><strong>Lesbarkeit</strong> — Zeigt verbesserte Lesbarkeitswerte</li>
-              </ul>
-            </div>
+            <h2 class="text-2xl font-display font-bold mb-3">Absatz-Umschreiber</h2>
+            <p class="text-text-primary mb-4">Das Tool prüft Passiv, lange Sätze, Wiederholungen und Komplexität, um Absätze verständlicher zu machen.</p>
+          </section>
+
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Ideal für</h2>
+            <p class="text-text-primary">Entwürfe, Artikel, akademische Texte, Landingpages und alle Inhalte, die sprachlich geschärft werden sollen.</p>
+          </section>
+
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Praktische Tipps</h2>
+            <ul class="space-y-4">
+              <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted">Prüfen Sie Vorschläge vor der Übernahme.</span></li>
+              <li class="flex gap-3"><span class="text-brand-cyan font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted">Priorisieren Sie Klarheit vor rein kosmetischen Änderungen.</span></li>
+              <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted">Vergleichen Sie Original und Überarbeitung direkt.</span></li>
+            </ul>
           </section>
 
           <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Ähnliche Tools</h2>
-            <ul class="space-y-2">
-              <li><a href="/de/word-counter" class="text-brand-pink hover:underline">Wortzähler</a></li>
-              <li><a href="/de/text-compare-tool" class="text-brand-pink hover:underline">Textvergleich</a></li>
-              <li><a href="/de/readability-checker" class="text-brand-pink hover:underline">Lesbarkeitsprüfer</a></li>
-            </ul>
+            <h2 class="text-2xl font-display font-bold mb-4">Häufig gestellte Fragen</h2>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Was verbessert dieses Tool?
+                <span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Es markiert Passivkonstruktionen, lange Sätze, komplexe Wörter und Wiederholungen.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Schreibt es automatisch um?
+                <span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Es macht Vorschläge; die endgültige Entscheidung bleibt bei Ihnen.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Ist es für Blogs und Aufsätze geeignet?
+                <span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Ja, sowohl für redaktionelle als auch für akademische Texte.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Sollte man alle Änderungen übernehmen?
+                <span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Nein, jede Empfehlung sollte zum Ton und Ziel des Textes passen.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Brauche ich ein Konto?
+                <span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Nein.</p>
+            </details>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-4">Ähnliche Tools</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <a href="/de/word-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="chart" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-pink">Wortzähler</h3>
+              </a>
+              <a href="/de/text-compare-tool" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="text" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-cyan">Textvergleich</h3>
+              </a>
+              <a href="/de/readability-checker" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="book" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-orange">Lesbarkeitsprüfer</h3>
+              </a>
+            </div>
           </section>
         </article>
       </div>

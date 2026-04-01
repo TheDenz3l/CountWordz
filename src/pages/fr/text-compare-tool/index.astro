@@ -3,16 +3,65 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import TextDiffTool from '../../../components/TextDiffTool';
 import Sidebar from '../../../components/Sidebar.astro';
 import Footer from '../../../components/Footer.astro';
+import Icon from '../../../components/Icon.astro';
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Comment les textes sont-ils comparés ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Ils sont comparés mot par mot dans l’ordre afin de montrer les différences.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Peut-il détecter ajouts et suppressions ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Oui, les deux types de changements sont mis en évidence.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Est-ce utile pour contrats et documents ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Oui, c’est pratique pour comparer des versions révisées.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Montre-t-il aussi la similarité ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Oui, il fournit un repère rapide du niveau de changement.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Dois-je m’inscrire ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Non.',
+      },
+    },
+  ],
+};
+
 ---
 
 <BaseLayout 
   title="Comparateur de Texte - Compare Deux Textes" 
-  description="Outil de comparaison de texte gratuit. Comparez deux textes côte à côte et surlignez les différences. Voyez les mots ajoutés, supprimés et changés."
+  description="Comparez deux textes côte à côte et repérez les différences avec précision."
+  jsonLD={[faqSchema]}
 >
   <main class="layout-shell px-4 py-6">
     <header class="mb-6">
       <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Comparateur de Texte</h1>
-      <p class="text-base text-text-muted max-w-3xl">Comparez deux textes côte à côte et surlignez les différences. Suivez les changements entre versions de documents.</p>
+      <p class="text-base text-text-muted max-w-3xl">Comparez deux textes côte à côte et repérez les différences avec précision.</p>
     </header>
 
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
@@ -41,17 +90,79 @@ import Footer from '../../../components/Footer.astro';
 
         <article class="mt-8">
           <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Comment Ça Marche</h2>
-            <p class="text-text-primary mb-4">Collez le texte original dans le premier cadre et le texte révisé dans le second. L'outil surlignera les différences : ajoutés en vert, supprimés en rouge.</p>
+            <h2 class="text-2xl font-display font-bold mb-3">Comparateur de Texte</h2>
+            <p class="text-text-primary mb-4">Collez une version originale et une version révisée pour repérer ajouts, suppressions et changements dans une vue côte à côte.</p>
+          </section>
+
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Idéal Pour</h2>
+            <p class="text-text-primary">Révision de documents, suivi de versions, édition de contenu et comparaison entre brouillons.</p>
+          </section>
+
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Conseils Pratiques</h2>
+            <ul class="space-y-4">
+              <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted">Comparez des versions de longueur similaire.</span></li>
+              <li class="flex gap-3"><span class="text-brand-cyan font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted">Pour les longs contenus, travaillez par sections.</span></li>
+              <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted">Utilisez le pourcentage de similarité comme repère rapide.</span></li>
+            </ul>
           </section>
 
           <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Outils Connexes</h2>
-            <ul class="space-y-2">
-              <li><a href="/fr/word-counter" class="text-brand-pink hover:underline">Compteur de Mots</a></li>
-              <li><a href="/fr/paragraph-rewriter" class="text-brand-pink hover:underline">Réécriveur de Paragraphes</a></li>
-              <li><a href="/fr/readability-checker" class="text-brand-pink hover:underline">Vérificateur de Lisibilité</a></li>
-            </ul>
+            <h2 class="text-2xl font-display font-bold mb-4">Questions Fréquentes</h2>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Comment les textes sont-ils comparés ?
+                <span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Ils sont comparés mot par mot dans l’ordre afin de montrer les différences.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Peut-il détecter ajouts et suppressions ?
+                <span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Oui, les deux types de changements sont mis en évidence.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Est-ce utile pour contrats et documents ?
+                <span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Oui, c’est pratique pour comparer des versions révisées.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Montre-t-il aussi la similarité ?
+                <span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Oui, il fournit un repère rapide du niveau de changement.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Dois-je m’inscrire ?
+                <span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Non.</p>
+            </details>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-4">Outils Connexes</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <a href="/fr/word-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="chart" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-pink">Compteur de Mots</h3>
+              </a>
+              <a href="/fr/paragraph-rewriter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="text" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-cyan">Réécriveur de Paragraphes</h3>
+              </a>
+              <a href="/fr/readability-checker" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="book" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-orange">Vérificateur de Lisibilité</h3>
+              </a>
+            </div>
           </section>
         </article>
       </div>

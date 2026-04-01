@@ -1,0 +1,76 @@
+---
+import {
+  ArrowsLeftRightIcon,
+  BirdIcon,
+  BookOpenTextIcon,
+  CameraIcon,
+  ChartBarIcon,
+  CheckIcon,
+  ClockIcon,
+  FileTextIcon,
+  FloppyDiskIcon,
+  HashIcon,
+  LightbulbIcon,
+  LightningIcon,
+  LockIcon,
+  NotePencilIcon,
+  ParagraphIcon,
+  PencilSimpleIcon,
+  ShieldCheckIcon,
+  SparkleIcon,
+  TagIcon,
+  TextAaIcon,
+  WarningCircleIcon,
+} from '@phosphor-icons/react/ssr';
+
+const iconMap = {
+  check: CheckIcon,
+  chart: ChartBarIcon,
+  book: BookOpenTextIcon,
+  note: NotePencilIcon,
+  save: FloppyDiskIcon,
+  shield: ShieldCheckIcon,
+  sparkle: SparkleIcon,
+  pencil: PencilSimpleIcon,
+  paragraph: ParagraphIcon,
+  text: TextAaIcon,
+  camera: CameraIcon,
+  bird: BirdIcon,
+  tag: TagIcon,
+  file: FileTextIcon,
+  warning: WarningCircleIcon,
+  idea: LightbulbIcon,
+  clock: ClockIcon,
+  compare: ArrowsLeftRightIcon,
+  lightning: LightningIcon,
+  lock: LockIcon,
+  hash: HashIcon,
+} as const;
+
+type IconName = keyof typeof iconMap;
+
+const {
+  name,
+  size = 20,
+  weight = 'regular',
+  class: className = '',
+  decorative = true,
+  label,
+  ...rest
+} = Astro.props as {
+  name: IconName;
+  size?: number | string;
+  weight?: 'thin' | 'light' | 'regular' | 'bold' | 'fill' | 'duotone';
+  class?: string;
+  decorative?: boolean;
+  label?: string;
+  [key: string]: unknown;
+};
+
+const Component = iconMap[name];
+const a11y = decorative
+  ? { 'aria-hidden': 'true' }
+  : { 'aria-label': label ?? name };
+---
+
+{Component && <Component size={size} weight={weight} class={className} {...a11y} {...rest} />}

@@ -3,16 +3,65 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import CaseConverterTool from '../../../components/CaseConverterTool';
 import Sidebar from '../../../components/Sidebar.astro';
 import Footer from '../../../components/Footer.astro';
+import Icon from '../../../components/Icon.astro';
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'O que este conversor faz?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Aplica formato de título ao texto.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Serve para cabeçalhos?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sim, esse é um dos principais usos.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Posso usá-lo com estilos diferentes?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sim, como apoio rápido à formatação editorial.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Preciso revisar o resultado?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sim, especialmente em nomes próprios e casos especiais.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Preciso de cadastro?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Não.',
+      },
+    },
+  ],
+};
+
 ---
 
 <BaseLayout 
   title="Conversor para Título - Converte para Formato de Título" 
-  description="Conversor para título gratuito. Converte texto para formato de título seguindo guias de estilo APA, MLA, Chicago e AP."
+  description="Converta texto para formato de título seguindo regras de estilo comuns."
+  jsonLD={[faqSchema]}
 >
   <main class="layout-shell px-4 py-6">
     <header class="mb-6">
       <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Conversor para Título</h1>
-      <p class="text-base text-text-muted max-w-3xl">Converta texto para formato de título apropriado seguindo guias de estilo padrão.</p>
+      <p class="text-base text-text-muted max-w-3xl">Converta texto para formato de título seguindo regras de estilo comuns.</p>
     </header>
 
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
@@ -41,17 +90,83 @@ import Footer from '../../../components/Footer.astro';
 
         <article class="mt-8">
           <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Regras de Formato de Título</h2>
-            <p class="text-text-primary mb-4">Palavras principais são capitalizadas. Palavras menores (artigos, preposições curtas, conjunções) permanecem em minúsculas, a menos que sejam a primeira palavra.</p>
+            <h2 class="text-2xl font-display font-bold mb-3">Conversor para Título</h2>
+            <p class="text-text-primary mb-4">A ferramenta aplica regras de capitalização para títulos e cabeçalhos, útil quando consistência editorial é importante.</p>
+          </section>
+
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Ideal Para</h2>
+            <p class="text-text-primary">Títulos, subtítulos, manchetes, emails, apresentações e textos curtos que precisam de formatação editorial limpa.</p>
+          </section>
+
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Dicas Práticas</h2>
+            <ul class="space-y-4">
+              <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted">Revise nomes próprios após a conversão.</span></li>
+              <li class="flex gap-3"><span class="text-brand-cyan font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted">Mantenha um único guia de estilo por documento.</span></li>
+              <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted">Use junto com o contador de caracteres se houver limite.</span></li>
+            </ul>
           </section>
 
           <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Ferramentas Relacionadas</h2>
-            <ul class="space-y-2">
-              <li><a href="/pt/case-converter" class="text-brand-pink hover:underline">Conversor de Caixa</a></li>
-              <li><a href="/pt/word-counter" class="text-brand-pink hover:underline">Contador de Palavras</a></li>
-              <li><a href="/pt/character-counter" class="text-brand-pink hover:underline">Contador de Caracteres</a></li>
-            </ul>
+            <h2 class="text-2xl font-display font-bold mb-4">Perguntas Frequentes</h2>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                O que este conversor faz?
+                <span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Aplica formato de título ao texto.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Serve para cabeçalhos?
+                <span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Sim, esse é um dos principais usos.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Posso usá-lo com estilos diferentes?
+                <span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Sim, como apoio rápido à formatação editorial.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Preciso revisar o resultado?
+                <span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Sim, especialmente em nomes próprios e casos especiais.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Preciso de cadastro?
+                <span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Não.</p>
+            </details>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-4">Ferramentas Relacionadas</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <a href="/pt/case-converter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="chart" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-pink">Conversor de Caixa</h3>
+              </a>
+              <a href="/pt/word-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="text" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-cyan">Contador de Palavras</h3>
+              </a>
+              <a href="/pt/character-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="book" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-orange">Contador de Caracteres</h3>
+              </a>
+              <a href="/pt/readability-checker" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="pencil" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-pink">Verificador de Legibilidade</h3>
+              </a>
+            </div>
           </section>
         </article>
       </div>

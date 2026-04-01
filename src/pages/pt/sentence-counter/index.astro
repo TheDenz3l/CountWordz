@@ -3,16 +3,65 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import SentenceCounterTool from '../../../components/SentenceCounterTool';
 import Sidebar from '../../../components/Sidebar.astro';
 import Footer from '../../../components/Footer.astro';
+import Icon from '../../../components/Icon.astro';
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Como as frases são detectadas?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'O contador usa pontuação e regras simples para identificar o fim das frases, reduzindo erros causados por abreviações comuns.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Por que contar frases é útil?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'A contagem de frases ajuda a medir ritmo, tamanho médio das sentenças e clareza geral do texto.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Isso ajuda na legibilidade?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sim. Ao observar quantidade e comprimento das frases, fica mais fácil identificar trechos densos ou cansativos.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Funciona para textos acadêmicos?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sim. A ferramenta pode ser usada em ensaios, relatórios e outros textos que precisam equilibrar estrutura e clareza.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Preciso de cadastro?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Não. A ferramenta é gratuita e pode ser usada imediatamente, sem conta.',
+      },
+    },
+  ],
+};
 ---
 
 <BaseLayout 
   title="Contador de Frases - Conta e Analisa Frases" 
   description="Contador de frases gratuito. Conte frases, média de palavras por frase e analise a estrutura do texto."
+  jsonLD={[faqSchema]}
 >
   <main class="layout-shell px-4 py-6">
     <header class="mb-6">
       <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Contador de Frases</h1>
-      <p class="text-base text-text-muted max-w-3xl">Conte frases e analise a estrutura das frases. Perfeito para melhorar a clareza da sua escrita.</p>
+      <p class="text-base text-text-muted max-w-3xl">Conte frases e analise a estrutura do texto. Ideal para melhorar clareza, ritmo e fluidez da escrita.</p>
     </header>
 
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
@@ -41,17 +90,48 @@ import Footer from '../../../components/Footer.astro';
 
         <article class="mt-8">
           <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Como Funciona</h2>
-            <p class="text-text-primary mb-4">Nosso contador detecta frases com base na pontuação, ignorando abreviações comuns.</p>
+            <h2 class="text-2xl font-display font-bold mb-3">Como Usar o Contador de Frases</h2>
+            <p class="text-text-primary mb-4">Cole ou digite seu texto e a ferramenta identifica as frases para mostrar métricas úteis sobre estrutura e ritmo.</p>
+          </section>
+
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Ideal Para</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div><h3 class="font-semibold text-brand-pink mb-2">Escritores</h3><p class="text-text-muted text-sm">Detecte frases longas demais e melhore a fluidez do texto sem perder nuance.</p></div>
+              <div><h3 class="font-semibold text-brand-cyan mb-2">Estudantes</h3><p class="text-text-muted text-sm">Analise ensaios e trabalhos para evitar construções excessivamente longas ou confusas.</p></div>
+              <div><h3 class="font-semibold text-brand-orange mb-2">Times de Marketing</h3><p class="text-text-muted text-sm">Ajuste emails, páginas e campanhas para tornar a mensagem mais direta e clara.</p></div>
+              <div><h3 class="font-semibold text-brand-pink mb-2">Especialistas em SEO</h3><p class="text-text-muted text-sm">Melhore a legibilidade equilibrando tamanho de frase e densidade de informação.</p></div>
+            </div>
+          </section>
+
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Dicas Práticas</h2>
+            <ul class="space-y-4">
+              <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Varie o ritmo:</strong> combinar frases curtas e médias costuma melhorar a leitura.</span></li>
+              <li class="flex gap-3"><span class="text-brand-cyan font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Divida blocos densos:</strong> se poucas frases ocupam muito espaço, provavelmente o texto precisa ser reorganizado.</span></li>
+              <li class="flex gap-3"><span class="text-brand-orange font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Evite excesso de frases curtas:</strong> um texto quebrado demais também pode soar duro ou artificial.</span></li>
+              <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Compare versões:</strong> recalcule depois da revisão para confirmar que a estrutura realmente melhorou.</span></li>
+              <li class="flex gap-3"><span class="text-brand-cyan font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Use junto com legibilidade:</strong> ambos os dados ajudam a entender melhor o esforço de leitura exigido.</span></li>
+            </ul>
           </section>
 
           <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Ferramentas Relacionadas</h2>
-            <ul class="space-y-2">
-              <li><a href="/pt/word-counter" class="text-brand-pink hover:underline">Contador de Palavras</a></li>
-              <li><a href="/pt/paragraph-counter" class="text-brand-pink hover:underline">Contador de Parágrafos</a></li>
-              <li><a href="/pt/readability-checker" class="text-brand-pink hover:underline">Verificador de Legibilidade</a></li>
-            </ul>
+            <h2 class="text-2xl font-display font-bold mb-4">Perguntas Frequentes</h2>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">Como as frases são detectadas?<span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">A ferramenta usa sinais de pontuação e regras simples para identificar o fim de frases com boa precisão.</p></details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">Por que contar frases?<span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Porque isso ajuda a entender ritmo, extensão média e nível de esforço exigido do leitor.</p></details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">Isso melhora a legibilidade?<span class="text-brand-orange group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Ajuda bastante, principalmente ao destacar frases longas demais e trechos pouco equilibrados.</p></details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">Serve para textos acadêmicos?<span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Sim. É útil em ensaios, relatórios e documentos onde clareza e estrutura são essenciais.</p></details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">Preciso de cadastro?<span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Não. O uso é gratuito e imediato.</p></details>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-4">Ferramentas Relacionadas</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <a href="/pt/word-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="chart" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-pink">Contador de Palavras</h3><p class="text-xs text-text-muted">Veja o tamanho total</p></a>
+              <a href="/pt/paragraph-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="file" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-cyan">Contador de Parágrafos</h3><p class="text-xs text-text-muted">Analise a estrutura</p></a>
+              <a href="/pt/readability-checker" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="book" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-orange">Legibilidade</h3><p class="text-xs text-text-muted">Avalie clareza</p></a>
+              <a href="/pt/character-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="text" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-pink">Caracteres</h3><p class="text-xs text-text-muted">Refine limites</p></a>
+            </div>
           </section>
         </article>
       </div>

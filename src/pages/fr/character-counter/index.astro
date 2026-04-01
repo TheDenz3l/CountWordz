@@ -4,16 +4,65 @@ import CharacterCounterTool from '../../../components/CharacterCounterTool';
 import Sidebar from '../../../components/Sidebar.astro';
 import Footer from '../../../components/Footer.astro';
 import { getLocalizedToolPath } from '../../../lib/locale-routes';
+import Icon from '../../../components/Icon.astro';
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Qu’est-ce qu’un compteur de caractères ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Un compteur de caractères compte tous les caractères de votre texte, y compris les lettres, chiffres, espaces et signes de ponctuation. Il est utile pour vérifier les limites des plateformes sociales.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Les espaces comptent-ils comme des caractères ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Oui, les espaces comptent comme des caractères. Nous affichons les deux mesures, avec espaces et sans espaces, pour répondre aux différents besoins des plateformes.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Quelle est la limite de caractères pour X (Twitter) ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'X autorise 280 caractères par publication. Les liens, images et vidéos n’entrent généralement pas dans cette limite de la même manière que le texte.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Est-ce précis pour les meta descriptions ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Oui. Cet outil est adapté aux meta descriptions, qui apparaissent souvent entre 150 et 160 caractères dans les résultats de recherche.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Dois-je m’inscrire pour utiliser cet outil ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Non. L’outil est entièrement gratuit et ne demande aucune inscription. Collez simplement votre texte et commencez à mesurer immédiatement.',
+      },
+    },
+  ],
+};
 ---
 
 <BaseLayout 
   title="Compteur de Caractères - Vérifie les Limites pour les Réseaux Sociaux" 
   description="Compteur de caractères gratuit. Comptez les caractères avec et sans espaces. Vérifiez les limites pour X, Instagram, LinkedIn et plus."
+  jsonLD={[faqSchema]}
 >
   <main class="layout-shell px-4 py-6">
     <header class="mb-6">
       <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Compteur de Caractères</h1>
-      <p class="text-base text-text-muted max-w-3xl">Comptez les caractères avec et sans espaces. Vérifiez les limites pour les publications sur les réseaux sociaux.</p>
+      <p class="text-base text-text-muted max-w-3xl">Comptez les caractères avec et sans espaces. Vérifiez les limites pour les réseaux sociaux, les balises meta et les textes courts.</p>
     </header>
 
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
@@ -42,34 +91,98 @@ import { getLocalizedToolPath } from '../../../lib/locale-routes';
 
         <article class="mt-8">
           <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Limites par Plateforme</h2>
+            <h2 class="text-2xl font-display font-bold mb-3">Limites de Caractères par Plateforme</h2>
             <div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4">
               <ul class="space-y-2 text-text-primary">
                 <li class="flex justify-between"><span>X (Twitter)</span><span class="font-semibold">280 caractères</span></li>
-                <li class="flex justify-between"><span>Instagram Caption</span><span class="font-semibold">2,200 caractères</span></li>
-                <li class="flex justify-between"><span>LinkedIn Post</span><span class="font-semibold">3,000 caractères</span></li>
-                <li class="flex justify-between"><span>Meta Description</span><span class="font-semibold">160 caractères</span></li>
+                <li class="flex justify-between"><span>Légende Instagram</span><span class="font-semibold">2,200 caractères</span></li>
+                <li class="flex justify-between"><span>Post LinkedIn</span><span class="font-semibold">3,000 caractères</span></li>
+                <li class="flex justify-between"><span>Meta description</span><span class="font-semibold">160 caractères</span></li>
               </ul>
             </div>
           </section>
 
-          <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Comment Utiliser</h2>
-            <p class="text-text-primary mb-4">Collez ou tapez votre texte ci-dessus. Le compteur affichera :</p>
-            <ul class="list-disc list-inside space-y-2 text-text-primary">
-              <li><strong>Caractères avec espaces</strong> — Tous les caractères</li>
-              <li><strong>Caractères sans espaces</strong> — Lettres uniquement</li>
-              <li><strong>Nombre de mots</strong> — Total des mots</li>
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Idéal Pour</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <h3 class="font-semibold text-brand-pink mb-2">Marketeurs</h3>
+                <p class="text-text-muted text-sm">Préparez des meta descriptions, titres et extraits qui respectent les limites de longueur des moteurs de recherche et des campagnes sociales.</p>
+              </div>
+              <div>
+                <h3 class="font-semibold text-brand-cyan mb-2">Gestionnaires de Réseaux Sociaux</h3>
+                <p class="text-text-muted text-sm">Gardez vos posts X, Instagram et LinkedIn dans les limites recommandées sans devoir raccourcir votre message au dernier moment.</p>
+              </div>
+              <div>
+                <h3 class="font-semibold text-brand-orange mb-2">Rédacteurs SEO</h3>
+                <p class="text-text-muted text-sm">Vérifiez rapidement la longueur des titres, descriptions et accroches afin d’améliorer la visibilité et le taux de clic.</p>
+              </div>
+              <div>
+                <h3 class="font-semibold text-brand-pink mb-2">Étudiants et Professionnels</h3>
+                <p class="text-text-muted text-sm">Mesurez les textes courts, CV, messages ou résumés là où chaque caractère compte et où la clarté doit rester intacte.</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Conseils Pratiques</h2>
+            <ul class="space-y-4">
+              <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Mesurez avec et sans espaces :</strong> certaines plateformes comptent les espaces, d’autres non. Vérifiez les deux avant de publier.</span></li>
+              <li class="flex gap-3"><span class="text-brand-cyan font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Prévoyez une marge :</strong> gardez quelques caractères libres pour des hashtags, mentions ou ajustements de dernière minute.</span></li>
+              <li class="flex gap-3"><span class="text-brand-orange font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Optimisez vos meta descriptions :</strong> visez environ 150 à 160 caractères pour éviter la troncature dans les résultats de recherche.</span></li>
+              <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Réduisez sans perdre le sens :</strong> remplacez les formulations longues par des mots plus précis au lieu de couper brutalement.</span></li>
+              <li class="flex gap-3"><span class="text-brand-cyan font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Vérifiez avant chaque publication :</strong> une dernière mesure évite qu’un texte soit rejeté ou affiché de manière tronquée.</span></li>
             </ul>
           </section>
 
           <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Outils Connexes</h2>
-            <ul class="space-y-2">
-              <li><a href={getLocalizedToolPath('fr', 'tweet-character-counter', 'character-counter')} class="text-brand-pink hover:underline">Compteur de Tweets</a></li>
-              <li><a href={getLocalizedToolPath('fr', 'instagram-caption-counter', 'character-counter')} class="text-brand-pink hover:underline">Instagram Caption</a></li>
-              <li><a href="/fr/word-counter" class="text-brand-pink hover:underline">Compteur de Mots</a></li>
-            </ul>
+            <h2 class="text-2xl font-display font-bold mb-4">Questions Fréquentes</h2>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">Qu’est-ce qu’un compteur de caractères ?<span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span></summary>
+              <p class="text-text-muted mt-4">Un compteur de caractères mesure tous les caractères d’un texte, y compris espaces, chiffres et ponctuation. Il est utile pour les réseaux sociaux, le SEO et les contenus courts.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">Les espaces comptent-ils comme des caractères ?<span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span></summary>
+              <p class="text-text-muted mt-4">Oui. Nous montrons à la fois le total avec espaces et sans espaces afin que vous puissiez choisir la mesure adaptée à votre cas d’usage.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">Quelle est la limite pour X ?<span class="text-brand-orange group-open:rotate-180 transition-transform">▼</span></summary>
+              <p class="text-text-muted mt-4">La limite standard sur X est de 280 caractères pour le texte d’un post. Il est conseillé de garder une petite marge pour rester flexible.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">Est-ce utile pour le SEO ?<span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span></summary>
+              <p class="text-text-muted mt-4">Oui. Cet outil aide à ajuster les titres et meta descriptions afin qu’ils restent lisibles et visibles dans les résultats de recherche.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">Dois-je m’inscrire ?<span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span></summary>
+              <p class="text-text-muted mt-4">Non. L’outil est gratuit et accessible immédiatement sans compte ni installation.</p>
+            </details>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-4">Outils Connexes</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <a href={getLocalizedToolPath('fr', 'tweet-character-counter', 'character-counter')} class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="bird" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-pink">Compteur de Tweets</h3>
+                <p class="text-xs text-text-muted">Mesurez les posts pour X</p>
+              </a>
+              <a href={getLocalizedToolPath('fr', 'instagram-caption-counter', 'character-counter')} class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="camera" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-cyan">Légende Instagram</h3>
+                <p class="text-xs text-text-muted">Ajustez vos légendes</p>
+              </a>
+              <a href="/fr/word-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="chart" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-orange">Compteur de Mots</h3>
+                <p class="text-xs text-text-muted">Mesurez la longueur complète</p>
+              </a>
+              <a href="/fr/readability-checker" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="book" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-pink">Lisibilité</h3>
+                <p class="text-xs text-text-muted">Évaluez la clarté du texte</p>
+              </a>
+            </div>
           </section>
         </article>
       </div>

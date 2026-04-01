@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ParagraphRewriter from '../components/ParagraphRewriter';
 import Sidebar from '../components/Sidebar.astro';
 import Footer from '../components/Footer.astro';
+import Icon from '../components/Icon.astro';
 ---
 
 <BaseLayout 
@@ -59,28 +60,28 @@ import Footer from '../components/Footer.astro';
             <div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4">
               <ul class="space-y-3 text-text-primary">
                 <li class="flex items-start gap-2">
-                  <span class="text-yellow-600 font-bold">⚠️</span>
+                  <span class="text-yellow-600 font-bold"><Icon name="warning" size={18} /></span>
                   <div>
                     <strong>Passive Voice</strong>
                     <p class="text-sm text-text-muted">Passive constructions make writing less direct. We suggest active voice alternatives.</p>
                   </div>
                 </li>
                 <li class="flex items-start gap-2">
-                  <span class="text-orange-600 font-bold">📏</span>
+                  <span class="text-orange-600 font-bold"><Icon name="chart" size={18} /></span>
                   <div>
                     <strong>Long Sentences</strong>
                     <p class="text-sm text-text-muted">Sentences over 25 words are hard to follow. We suggest breaking them into shorter sentences.</p>
                   </div>
                 </li>
                 <li class="flex items-start gap-2">
-                  <span class="text-blue-600 font-bold">📚</span>
+                  <span class="text-blue-600 font-bold"><Icon name="book" size={18} /></span>
                   <div>
                     <strong>Complex Words</strong>
                     <p class="text-sm text-text-muted">Complex vocabulary reduces readability. We suggest simpler alternatives.</p>
                   </div>
                 </li>
                 <li class="flex items-start gap-2">
-                  <span class="text-purple-600 font-bold">🔄</span>
+                  <span class="text-purple-600 font-bold"><Icon name="compare" size={18} /></span>
                   <div>
                     <strong>Word Repetition</strong>
                     <p class="text-sm text-text-muted">Repeating the same words makes writing boring. We suggest using synonyms.</p>

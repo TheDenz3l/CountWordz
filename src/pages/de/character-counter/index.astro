@@ -4,16 +4,65 @@ import CharacterCounterTool from '../../../components/CharacterCounterTool';
 import Sidebar from '../../../components/Sidebar.astro';
 import Footer from '../../../components/Footer.astro';
 import { getLocalizedToolPath } from '../../../lib/locale-routes';
+import Icon from '../../../components/Icon.astro';
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Was ist ein Zeichenzähler?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Ein Zeichenzähler misst alle Zeichen eines Textes, einschließlich Buchstaben, Zahlen, Leerzeichen und Satzzeichen. Das ist nützlich für Social Media, SEO und kurze Formate.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Zählen Leerzeichen als Zeichen?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Ja. Wir zeigen sowohl die Anzahl mit Leerzeichen als auch ohne Leerzeichen, damit Sie die passende Kennzahl verwenden können.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Wie hoch ist das Limit auf X?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Das bekannte Standardlimit auf X liegt bei 280 Zeichen. Ein kleiner Puffer ist sinnvoll, falls Sie den Text noch anpassen möchten.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Ist das für Meta-Beschreibungen geeignet?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Ja. Das Tool hilft beim Anpassen von Meta-Beschreibungen, die in Suchergebnissen häufig bei etwa 150 bis 160 Zeichen dargestellt werden.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Brauche ich ein Konto?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Nein. Das Tool ist kostenlos und kann sofort ohne Anmeldung genutzt werden.',
+      },
+    },
+  ],
+};
 ---
 
 <BaseLayout 
   title="Zeichenzähler - Überprüft Zeichenlimits für Soziale Medien" 
   description="Kostenloser Zeichenzähler. Zählen Sie Zeichen mit und ohne Leerzeichen. Überprüfen Sie Limits für X, Instagram, LinkedIn und mehr."
+  jsonLD={[faqSchema]}
 >
   <main class="layout-shell px-4 py-6">
     <header class="mb-6">
       <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Zeichenzähler</h1>
-      <p class="text-base text-text-muted max-w-3xl">Zählen Sie Zeichen mit und ohne Leerzeichen. Überprüfen Sie Limits für Beiträge in sozialen Medien.</p>
+      <p class="text-base text-text-muted max-w-3xl">Zählen Sie Zeichen mit und ohne Leerzeichen. Perfekt für soziale Medien, Meta-Texte und kurze Formate.</p>
     </header>
 
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
@@ -42,7 +91,7 @@ import { getLocalizedToolPath } from '../../../lib/locale-routes';
 
         <article class="mt-8">
           <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Limits pro Plattform</h2>
+            <h2 class="text-2xl font-display font-bold mb-3">Zeichenlimits nach Plattform</h2>
             <div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4">
               <ul class="space-y-2 text-text-primary">
                 <li class="flex justify-between"><span>X (Twitter)</span><span class="font-semibold">280 Zeichen</span></li>
@@ -53,23 +102,44 @@ import { getLocalizedToolPath } from '../../../lib/locale-routes';
             </div>
           </section>
 
-          <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Wie Man Verwendet</h2>
-            <p class="text-text-primary mb-4">Fügen Sie Ihren Text ein. Der Zähler zeigt:</p>
-            <ul class="list-disc list-inside space-y-2 text-text-primary">
-              <li><strong>Zeichen mit Leerzeichen</strong> — Alle Zeichen</li>
-              <li><strong>Zeichen ohne Leerzeichen</strong> — Nur Buchstaben</li>
-              <li><strong>Wortanzahl</strong> — Gesamtzahl der Wörter</li>
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Ideal für</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div><h3 class="font-semibold text-brand-pink mb-2">Marketing-Teams</h3><p class="text-text-muted text-sm">Passen Sie Meta-Beschreibungen, Anzeigen und Kurztexte so an, dass sie in Suchergebnissen und sozialen Netzwerken optimal dargestellt werden.</p></div>
+              <div><h3 class="font-semibold text-brand-cyan mb-2">Social-Media-Manager</h3><p class="text-text-muted text-sm">Behalten Sie X-, Instagram- und LinkedIn-Limits im Blick, ohne den Text erst kurz vor dem Posten kürzen zu müssen.</p></div>
+              <div><h3 class="font-semibold text-brand-orange mb-2">SEO-Redakteure</h3><p class="text-text-muted text-sm">Prüfen Sie schnell, ob Titel und Beschreibungen die richtige Länge für Sichtbarkeit und Klickrate haben.</p></div>
+              <div><h3 class="font-semibold text-brand-pink mb-2">Studierende und Berufstätige</h3><p class="text-text-muted text-sm">Messen Sie Kurztexte, Profile, Nachrichten und Zusammenfassungen, bei denen jeder einzelne Buchstabe wichtig ist.</p></div>
+            </div>
+          </section>
+
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Praktische Tipps</h2>
+            <ul class="space-y-4">
+              <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Mit und ohne Leerzeichen prüfen:</strong> manche Plattformen bewerten beides unterschiedlich. Kontrollieren Sie beide Werte.</span></li>
+              <li class="flex gap-3"><span class="text-brand-cyan font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Einen Puffer einplanen:</strong> lassen Sie ein paar Zeichen frei für Erwähnungen, Hashtags oder spontane Änderungen.</span></li>
+              <li class="flex gap-3"><span class="text-brand-orange font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Meta-Beschreibungen optimieren:</strong> rund 150 bis 160 Zeichen sind oft ein guter Zielbereich.</span></li>
+              <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Kürzen ohne Sinnverlust:</strong> ersetzen Sie lange Formulierungen lieber durch präzisere Wörter, statt wichtige Inhalte zu streichen.</span></li>
+              <li class="flex gap-3"><span class="text-brand-cyan font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Vor Veröffentlichung messen:</strong> eine letzte Kontrolle verhindert abgeschnittene oder abgelehnte Texte.</span></li>
             </ul>
           </section>
 
           <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Ähnliche Tools</h2>
-            <ul class="space-y-2">
-              <li><a href={getLocalizedToolPath('de', 'tweet-character-counter', 'character-counter')} class="text-brand-pink hover:underline">Tweet-Zähler</a></li>
-              <li><a href={getLocalizedToolPath('de', 'instagram-caption-counter', 'character-counter')} class="text-brand-pink hover:underline">Instagram Caption</a></li>
-              <li><a href="/de/word-counter" class="text-brand-pink hover:underline">Wortzähler</a></li>
-            </ul>
+            <h2 class="text-2xl font-display font-bold mb-4">Häufig gestellte Fragen</h2>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">Was ist ein Zeichenzähler?<span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Ein Zeichenzähler misst alle Zeichen eines Textes, inklusive Leerzeichen und Satzzeichen. Das ist besonders hilfreich für Social Media und SEO.</p></details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">Zählen Leerzeichen mit?<span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Ja. Zusätzlich wird auch die Zeichenzahl ohne Leerzeichen angezeigt.</p></details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">Wie hoch ist das Limit auf X?<span class="text-brand-orange group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Das bekannte Textlimit liegt bei 280 Zeichen. Ein kleiner Puffer hilft für spätere Anpassungen.</p></details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">Ist das für SEO nützlich?<span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Ja. Besonders für Meta-Beschreibungen und kurze Titel ist die Zeichenanzahl sehr wichtig.</p></details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">Brauche ich ein Konto?<span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Nein. Die Nutzung ist sofort und kostenlos möglich.</p></details>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-4">Ähnliche Tools</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <a href={getLocalizedToolPath('de', 'tweet-character-counter', 'character-counter')} class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="bird" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-pink">Tweet-Zähler</h3><p class="text-xs text-text-muted">Texte für X prüfen</p></a>
+              <a href={getLocalizedToolPath('de', 'instagram-caption-counter', 'character-counter')} class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="camera" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-cyan">Instagram Caption</h3><p class="text-xs text-text-muted">Beschriftungen anpassen</p></a>
+              <a href="/de/word-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="chart" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-orange">Wortzähler</h3><p class="text-xs text-text-muted">Gesamtlänge messen</p></a>
+              <a href="/de/readability-checker" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="book" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-pink">Lesbarkeit</h3><p class="text-xs text-text-muted">Klarheit bewerten</p></a>
+            </div>
           </section>
         </article>
       </div>

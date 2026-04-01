@@ -3,16 +3,65 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import CaseConverterTool from '../../../components/CaseConverterTool';
 import Sidebar from '../../../components/Sidebar.astro';
 import Footer from '../../../components/Footer.astro';
+import Icon from '../../../components/Icon.astro';
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: '¿Para qué sirve un convertidor de mayúsculas?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Permite transformar texto entre minúsculas, MAYÚSCULAS, formato título, oración y otros estilos para editar o publicar más rápido.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Qué diferencia hay entre título y oración?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'El formato título capitaliza palabras clave del encabezado, mientras que el formato oración suele poner en mayúscula principalmente el inicio de la frase.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Puedo corregir texto ya escrito?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sí. Solo pega tu texto en la herramienta y elige el formato que quieras aplicar para convertirlo al instante.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Sirve para títulos y redes sociales?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sí. Es útil para normalizar títulos, subtítulos, llamadas a la acción y textos cortos antes de publicarlos.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Necesito registrarme?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'No. La herramienta es gratuita y funciona al instante sin necesidad de crear una cuenta.',
+      },
+    },
+  ],
+};
 ---
 
 <BaseLayout 
   title="Convertidor de Mayúsculas - Convierte entre Formatos de Texto" 
   description="Convertidor de mayúsculas gratuito. Convierte texto entre minúsculas, MAYÚSCULAS, Título, Oración y más."
+  jsonLD={[faqSchema]}
 >
   <main class="layout-shell px-4 py-6">
     <header class="mb-6">
       <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Convertidor de Mayúsculas</h1>
-      <p class="text-base text-text-muted max-w-3xl">Convierte texto entre diferentes formatos de mayúsculas y minúsculas. Perfecto para formatear títulos y encabezados.</p>
+      <p class="text-base text-text-muted max-w-3xl">Convierte texto entre distintos formatos de mayúsculas y minúsculas. Ideal para títulos, CTA, textos web y contenido que necesita consistencia visual.</p>
     </header>
 
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
@@ -44,22 +93,53 @@ import Footer from '../../../components/Footer.astro';
             <h2 class="text-2xl font-display font-bold mb-3">Formatos Disponibles</h2>
             <div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4">
               <ul class="space-y-2 text-text-primary">
-                <li><strong>minúsculas</strong> — Todo el texto en minúsculas</li>
-                <li><strong>MAYÚSCULAS</strong> — Todo el texto en mayúsculas</li>
-                <li><strong>Título</strong> — Primera letra de cada palabra en mayúscula</li>
-                <li><strong>Oración</strong> — Primera letra de la oración en mayúscula</li>
-                <li><strong>aLTERNADO</strong> — Alterna entre mayúsculas y minúsculas</li>
+                <li><strong>minúsculas</strong> — todo el texto en minúsculas</li>
+                <li><strong>MAYÚSCULAS</strong> — todo el texto en mayúsculas</li>
+                <li><strong>Título</strong> — capitalización orientada a encabezados</li>
+                <li><strong>Oración</strong> — primera letra de la oración en mayúscula</li>
+                <li><strong>aLtErNaDo</strong> — alterna entre mayúsculas y minúsculas</li>
               </ul>
             </div>
           </section>
 
-          <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Herramientas Relacionadas</h2>
-            <ul class="space-y-2">
-              <li><a href="/es/word-counter" class="text-brand-pink hover:underline">Contador de Palabras</a></li>
-              <li><a href="/es/title-case-converter" class="text-brand-pink hover:underline">Convertidor a Título</a></li>
-              <li><a href="/es/character-counter" class="text-brand-pink hover:underline">Contador de Caracteres</a></li>
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Ideal Para</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div><h3 class="font-semibold text-brand-pink mb-2">Editores y Redactores</h3><p class="text-text-muted text-sm">Uniforma títulos, subtítulos y bloques de texto antes de publicar o entregar contenido.</p></div>
+              <div><h3 class="font-semibold text-brand-cyan mb-2">Equipos de Marketing</h3><p class="text-text-muted text-sm">Prepara CTA, anuncios y encabezados con un estilo coherente en emails, landing pages y redes sociales.</p></div>
+              <div><h3 class="font-semibold text-brand-orange mb-2">Estudiantes</h3><p class="text-text-muted text-sm">Corrige rápidamente títulos y formatos en trabajos, presentaciones y documentos académicos.</p></div>
+              <div><h3 class="font-semibold text-brand-pink mb-2">Uso Diario</h3><p class="text-text-muted text-sm">Ahorra tiempo cuando recibes texto mal formateado o escrito enteramente en mayúsculas.</p></div>
+            </div>
+          </section>
+
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Consejos Prácticos</h2>
+            <ul class="space-y-4">
+              <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Elige el formato correcto:</strong> usa título para encabezados, oración para textos editoriales y mayúsculas con moderación.</span></li>
+              <li class="flex gap-3"><span class="text-brand-cyan font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Revisa nombres propios:</strong> algunos términos necesitan validación manual después de convertir el texto.</span></li>
+              <li class="flex gap-3"><span class="text-brand-orange font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Unifica tus CTA:</strong> mantener el mismo estilo mejora consistencia y percepción de marca.</span></li>
+              <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Limpia textos copiados:</strong> es especialmente útil tras pegar contenido desde PDFs o documentos externos.</span></li>
+              <li class="flex gap-3"><span class="text-brand-cyan font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Combínalo con el contador de caracteres:</strong> así ajustas formato y longitud al mismo tiempo.</span></li>
             </ul>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-4">Preguntas Frecuentes</h2>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">¿Para qué sirve un convertidor de mayúsculas?<span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Sirve para cambiar rápidamente el formato visual del texto y adaptarlo a títulos, textos web o piezas de marketing.</p></details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">¿Qué diferencia hay entre título y oración?<span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">El formato título capitaliza palabras importantes del encabezado. El formato oración respeta una capitalización más natural del texto corrido.</p></details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">¿Puedo corregir texto existente?<span class="text-brand-orange group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Sí. Solo pega el texto en la herramienta y aplica el formato que necesites.</p></details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">¿Sirve para redes sociales?<span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Sí. Ayuda a estandarizar títulos, llamadas a la acción y copys breves antes de publicarlos.</p></details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">¿Necesito registrarme?<span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">No. La herramienta es gratuita y está disponible al instante.</p></details>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-4">Herramientas Relacionadas</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <a href="/es/word-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="chart" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-pink">Contador de Palabras</h3><p class="text-xs text-text-muted">Mide la longitud</p></a>
+              <a href="/es/title-case-converter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="tag" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-cyan">Convertidor a Título</h3><p class="text-xs text-text-muted">Afina encabezados</p></a>
+              <a href="/es/character-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="text" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-orange">Contador de Caracteres</h3><p class="text-xs text-text-muted">Controla límites</p></a>
+              <a href="/es/readability-checker" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="book" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-pink">Legibilidad</h3><p class="text-xs text-text-muted">Evalúa claridad</p></a>
+            </div>
           </section>
         </article>
       </div>

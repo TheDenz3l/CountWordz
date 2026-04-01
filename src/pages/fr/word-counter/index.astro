@@ -3,11 +3,60 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import WordCounterTool from '../../../components/WordCounterTool';
 import Sidebar from '../../../components/Sidebar.astro';
 import Footer from '../../../components/Footer.astro';
+import Icon from '../../../components/Icon.astro';
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Comment les mots sont-ils comptés ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Nous comptons les mots en divisant le texte par les espaces et en filtrant les chaînes vides. Les mots avec tiret comme "bien-aimé" comptent comme un mot.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Le temps de lecture est-il précis ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Le temps de lecture est calculé sur la base d’une vitesse moyenne de 200 mots par minute. Le temps réel peut varier selon la complexité du texte.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Les caractères incluent-ils les espaces ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Nous affichons les deux comptages : caractères avec espaces et caractères sans espaces. Cela est utile pour différentes plateformes avec des exigences variées.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Puis-je utiliser cela pour des essais académiques ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Oui, c’est parfait pour les essais. L’outil affiche le nombre de mots, de phrases et de paragraphes, ainsi que le temps de lecture estimé pour vous aider à respecter les exigences.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Dois-je m’inscrire pour utiliser cet outil ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Non, l’outil est entièrement gratuit et ne nécessite aucune inscription. Collez simplement votre texte et commencez à compter immédiatement.',
+      },
+    },
+  ],
+};
 ---
 
 <BaseLayout 
   title="Compteur de Mots - Compter les Mots, Caractères et Plus" 
   description="Compteur de mots gratuit. Comptez les mots, caractères, phrases, paragraphes et estimez le temps de lecture en temps réel."
+  jsonLD={[faqSchema]}
 >
   <main class="layout-shell px-4 py-6">
     <header class="mb-6">
@@ -41,8 +90,8 @@ import Footer from '../../../components/Footer.astro';
 
         <article class="mt-8">
           <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Comment Utiliser</h2>
-            <p class="text-text-primary mb-4">Collez ou tapez votre texte ci-dessus. Le compteur affichera instantanément :</p>
+            <h2 class="text-2xl font-display font-bold mb-3">Comment Utiliser le Compteur de Mots</h2>
+            <p class="text-text-primary mb-4">Collez ou tapez simplement votre texte ci-dessus. Le compteur affichera instantanément :</p>
             <ul class="list-disc list-inside space-y-2 text-text-primary">
               <li><strong>Nombre de mots</strong> — Total des mots</li>
               <li><strong>Nombre de caractères</strong> — Avec et sans espaces</li>
@@ -53,31 +102,117 @@ import Footer from '../../../components/Footer.astro';
             </ul>
           </section>
 
-          <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Limites Communes</h2>
-            <div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4">
-              <ul class="space-y-2 text-text-primary">
-                <li class="flex justify-between"><span>Essai scolaire</span><span class="font-semibold">500-1000 mots</span></li>
-                <li class="flex justify-between"><span>Essai universitaire</span><span class="font-semibold">1500-3000 mots</span></li>
-                <li class="flex justify-between"><span>Article de blog</span><span class="font-semibold">800-1200 mots</span></li>
-                <li class="flex justify-between"><span>CV</span><span class="font-semibold">400-600 mots</span></li>
-              </ul>
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Idéal Pour</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <h3 class="font-semibold text-brand-pink mb-2">Étudiants et Éducateurs</h3>
+                <p class="text-text-muted text-sm">Vérifiez le nombre de mots des dissertations, analysez les niveaux de lecture et assurez-vous que les devoirs respectent les exigences. Parfait pour l’écriture académique et la préparation des cours.</p>
+              </div>
+              <div>
+                <h3 class="font-semibold text-brand-cyan mb-2">Créateurs de Contenu</h3>
+                <p class="text-text-muted text-sm">Optimisez les articles de blog, les légendes de réseaux sociaux et les textes marketing. Restez dans les limites de caractères pour X, Instagram, LinkedIn et plus.</p>
+              </div>
+              <div>
+                <h3 class="font-semibold text-brand-orange mb-2">Rédacteurs Professionnels</h3>
+                <p class="text-text-muted text-sm">Suivez vos objectifs d’écriture, analysez la lisibilité et maintenez une qualité cohérente du contenu. Idéal pour les journalistes, copywriters et auteurs.</p>
+              </div>
+              <div>
+                <h3 class="font-semibold text-brand-pink mb-2">Spécialistes SEO</h3>
+                <p class="text-text-muted text-sm">Assurez-vous que les méta descriptions, les balises titre et les longueurs de contenu suivent les meilleures pratiques SEO. Améliorez vos classements avec un contenu optimisé.</p>
+              </div>
             </div>
           </section>
 
-          <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">FAQ</h2>
-            <h3 class="text-xl font-display font-semibold mt-4 mb-2">Comment les mots sont-ils comptés ?</h3>
-            <p class="text-text-primary mb-4">Nous comptons les mots en divisant le texte par les espaces. Les mots avec tiret comme "bien-aimé" comptent comme un mot.</p>
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Conseils Pratiques</h2>
+            <ul class="space-y-4">
+              <li class="flex gap-3">
+                <span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span>
+                <span class="text-text-muted"><strong>Utilisez le bon outil pour votre objectif :</strong> compteur de mots pour les essais, compteur de caractères pour les réseaux sociaux, vérificateur de lisibilité pour les articles de blog.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="text-brand-cyan font-bold"><Icon name="check" size={18} /></span>
+                <span class="text-text-muted"><strong>Vérifiez les scores de lisibilité :</strong> visez un score Flesch de 60 à 70 pour un public général. Les scores plus faibles indiquent un texte plus complexe.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="text-brand-orange font-bold"><Icon name="check" size={18} /></span>
+                <span class="text-text-muted"><strong>Surveillez la longueur des phrases :</strong> une moyenne de 15 à 20 mots améliore la lisibilité. Utilisez le compteur de phrases pour la suivre.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span>
+                <span class="text-text-muted"><strong>Optimisez pour votre plateforme :</strong> chaque réseau social a des limites différentes. Utilisez nos compteurs dédiés pour X, Instagram et LinkedIn.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="text-brand-cyan font-bold"><Icon name="check" size={18} /></span>
+                <span class="text-text-muted"><strong>Vérifiez le temps de lecture :</strong> les articles de blog performants ont souvent un temps de lecture de 3 à 7 minutes. Ajustez la longueur du contenu en conséquence.</span>
+              </li>
+            </ul>
           </section>
 
           <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Outils Connexes</h2>
-            <ul class="space-y-2">
-              <li><a href="/fr/character-counter" class="text-brand-pink hover:underline">Compteur de Caractères</a></li>
-              <li><a href="/fr/sentence-counter" class="text-brand-pink hover:underline">Compteur de Phrases</a></li>
-              <li><a href="/fr/readability-checker" class="text-brand-pink hover:underline">Vérificateur de Lisibilité</a></li>
-            </ul>
+            <h2 class="text-2xl font-display font-bold mb-4">Questions Fréquentes</h2>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Comment les mots sont-ils comptés ?
+                <span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Nous comptons les mots en divisant le texte par les espaces et en filtrant les chaînes vides. Les mots avec tiret comme "bien-aimé" comptent comme un mot.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Le temps de lecture est-il précis ?
+                <span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Le temps de lecture est calculé sur la base d’une vitesse moyenne de 200 mots par minute. Le temps réel peut varier selon la complexité du texte.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Les caractères incluent-ils les espaces ?
+                <span class="text-brand-orange group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Nous affichons les deux comptages : caractères avec espaces et caractères sans espaces. Cela est utile pour différentes plateformes avec des exigences variées.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Puis-je utiliser cela pour des essais académiques ?
+                <span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Oui, c’est parfait pour les essais. L’outil affiche le nombre de mots, de phrases et de paragraphes, ainsi que le temps de lecture estimé pour vous aider à respecter les exigences.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Dois-je m’inscrire pour utiliser cet outil ?
+                <span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Non, l’outil est entièrement gratuit et ne nécessite aucune inscription. Collez simplement votre texte et commencez à compter immédiatement.</p>
+            </details>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-4">Outils Connexes</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <a href="/fr/character-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="text" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-pink">Compteur de Caractères</h3>
+                <p class="text-xs text-text-muted">Vérifiez les limites de caractères</p>
+              </a>
+              <a href="/fr/sentence-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="note" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-cyan">Compteur de Phrases</h3>
+                <p class="text-xs text-text-muted">Comptez les phrases de votre texte</p>
+              </a>
+              <a href="/fr/readability-checker" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="book" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-orange">Vérificateur de Lisibilité</h3>
+                <p class="text-xs text-text-muted">Mesurez la facilité de lecture</p>
+              </a>
+              <a href="/fr/case-converter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="text" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-pink">Convertisseur de Casse</h3>
+                <p class="text-xs text-text-muted">Convertissez entre différentes casses</p>
+              </a>
+            </div>
           </section>
         </article>
       </div>

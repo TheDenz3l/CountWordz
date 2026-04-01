@@ -1,0 +1,17 @@
+export const relatedToolIconNameMap = {
+  'word-counter': 'chart',
+  'character-counter': 'text',
+  'readability-checker': 'book',
+  'case-converter': 'text',
+  'title-case-converter': 'tag',
+  'sentence-counter': 'note',
+  'paragraph-counter': 'paragraph',
+  'paragraph-rewriter': 'pencil',
+  'text-compare-tool': 'compare',
+  'keyword-density-checker': 'hash',
+  'reading-time-calculator': 'clock',
+  'syllable-counter': 'book',
+  'blog-readability-checker': 'book',
+  'tweet-character-counter': 'bird',
+  'instagram-caption-counter': 'camera',
+} as const;

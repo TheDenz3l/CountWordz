@@ -3,16 +3,65 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import ParagraphRewriter from '../../../components/ParagraphRewriter';
 import Sidebar from '../../../components/Sidebar.astro';
 import Footer from '../../../components/Footer.astro';
+import Icon from '../../../components/Icon.astro';
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Que peut améliorer cet outil ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Il peut signaler voix passive, phrases longues, mots complexes et répétitions.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Réécrit-il automatiquement ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Il propose des suggestions ; la décision finale vous appartient.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Est-ce utile pour blogs et dissertations ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Oui, autant pour les contenus éditoriaux que pour les textes académiques.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Faut-il accepter tous les changements ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Non, chaque suggestion doit être relue selon le ton et l’objectif du texte.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Dois-je m’inscrire ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Non.',
+      },
+    },
+  ],
+};
+
 ---
 
 <BaseLayout 
-  title="Réécriveur de Paragraphes - Améliore la Clarté de votre Écriture" 
-  description="Outil de réécriture de paragraphes gratuit. Obtenez des suggestions pour améliorer la clarté, la lisibilité et la structure de votre écriture."
+  title="Réécriture de Paragraphes - Améliore la Clarté du Texte" 
+  description="Obtenez des suggestions pour améliorer clarté, structure et lisibilité du texte."
+  jsonLD={[faqSchema]}
 >
   <main class="layout-shell px-4 py-6">
     <header class="mb-6">
-      <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Réécriveur de Paragraphes</h1>
-      <p class="text-base text-text-muted max-w-3xl">Obtenez des suggestions intelligentes pour améliorer votre écriture. Corrigez la voix passive, raccourcissez les phrases longues, simplifiez les mots complexes.</p>
+      <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Réécriture de Paragraphes</h1>
+      <p class="text-base text-text-muted max-w-3xl">Obtenez des suggestions pour améliorer clarté, structure et lisibilité du texte.</p>
     </header>
 
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
@@ -41,25 +90,79 @@ import Footer from '../../../components/Footer.astro';
 
         <article class="mt-8">
           <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Ce que Cet Outil Améliore</h2>
-            <div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4">
-              <ul class="space-y-2 text-text-primary">
-                <li><strong>Voix passive</strong> — Suggère de passer à la voix active</li>
-                <li><strong>Phrases longues</strong> — Recommande de diviser les phrases de plus de 25 mots</li>
-                <li><strong>Mots complexes</strong> — Suggère des alternatives plus simples</li>
-                <li><strong>Répétition</strong> — Identifie les mots trop utilisés</li>
-                <li><strong>Lisibilité</strong> — Affiche les scores de lisibilité améliorés</li>
-              </ul>
-            </div>
+            <h2 class="text-2xl font-display font-bold mb-3">Réécriture de Paragraphes</h2>
+            <p class="text-text-primary mb-4">L’outil examine voix passive, phrases longues, répétitions et complexité pour aider à réécrire les paragraphes plus clairement.</p>
+          </section>
+
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Idéal Pour</h2>
+            <p class="text-text-primary">Brouillons, articles, textes académiques, pages marketing et tout contenu nécessitant une révision de clarté.</p>
+          </section>
+
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Conseils Pratiques</h2>
+            <ul class="space-y-4">
+              <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted">Relisez les suggestions avant de les adopter.</span></li>
+              <li class="flex gap-3"><span class="text-brand-cyan font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted">Privilégiez la clarté aux changements purement cosmétiques.</span></li>
+              <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted">Comparez la version originale et la version retravaillée.</span></li>
+            </ul>
           </section>
 
           <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Outils Connexes</h2>
-            <ul class="space-y-2">
-              <li><a href="/fr/word-counter" class="text-brand-pink hover:underline">Compteur de Mots</a></li>
-              <li><a href="/fr/text-compare-tool" class="text-brand-pink hover:underline">Comparateur de Texte</a></li>
-              <li><a href="/fr/readability-checker" class="text-brand-pink hover:underline">Vérificateur de Lisibilité</a></li>
-            </ul>
+            <h2 class="text-2xl font-display font-bold mb-4">Questions Fréquentes</h2>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Que peut améliorer cet outil ?
+                <span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Il peut signaler voix passive, phrases longues, mots complexes et répétitions.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Réécrit-il automatiquement ?
+                <span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Il propose des suggestions ; la décision finale vous appartient.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Est-ce utile pour blogs et dissertations ?
+                <span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Oui, autant pour les contenus éditoriaux que pour les textes académiques.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Faut-il accepter tous les changements ?
+                <span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Non, chaque suggestion doit être relue selon le ton et l’objectif du texte.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Dois-je m’inscrire ?
+                <span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Non.</p>
+            </details>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-4">Outils Connexes</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <a href="/fr/word-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="chart" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-pink">Compteur de Mots</h3>
+              </a>
+              <a href="/fr/text-compare-tool" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="text" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-cyan">Comparateur de Texte</h3>
+              </a>
+              <a href="/fr/readability-checker" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="book" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-orange">Vérificateur de Lisibilité</h3>
+              </a>
+            </div>
           </section>
         </article>
       </div>

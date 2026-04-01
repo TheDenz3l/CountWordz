@@ -3,11 +3,60 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import ParagraphCounterTool from '../../../components/ParagraphCounterTool';
 import Sidebar from '../../../components/Sidebar.astro';
 import Footer from '../../../components/Footer.astro';
+import Icon from '../../../components/Icon.astro';
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: '¿Cómo se detectan los párrafos?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Se detectan por saltos de línea entre bloques de texto.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Por qué importa la estructura de párrafos?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Porque mejora legibilidad, ritmo y comprensión.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Sirve para ensayos?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sí, ayuda a equilibrar introducción, desarrollo y cierre.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Qué longitud conviene?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Depende del formato, pero los párrafos muy extensos suelen cansar.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Necesito registrarme?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'No, la herramienta es gratuita y de uso inmediato.',
+      },
+    },
+  ],
+};
+
 ---
 
 <BaseLayout 
   title="Contador de Párrafos - Cuenta y Analiza Párrafos" 
-  description="Contador de párrafos gratuito. Cuenta párrafos, promedio de palabras por párrafo y analiza la estructura."
+  description="Cuenta párrafos y analiza la estructura de párrafos. Perfecto para mejorar la organización de tu escritura."
+  jsonLD={[faqSchema]}
 >
   <main class="layout-shell px-4 py-6">
     <header class="mb-6">
@@ -41,17 +90,83 @@ import Footer from '../../../components/Footer.astro';
 
         <article class="mt-8">
           <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Cómo Funciona</h2>
-            <p class="text-text-primary mb-4">Los párrafos se detectan por saltos de línea. Los párrafos bien estructurados mejoran la legibilidad.</p>
+            <h2 class="text-2xl font-display font-bold mb-3">Contador de Párrafos</h2>
+            <p class="text-text-primary mb-4">Los párrafos se detectan por saltos de línea. Analizar su tamaño y distribución ayuda a mejorar claridad, ritmo y organización.</p>
+          </section>
+
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Ideal Para</h2>
+            <p class="text-text-primary">Ensayos, artículos, páginas de venta y cualquier texto que necesite bloques claros y fáciles de escanear.</p>
+          </section>
+
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Consejos Prácticos</h2>
+            <ul class="space-y-4">
+              <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted">Evita párrafos demasiado largos.</span></li>
+              <li class="flex gap-3"><span class="text-brand-cyan font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted">Introduce una idea principal por párrafo.</span></li>
+              <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted">Usa transiciones claras entre bloques.</span></li>
+            </ul>
           </section>
 
           <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Herramientas Relacionadas</h2>
-            <ul class="space-y-2">
-              <li><a href="/es/word-counter" class="text-brand-pink hover:underline">Contador de Palabras</a></li>
-              <li><a href="/es/sentence-counter" class="text-brand-pink hover:underline">Contador de Oraciones</a></li>
-              <li><a href="/es/readability-checker" class="text-brand-pink hover:underline">Verificador de Legibilidad</a></li>
-            </ul>
+            <h2 class="text-2xl font-display font-bold mb-4">Preguntas Frecuentes</h2>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                ¿Cómo se detectan los párrafos?
+                <span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Se detectan por saltos de línea entre bloques de texto.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                ¿Por qué importa la estructura de párrafos?
+                <span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Porque mejora legibilidad, ritmo y comprensión.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                ¿Sirve para ensayos?
+                <span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Sí, ayuda a equilibrar introducción, desarrollo y cierre.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                ¿Qué longitud conviene?
+                <span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Depende del formato, pero los párrafos muy extensos suelen cansar.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                ¿Necesito registrarme?
+                <span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">No, la herramienta es gratuita y de uso inmediato.</p>
+            </details>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-4">Herramientas Relacionadas</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <a href="/es/word-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="chart" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-pink">Contador de Palabras</h3>
+              </a>
+              <a href="/es/sentence-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="text" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-cyan">Contador de Oraciones</h3>
+              </a>
+              <a href="/es/readability-checker" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="book" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-orange">Verificador de Legibilidad</h3>
+              </a>
+              <a href="/es/character-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="pencil" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-pink">Contador de Caracteres</h3>
+              </a>
+            </div>
           </section>
         </article>
       </div>

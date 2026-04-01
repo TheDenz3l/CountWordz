@@ -3,16 +3,65 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import WordCounterTool from '../../../components/WordCounterTool';
 import Sidebar from '../../../components/Sidebar.astro';
 import Footer from '../../../components/Footer.astro';
+import Icon from '../../../components/Icon.astro';
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Como as palavras são contadas?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Contamos palavras dividindo o texto por espaços e filtrando entradas vazias. Palavras com hífen contam como uma única palavra.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'O tempo de leitura é preciso?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'O tempo de leitura é calculado com base em uma velocidade média de cerca de 200 palavras por minuto. O tempo real pode variar conforme a complexidade do texto.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Os espaços entram na contagem de caracteres?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sim. Mostramos tanto os caracteres com espaços quanto sem espaços para atender a diferentes necessidades e plataformas.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Posso usar isso para textos acadêmicos?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sim. A ferramenta é útil para ensaios, trabalhos e relatórios, pois mostra palavras, frases, parágrafos e tempo estimado de leitura.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Preciso de cadastro?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Não. A ferramenta é gratuita e pode ser usada imediatamente sem criar conta.',
+      },
+    },
+  ],
+};
 ---
 
 <BaseLayout 
   title="Contador de Palavras - Conte Palavras, Caracteres e Mais" 
   description="Contador de palavras gratuito. Conte palavras, caracteres, frases, parágrafos e estime tempo de leitura em tempo real."
+  jsonLD={[faqSchema]}
 >
   <main class="layout-shell px-4 py-6">
     <header class="mb-6">
       <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Contador de Palavras</h1>
-      <p class="text-base text-text-muted max-w-3xl">Conte palavras, caracteres, frases e mais em tempo real. Perfeito para ensaios, currículos e publicações.</p>
+      <p class="text-base text-text-muted max-w-3xl">Conte palavras, caracteres, frases e mais em tempo real. Perfeito para ensaios, currículos, publicações e roteiros.</p>
     </header>
 
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
@@ -41,43 +90,68 @@ import Footer from '../../../components/Footer.astro';
 
         <article class="mt-8">
           <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Como Usar</h2>
-            <p class="text-text-primary mb-4">Cole ou digite seu texto acima. O contador mostrará instantaneamente:</p>
+            <h2 class="text-2xl font-display font-bold mb-3">Como Usar o Contador de Palavras</h2>
+            <p class="text-text-primary mb-4">Cole ou digite seu texto acima. A ferramenta mostra instantaneamente:</p>
             <ul class="list-disc list-inside space-y-2 text-text-primary">
-              <li><strong>Contagem de palavras</strong> — Total de palavras</li>
-              <li><strong>Contagem de caracteres</strong> — Com e sem espaços</li>
-              <li><strong>Contagem de frases</strong> — Número de frases</li>
-              <li><strong>Contagem de parágrafos</strong> — Número de parágrafos</li>
-              <li><strong>Tempo de leitura</strong> — Tempo estimado de leitura</li>
-              <li><strong>Tempo de fala</strong> — Tempo estimado de fala</li>
+              <li><strong>Contagem de palavras</strong> — total de palavras</li>
+              <li><strong>Contagem de caracteres</strong> — com e sem espaços</li>
+              <li><strong>Contagem de frases</strong> — número de frases</li>
+              <li><strong>Contagem de parágrafos</strong> — número de parágrafos</li>
+              <li><strong>Tempo de leitura</strong> — estimativa de leitura</li>
+              <li><strong>Tempo de fala</strong> — estimativa de fala</li>
             </ul>
           </section>
 
-          <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Limites Comuns</h2>
-            <div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4">
-              <ul class="space-y-2 text-text-primary">
-                <li class="flex justify-between"><span>Ensaio escolar</span><span class="font-semibold">500-1000 palavras</span></li>
-                <li class="flex justify-between"><span>Ensaio universitário</span><span class="font-semibold">1500-3000 palavras</span></li>
-                <li class="flex justify-between"><span>Post de blog</span><span class="font-semibold">800-1200 palavras</span></li>
-                <li class="flex justify-between"><span>Currículo</span><span class="font-semibold">400-600 palavras</span></li>
-              </ul>
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Ideal Para</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <h3 class="font-semibold text-brand-pink mb-2">Estudantes e Professores</h3>
+                <p class="text-text-muted text-sm">Verifique o tamanho de ensaios, trabalhos e redações, garantindo que o texto atenda aos requisitos acadêmicos e mantenha boa estrutura.</p>
+              </div>
+              <div>
+                <h3 class="font-semibold text-brand-cyan mb-2">Criadores de Conteúdo</h3>
+                <p class="text-text-muted text-sm">Avalie artigos de blog, newsletters e páginas de destino para equilibrar profundidade, clareza e tempo de leitura.</p>
+              </div>
+              <div>
+                <h3 class="font-semibold text-brand-orange mb-2">Profissionais em Busca de Emprego</h3>
+                <p class="text-text-muted text-sm">Mantenha currículos, resumos e cartas de apresentação no tamanho certo quando cada palavra precisa agregar valor.</p>
+              </div>
+              <div>
+                <h3 class="font-semibold text-brand-pink mb-2">Equipes de SEO</h3>
+                <p class="text-text-muted text-sm">Compare comprimentos de conteúdo, planeje tempo de leitura e publique textos alinhados à intenção de busca.</p>
+              </div>
             </div>
           </section>
 
-          <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Perguntas Frequentes</h2>
-            <h3 class="text-xl font-display font-semibold mt-4 mb-2">Como as palavras são contadas?</h3>
-            <p class="text-text-primary mb-4">Contamos palavras dividindo o texto por espaços. Palavras com hífen contam como uma palavra.</p>
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Dicas Práticas</h2>
+            <ul class="space-y-4">
+              <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Revise antes de enviar:</strong> confira palavras, frases e parágrafos antes de publicar ou entregar qualquer texto.</span></li>
+              <li class="flex gap-3"><span class="text-brand-cyan font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Considere o tempo de leitura:</strong> conteúdos muito longos podem reduzir o engajamento. Use a estimativa para ajustar o tamanho.</span></li>
+              <li class="flex gap-3"><span class="text-brand-orange font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Observe o comprimento das frases:</strong> frases menores tendem a ser mais claras e mais fáceis de entender.</span></li>
+              <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Compare diferentes formatos:</strong> ensaios, currículos e posts têm objetivos diferentes e pedem comprimentos diferentes.</span></li>
+              <li class="flex gap-3"><span class="text-brand-cyan font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Vá além das palavras:</strong> a estrutura em frases e parágrafos ajuda a identificar clareza, ritmo e organização.</span></li>
+            </ul>
           </section>
 
           <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Ferramentas Relacionadas</h2>
-            <ul class="space-y-2">
-              <li><a href="/pt/character-counter" class="text-brand-pink hover:underline">Contador de Caracteres</a></li>
-              <li><a href="/pt/sentence-counter" class="text-brand-pink hover:underline">Contador de Frases</a></li>
-              <li><a href="/pt/readability-checker" class="text-brand-pink hover:underline">Verificador de Legibilidade</a></li>
-            </ul>
+            <h2 class="text-2xl font-display font-bold mb-4">Perguntas Frequentes</h2>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">Como as palavras são contadas?<span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Dividimos o texto por espaços e removemos entradas vazias. Palavras com hífen contam como uma única palavra.</p></details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">O tempo de leitura é preciso?<span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">É uma estimativa confiável para planejamento. Textos mais densos ou técnicos podem exigir mais tempo do leitor.</p></details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">Os espaços entram na contagem de caracteres?<span class="text-brand-orange group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Sim. Também mostramos a contagem sem espaços para que você escolha a métrica mais útil no seu caso.</p></details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">Funciona para textos acadêmicos?<span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Sim. É útil para ensaios, trabalhos e relatórios quando há limites de palavras e necessidade de boa organização textual.</p></details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">Preciso de cadastro?<span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Não. Você pode usar a ferramenta imediatamente, sem conta e sem instalar nada.</p></details>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-4">Ferramentas Relacionadas</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <a href="/pt/character-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="text" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-pink">Contador de Caracteres</h3><p class="text-xs text-text-muted">Meça caracteres com precisão</p></a>
+              <a href="/pt/sentence-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="note" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-cyan">Contador de Frases</h3><p class="text-xs text-text-muted">Avalie a estrutura</p></a>
+              <a href="/pt/readability-checker" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="book" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-orange">Legibilidade</h3><p class="text-xs text-text-muted">Meça clareza e nível</p></a>
+              <a href="/pt/case-converter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="text" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-pink">Conversor de Caixa</h3><p class="text-xs text-text-muted">Ajuste o formato do texto</p></a>
+            </div>
           </section>
         </article>
       </div>

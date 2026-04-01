@@ -4,6 +4,7 @@ import Footer from '../components/Footer.astro';
 import Sidebar from '../components/Sidebar.astro';
 import SyllableCounterTool from '../components/SyllableCounterTool';
 import { generateSoftwareApplicationSchema } from '../lib/seo-metadata';
+import Icon from '../components/Icon.astro';
 
 const softwareSchema = generateSoftwareApplicationSchema({
   name: 'Syllable Counter',
@@ -72,27 +73,27 @@ const softwareSchema = generateSoftwareApplicationSchema({
               <h3 class="text-lg font-display font-semibold mb-3">Common Uses:</h3>
               <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 text-text-primary">
                 <li class="flex items-center gap-2">
-                  <span class="text-brand-pink">✓</span>
+                  <span class="text-brand-pink"><Icon name="check" size={18} /></span>
                   <span>Writing haiku (5-7-5 syllables)</span>
                 </li>
                 <li class="flex items-center gap-2">
-                  <span class="text-brand-pink">✓</span>
+                  <span class="text-brand-pink"><Icon name="check" size={18} /></span>
                   <span>Creating song lyrics and rhymes</span>
                 </li>
                 <li class="flex items-center gap-2">
-                  <span class="text-brand-pink">✓</span>
+                  <span class="text-brand-pink"><Icon name="check" size={18} /></span>
                   <span>Readability analysis</span>
                 </li>
                 <li class="flex items-center gap-2">
-                  <span class="text-brand-pink">✓</span>
+                  <span class="text-brand-pink"><Icon name="check" size={18} /></span>
                   <span>Teaching phonics and reading</span>
                 </li>
                 <li class="flex items-center gap-2">
-                  <span class="text-brand-pink">✓</span>
+                  <span class="text-brand-pink"><Icon name="check" size={18} /></span>
                   <span>Writing limericks and verse</span>
                 </li>
                 <li class="flex items-center gap-2">
-                  <span class="text-brand-pink">✓</span>
+                  <span class="text-brand-pink"><Icon name="check" size={18} /></span>
                   <span>Speech therapy exercises</span>
                 </li>
               </ul>

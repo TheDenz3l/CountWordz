@@ -3,16 +3,65 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import ParagraphCounterTool from '../../../components/ParagraphCounterTool';
 import Sidebar from '../../../components/Sidebar.astro';
 import Footer from '../../../components/Footer.astro';
+import Icon from '../../../components/Icon.astro';
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Wie werden Absätze erkannt?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Absätze werden über Leerzeilen oder Blockwechsel im Text erkannt.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Warum ist Absatzstruktur wichtig?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sie verbessert Lesbarkeit, Rhythmus und inhaltliche Orientierung.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Ist das für Aufsätze nützlich?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Ja, besonders zur Balance von Einleitung, Hauptteil und Schluss.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Welche Absatzlänge ist sinnvoll?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Das hängt vom Format ab, aber zu lange Absätze erschweren meist das Lesen.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Brauche ich ein Konto?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Nein, das Tool ist kostenlos und sofort nutzbar.',
+      },
+    },
+  ],
+};
+
 ---
 
 <BaseLayout 
   title="Absatzzähler - Zählt und Analysiert Absätze" 
-  description="Kostenloser Absatzzähler. Zählen Sie Absätze, durchschnittliche Wörter pro Absatz und analysieren Sie die Struktur."
+  description="Zählen Sie Absätze und analysieren Sie deren Struktur. Ideal, um die Organisation Ihres Textes zu verbessern."
+  jsonLD={[faqSchema]}
 >
   <main class="layout-shell px-4 py-6">
     <header class="mb-6">
       <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Absatzzähler</h1>
-      <p class="text-base text-text-muted max-w-3xl">Zählen Sie Absätze und analysieren Sie die Absatzstruktur. Perfekt zur Verbesserung der Organisation Ihres Schreibens.</p>
+      <p class="text-base text-text-muted max-w-3xl">Zählen Sie Absätze und analysieren Sie deren Struktur. Ideal, um die Organisation Ihres Textes zu verbessern.</p>
     </header>
 
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
@@ -41,17 +90,83 @@ import Footer from '../../../components/Footer.astro';
 
         <article class="mt-8">
           <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Wie Es Funktioniert</h2>
-            <p class="text-text-primary mb-4">Absätze werden durch Zeilenumbrüche erkannt. Gut strukturierte Absätze verbessern die Lesbarkeit.</p>
+            <h2 class="text-2xl font-display font-bold mb-3">Absatzzähler</h2>
+            <p class="text-text-primary mb-4">Absätze werden über Zeilenumbrüche erkannt. Ihre Länge und Verteilung geben wichtige Hinweise auf Struktur und Lesefluss.</p>
+          </section>
+
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Ideal für</h2>
+            <p class="text-text-primary">Aufsätze, Artikel, Landingpages und alle Texte, die in klaren Abschnitten lesbar bleiben sollen.</p>
+          </section>
+
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Praktische Tipps</h2>
+            <ul class="space-y-4">
+              <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted">Vermeiden Sie zu lange Absätze.</span></li>
+              <li class="flex gap-3"><span class="text-brand-cyan font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted">Ein Hauptgedanke pro Absatz ist meist klarer.</span></li>
+              <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted">Achten Sie auf saubere Übergänge zwischen den Abschnitten.</span></li>
+            </ul>
           </section>
 
           <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Ähnliche Tools</h2>
-            <ul class="space-y-2">
-              <li><a href="/de/word-counter" class="text-brand-pink hover:underline">Wortzähler</a></li>
-              <li><a href="/de/sentence-counter" class="text-brand-pink hover:underline">Satzanzahl</a></li>
-              <li><a href="/de/readability-checker" class="text-brand-pink hover:underline">Lesbarkeitsprüfer</a></li>
-            </ul>
+            <h2 class="text-2xl font-display font-bold mb-4">Häufig gestellte Fragen</h2>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Wie werden Absätze erkannt?
+                <span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Absätze werden über Leerzeilen oder Blockwechsel im Text erkannt.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Warum ist Absatzstruktur wichtig?
+                <span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Sie verbessert Lesbarkeit, Rhythmus und inhaltliche Orientierung.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Ist das für Aufsätze nützlich?
+                <span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Ja, besonders zur Balance von Einleitung, Hauptteil und Schluss.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Welche Absatzlänge ist sinnvoll?
+                <span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Das hängt vom Format ab, aber zu lange Absätze erschweren meist das Lesen.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Brauche ich ein Konto?
+                <span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Nein, das Tool ist kostenlos und sofort nutzbar.</p>
+            </details>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-4">Ähnliche Tools</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <a href="/de/word-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="chart" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-pink">Wortzähler</h3>
+              </a>
+              <a href="/de/sentence-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="text" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-cyan">Satzanzahl</h3>
+              </a>
+              <a href="/de/readability-checker" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="book" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-orange">Lesbarkeitsprüfer</h3>
+              </a>
+              <a href="/de/character-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="pencil" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-pink">Zeichenzähler</h3>
+              </a>
+            </div>
           </section>
         </article>
       </div>

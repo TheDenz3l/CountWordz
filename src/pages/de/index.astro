@@ -2,9 +2,57 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import WordCounterTool from '../../components/WordCounterTool';
 import Footer from '../../components/Footer.astro';
+import Icon from '../../components/Icon.astro';
 import { getLocalizedStaticPath, getLocalizedToolPath } from '../../lib/locale-routes';
 
 const locale = 'de';
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Ist CountWordz wirklich kostenlos?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Ja! CountWordz ist 100% kostenlos für immer. Keine Anmeldung, keine versteckten Gebühren, keine Premium-Stufen. Die 103+ Tools sind ohne Kosten mit unbegrenzter Nutzung verfügbar.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Sind meine Textdaten sicher und privat?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Absolut. Die gesamte Textverarbeitung erfolgt lokal in Ihrem Browser mit JavaScript. Ihr Inhalt wird niemals an unsere Server gesendet, gespeichert oder mit Dritten geteilt.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Wie genau sind die Wort- und Zeichenzählungen?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Unsere Zählalgorithmen folgen branchenüblichen Methoden. Die Wortzählung behandelt Wörter mit Bindestrich als ein Wort und zählt Kontraktionen korrekt.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Kann ich CountWordz auf mobilen Geräten verwenden?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Ja! CountWordz ist vollständig responsiv und funktioniert perfekt auf Smartphones, Tablets und Desktop-Computern. Die Oberfläche passt sich jeder Bildschirmgröße an.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Muss ich Software oder Erweiterungen installieren?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Keine Installation erforderlich. CountWordz läuft vollständig in Ihrem Webbrowser. Besuchen Sie einfach die Website und beginnen Sie sofort mit der Verwendung eines beliebigen Tools.',
+      },
+    },
+  ],
+};
 
 const stats = [
   { value: '103', label: 'Kostenlose Tools', accent: 'text-brand-pink' },
@@ -39,6 +87,7 @@ const popularUseCases = [
 <BaseLayout
   title="CountWordz - Kostenlose Text-Tools"
   description="Kostenlose Text-Tools: Wortzähler, Zeichenzähler, Lesbarkeitsprüfer und mehr. Schnell, modern und einfach zu bedienen."
+  jsonLD={[faqSchema]}
 >
   <section class="bg-gradient-to-br from-brand-cream to-white py-16 md:py-24">
     <div class="layout-shell px-4">
@@ -119,6 +168,156 @@ const popularUseCases = [
             <div class="text-xs text-text-muted">{item.description}</div>
           </a>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Wie man CountWordz verwendet -->
+  <section class="py-16 bg-gray-50">
+    <div class="layout-shell px-4">
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-center mb-12">Wie man CountWordz verwendet</h2>
+      <div class="max-w-4xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          <div class="bg-surface p-6 rounded-xl border border-gray-100">
+            <div class="text-4xl mb-4"><Icon name="note" size={36} /></div>
+            <h3 class="text-xl font-display font-semibold mb-3">1. Text einfügen oder eingeben</h3>
+            <p class="text-text-muted">Geben Sie Ihren Inhalt direkt in den Textbereich eines beliebigen Tools ein oder fügen Sie ihn aus der Zwischenablage ein. Die gesamte Analyse erfolgt sofort während Sie eingeben.</p>
+          </div>
+          <div class="bg-surface p-6 rounded-xl border border-gray-100">
+            <div class="text-4xl mb-4"><Icon name="chart" size={36} /></div>
+            <h3 class="text-xl font-display font-semibold mb-3">2. Sofortige Analyse erhalten</h3>
+            <p class="text-text-muted">Zeigen Sie Echtzeit-Metriken an einschließlich Wortzählung, Zeichenzählung, Lesezeit, Lesbarkeitswerte und mehr je nach Tool.</p>
+          </div>
+          <div class="bg-surface p-6 rounded-xl border border-gray-100">
+            <div class="text-4xl mb-4"><Icon name="save" size={36} /></div>
+            <h3 class="text-xl font-display font-semibold mb-3">3. Ergebnisse kopieren oder exportieren</h3>
+            <p class="text-text-muted">Kopieren Sie Ihren formatierten Text, exportieren Sie Metriken oder nutzen Sie die Erkenntnisse zur Verbesserung Ihres Schreibens. Keine Anmeldung erforderlich.</p>
+          </div>
+        </div>
+        
+        <!-- Ideal für Section -->
+        <div class="bg-surface rounded-2xl p-8 border border-gray-100">
+          <h3 class="text-2xl font-display font-bold mb-6 text-center">Ideal für</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <h4 class="font-semibold text-brand-pink mb-2">Schüler und Pädagogen</h4>
+              <p class="text-text-muted text-sm">Überprüfen Sie die Wortzahl von Aufsätzen, analysieren Sie Lesestufen und stellen Sie sicher, dass Aufgaben die Anforderungen erfüllen. Perfekt für akademisches Schreiben und Unterrichtsplanung.</p>
+            </div>
+            <div>
+              <h4 class="font-semibold text-brand-cyan mb-2">Content-Ersteller</h4>
+              <p class="text-text-muted text-sm">Optimieren Sie Blog-Beiträge, Social-Media-Beschriftungen und Marketing-Texte. Bleiben Sie innerhalb der Zeichenlimits für X, Instagram, LinkedIn und mehr.</p>
+            </div>
+            <div>
+              <h4 class="font-semibold text-brand-orange mb-2">Professionelle Schreiber</h4>
+              <p class="text-text-muted text-sm">Verfolgen Sie Schreibziele, analysieren Sie Lesbarkeit und behalten Sie konsistente Inhaltsqualität bei. Ideal für Journalisten, Texter und Autoren.</p>
+            </div>
+            <div>
+              <h4 class="font-semibold text-brand-pink mb-2">SEO-Spezialisten</h4>
+              <p class="text-text-muted text-sm">Stellen Sie sicher, dass Meta-Beschreibungen, Titel-Tags und Inhaltslängen SEO-Best-Practices folgen. Verbessern Sie Suchmaschinen-Rankings mit optimiertem Inhalt.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Praktische Tipps Section -->
+        <div class="mt-8 bg-surface rounded-2xl p-8 border border-gray-100">
+          <h3 class="text-2xl font-display font-bold mb-6 text-center">Praktische Tipps</h3>
+          <ul class="space-y-4">
+            <li class="flex gap-3">
+              <span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span>
+              <span class="text-text-muted"><strong>Verwenden Sie das richtige Tool für Ihr Ziel:</strong> Wortzähler für Aufsätze, Zeichenzähler für Social Media, Lesbarkeitsprüfer für Blog-Beiträge.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="text-brand-cyan font-bold"><Icon name="check" size={18} /></span>
+              <span class="text-text-muted"><strong>Überprüfen Sie Lesbarkeitswerte:</strong> Streben Sie einen Flesch-Wert von 60-70 für allgemeine Zielgruppen an. Niedrigere Werte zeigen komplexeren Text an.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="text-brand-orange font-bold"><Icon name="check" size={18} /></span>
+              <span class="text-text-muted"><strong>Überwachen Sie die Satzlänge:</strong> Eine durchschnittliche Satzlänge von 15-20 Wörtern verbessert die Lesbarkeit. Verwenden Sie den Satzzähler, um dies zu verfolgen.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span>
+              <span class="text-text-muted"><strong>Optimieren Sie für Ihre Plattform:</strong> Jede Social-Media-Plattform hat unterschiedliche Limits. Verwenden Sie unsere spezifischen Zähler für X, Instagram und LinkedIn.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="text-brand-cyan font-bold"><Icon name="check" size={18} /></span>
+              <span class="text-text-muted"><strong>Überprüfen Sie die Lesezeit:</strong> Blog-Beiträge sollten eine Lesezeit von 3-7 Minuten für optimales Engagement haben. Passen Sie die Inhaltslänge entsprechend an.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Verwandte Tools -->
+  <section class="py-16 bg-white">
+    <div class="layout-shell px-4">
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-center mb-4">Verwandte Tools</h2>
+      <p class="text-center text-text-muted mb-12 max-w-2xl mx-auto">Entdecken Sie unsere beliebtesten Textanalyse-Tools</p>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+        <a href="/de/word-counter" class="bg-surface p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+          <div class="text-3xl mb-3"><Icon name="chart" size={30} /></div>
+          <h3 class="text-lg font-display font-semibold mb-2 text-brand-pink">Wortzähler</h3>
+          <p class="text-sm text-text-muted">Zählt Wörter, Zeichen und schätzt Lesezeit</p>
+        </a>
+        <a href="/de/character-counter" class="bg-surface p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+          <div class="text-3xl mb-3"><Icon name="text" size={30} /></div>
+          <h3 class="text-lg font-display font-semibold mb-2 text-brand-cyan">Zeichenzähler</h3>
+          <p class="text-sm text-text-muted">Prüft Zeichenlimits für Social Media</p>
+        </a>
+        <a href="/de/readability-checker" class="bg-surface p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+          <div class="text-3xl mb-3"><Icon name="book" size={30} /></div>
+          <h3 class="text-lg font-display font-semibold mb-2 text-brand-orange">Lesbarkeitsprüfer</h3>
+          <p class="text-sm text-text-muted">Misst Lesbarkeit und Schulstufe</p>
+        </a>
+        <a href="/de/case-converter" class="bg-surface p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+          <div class="text-3xl mb-3"><Icon name="text" size={30} /></div>
+          <h3 class="text-lg font-display font-semibold mb-2 text-brand-pink">Groß-/Kleinschreibung</h3>
+          <p class="text-sm text-text-muted">Konvertiert Text zwischen verschiedenen Formaten</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Häufig gestellte Fragen -->
+  <section class="py-16 bg-gray-50">
+    <div class="layout-shell px-4">
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-center mb-12">Häufig gestellte Fragen</h2>
+      <div class="max-w-3xl mx-auto space-y-4">
+        <details class="bg-surface rounded-xl border border-gray-100 p-6 group">
+          <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+            Ist CountWordz wirklich kostenlos?
+            <span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="text-text-muted mt-4">Ja! CountWordz ist 100% kostenlos für immer. Keine Anmeldung, keine versteckten Gebühren, keine Premium-Stufen. Die 103+ Tools sind ohne Kosten mit unbegrenzter Nutzung verfügbar.</p>
+        </details>
+        <details class="bg-surface rounded-xl border border-gray-100 p-6 group">
+          <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+            Sind meine Textdaten sicher und privat?
+            <span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="text-text-muted mt-4">Absolut. Die gesamte Textverarbeitung erfolgt lokal in Ihrem Browser mit JavaScript. Ihr Inhalt wird niemals an unsere Server gesendet, gespeichert oder mit Dritten geteilt.</p>
+        </details>
+        <details class="bg-surface rounded-xl border border-gray-100 p-6 group">
+          <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+            Wie genau sind die Wort- und Zeichenzählungen?
+            <span class="text-brand-orange group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="text-text-muted mt-4">Unsere Zählalgorithmen folgen branchenüblichen Methoden. Die Wortzählung behandelt Wörter mit Bindestrich als ein Wort und zählt Kontraktionen korrekt.</p>
+        </details>
+        <details class="bg-surface rounded-xl border border-gray-100 p-6 group">
+          <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+            Kann ich CountWordz auf mobilen Geräten verwenden?
+            <span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="text-text-muted mt-4">Ja! CountWordz ist vollständig responsiv und funktioniert perfekt auf Smartphones, Tablets und Desktop-Computern. Die Oberfläche passt sich jeder Bildschirmgröße an.</p>
+        </details>
+        <details class="bg-surface rounded-xl border border-gray-100 p-6 group">
+          <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+            Muss ich Software oder Erweiterungen installieren?
+            <span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="text-text-muted mt-4">Keine Installation erforderlich. CountWordz läuft vollständig in Ihrem Webbrowser. Besuchen Sie einfach die Website und beginnen Sie sofort mit der Verwendung eines beliebigen Tools.</p>
+        </details>
       </div>
     </div>
   </section>

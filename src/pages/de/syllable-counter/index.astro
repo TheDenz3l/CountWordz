@@ -3,16 +3,65 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import SyllableCounterTool from '../../../components/SyllableCounterTool';
 import Sidebar from '../../../components/Sidebar.astro';
 import Footer from '../../../components/Footer.astro';
+import Icon from '../../../components/Icon.astro';
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Wie werden Silben gezählt?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sie werden mit sprachlichen Regeln und Lautmustern geschätzt.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Ist das immer exakt?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Nicht immer; manche unregelmäßigen Wörter müssen manuell geprüft werden.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Ist das für Poesie nützlich?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Ja, besonders für Rhythmus und metrische Struktur.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Hilft das bei der Lesbarkeit?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Ja, viele Lesbarkeitsformeln berücksichtigen Silben pro Wort.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Brauche ich ein Konto?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Nein.',
+      },
+    },
+  ],
+};
+
 ---
 
 <BaseLayout 
-  title="Silbenzähler - Zählt Silben in Wörtern" 
-  description="Kostenloser Silbenzähler. Zählen Sie Gesamtsilben und durchschnittliche Silben pro Wort. Als geschätzt gekennzeichnet."
+  title="Silbenzähler - Zählt Silben im Text" 
+  description="Zählen Sie Silben in Wörtern und Texten. Nützlich für Poesie, Rhythmus und Lesbarkeit."
+  jsonLD={[faqSchema]}
 >
   <main class="layout-shell px-4 py-6">
     <header class="mb-6">
       <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Silbenzähler</h1>
-      <p class="text-base text-text-muted max-w-3xl">Zählen Sie Silben in Wörtern und Text. Perfekt für Lesbarkeitsanalyse und Poesie.</p>
+      <p class="text-base text-text-muted max-w-3xl">Zählen Sie Silben in Wörtern und Texten. Nützlich für Poesie, Rhythmus und Lesbarkeit.</p>
     </header>
 
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
@@ -41,17 +90,83 @@ import Footer from '../../../components/Footer.astro';
 
         <article class="mt-8">
           <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Wie Es Funktioniert</h2>
-            <p class="text-text-primary mb-4">Wir verwenden linguistische Algorithmen zur Schätzung der Silbenzählung. Englische Regeln können variieren.</p>
+            <h2 class="text-2xl font-display font-bold mb-3">Silbenzähler</h2>
+            <p class="text-text-primary mb-4">Der Silbenzähler schätzt Silben, um Lesbarkeit, Rhythmus und metrisches Schreiben besser einschätzen zu können.</p>
+          </section>
+
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Ideal für</h2>
+            <p class="text-text-primary">Gedichte, Songtexte, Lesbarkeitsprüfung und Texte, bei denen Rhythmus oder Wortkomplexität relevant sind.</p>
+          </section>
+
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Praktische Tipps</h2>
+            <ul class="space-y-4">
+              <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted">Behandeln Sie das Ergebnis als Schätzung.</span></li>
+              <li class="flex gap-3"><span class="text-brand-cyan font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted">Kombinieren Sie es mit dem Lesbarkeitsprüfer.</span></li>
+              <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted">Prüfen Sie seltene Wörter und Eigennamen manuell.</span></li>
+            </ul>
           </section>
 
           <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Ähnliche Tools</h2>
-            <ul class="space-y-2">
-              <li><a href="/de/word-counter" class="text-brand-pink hover:underline">Wortzähler</a></li>
-              <li><a href="/de/readability-checker" class="text-brand-pink hover:underline">Lesbarkeitsprüfer</a></li>
-              <li><a href="/de/reading-time-calculator" class="text-brand-pink hover:underline">Lesezeit</a></li>
-            </ul>
+            <h2 class="text-2xl font-display font-bold mb-4">Häufig gestellte Fragen</h2>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Wie werden Silben gezählt?
+                <span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Sie werden mit sprachlichen Regeln und Lautmustern geschätzt.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Ist das immer exakt?
+                <span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Nicht immer; manche unregelmäßigen Wörter müssen manuell geprüft werden.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Ist das für Poesie nützlich?
+                <span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Ja, besonders für Rhythmus und metrische Struktur.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Hilft das bei der Lesbarkeit?
+                <span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Ja, viele Lesbarkeitsformeln berücksichtigen Silben pro Wort.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Brauche ich ein Konto?
+                <span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Nein.</p>
+            </details>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-4">Ähnliche Tools</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <a href="/de/word-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="chart" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-pink">Wortzähler</h3>
+              </a>
+              <a href="/de/readability-checker" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="text" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-cyan">Lesbarkeitsprüfer</h3>
+              </a>
+              <a href="/de/character-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="book" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-orange">Zeichenzähler</h3>
+              </a>
+              <a href="/de/sentence-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="pencil" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-pink">Satzanzahl</h3>
+              </a>
+            </div>
           </section>
         </article>
       </div>

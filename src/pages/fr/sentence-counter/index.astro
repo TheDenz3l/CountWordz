@@ -3,16 +3,65 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import SentenceCounterTool from '../../../components/SentenceCounterTool';
 import Sidebar from '../../../components/Sidebar.astro';
 import Footer from '../../../components/Footer.astro';
+import Icon from '../../../components/Icon.astro';
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Comment les phrases sont-elles détectées ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Le compteur s’appuie sur la ponctuation et des règles simples pour repérer les fins de phrases, tout en réduisant les faux positifs liés aux abréviations courantes.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Pourquoi compter les phrases ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Le nombre de phrases aide à évaluer le rythme d’un texte, la longueur moyenne des phrases et la clarté globale du contenu.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Cet outil aide-t-il à améliorer la lisibilité ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Oui. En observant la quantité et la longueur des phrases, vous pouvez repérer les passages trop denses et les reformuler plus simplement.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Fonctionne-t-il pour les textes académiques ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Oui. Il peut servir à analyser dissertations, rapports et contenus professionnels afin de mieux équilibrer structure et lisibilité.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Dois-je m’inscrire ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Non. L’outil est gratuit et accessible immédiatement sans créer de compte.',
+      },
+    },
+  ],
+};
 ---
 
 <BaseLayout 
   title="Compteur de Phrases - Compte et Analyse les Phrases" 
   description="Compteur de phrases gratuit. Comptez les phrases, la moyenne de mots par phrase et analysez la structure du texte."
+  jsonLD={[faqSchema]}
 >
   <main class="layout-shell px-4 py-6">
     <header class="mb-6">
       <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Compteur de Phrases</h1>
-      <p class="text-base text-text-muted max-w-3xl">Comptez les phrases et analysez la structure des phrases. Parfait pour améliorer la clarté de votre écriture.</p>
+      <p class="text-base text-text-muted max-w-3xl">Comptez les phrases et observez la structure du texte. Idéal pour clarifier l’écriture et améliorer le rythme de lecture.</p>
     </header>
 
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
@@ -41,17 +90,48 @@ import Footer from '../../../components/Footer.astro';
 
         <article class="mt-8">
           <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Comment Ça Marche</h2>
-            <p class="text-text-primary mb-4">Notre compteur détecte les phrases basées sur la ponctuation tout en ignorant les abréviations courantes.</p>
+            <h2 class="text-2xl font-display font-bold mb-3">Comment Utiliser le Compteur de Phrases</h2>
+            <p class="text-text-primary mb-4">Collez ou tapez votre texte. L’outil identifie ensuite les phrases et affiche des indicateurs utiles pour analyser la fluidité du contenu.</p>
+          </section>
+
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Idéal Pour</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div><h3 class="font-semibold text-brand-pink mb-2">Rédacteurs</h3><p class="text-text-muted text-sm">Repérez les phrases trop longues et ajustez le rythme du texte pour le rendre plus clair.</p></div>
+              <div><h3 class="font-semibold text-brand-cyan mb-2">Étudiants</h3><p class="text-text-muted text-sm">Analysez dissertations et rapports pour éviter les phrases lourdes ou trop complexes.</p></div>
+              <div><h3 class="font-semibold text-brand-orange mb-2">Équipes Marketing</h3><p class="text-text-muted text-sm">Structurez vos contenus web, emails et pages de vente avec un style plus direct et plus facile à lire.</p></div>
+              <div><h3 class="font-semibold text-brand-pink mb-2">Professionnels SEO</h3><p class="text-text-muted text-sm">Améliorez la lisibilité générale en équilibrant longueur des phrases et densité des idées.</p></div>
+            </div>
+          </section>
+
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Conseils Pratiques</h2>
+            <ul class="space-y-4">
+              <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Visez un rythme régulier :</strong> alternez phrases courtes et moyennes pour garder l’attention du lecteur.</span></li>
+              <li class="flex gap-3"><span class="text-brand-cyan font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Découpez les blocs denses :</strong> si un paragraphe contient peu de phrases très longues, il mérite souvent une réécriture.</span></li>
+              <li class="flex gap-3"><span class="text-brand-orange font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Relisez les transitions :</strong> de nombreuses phrases consécutives très courtes peuvent aussi créer un style haché.</span></li>
+              <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Comparez plusieurs versions :</strong> après réécriture, mesurez à nouveau le texte pour vérifier l’amélioration.</span></li>
+              <li class="flex gap-3"><span class="text-brand-cyan font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Utilisez-le avec le vérificateur de lisibilité :</strong> les deux outils se complètent très bien pour améliorer la clarté.</span></li>
+            </ul>
           </section>
 
           <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Outils Connexes</h2>
-            <ul class="space-y-2">
-              <li><a href="/fr/word-counter" class="text-brand-pink hover:underline">Compteur de Mots</a></li>
-              <li><a href="/fr/paragraph-counter" class="text-brand-pink hover:underline">Compteur de Paragraphes</a></li>
-              <li><a href="/fr/readability-checker" class="text-brand-pink hover:underline">Vérificateur de Lisibilité</a></li>
-            </ul>
+            <h2 class="text-2xl font-display font-bold mb-4">Questions Fréquentes</h2>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">Comment les phrases sont-elles détectées ?<span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Le compteur s’appuie sur la ponctuation et des règles de base pour repérer les fins de phrases tout en limitant les erreurs évidentes.</p></details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">Pourquoi compter les phrases ?<span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Cela aide à comprendre le rythme du texte, la longueur moyenne des phrases et l’effort demandé au lecteur.</p></details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">Est-ce utile pour la lisibilité ?<span class="text-brand-orange group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Oui. Des phrases plus courtes et mieux équilibrées rendent souvent le texte plus lisible et plus fluide.</p></details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">Fonctionne-t-il pour les textes académiques ?<span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Oui. Il est particulièrement utile pour les dissertations, rapports et documents où la clarté doit rester forte malgré un contenu dense.</p></details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">Dois-je m’inscrire ?<span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Non. L’outil est gratuit et utilisable immédiatement.</p></details>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-4">Outils Connexes</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <a href="/fr/word-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="chart" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-pink">Compteur de Mots</h3><p class="text-xs text-text-muted">Mesurez la longueur globale</p></a>
+              <a href="/fr/paragraph-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="file" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-cyan">Compteur de Paragraphes</h3><p class="text-xs text-text-muted">Analysez la structure</p></a>
+              <a href="/fr/readability-checker" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="book" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-orange">Lisibilité</h3><p class="text-xs text-text-muted">Mesurez la clarté</p></a>
+              <a href="/fr/character-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="text" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-pink">Caractères</h3><p class="text-xs text-text-muted">Affinez les limites</p></a>
+            </div>
           </section>
         </article>
       </div>

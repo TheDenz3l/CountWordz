@@ -10,6 +10,7 @@ import {
   type LongTailCategory,
 } from './locale-routes';
 import { generateSoftwareApplicationSchema, generateFAQPageSchema } from './seo-metadata';
+import { renderIconHtml } from './icon-html';
 
 export interface LongTailPageContent {
   slug: string;
@@ -1312,7 +1313,7 @@ function buildLocalizedArticle(slug: string, locale: LocaleCode): string {
   const tools = getToolNames(locale);
   const overviewParagraphs = buildOverviewParagraphs(locale, category, kind, subject);
   const recommendationItems = buildRecommendationItems(locale, category, kind);
-  const faqItems = buildFaqItems(locale, category, kind, subject);
+  const faqItems = [...buildFaqItems(locale, category, kind, subject), ...t.faqItems];
 
   const relatedLinks = category === 'reading-time'
     ? [
@@ -1343,36 +1344,39 @@ function buildLocalizedArticle(slug: string, locale: LocaleCode): string {
       <h2 class="text-2xl font-display font-bold mb-3">${escapeHtml(t.howToUse)}</h2>
       ${overviewParagraphs.map((paragraph) => `<p class="text-text-primary mb-4">${escapeHtml(paragraph)}</p>`).join('')}
     </section>
-    <section class="mb-6">
-      <h2 class="text-2xl font-display font-bold mb-3">${escapeHtml(getRecommendationHeading(locale, category))}</h2>
-      <ul class="list-disc list-inside space-y-2 text-text-primary mb-4">
-        ${recommendationItems.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}
+    <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+      <h2 class="text-2xl font-display font-bold mb-6 text-center">${escapeHtml(t.bestFor)}</h2>
+      <p class="text-text-primary">${escapeHtml(buildBestForText(locale, category, subject, kind, tools))}</p>
+    </section>
+    <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+      <h2 class="text-2xl font-display font-bold mb-6 text-center">${escapeHtml(getRecommendationHeading(locale, category))}</h2>
+      <ul class="space-y-4 text-text-primary">
+        ${recommendationItems.map((item) => `<li class="flex gap-3"><span class="text-brand-pink font-bold" aria-hidden="true">•</span><span>${escapeHtml(item)}</span></li>`).join('')}
+      </ul>
+    </section>
+    <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+      <h2 class="text-2xl font-display font-bold mb-6 text-center">${escapeHtml(t.tips)}</h2>
+      <ul class="space-y-4 text-text-primary">
+        ${t.tipsItems.map((item) => `<li class="flex gap-3"><span class="text-brand-cyan font-bold" aria-hidden="true">${renderIconHtml('check', { className: 'inline-block align-middle', size: 16 })}</span><span>${escapeHtml(item)}</span></li>`).join('')}
       </ul>
     </section>
     <section class="mb-6">
-      <h2 class="text-2xl font-display font-bold mb-3">${escapeHtml(t.bestFor)}</h2>
-      <div class="bg-surface rounded-lg border border-gray-100 p-4">
-        <p class="text-text-primary">${escapeHtml(buildBestForText(locale, category, subject, kind, tools))}</p>
-      </div>
-    </section>
-    <section class="mb-6">
-      <h2 class="text-2xl font-display font-bold mb-3">${escapeHtml(t.tips)}</h2>
-      <ul class="list-disc list-inside space-y-2 text-text-primary mb-4">
-        ${t.tipsItems.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}
-      </ul>
-    </section>
-    <section class="mb-6">
-      <h2 class="text-2xl font-display font-bold mb-3">${escapeHtml(t.faq)}</h2>
-      ${faqItems.map((item) => `
-        <h3 class="text-xl font-display font-semibold mt-4 mb-2">${escapeHtml(item.q)}</h3>
-        <p class="text-text-primary mb-4">${escapeHtml(item.a)}</p>
+      <h2 class="text-2xl font-display font-bold mb-4">${escapeHtml(t.faq)}</h2>
+      ${faqItems.map((item, index) => `
+        <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+          <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+            ${escapeHtml(item.q)}
+            <span class="${index % 2 === 0 ? 'text-brand-pink' : 'text-brand-cyan'} group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="text-text-muted mt-4">${escapeHtml(item.a)}</p>
+        </details>
       `).join('')}
     </section>
     <section class="mb-6">
-      <h2 class="text-2xl font-display font-bold mb-3">${escapeHtml(t.related)}</h2>
-      <ul class="space-y-2">
-        ${relatedLinks.map((link) => `<li><a href="${link.href}" class="text-brand-pink hover:underline">${escapeHtml(link.label)}</a></li>`).join('')}
-      </ul>
+      <h2 class="text-2xl font-display font-bold mb-4">${escapeHtml(t.related)}</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        ${relatedLinks.map((link, index) => `<a href="${link.href}" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-xs uppercase tracking-wide mb-2 ${index === 0 ? 'text-brand-pink' : index === 1 ? 'text-brand-cyan' : 'text-brand-orange'}">Tool</div><h3 class="text-sm font-display font-semibold mb-1 ${index === 0 ? 'text-brand-pink' : index === 1 ? 'text-brand-cyan' : 'text-brand-orange'}">${escapeHtml(link.label)}</h3><p class="text-xs text-text-muted">${escapeHtml(t.related)}</p></a>`).join('')}
+      </div>
     </section>
   `;
 }

@@ -3,16 +3,65 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import SyllableCounterTool from '../../../components/SyllableCounterTool';
 import Sidebar from '../../../components/Sidebar.astro';
 import Footer from '../../../components/Footer.astro';
+import Icon from '../../../components/Icon.astro';
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Como as sílabas são contadas?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Elas são estimadas com regras linguísticas e padrões vocálicos.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'É 100% exato?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Nem sempre; algumas palavras irregulares exigem revisão manual.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Serve para poesia?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sim, é muito útil para ritmo e estrutura.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Ajuda na legibilidade?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sim, porque várias fórmulas usam sílabas por palavra.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Preciso de cadastro?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Não.',
+      },
+    },
+  ],
+};
+
 ---
 
 <BaseLayout 
-  title="Contador de Sílabas - Conta Sílabas em Palavras" 
-  description="Contador de sílabas gratuito. Conte sílabas totais e média de sílabas por palavra. Marcado como estimado."
+  title="Contador de Sílabas - Conta Sílabas no Texto" 
+  description="Conte sílabas em palavras e textos. Útil para poesia, ritmo e legibilidade."
+  jsonLD={[faqSchema]}
 >
   <main class="layout-shell px-4 py-6">
     <header class="mb-6">
       <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Contador de Sílabas</h1>
-      <p class="text-base text-text-muted max-w-3xl">Conte sílabas em palavras e texto. Perfeito para análise de legibilidade e escrita de poesia.</p>
+      <p class="text-base text-text-muted max-w-3xl">Conte sílabas em palavras e textos. Útil para poesia, ritmo e legibilidade.</p>
     </header>
 
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
@@ -41,17 +90,83 @@ import Footer from '../../../components/Footer.astro';
 
         <article class="mt-8">
           <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Como Funciona</h2>
-            <p class="text-text-primary mb-4">Usamos algoritmos linguísticos para estimar a contagem de sílabas. As regras do inglês podem variar.</p>
+            <h2 class="text-2xl font-display font-bold mb-3">Contador de Sílabas</h2>
+            <p class="text-text-primary mb-4">O contador estima sílabas para ajudar em legibilidade, escrita métrica e controle do ritmo do texto.</p>
+          </section>
+
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Ideal Para</h2>
+            <p class="text-text-primary">Poesia, letras, legibilidade e textos em que ritmo ou complexidade lexical importam.</p>
+          </section>
+
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Dicas Práticas</h2>
+            <ul class="space-y-4">
+              <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted">Trate o resultado como estimativa.</span></li>
+              <li class="flex gap-3"><span class="text-brand-cyan font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted">Use junto com o verificador de legibilidade.</span></li>
+              <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted">Revise manualmente palavras raras e nomes próprios.</span></li>
+            </ul>
           </section>
 
           <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Ferramentas Relacionadas</h2>
-            <ul class="space-y-2">
-              <li><a href="/pt/word-counter" class="text-brand-pink hover:underline">Contador de Palavras</a></li>
-              <li><a href="/pt/readability-checker" class="text-brand-pink hover:underline">Verificador de Legibilidade</a></li>
-              <li><a href="/pt/reading-time-calculator" class="text-brand-pink hover:underline">Tempo de Leitura</a></li>
-            </ul>
+            <h2 class="text-2xl font-display font-bold mb-4">Perguntas Frequentes</h2>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Como as sílabas são contadas?
+                <span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Elas são estimadas com regras linguísticas e padrões vocálicos.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                É 100% exato?
+                <span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Nem sempre; algumas palavras irregulares exigem revisão manual.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Serve para poesia?
+                <span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Sim, é muito útil para ritmo e estrutura.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Ajuda na legibilidade?
+                <span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Sim, porque várias fórmulas usam sílabas por palavra.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Preciso de cadastro?
+                <span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Não.</p>
+            </details>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-4">Ferramentas Relacionadas</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <a href="/pt/word-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="chart" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-pink">Contador de Palavras</h3>
+              </a>
+              <a href="/pt/readability-checker" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="text" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-cyan">Verificador de Legibilidade</h3>
+              </a>
+              <a href="/pt/character-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="book" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-orange">Contador de Caracteres</h3>
+              </a>
+              <a href="/pt/sentence-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="pencil" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-pink">Contador de Frases</h3>
+              </a>
+            </div>
           </section>
         </article>
       </div>

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import { LightbulbIcon } from '@phosphor-icons/react';
 import { extractWordTokens } from '../lib/text-utils';
 import { getToolTranslation, resolveLocale } from '../lib/tool-i18n';
 
@@ -196,16 +197,19 @@ export default function KeywordDensityChecker({ locale = 'en' }: Props) {
           </div>
 
           <div className="p-4 bg-brand-cream rounded-xl border border-brand-cyan/20">
-            <h3 className="text-xl font-display font-bold mb-3">{copy.seoRecommendations}</h3>
+            <h3 className="text-xl font-display font-bold mb-3 flex items-center gap-2">
+              <LightbulbIcon size={22} className="text-brand-orange" aria-hidden="true" />
+              <span>{copy.seoRecommendations}</span>
+            </h3>
             <ul className="space-y-2 text-text-primary">
               {analysis.overusedWords.length > 0 && (
-                <li className="flex items-start gap-2"><span className="text-red-500 mt-1">•</span><span>{copy.reduceRepetitionOf}: <strong>{analysis.overusedWords.slice(0, 3).map(w => w.word).join(', ')}</strong></span></li>
+                <li className="flex items-start gap-2"><span className="text-red-500 mt-1" aria-hidden="true">&bull;</span><span>{copy.reduceRepetitionOf}: <strong>{analysis.overusedWords.slice(0, 3).map(w => w.word).join(', ')}</strong></span></li>
               )}
               {analysis.totalWords > 0 && analysis.uniqueWords / analysis.totalWords < 0.5 && (
-                <li className="flex items-start gap-2"><span className="text-brand-orange mt-1">•</span><span>{copy.addMoreVariedVocabulary} ({((analysis.uniqueWords / analysis.totalWords) * 100).toFixed(0)}%)</span></li>
+                <li className="flex items-start gap-2"><span className="text-brand-orange mt-1" aria-hidden="true">&bull;</span><span>{copy.addMoreVariedVocabulary} ({((analysis.uniqueWords / analysis.totalWords) * 100).toFixed(0)}%)</span></li>
               )}
-              <li className="flex items-start gap-2"><span className="text-brand-cyan mt-1">•</span><span>{copy.idealKeywordDensity}</span></li>
-              <li className="flex items-start gap-2"><span className="text-brand-cyan mt-1">•</span><span>{copy.useSynonyms}</span></li>
+              <li className="flex items-start gap-2"><span className="text-brand-cyan mt-1" aria-hidden="true">&bull;</span><span>{copy.idealKeywordDensity}</span></li>
+              <li className="flex items-start gap-2"><span className="text-brand-cyan mt-1" aria-hidden="true">&bull;</span><span>{copy.useSynonyms}</span></li>
             </ul>
           </div>
         </div>

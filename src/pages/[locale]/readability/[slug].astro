@@ -5,11 +5,13 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import ReadabilityCheckerTool from '../../../components/ReadabilityCheckerTool';
 import Sidebar from '../../../components/Sidebar.astro';
 import Footer from '../../../components/Footer.astro';
+import { getLocalizedToolPath } from '../../../lib/locale-routes';
+import { generateFAQPageSchema } from '../../../lib/seo-metadata';
+import Icon from '../../../components/Icon.astro';
 
 export function getStaticPaths() {
   const slugs = getAvailableSlugs('readability');
-  
-  return locales.flatMap(locale => 
+  return locales.flatMap(locale =>
     slugs.map(slug => ({
       params: { locale, slug },
       props: { pageData: getPageData('readability', slug, locale), locale, slug },
@@ -17,20 +19,61 @@ export function getStaticPaths() {
   );
 }
 
-const { locale, slug } = Astro.params;
+const { locale } = Astro.params;
 const { pageData } = Astro.props;
-
 if (!pageData) {
   return Astro.redirect(`/${locale}/tools`);
 }
 
 const t = (key) => getTranslation(locale, key);
+const faqItemsByLocale = {
+  es: [
+    { q: '¿Qué mide un verificador de legibilidad?', a: 'Mide qué tan fácil o difícil resulta leer un texto según longitud de frases, estructura y fórmulas conocidas de legibilidad.' },
+    { q: '¿Qué puntuación es buena?', a: 'Depende de la audiencia. Para público general, una estructura clara y frases más accesibles suelen funcionar mejor.' },
+    { q: '¿Sirve para SEO?', a: 'Sí. Un contenido más claro suele ofrecer mejor experiencia de lectura y facilitar el consumo del texto.' },
+    { q: '¿Puedo usarlo en artículos y emails?', a: 'Sí. Funciona bien en artículos, newsletters, páginas de venta y otros contenidos informativos.' },
+    { q: '¿Necesito registrarme?', a: 'No. La herramienta es gratuita y puede usarse de inmediato.' },
+  ],
+  fr: [
+    { q: 'Que mesure un vérificateur de lisibilité ?', a: 'Il mesure la facilité de lecture d’un texte à partir de la longueur des phrases, de la structure et de formules de lisibilité connues.' },
+    { q: 'Quel score est bon ?', a: 'Cela dépend du public. Pour un lectorat large, une structure claire et des phrases accessibles sont souvent préférables.' },
+    { q: 'Est-ce utile pour le SEO ?', a: 'Oui. Un texte plus lisible offre souvent une meilleure expérience et facilite la consommation du contenu.' },
+    { q: 'Puis-je l’utiliser pour des articles et emails ?', a: 'Oui. Il fonctionne bien pour les articles, newsletters, pages marketing et autres contenus informatifs.' },
+    { q: 'Dois-je m’inscrire ?', a: 'Non. L’outil est gratuit et disponible immédiatement.' },
+  ],
+  de: [
+    { q: 'Was misst ein Lesbarkeitsprüfer?', a: 'Er misst, wie leicht ein Text zu lesen ist, basierend auf Satzlänge, Struktur und bekannten Lesbarkeitsformeln.' },
+    { q: 'Welcher Wert ist gut?', a: 'Das hängt von der Zielgruppe ab. Für ein breites Publikum sind klare Struktur und leichter zugängliche Sätze meist besser.' },
+    { q: 'Ist das für SEO nützlich?', a: 'Ja. Ein verständlicherer Text verbessert oft die Nutzererfahrung und erleichtert die Aufnahme der Inhalte.' },
+    { q: 'Kann ich das für Artikel und E-Mails nutzen?', a: 'Ja. Das Tool eignet sich für Artikel, Newsletter, Landingpages und andere Informationsformate.' },
+    { q: 'Brauche ich ein Konto?', a: 'Nein. Die Nutzung ist kostenlos und sofort möglich.' },
+  ],
+  pt: [
+    { q: 'O que mede um verificador de legibilidade?', a: 'Ele mede o quão fácil é ler um texto com base em tamanho de frases, estrutura e fórmulas conhecidas de legibilidade.' },
+    { q: 'Que pontuação é boa?', a: 'Depende do público. Para leitores gerais, estrutura clara e frases mais acessíveis costumam funcionar melhor.' },
+    { q: 'Isso ajuda em SEO?', a: 'Sim. Um texto mais claro costuma melhorar a experiência de leitura e facilitar o consumo do conteúdo.' },
+    { q: 'Posso usar em artigos e emails?', a: 'Sim. A ferramenta funciona bem em artigos, newsletters, páginas de venda e outros formatos informativos.' },
+    { q: 'Preciso de cadastro?', a: 'Não. O uso é gratuito e imediato.' },
+  ],
+};
+const faqItems = faqItemsByLocale[locale] ?? faqItemsByLocale.es;
+const faqSchema = generateFAQPageSchema({ mainEntity: faqItems.map((item) => ({ question: item.q, answer: item.a })) });
+const labels = {
+  es: { bestFor: 'Ideal para', tips: 'Consejos prácticos', faq: 'Preguntas Frecuentes', related: 'Herramientas Relacionadas', overview: 'Cómo usar esta página', targets: 'Objetivos de Legibilidad' },
+  fr: { bestFor: 'Idéal pour', tips: 'Conseils pratiques', faq: 'Questions Fréquentes', related: 'Outils Connexes', overview: 'Comment utiliser cette page', targets: 'Objectifs de Lisibilité' },
+  de: { bestFor: 'Ideal für', tips: 'Praktische Tipps', faq: 'Häufig gestellte Fragen', related: 'Ähnliche Tools', overview: 'So nutzt du diese Seite', targets: 'Lesbarkeitsziele' },
+  pt: { bestFor: 'Ideal para', tips: 'Dicas práticas', faq: 'Perguntas Frequentes', related: 'Ferramentas Relacionadas', overview: 'Como usar esta página', targets: 'Objetivos de Legibilidade' },
+};
+const l = labels[locale] ?? labels.es;
+const fallbackTips = {
+  es: ['Acorta frases largas.', 'Usa palabras concretas.', 'Piensa en la audiencia antes de simplificar o ampliar.'],
+  fr: ['Raccourcissez les phrases longues.', 'Privilégiez des mots concrets.', 'Gardez le niveau de votre audience en tête.'],
+  de: ['Kürzen Sie lange Sätze.', 'Verwenden Sie konkrete Wörter.', 'Denken Sie immer an die Zielgruppe.'],
+  pt: ['Encurte frases longas.', 'Prefira palavras concretas.', 'Considere sempre o público antes de ajustar o texto.'],
+};
 ---
 
-<BaseLayout 
-  title={pageData.title} 
-  description={pageData.description}
->
+<BaseLayout title={pageData.title} description={pageData.description} jsonLD={[faqSchema]}>
   <main class="layout-shell px-4 py-6">
     <header class="mb-6">
       <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">{pageData.h1}</h1>
@@ -43,74 +86,24 @@ const t = (key) => getTranslation(locale, key);
           <ReadabilityCheckerTool locale={locale} client:load />
         </div>
 
-        <div class="mt-4 ad-slot-below-tool">
-          <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
-            <p class="text-xs text-text-muted mb-2">{t('advertisement')}</p>
-            <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
-              <span class="text-gray-400 text-sm">{t('adSpace')}</span>
-            </div>
-          </div>
-        </div>
+        <div class="mt-4 ad-slot-below-tool"><div class="bg-surface rounded-lg border border-gray-200 p-4 text-center"><p class="text-xs text-text-muted mb-2">{t('advertisement')}</p><div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded"><span class="text-gray-400 text-sm">{t('adSpace')}</span></div></div></div>
 
         <article class="mt-8">
-          <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">{t('howToUse')}</h2>
-            <p class="text-text-primary mb-4">{pageData.subtitle}</p>
-          </section>
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">{l.overview}</h2><p class="text-text-primary mb-4">{pageData.subtitle}</p></section>
 
-          <!-- Mid-Content Ad Slot -->
-          <div class="my-6 ad-slot-mid-content">
-            <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
-              <p class="text-xs text-text-muted mb-2">{t('advertisement')}</p>
-              <div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded">
-                <span class="text-gray-400 text-sm">{t('adSpace')}</span>
-              </div>
-            </div>
-          </div>
+          <div class="my-6 ad-slot-mid-content"><div class="bg-surface rounded-lg border border-gray-200 p-4 text-center"><p class="text-xs text-text-muted mb-2">{t('advertisement')}</p><div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded"><span class="text-gray-400 text-sm">{t('adSpace')}</span></div></div></div>
 
-          {pageData.targets && (
-            <section class="mb-6">
-              <h2 class="text-2xl font-display font-bold mb-3">{locale === 'es' ? 'Objetivos de Legibilidad' : locale === 'fr' ? 'Objectifs de Lisibilité' : locale === 'de' ? 'Lesbarkeitsziele' : locale === 'pt' ? 'Objetivos de Legibilidade' : 'Readability Targets'}</h2>
-              <div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4">
-                <ul class="space-y-2 text-text-primary">
-                  {Object.entries(pageData.targets).map(([key, value]) => (
-                    <li class="flex justify-between">
-                      <span>{key}</span>
-                      <span class="font-semibold">{value}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </section>
-          )}
+          {pageData.targets && (<section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">{l.targets}</h2><div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4"><ul class="space-y-2 text-text-primary">{Object.entries(pageData.targets).map(([key, value]) => <li class="flex justify-between"><span>{key}</span><span class="font-semibold">{value}</span></li>)}</ul></div></section>)}
 
-          <!-- Inline Ad Slot -->
-          <div class="my-6 ad-slot-inline">
-            <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
-              <p class="text-xs text-text-muted mb-2">{t('advertisement')}</p>
-              <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
-                <span class="text-gray-400 text-sm">{t('adSpace')}</span>
-              </div>
-            </div>
-          </div>
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100"><h2 class="text-2xl font-display font-bold mb-6 text-center">{l.bestFor}</h2><p class="text-text-primary">{locale === 'es' ? 'Artículos, posts, páginas de venta y cualquier texto que deba ser claro para una audiencia concreta.' : locale === 'fr' ? 'Articles, posts, pages marketing et tout texte qui doit rester clair pour un public défini.' : locale === 'de' ? 'Artikel, Posts, Landingpages und alle Texte, die für eine bestimmte Zielgruppe klar bleiben müssen.' : 'Artigos, posts, páginas de venda e qualquer texto que precise ser claro para um público específico.'}</p></section>
 
-          <!-- Bottom Ad Slot Before Related Tools -->
-          <div class="my-6 ad-slot-bottom">
-            <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
-              <p class="text-xs text-text-muted mb-2">{t('advertisement')}</p>
-              <div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded">
-                <span class="text-gray-400 text-sm">{t('adSpace')}</span>
-              </div>
-            </div>
-          </div>
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100"><h2 class="text-2xl font-display font-bold mb-6 text-center">{l.tips}</h2><ul class="space-y-4 text-text-primary">{(fallbackTips[locale] ?? fallbackTips.es).map((tip) => <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span>{tip}</span></li>)}</ul></section>
 
-          <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">{t('relatedTools')}</h2>
-            <ul class="space-y-2">
-              <li><a href={`/${locale}/readability-checker`} class="text-brand-pink hover:underline">{locale === 'es' ? 'Verificador de Legibilidad' : locale === 'fr' ? 'Vérificateur de Lisibilité' : locale === 'de' ? 'Lesbarkeitsprüfer' : locale === 'pt' ? 'Verificador de Legibilidade' : 'Readability Checker'}</a></li>
-              <li><a href={`/${locale}/word-counter`} class="text-brand-pink hover:underline">{locale === 'es' ? 'Contador de Palabras' : locale === 'fr' ? 'Compteur de Mots' : locale === 'de' ? 'Wortzähler' : locale === 'pt' ? 'Contador de Palavras' : 'Word Counter'}</a></li>
-            </ul>
-          </section>
+          <div class="my-6 ad-slot-bottom"><div class="bg-surface rounded-lg border border-gray-200 p-4 text-center"><p class="text-xs text-text-muted mb-2">{t('advertisement')}</p><div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded"><span class="text-gray-400 text-sm">{t('adSpace')}</span></div></div></div>
+
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-4">{l.faq}</h2>{faqItems.map((item, index) => <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">{item.q}<span class={index % 2 === 0 ? 'text-brand-pink group-open:rotate-180 transition-transform' : 'text-brand-cyan group-open:rotate-180 transition-transform'}>▼</span></summary><p class="text-text-muted mt-4">{item.a}</p></details>)}</section>
+
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-4">{l.related}</h2><div class="grid grid-cols-1 md:grid-cols-3 gap-4"><a href={`/${locale}/readability-checker`} class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="book" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-pink">{locale === 'es' ? 'Verificador de Legibilidad' : locale === 'fr' ? 'Vérificateur de Lisibilité' : locale === 'de' ? 'Lesbarkeitsprüfer' : 'Verificador de Legibilidade'}</h3></a><a href={`/${locale}/word-counter`} class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="chart" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-cyan">{locale === 'es' ? 'Contador de Palabras' : locale === 'fr' ? 'Compteur de Mots' : locale === 'de' ? 'Wortzähler' : 'Contador de Palavras'}</h3></a><a href={getLocalizedToolPath(locale, 'blog-readability-checker', 'readability')} class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="file" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-orange">{locale === 'es' ? 'Legibilidad de Blog' : locale === 'fr' ? 'Lisibilité de Blog' : locale === 'de' ? 'Blog-Lesbarkeit' : 'Legibilidade de Blog'}</h3></a></div></section>
         </article>
       </div>
 
@@ -118,17 +111,7 @@ const t = (key) => getTranslation(locale, key);
     </div>
   </main>
 
-  <!-- Footer Ad Banner -->
-  <section class="py-6 bg-white">
-    <div class="layout-shell px-4">
-      <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
-        <p class="text-xs text-text-muted mb-2">{t('advertisement')}</p>
-        <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
-          <span class="text-gray-400 text-sm">{t('adSpace')}</span>
-        </div>
-      </div>
-    </div>
-  </section>
+  <section class="py-6 bg-white"><div class="layout-shell px-4"><div class="bg-surface rounded-lg border border-gray-200 p-4 text-center"><p class="text-xs text-text-muted mb-2">{t('advertisement')}</p><div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded"><span class="text-gray-400 text-sm">{t('adSpace')}</span></div></div></div></section>
 
   <Footer locale={locale} />
 </BaseLayout>

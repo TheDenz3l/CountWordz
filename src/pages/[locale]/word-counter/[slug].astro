@@ -5,11 +5,12 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import WordCounterTool from '../../../components/WordCounterTool';
 import Sidebar from '../../../components/Sidebar.astro';
 import Footer from '../../../components/Footer.astro';
+import { generateFAQPageSchema } from '../../../lib/seo-metadata';
+import Icon from '../../../components/Icon.astro';
 
 export function getStaticPaths() {
   const slugs = getAvailableSlugs('word-counter');
-  
-  return locales.flatMap(locale => 
+  return locales.flatMap(locale =>
     slugs.map(slug => ({
       params: { locale, slug },
       props: { pageData: getPageData('word-counter', slug, locale), locale, slug },
@@ -17,7 +18,7 @@ export function getStaticPaths() {
   );
 }
 
-const { locale, slug } = Astro.params;
+const { locale } = Astro.params;
 const { pageData } = Astro.props;
 
 if (!pageData) {
@@ -25,12 +26,67 @@ if (!pageData) {
 }
 
 const t = (key) => getTranslation(locale, key);
+
+const faqItemsByLocale = {
+  es: [
+    { q: '¿Cuándo conviene revisar el conteo de palabras?', a: 'Conviene revisarlo al cerrar el primer borrador, después de la edición estructural y justo antes de entregar o publicar la versión final.' },
+    { q: '¿Es mejor recortar o ampliar primero?', a: 'Primero identifica si faltan ideas o si sobran repeticiones. Después ajusta la longitud con cambios reales de contenido.' },
+    { q: '¿Sirve para tareas académicas?', a: 'Sí. Ayuda a mantener ensayos, informes y trabajos dentro del rango esperado sin perder claridad.' },
+    { q: '¿También muestra estructura del texto?', a: 'Sí. Además del conteo de palabras, puedes revisar caracteres, frases, párrafos y ritmo general.' },
+    { q: '¿Necesito registrarme?', a: 'No. La herramienta es gratuita y se puede usar de inmediato.' },
+  ],
+  fr: [
+    { q: 'Quand faut-il vérifier le nombre de mots ?', a: 'Le plus utile est de vérifier après le premier brouillon, après la révision structurelle et avant la publication finale.' },
+    { q: 'Faut-il raccourcir ou développer en premier ?', a: 'Il faut d’abord voir s’il manque du contexte ou s’il y a trop de répétitions, puis ajuster la longueur avec de vrais changements.' },
+    { q: 'Est-ce utile pour les travaux académiques ?', a: 'Oui. Cela aide à garder dissertations, rapports et devoirs dans la bonne plage sans perdre en clarté.' },
+    { q: 'L’outil montre-t-il aussi la structure ?', a: 'Oui. En plus des mots, vous pouvez suivre caractères, phrases, paragraphes et rythme général.' },
+    { q: 'Dois-je m’inscrire ?', a: 'Non. L’outil est gratuit et disponible immédiatement.' },
+  ],
+  de: [
+    { q: 'Wann sollte man die Wortzahl prüfen?', a: 'Am sinnvollsten ist die Kontrolle nach dem ersten Entwurf, nach der Strukturüberarbeitung und kurz vor Abgabe oder Veröffentlichung.' },
+    { q: 'Sollte man zuerst kürzen oder erweitern?', a: 'Zuerst sollte klar sein, ob Kontext fehlt oder Wiederholungen entfernt werden müssen. Danach wird die Länge gezielt angepasst.' },
+    { q: 'Ist das für akademische Texte geeignet?', a: 'Ja. Das Tool hilft dabei, Aufsätze, Berichte und andere Arbeiten im gewünschten Umfang zu halten.' },
+    { q: 'Zeigt das Tool auch Strukturmerkmale?', a: 'Ja. Neben Wörtern sehen Sie auch Zeichen, Sätze, Absätze und damit den allgemeinen Lesefluss.' },
+    { q: 'Brauche ich ein Konto?', a: 'Nein. Die Nutzung ist kostenlos und sofort möglich.' },
+  ],
+  pt: [
+    { q: 'Quando vale a pena revisar a contagem de palavras?', a: 'Vale revisar após o primeiro rascunho, depois da edição estrutural e antes da publicação ou entrega final.' },
+    { q: 'É melhor cortar ou expandir primeiro?', a: 'Primeiro veja se falta contexto ou se há repetições. Depois ajuste o tamanho com mudanças reais de conteúdo.' },
+    { q: 'Isso serve para textos acadêmicos?', a: 'Sim. Ajuda a manter ensaios, relatórios e trabalhos dentro da faixa esperada sem perder clareza.' },
+    { q: 'A ferramenta mostra a estrutura do texto?', a: 'Sim. Além das palavras, você acompanha caracteres, frases, parágrafos e ritmo geral.' },
+    { q: 'Preciso de cadastro?', a: 'Não. A ferramenta é gratuita e pode ser usada imediatamente.' },
+  ],
+};
+
+const faqItems = faqItemsByLocale[locale] ?? faqItemsByLocale.es;
+const faqSchema = generateFAQPageSchema({
+  mainEntity: faqItems.map((item) => ({ question: item.q, answer: item.a })),
+});
+
+const labels = {
+  es: { bestFor: 'Ideal para', tips: 'Consejos prácticos', faq: 'Preguntas Frecuentes', related: 'Herramientas Relacionadas', overview: 'Cómo usar esta página' },
+  fr: { bestFor: 'Idéal pour', tips: 'Conseils pratiques', faq: 'Questions Fréquentes', related: 'Outils Connexes', overview: 'Comment utiliser cette page' },
+  de: { bestFor: 'Ideal für', tips: 'Praktische Tipps', faq: 'Häufig gestellte Fragen', related: 'Ähnliche Tools', overview: 'So nutzt du diese Seite' },
+  pt: { bestFor: 'Ideal para', tips: 'Dicas práticas', faq: 'Perguntas Frequentes', related: 'Ferramentas Relacionadas', overview: 'Como usar esta página' },
+};
+const l = labels[locale] ?? labels.es;
+
+const bestForText = {
+  es: 'Ensayos, informes, currículums, publicaciones y cualquier texto donde el tamaño y el ritmo importan.',
+  fr: 'Dissertations, rapports, CV, publications et tout texte où la longueur et le rythme comptent.',
+  de: 'Aufsätze, Berichte, Lebensläufe, Beiträge und alle Texte, bei denen Umfang und Rhythmus wichtig sind.',
+  pt: 'Ensaios, relatórios, currículos, publicações e qualquer texto em que tamanho e ritmo importam.',
+}[locale] ?? 'Text drafts that need word-count control.';
+
+const tips = pageData.tips ?? {
+  es: ['Pega el borrador completo antes de editar.', 'Recorta repeticiones antes de eliminar ideas clave.', 'Vuelve a revisar el texto final para confirmar el rango.'],
+  fr: ['Collez le brouillon complet avant d’éditer.', 'Supprimez d’abord les répétitions avant de retirer les idées importantes.', 'Vérifiez à nouveau la version finale pour confirmer la bonne longueur.'],
+  de: ['Füge zuerst den vollständigen Entwurf ein.', 'Streiche Wiederholungen, bevor du wichtige Inhalte entfernst.', 'Prüfe die finale Version noch einmal auf den Zielbereich.'],
+  pt: ['Cole o rascunho completo antes de editar.', 'Remova repetições antes de cortar ideias importantes.', 'Revise a versão final para confirmar o intervalo esperado.'],
+}[locale] ?? [];
 ---
 
-<BaseLayout 
-  title={pageData.title} 
-  description={pageData.description}
->
+<BaseLayout title={pageData.title} description={pageData.description} jsonLD={[faqSchema]}>
   <main class="layout-shell px-4 py-6">
     <header class="mb-6">
       <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">{pageData.h1}</h1>
@@ -54,11 +110,10 @@ const t = (key) => getTranslation(locale, key);
 
         <article class="mt-8">
           <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">{t('howToUse')}</h2>
+            <h2 class="text-2xl font-display font-bold mb-3">{l.overview}</h2>
             <p class="text-text-primary mb-4">{pageData.subtitle}</p>
           </section>
 
-          <!-- Mid-Content Ad Slot -->
           <div class="my-6 ad-slot-mid-content">
             <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
               <p class="text-xs text-text-muted mb-2">{t('advertisement')}</p>
@@ -70,42 +125,29 @@ const t = (key) => getTranslation(locale, key);
 
           {pageData.limits && (
             <section class="mb-6">
-              <h2 class="text-2xl font-display font-bold mb-3">{locale === 'es' ? 'Límites Comunes' : locale === 'fr' ? 'Limites Communes' : locale === 'de' ? 'Häufige Limits' : locale === 'pt' ? 'Limites Comuns' : 'Common Limits'}</h2>
+              <h2 class="text-2xl font-display font-bold mb-3">{locale === 'es' ? 'Límites Comunes' : locale === 'fr' ? 'Limites Communes' : locale === 'de' ? 'Häufige Limits' : 'Limites Comuns'}</h2>
               <div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4">
                 <ul class="space-y-2 text-text-primary">
                   {Object.entries(pageData.limits).map(([key, value]) => (
-                    <li class="flex justify-between">
-                      <span>{key}</span>
-                      <span class="font-semibold">{value}</span>
-                    </li>
+                    <li class="flex justify-between"><span>{key}</span><span class="font-semibold">{value}</span></li>
                   ))}
                 </ul>
               </div>
             </section>
           )}
 
-          <!-- Inline Ad Slot -->
-          <div class="my-6 ad-slot-inline">
-            <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
-              <p class="text-xs text-text-muted mb-2">{t('advertisement')}</p>
-              <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
-                <span class="text-gray-400 text-sm">{t('adSpace')}</span>
-              </div>
-            </div>
-          </div>
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">{l.bestFor}</h2>
+            <p class="text-text-primary">{bestForText}</p>
+          </section>
 
-          {pageData.tips && (
-            <section class="mb-6">
-              <h2 class="text-2xl font-display font-bold mb-3">{t('tips')}</h2>
-              <ul class="list-disc list-inside space-y-2 text-text-primary mb-4">
-                {pageData.tips.map((tip, i) => (
-                  <li key={i}>{tip}</li>
-                ))}
-              </ul>
-            </section>
-          )}
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">{l.tips}</h2>
+            <ul class="space-y-4 text-text-primary">
+              {tips.map((tip) => <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span>{tip}</span></li>)}
+            </ul>
+          </section>
 
-          <!-- Bottom Ad Slot Before Related Tools -->
           <div class="my-6 ad-slot-bottom">
             <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
               <p class="text-xs text-text-muted mb-2">{t('advertisement')}</p>
@@ -116,12 +158,22 @@ const t = (key) => getTranslation(locale, key);
           </div>
 
           <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">{t('relatedTools')}</h2>
-            <ul class="space-y-2">
-              <li><a href={`/${locale}/word-counter`} class="text-brand-pink hover:underline">{locale === 'es' ? 'Contador de Palabras' : locale === 'fr' ? 'Compteur de Mots' : locale === 'de' ? 'Wortzähler' : locale === 'pt' ? 'Contador de Palavras' : 'Word Counter'}</a></li>
-              <li><a href={`/${locale}/character-counter`} class="text-brand-pink hover:underline">{locale === 'es' ? 'Contador de Caracteres' : locale === 'fr' ? 'Compteur de Caractères' : locale === 'de' ? 'Zeichenzähler' : locale === 'pt' ? 'Contador de Caracteres' : 'Character Counter'}</a></li>
-              <li><a href={`/${locale}/readability-checker`} class="text-brand-pink hover:underline">{locale === 'es' ? 'Verificador de Legibilidad' : locale === 'fr' ? 'Vérificateur de Lisibilité' : locale === 'de' ? 'Lesbarkeitsprüfer' : locale === 'pt' ? 'Verificador de Legibilidade' : 'Readability Checker'}</a></li>
-            </ul>
+            <h2 class="text-2xl font-display font-bold mb-4">{l.faq}</h2>
+            {faqItems.map((item, index) => (
+              <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+                <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">{item.q}<span class={index % 2 === 0 ? 'text-brand-pink group-open:rotate-180 transition-transform' : 'text-brand-cyan group-open:rotate-180 transition-transform'}>▼</span></summary>
+                <p class="text-text-muted mt-4">{item.a}</p>
+              </details>
+            ))}
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-4">{l.related}</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <a href={`/${locale}/word-counter`} class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="chart" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-pink">{locale === 'es' ? 'Contador de Palabras' : locale === 'fr' ? 'Compteur de Mots' : locale === 'de' ? 'Wortzähler' : 'Contador de Palavras'}</h3></a>
+              <a href={`/${locale}/character-counter`} class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="text" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-cyan">{locale === 'es' ? 'Contador de Caracteres' : locale === 'fr' ? 'Compteur de Caractères' : locale === 'de' ? 'Zeichenzähler' : 'Contador de Caracteres'}</h3></a>
+              <a href={`/${locale}/readability-checker`} class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="book" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-orange">{locale === 'es' ? 'Verificador de Legibilidad' : locale === 'fr' ? 'Vérificateur de Lisibilité' : locale === 'de' ? 'Lesbarkeitsprüfer' : 'Verificador de Legibilidade'}</h3></a>
+            </div>
           </section>
         </article>
       </div>
@@ -130,7 +182,6 @@ const t = (key) => getTranslation(locale, key);
     </div>
   </main>
 
-  <!-- Footer Ad Banner -->
   <section class="py-6 bg-white">
     <div class="layout-shell px-4">
       <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">

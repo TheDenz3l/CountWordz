@@ -3,16 +3,65 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import SentenceCounterTool from '../../../components/SentenceCounterTool';
 import Sidebar from '../../../components/Sidebar.astro';
 import Footer from '../../../components/Footer.astro';
+import Icon from '../../../components/Icon.astro';
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Wie werden Sätze erkannt?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Der Zähler nutzt Satzzeichen und einfache Regeln, um Satzenden zu erkennen und typische Fehler durch gängige Abkürzungen zu reduzieren.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Warum ist das Zählen von Sätzen nützlich?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Die Satzanzahl hilft beim Einschätzen von Lesetempo, durchschnittlicher Satzlänge und allgemeiner Verständlichkeit eines Textes.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Hilft das bei der Lesbarkeit?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Ja. Wenn Sie Satzlängen und Satzanzahl prüfen, erkennen Sie leichter überladene oder unruhige Textstellen.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Ist das für akademische Texte geeignet?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Ja. Es eignet sich für Aufsätze, Berichte und andere Texte, bei denen eine klare Struktur und gute Verständlichkeit wichtig sind.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Brauche ich ein Konto?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Nein. Das Tool ist kostenlos und kann sofort ohne Anmeldung verwendet werden.',
+      },
+    },
+  ],
+};
 ---
 
 <BaseLayout 
   title="Satzanzahl - Zählt und Analysiert Sätze" 
   description="Kostenloser Satzzähler. Zählen Sie Sätze, durchschnittliche Wörter pro Satz und analysieren Sie die Textstruktur."
+  jsonLD={[faqSchema]}
 >
   <main class="layout-shell px-4 py-6">
     <header class="mb-6">
       <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Satzanzahl</h1>
-      <p class="text-base text-text-muted max-w-3xl">Zählen Sie Sätze und analysieren Sie die Satzstruktur. Perfekt zur Verbesserung der Klarheit Ihres Schreibens.</p>
+      <p class="text-base text-text-muted max-w-3xl">Zählen Sie Sätze und analysieren Sie die Struktur Ihres Textes. Ideal, um Klarheit, Rhythmus und Lesefluss zu verbessern.</p>
     </header>
 
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
@@ -41,17 +90,48 @@ import Footer from '../../../components/Footer.astro';
 
         <article class="mt-8">
           <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Wie Es Funktioniert</h2>
-            <p class="text-text-primary mb-4">Unser Zähler erkennt Sätze basierend auf Zeichensetzung und ignoriert gängige Abkürzungen.</p>
+            <h2 class="text-2xl font-display font-bold mb-3">So Verwenden Sie den Satzzähler</h2>
+            <p class="text-text-primary mb-4">Fügen Sie Ihren Text ein oder tippen Sie ihn ein. Das Tool erkennt die Sätze und liefert Ihnen Kennzahlen zur Struktur und Verständlichkeit.</p>
+          </section>
+
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Ideal für</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div><h3 class="font-semibold text-brand-pink mb-2">Schreibende</h3><p class="text-text-muted text-sm">Erkennen Sie zu lange Sätze und verbessern Sie den Lesefluss, ohne Inhalt zu verlieren.</p></div>
+              <div><h3 class="font-semibold text-brand-cyan mb-2">Studierende</h3><p class="text-text-muted text-sm">Analysieren Sie Hausarbeiten und Berichte, um komplexe Satzstrukturen besser zu kontrollieren.</p></div>
+              <div><h3 class="font-semibold text-brand-orange mb-2">Marketing-Teams</h3><p class="text-text-muted text-sm">Verbessern Sie E-Mails, Landingpages und Kampagnentexte durch klarere und besser proportionierte Sätze.</p></div>
+              <div><h3 class="font-semibold text-brand-pink mb-2">SEO-Redakteure</h3><p class="text-text-muted text-sm">Steigern Sie die Lesbarkeit, indem Sie die Satzlänge besser an Suchintention und Nutzererwartung anpassen.</p></div>
+            </div>
+          </section>
+
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Praktische Tipps</h2>
+            <ul class="space-y-4">
+              <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Abwechslung schaffen:</strong> eine Mischung aus kurzen und mittleren Sätzen liest sich oft am angenehmsten.</span></li>
+              <li class="flex gap-3"><span class="text-brand-cyan font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Dichte Absätze prüfen:</strong> wenn wenige Sätze sehr lang sind, lohnt sich meist eine Überarbeitung.</span></li>
+              <li class="flex gap-3"><span class="text-brand-orange font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Auch zu kurze Sätze beachten:</strong> viele extrem kurze Sätze hintereinander können den Text abgehackt wirken lassen.</span></li>
+              <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Versionen vergleichen:</strong> messen Sie den Text nach einer Überarbeitung erneut, um Fortschritte sichtbar zu machen.</span></li>
+              <li class="flex gap-3"><span class="text-brand-cyan font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Mit Lesbarkeitswerten kombinieren:</strong> zusammen ergeben beide Tools ein klareres Bild der Textqualität.</span></li>
+            </ul>
           </section>
 
           <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Ähnliche Tools</h2>
-            <ul class="space-y-2">
-              <li><a href="/de/word-counter" class="text-brand-pink hover:underline">Wortzähler</a></li>
-              <li><a href="/de/paragraph-counter" class="text-brand-pink hover:underline">Absatzzähler</a></li>
-              <li><a href="/de/readability-checker" class="text-brand-pink hover:underline">Lesbarkeitsprüfer</a></li>
-            </ul>
+            <h2 class="text-2xl font-display font-bold mb-4">Häufig gestellte Fragen</h2>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">Wie werden Sätze erkannt?<span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Das Tool orientiert sich an Satzzeichen und einfachen Regeln, um Satzenden zuverlässig zu bestimmen.</p></details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">Warum ist das nützlich?<span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Weil Sie damit Rhythmus, Satzlänge und Verständlichkeit eines Textes besser einschätzen können.</p></details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">Hilft das bei der Lesbarkeit?<span class="text-brand-orange group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Ja. Vor allem überlange oder unruhige Satzfolgen werden dadurch schneller sichtbar.</p></details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">Ist das für akademische Texte geeignet?<span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Ja. Es eignet sich gut für wissenschaftliche und professionelle Texte mit höheren Anforderungen an Struktur und Klarheit.</p></details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">Brauche ich ein Konto?<span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Nein. Die Nutzung ist kostenlos und sofort möglich.</p></details>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-4">Ähnliche Tools</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <a href="/de/word-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="chart" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-pink">Wortzähler</h3><p class="text-xs text-text-muted">Gesamtlänge messen</p></a>
+              <a href="/de/paragraph-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="file" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-cyan">Absatzzähler</h3><p class="text-xs text-text-muted">Struktur analysieren</p></a>
+              <a href="/de/readability-checker" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="book" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-orange">Lesbarkeit</h3><p class="text-xs text-text-muted">Klarheit bewerten</p></a>
+              <a href="/de/character-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="text" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-pink">Zeichenzähler</h3><p class="text-xs text-text-muted">Längen verfeinern</p></a>
+            </div>
           </section>
         </article>
       </div>

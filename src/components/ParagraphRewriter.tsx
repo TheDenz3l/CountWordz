@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import { PencilSimpleIcon } from '@phosphor-icons/react';
 import { calculateFleschReadingEase, calculateFleschKincaidGrade } from '../lib/readability';
 import { extractWordTokens } from '../lib/text-utils';
 import { getToolTranslation, resolveLocale } from '../lib/tool-i18n';
@@ -238,12 +239,15 @@ export default function ParagraphRewriter({ locale = 'en' }: Props) {
           )}
 
           <div className="p-4 bg-brand-cream rounded-xl border border-brand-cyan/20">
-            <h3 className="text-xl font-display font-bold mb-3">{copy.writingTips}</h3>
+            <h3 className="text-xl font-display font-bold mb-3 flex items-center gap-2">
+              <PencilSimpleIcon size={22} className="text-brand-pink" aria-hidden="true" />
+              <span>{copy.writingTips}</span>
+            </h3>
             <ul className="space-y-2 text-text-primary text-sm">
-              <li className="flex items-start gap-2"><span className="text-brand-cyan mt-1">•</span><span>{copy.activeVoiceTip}</span></li>
-              <li className="flex items-start gap-2"><span className="text-brand-cyan mt-1">•</span><span>{copy.keepSentencesTip}</span></li>
-              <li className="flex items-start gap-2"><span className="text-brand-cyan mt-1">•</span><span>{copy.simpleWordsTip}</span></li>
-              <li className="flex items-start gap-2"><span className="text-brand-cyan mt-1">•</span><span>{copy.varyVocabularyTip}</span></li>
+              <li className="flex items-start gap-2"><span className="text-brand-cyan mt-1" aria-hidden="true">&bull;</span><span>{copy.activeVoiceTip}</span></li>
+              <li className="flex items-start gap-2"><span className="text-brand-cyan mt-1" aria-hidden="true">&bull;</span><span>{copy.keepSentencesTip}</span></li>
+              <li className="flex items-start gap-2"><span className="text-brand-cyan mt-1" aria-hidden="true">&bull;</span><span>{copy.simpleWordsTip}</span></li>
+              <li className="flex items-start gap-2"><span className="text-brand-cyan mt-1" aria-hidden="true">&bull;</span><span>{copy.varyVocabularyTip}</span></li>
             </ul>
           </div>
         </div>

@@ -5,11 +5,12 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import CharacterCounterTool from '../../../components/CharacterCounterTool';
 import Sidebar from '../../../components/Sidebar.astro';
 import Footer from '../../../components/Footer.astro';
+import { generateFAQPageSchema } from '../../../lib/seo-metadata';
+import Icon from '../../../components/Icon.astro';
 
 export function getStaticPaths() {
   const slugs = getAvailableSlugs('character-counter');
-  
-  return locales.flatMap(locale => 
+  return locales.flatMap(locale =>
     slugs.map(slug => ({
       params: { locale, slug },
       props: { pageData: getPageData('character-counter', slug, locale), locale, slug },
@@ -17,7 +18,7 @@ export function getStaticPaths() {
   );
 }
 
-const { locale, slug } = Astro.params;
+const { locale } = Astro.params;
 const { pageData } = Astro.props;
 
 if (!pageData) {
@@ -25,12 +26,48 @@ if (!pageData) {
 }
 
 const t = (key) => getTranslation(locale, key);
+const faqItemsByLocale = {
+  es: [
+    { q: '¿Qué mide exactamente esta herramienta?', a: 'Mide los caracteres del texto, incluidos espacios y puntuación, para ayudarte a respetar límites de plataformas y piezas cortas.' },
+    { q: '¿Los espacios cuentan?', a: 'Sí. También se muestra la cifra sin espacios para comparar ambas métricas.' },
+    { q: '¿Sirve para redes sociales?', a: 'Sí. Es muy útil para X, Instagram, LinkedIn, títulos y otros formatos con límites visibles.' },
+    { q: '¿También ayuda con SEO?', a: 'Sí. Sirve para revisar títulos y meta descripciones antes de publicar.' },
+    { q: '¿Necesito registrarme?', a: 'No. La herramienta es gratuita y está lista para usar.' },
+  ],
+  fr: [
+    { q: 'Que mesure exactement cet outil ?', a: 'Il mesure les caractères du texte, espaces et ponctuation compris, pour respecter les limites des plateformes et formats courts.' },
+    { q: 'Les espaces comptent-ils ?', a: 'Oui. Le total sans espaces est aussi affiché pour permettre la comparaison.' },
+    { q: 'Est-ce utile pour les réseaux sociaux ?', a: 'Oui. L’outil est pratique pour X, Instagram, LinkedIn, les titres et d’autres formats limités.' },
+    { q: 'Est-ce utile pour le SEO ?', a: 'Oui. Il aide à ajuster les titres et meta descriptions avant publication.' },
+    { q: 'Dois-je m’inscrire ?', a: 'Non. L’outil est gratuit et utilisable immédiatement.' },
+  ],
+  de: [
+    { q: 'Was misst dieses Tool genau?', a: 'Es misst die Zeichen eines Textes inklusive Leerzeichen und Satzzeichen, damit Sie Plattform-Limits zuverlässig einhalten können.' },
+    { q: 'Zählen Leerzeichen mit?', a: 'Ja. Zusätzlich wird auch die Anzahl ohne Leerzeichen angezeigt.' },
+    { q: 'Ist das für Social Media nützlich?', a: 'Ja. Besonders für X, Instagram, LinkedIn, Titel und andere kurze Formate ist der Zeichenzähler hilfreich.' },
+    { q: 'Hilft das auch bei SEO?', a: 'Ja. Damit lassen sich Titel und Meta-Beschreibungen besser an sichtbare Grenzen anpassen.' },
+    { q: 'Brauche ich ein Konto?', a: 'Nein. Das Tool ist kostenlos und direkt nutzbar.' },
+  ],
+  pt: [
+    { q: 'O que esta ferramenta mede exatamente?', a: 'Ela mede os caracteres do texto, incluindo espaços e pontuação, para ajudar você a respeitar limites de plataformas e formatos curtos.' },
+    { q: 'Os espaços contam?', a: 'Sim. A ferramenta também mostra a contagem sem espaços para comparação.' },
+    { q: 'Isso é útil para redes sociais?', a: 'Sim. É especialmente útil para X, Instagram, LinkedIn, títulos e outros formatos limitados.' },
+    { q: 'Também ajuda em SEO?', a: 'Sim. Serve para revisar títulos e meta descrições antes de publicar.' },
+    { q: 'Preciso de cadastro?', a: 'Não. A ferramenta é gratuita e pode ser usada imediatamente.' },
+  ],
+};
+const faqItems = faqItemsByLocale[locale] ?? faqItemsByLocale.es;
+const faqSchema = generateFAQPageSchema({ mainEntity: faqItems.map((item) => ({ question: item.q, answer: item.a })) });
+const labels = {
+  es: { bestFor: 'Ideal para', tips: 'Consejos prácticos', faq: 'Preguntas Frecuentes', related: 'Herramientas Relacionadas', overview: 'Cómo usar esta página', limit: 'Límite de Caracteres' },
+  fr: { bestFor: 'Idéal pour', tips: 'Conseils pratiques', faq: 'Questions Fréquentes', related: 'Outils Connexes', overview: 'Comment utiliser cette page', limit: 'Limite de Caractères' },
+  de: { bestFor: 'Ideal für', tips: 'Praktische Tipps', faq: 'Häufig gestellte Fragen', related: 'Ähnliche Tools', overview: 'So nutzt du diese Seite', limit: 'Zeichenlimit' },
+  pt: { bestFor: 'Ideal para', tips: 'Dicas práticas', faq: 'Perguntas Frequentes', related: 'Ferramentas Relacionadas', overview: 'Como usar esta página', limit: 'Limite de Caracteres' },
+};
+const l = labels[locale] ?? labels.es;
 ---
 
-<BaseLayout 
-  title={pageData.title} 
-  description={pageData.description}
->
+<BaseLayout title={pageData.title} description={pageData.description} jsonLD={[faqSchema]}>
   <main class="layout-shell px-4 py-6">
     <header class="mb-6">
       <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">{pageData.h1}</h1>
@@ -46,77 +83,26 @@ const t = (key) => getTranslation(locale, key);
         <div class="mt-4 ad-slot-below-tool">
           <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
             <p class="text-xs text-text-muted mb-2">{t('advertisement')}</p>
-            <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
-              <span class="text-gray-400 text-sm">{t('adSpace')}</span>
-            </div>
+            <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded"><span class="text-gray-400 text-sm">{t('adSpace')}</span></div>
           </div>
         </div>
 
         <article class="mt-8">
-          <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">{t('howToUse')}</h2>
-            <p class="text-text-primary mb-4">{pageData.subtitle}</p>
-          </section>
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">{l.overview}</h2><p class="text-text-primary mb-4">{pageData.subtitle}</p></section>
 
-          <!-- Mid-Content Ad Slot -->
-          <div class="my-6 ad-slot-mid-content">
-            <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
-              <p class="text-xs text-text-muted mb-2">{t('advertisement')}</p>
-              <div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded">
-                <span class="text-gray-400 text-sm">{t('adSpace')}</span>
-              </div>
-            </div>
-          </div>
+          <div class="my-6 ad-slot-mid-content"><div class="bg-surface rounded-lg border border-gray-200 p-4 text-center"><p class="text-xs text-text-muted mb-2">{t('advertisement')}</p><div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded"><span class="text-gray-400 text-sm">{t('adSpace')}</span></div></div></div>
 
-          {pageData.limit && (
-            <section class="mb-6">
-              <h2 class="text-2xl font-display font-bold mb-3">{locale === 'es' ? 'Límite de Caracteres' : locale === 'fr' ? 'Limite de Caractères' : locale === 'de' ? 'Zeichenlimit' : locale === 'pt' ? 'Limite de Caracteres' : 'Character Limit'}</h2>
-              <div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4">
-                <div class="text-center">
-                  <div class="text-4xl font-display font-bold text-brand-pink">{pageData.limit}</div>
-                </div>
-              </div>
-            </section>
-          )}
+          {pageData.limit && (<section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">{l.limit}</h2><div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4"><div class="text-center"><div class="text-4xl font-display font-bold text-brand-pink">{pageData.limit}</div></div></div></section>)}
 
-          <!-- Inline Ad Slot -->
-          <div class="my-6 ad-slot-inline">
-            <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
-              <p class="text-xs text-text-muted mb-2">{t('advertisement')}</p>
-              <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
-                <span class="text-gray-400 text-sm">{t('adSpace')}</span>
-              </div>
-            </div>
-          </div>
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100"><h2 class="text-2xl font-display font-bold mb-6 text-center">{l.bestFor}</h2><p class="text-text-primary">{locale === 'es' ? 'Redes sociales, títulos, meta descripciones y cualquier texto corto donde cada carácter cuenta.' : locale === 'fr' ? 'Réseaux sociaux, titres, meta descriptions et tout texte court où chaque caractère compte.' : locale === 'de' ? 'Social Media, Titel, Meta-Beschreibungen und alle kurzen Texte, bei denen jedes Zeichen zählt.' : 'Redes sociais, títulos, meta descrições e qualquer texto curto em que cada caractere conta.'}</p></section>
 
-          {pageData.tips && (
-            <section class="mb-6">
-              <h2 class="text-2xl font-display font-bold mb-3">{t('tips')}</h2>
-              <ul class="list-disc list-inside space-y-2 text-text-primary mb-4">
-                {pageData.tips.map((tip, i) => (
-                  <li key={i}>{tip}</li>
-                ))}
-              </ul>
-            </section>
-          )}
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100"><h2 class="text-2xl font-display font-bold mb-6 text-center">{l.tips}</h2><ul class="space-y-4 text-text-primary">{(pageData.tips ?? []).map((tip) => <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span>{tip}</span></li>)}</ul></section>
 
-          <!-- Bottom Ad Slot Before Related Tools -->
-          <div class="my-6 ad-slot-bottom">
-            <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
-              <p class="text-xs text-text-muted mb-2">{t('advertisement')}</p>
-              <div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded">
-                <span class="text-gray-400 text-sm">{t('adSpace')}</span>
-              </div>
-            </div>
-          </div>
+          <div class="my-6 ad-slot-bottom"><div class="bg-surface rounded-lg border border-gray-200 p-4 text-center"><p class="text-xs text-text-muted mb-2">{t('advertisement')}</p><div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded"><span class="text-gray-400 text-sm">{t('adSpace')}</span></div></div></div>
 
-          <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">{t('relatedTools')}</h2>
-            <ul class="space-y-2">
-              <li><a href={`/${locale}/character-counter`} class="text-brand-pink hover:underline">{locale === 'es' ? 'Contador de Caracteres' : locale === 'fr' ? 'Compteur de Caractères' : locale === 'de' ? 'Zeichenzähler' : locale === 'pt' ? 'Contador de Caracteres' : 'Character Counter'}</a></li>
-              <li><a href={`/${locale}/word-counter`} class="text-brand-pink hover:underline">{locale === 'es' ? 'Contador de Palabras' : locale === 'fr' ? 'Compteur de Mots' : locale === 'de' ? 'Wortzähler' : locale === 'pt' ? 'Contador de Palavras' : 'Word Counter'}</a></li>
-            </ul>
-          </section>
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-4">{l.faq}</h2>{faqItems.map((item, index) => <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">{item.q}<span class={index % 2 === 0 ? 'text-brand-pink group-open:rotate-180 transition-transform' : 'text-brand-cyan group-open:rotate-180 transition-transform'}>▼</span></summary><p class="text-text-muted mt-4">{item.a}</p></details>)}</section>
+
+          <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-4">{l.related}</h2><div class="grid grid-cols-1 md:grid-cols-3 gap-4"><a href={`/${locale}/character-counter`} class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="text" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-pink">{locale === 'es' ? 'Contador de Caracteres' : locale === 'fr' ? 'Compteur de Caractères' : locale === 'de' ? 'Zeichenzähler' : 'Contador de Caracteres'}</h3></a><a href={`/${locale}/word-counter`} class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="chart" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-cyan">{locale === 'es' ? 'Contador de Palabras' : locale === 'fr' ? 'Compteur de Mots' : locale === 'de' ? 'Wortzähler' : 'Contador de Palavras'}</h3></a><a href={`/${locale}/readability-checker`} class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="book" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-orange">{locale === 'es' ? 'Verificador de Legibilidad' : locale === 'fr' ? 'Vérificateur de Lisibilité' : locale === 'de' ? 'Lesbarkeitsprüfer' : 'Verificador de Legibilidade'}</h3></a></div></section>
         </article>
       </div>
 
@@ -124,17 +110,7 @@ const t = (key) => getTranslation(locale, key);
     </div>
   </main>
 
-  <!-- Footer Ad Banner -->
-  <section class="py-6 bg-white">
-    <div class="layout-shell px-4">
-      <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
-        <p class="text-xs text-text-muted mb-2">{t('advertisement')}</p>
-        <div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded">
-          <span class="text-gray-400 text-sm">{t('adSpace')}</span>
-        </div>
-      </div>
-    </div>
-  </section>
+  <section class="py-6 bg-white"><div class="layout-shell px-4"><div class="bg-surface rounded-lg border border-gray-200 p-4 text-center"><p class="text-xs text-text-muted mb-2">{t('advertisement')}</p><div class="min-h-[90px] flex items-center justify-center bg-gray-50 rounded"><span class="text-gray-400 text-sm">{t('adSpace')}</span></div></div></div></section>
 
   <Footer locale={locale} />
 </BaseLayout>

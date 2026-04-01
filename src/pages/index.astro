@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import WordCounterTool from '../components/WordCounterTool';
 import Footer from '../components/Footer.astro';
+import Icon from '../components/Icon.astro';
 import { generateWebsiteSchema, generateSoftwareApplicationSchema } from '../lib/seo-metadata';
 
 const webSiteSchema = generateWebsiteSchema();
@@ -13,12 +14,59 @@ const softwareSchema = generateSoftwareApplicationSchema({
   applicationCategory: 'SEO',
   operatingSystem: 'All',
 });
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Is CountWordz really free to use?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes! CountWordz is 100% free forever. No signup required, no hidden fees, no premium tiers. All 103+ tools are available at no cost with unlimited usage.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is my text data secure and private?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Absolutely. All text processing happens locally in your browser using JavaScript. Your content is never sent to our servers, stored, or shared with third parties. You can even use most tools offline.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How accurate are the word and character counts?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Our counting algorithms follow industry-standard methods. Word count treats hyphenated words as single words and counts contractions correctly. Character count includes or excludes spaces based on your selection. Results are accurate for academic, professional, and social media use.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can I use CountWordz on mobile devices?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes! CountWordz is fully responsive and works perfectly on smartphones, tablets, and desktop computers. The interface adapts to any screen size, and all tools function identically across devices.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Do I need to install any software or browser extensions?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'No installation needed. CountWordz runs entirely in your web browser. Just visit the website and start using any tool immediately. No downloads, no extensions, no setup required.',
+      },
+    },
+  ],
+};
 ---
 
 <BaseLayout 
   title="CountWordz - Free Text Utility Tools" 
   description="Free online text tools: word counter, character counter, sentence counter, readability checker, and more. Fast, modern, and easy to use."
-  jsonLD={[webSiteSchema, softwareSchema]}
+  jsonLD={[webSiteSchema, softwareSchema, faqSchema]}
 >
   <!-- Hero Section -->
   <section class="bg-gradient-to-br from-brand-cream to-white py-16 md:py-24">
@@ -147,20 +195,170 @@ const softwareSchema = generateSoftwareApplicationSchema({
       <h2 class="text-3xl md:text-4xl font-display font-bold text-center mb-12">Why CountWordz?</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div class="text-center">
-          <div class="text-4xl mb-4">⚡</div>
+          <div class="text-4xl mb-4"><Icon name="lightning" size={36} /></div>
           <h3 class="text-xl font-display font-semibold mb-2">Instant Results</h3>
           <p class="text-text-muted">Real-time analysis as you type. No waiting, no page reloads.</p>
         </div>
         <div class="text-center">
-          <div class="text-4xl mb-4">🔒</div>
+          <div class="text-4xl mb-4"><Icon name="lock" size={36} /></div>
           <h3 class="text-xl font-display font-semibold mb-2">Private & Secure</h3>
           <p class="text-text-muted">All processing happens in your browser. Your text is never stored or sent.</p>
         </div>
         <div class="text-center">
-          <div class="text-4xl mb-4">✨</div>
+          <div class="text-4xl mb-4 flex justify-center"><Icon name="sparkle" size={36} class="text-brand-orange" /></div>
           <h3 class="text-xl font-display font-semibold mb-2">Modern Design</h3>
           <p class="text-text-muted">Clean, intuitive interface that's a pleasure to use.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How to Use CountWordz -->
+  <section class="py-16 bg-gray-50">
+    <div class="layout-shell px-4">
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-center mb-12">How to Use CountWordz</h2>
+      <div class="max-w-4xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          <div class="bg-surface p-6 rounded-xl border border-gray-100">
+            <div class="text-4xl mb-4"><Icon name="note" size={36} /></div>
+            <h3 class="text-xl font-display font-semibold mb-3">1. Paste or Type Your Text</h3>
+            <p class="text-text-muted">Enter your content directly into any tool's text area, or paste from your clipboard. All analysis happens instantly as you type.</p>
+          </div>
+          <div class="bg-surface p-6 rounded-xl border border-gray-100">
+            <div class="text-4xl mb-4"><Icon name="chart" size={36} /></div>
+            <h3 class="text-xl font-display font-semibold mb-3">2. Get Instant Analysis</h3>
+            <p class="text-text-muted">View real-time metrics including word count, character count, reading time, readability scores, and more depending on the tool.</p>
+          </div>
+          <div class="bg-surface p-6 rounded-xl border border-gray-100">
+            <div class="text-4xl mb-4"><Icon name="save" size={36} /></div>
+            <h3 class="text-xl font-display font-semibold mb-3">3. Copy or Export Results</h3>
+            <p class="text-text-muted">Copy your formatted text, export metrics, or use the insights to improve your writing. No signup required.</p>
+          </div>
+        </div>
+        
+        <!-- Best For Section -->
+        <div class="bg-surface rounded-2xl p-8 border border-gray-100">
+          <h3 class="text-2xl font-display font-bold mb-6 text-center">Best For</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <h4 class="font-semibold text-brand-pink mb-2">Students & Educators</h4>
+              <p class="text-text-muted text-sm">Check essay word counts, analyze reading levels, and ensure assignments meet requirements. Perfect for academic writing and lesson planning.</p>
+            </div>
+            <div>
+              <h4 class="font-semibold text-brand-cyan mb-2">Content Creators</h4>
+              <p class="text-text-muted text-sm">Optimize blog posts, social media captions, and marketing copy. Stay within character limits for X, Instagram, LinkedIn, and more.</p>
+            </div>
+            <div>
+              <h4 class="font-semibold text-brand-orange mb-2">Professional Writers</h4>
+              <p class="text-text-muted text-sm">Track writing goals, analyze readability, and maintain consistent content quality. Ideal for journalists, copywriters, and authors.</p>
+            </div>
+            <div>
+              <h4 class="font-semibold text-brand-pink mb-2">SEO Specialists</h4>
+              <p class="text-text-muted text-sm">Ensure meta descriptions, title tags, and content lengths follow SEO best practices. Improve search rankings with optimized content.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Practical Tips Section -->
+        <div class="mt-8 bg-surface rounded-2xl p-8 border border-gray-100">
+          <h3 class="text-2xl font-display font-bold mb-6 text-center">Practical Tips</h3>
+          <ul class="space-y-4">
+            <li class="flex gap-3">
+              <span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span>
+              <span class="text-text-muted"><strong>Use the right tool for your goal:</strong> Word counter for essays, character counter for social media, readability checker for blog posts.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="text-brand-cyan font-bold"><Icon name="check" size={18} /></span>
+              <span class="text-text-muted"><strong>Check readability scores:</strong> Aim for a Flesch Reading Ease score of 60-70 for general audiences. Lower scores indicate more complex text.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="text-brand-orange font-bold"><Icon name="check" size={18} /></span>
+              <span class="text-text-muted"><strong>Monitor sentence length:</strong> Average sentence length of 15-20 words improves readability. Use the sentence counter to track this.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span>
+              <span class="text-text-muted"><strong>Optimize for your platform:</strong> Each social platform has different limits. Use our platform-specific counters for X, Instagram, and LinkedIn.</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="text-brand-cyan font-bold"><Icon name="check" size={18} /></span>
+              <span class="text-text-muted"><strong>Review reading time:</strong> Blog posts should be 3-7 minutes read time for optimal engagement. Adjust content length accordingly.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Tools -->
+  <section class="py-16 bg-white">
+    <div class="layout-shell px-4">
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-center mb-4">Related Tools</h2>
+      <p class="text-center text-text-muted mb-12 max-w-2xl mx-auto">Explore our most popular text analysis tools</p>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+        <a href="/word-counter" class="bg-surface p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+          <div class="text-3xl mb-3"><Icon name="chart" size={30} /></div>
+          <h3 class="text-lg font-display font-semibold mb-2 text-brand-pink">Word Counter</h3>
+          <p class="text-sm text-text-muted">Count words, characters, and estimate reading time</p>
+        </a>
+        <a href="/character-counter" class="bg-surface p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+          <div class="text-3xl mb-3"><Icon name="text" size={30} /></div>
+          <h3 class="text-lg font-display font-semibold mb-2 text-brand-cyan">Character Counter</h3>
+          <p class="text-sm text-text-muted">Check character limits for social media</p>
+        </a>
+        <a href="/readability-checker" class="bg-surface p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+          <div class="text-3xl mb-3"><Icon name="book" size={30} /></div>
+          <h3 class="text-lg font-display font-semibold mb-2 text-brand-orange">Readability Checker</h3>
+          <p class="text-sm text-text-muted">Measure text readability and grade level</p>
+        </a>
+        <a href="/case-converter" class="bg-surface p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+          <div class="text-3xl mb-3"><Icon name="text" size={30} /></div>
+          <h3 class="text-lg font-display font-semibold mb-2 text-brand-pink">Case Converter</h3>
+          <p class="text-sm text-text-muted">Convert text between different cases</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Frequently Asked Questions -->
+  <section class="py-16 bg-gray-50">
+    <div class="layout-shell px-4">
+      <h2 class="text-3xl md:text-4xl font-display font-bold text-center mb-12">Frequently Asked Questions</h2>
+      <div class="max-w-3xl mx-auto space-y-4">
+        <details class="bg-surface rounded-xl border border-gray-100 p-6 group">
+          <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+            Is CountWordz really free to use?
+            <span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="text-text-muted mt-4">Yes! CountWordz is 100% free forever. No signup required, no hidden fees, no premium tiers. All 103+ tools are available at no cost with unlimited usage.</p>
+        </details>
+        <details class="bg-surface rounded-xl border border-gray-100 p-6 group">
+          <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+            Is my text data secure and private?
+            <span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="text-text-muted mt-4">Absolutely. All text processing happens locally in your browser using JavaScript. Your content is never sent to our servers, stored, or shared with third parties. You can even use most tools offline.</p>
+        </details>
+        <details class="bg-surface rounded-xl border border-gray-100 p-6 group">
+          <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+            How accurate are the word and character counts?
+            <span class="text-brand-orange group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="text-text-muted mt-4">Our counting algorithms follow industry-standard methods. Word count treats hyphenated words as single words and counts contractions correctly. Character count includes or excludes spaces based on your selection. Results are accurate for academic, professional, and social media use.</p>
+        </details>
+        <details class="bg-surface rounded-xl border border-gray-100 p-6 group">
+          <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+            Can I use CountWordz on mobile devices?
+            <span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="text-text-muted mt-4">Yes! CountWordz is fully responsive and works perfectly on smartphones, tablets, and desktop computers. The interface adapts to any screen size, and all tools function identically across devices.</p>
+        </details>
+        <details class="bg-surface rounded-xl border border-gray-100 p-6 group">
+          <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+            Do I need to install any software or browser extensions?
+            <span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="text-text-muted mt-4">No installation needed. CountWordz runs entirely in your web browser. Just visit the website and start using any tool immediately. No downloads, no extensions, no setup required.</p>
+        </details>
       </div>
     </div>
   </section>
@@ -191,3 +389,4 @@ const softwareSchema = generateSoftwareApplicationSchema({
 
   <Footer />
 </BaseLayout>
+/BaseLayout>

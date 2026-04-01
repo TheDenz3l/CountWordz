@@ -3,16 +3,65 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import CaseConverterTool from '../../../components/CaseConverterTool';
 import Sidebar from '../../../components/Sidebar.astro';
 import Footer from '../../../components/Footer.astro';
+import Icon from '../../../components/Icon.astro';
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'À quoi sert un convertisseur de casse ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Il permet de convertir rapidement un texte en minuscules, MAJUSCULES, casse titre, casse phrase et autres formats utiles pour la publication et l’édition.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Quelle différence entre casse titre et casse phrase ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'La casse titre met généralement la première lettre de chaque mot principal en majuscule, tandis que la casse phrase met surtout en majuscule le début de phrase.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Puis-je corriger un texte déjà écrit ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Oui. Collez simplement votre texte dans l’outil et choisissez le format souhaité pour le convertir instantanément.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Est-ce utile pour les titres et les réseaux sociaux ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Oui. L’outil aide à harmoniser les titres, sous-titres, CTA et textes courts avant publication.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Dois-je m’inscrire ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Non. Le convertisseur est gratuit et fonctionne immédiatement sans compte.',
+      },
+    },
+  ],
+};
 ---
 
 <BaseLayout 
   title="Convertisseur de Casse - Convertit entre Formats de Texte" 
   description="Convertisseur de casse gratuit. Convertit le texte entre minuscules, MAJUSCULES, Titre, Phrase et plus."
+  jsonLD={[faqSchema]}
 >
   <main class="layout-shell px-4 py-6">
     <header class="mb-6">
       <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Convertisseur de Casse</h1>
-      <p class="text-base text-text-muted max-w-3xl">Convertissez le texte entre différents formats de majuscules et minuscules. Parfait pour formater les titres.</p>
+      <p class="text-base text-text-muted max-w-3xl">Convertissez le texte entre différents formats de casse. Idéal pour les titres, contenus web, CTA et textes à uniformiser rapidement.</p>
     </header>
 
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
@@ -44,22 +93,53 @@ import Footer from '../../../components/Footer.astro';
             <h2 class="text-2xl font-display font-bold mb-3">Formats Disponibles</h2>
             <div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4">
               <ul class="space-y-2 text-text-primary">
-                <li><strong>minuscules</strong> — Tout en minuscules</li>
-                <li><strong>MAJUSCULES</strong> — Tout en majuscules</li>
-                <li><strong>Titre</strong> — Première lettre de chaque mot en majuscule</li>
-                <li><strong>Phrase</strong> — Première lettre de la phrase en majuscule</li>
-                <li><strong>aLTERNÉ</strong> — Alterne majuscules et minuscules</li>
+                <li><strong>minuscules</strong> — tout en lettres minuscules</li>
+                <li><strong>MAJUSCULES</strong> — tout en lettres capitales</li>
+                <li><strong>Titre</strong> — capitalisation adaptée aux titres</li>
+                <li><strong>Phrase</strong> — première lettre de phrase en majuscule</li>
+                <li><strong>aLtErNé</strong> — alternance de majuscules et minuscules</li>
               </ul>
             </div>
           </section>
 
-          <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Outils Connexes</h2>
-            <ul class="space-y-2">
-              <li><a href="/fr/word-counter" class="text-brand-pink hover:underline">Compteur de Mots</a></li>
-              <li><a href="/fr/title-case-converter" class="text-brand-pink hover:underline">Convertisseur de Titre</a></li>
-              <li><a href="/fr/character-counter" class="text-brand-pink hover:underline">Compteur de Caractères</a></li>
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Idéal Pour</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div><h3 class="font-semibold text-brand-pink mb-2">Éditeurs et Rédacteurs</h3><p class="text-text-muted text-sm">Uniformisez rapidement les titres, sous-titres et blocs de texte avant publication.</p></div>
+              <div><h3 class="font-semibold text-brand-cyan mb-2">Équipes Marketing</h3><p class="text-text-muted text-sm">Préparez des CTA, accroches et messages cohérents pour vos pages, emails et réseaux sociaux.</p></div>
+              <div><h3 class="font-semibold text-brand-orange mb-2">Étudiants</h3><p class="text-text-muted text-sm">Corrigez facilement la casse des titres, présentations et documents académiques.</p></div>
+              <div><h3 class="font-semibold text-brand-pink mb-2">Utilisateurs Quotidiens</h3><p class="text-text-muted text-sm">Gagnez du temps lorsque vous recevez un texte mal formaté ou entièrement en majuscules.</p></div>
+            </div>
+          </section>
+
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Conseils Pratiques</h2>
+            <ul class="space-y-4">
+              <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Choisissez le bon format :</strong> utilisez la casse titre pour les titres, la casse phrase pour les textes éditoriaux, et les majuscules avec modération.</span></li>
+              <li class="flex gap-3"><span class="text-brand-cyan font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Relisez les noms propres :</strong> certains mots méritent une vérification manuelle après conversion.</span></li>
+              <li class="flex gap-3"><span class="text-brand-orange font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Harmonisez les CTA :</strong> gardez un style cohérent entre boutons, titres et accroches.</span></li>
+              <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Nettoyez les copier-coller :</strong> cet outil est utile après avoir importé du texte depuis des PDF ou documents externes.</span></li>
+              <li class="flex gap-3"><span class="text-brand-cyan font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Combinez avec le compteur de caractères :</strong> pratique lorsque vous devez aussi respecter une limite de longueur.</span></li>
             </ul>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-4">Questions Fréquentes</h2>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">À quoi sert un convertisseur de casse ?<span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Il sert à changer instantanément le format d’un texte pour l’adapter à un usage éditorial, marketing ou pratique.</p></details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">Quelle différence entre casse titre et casse phrase ?<span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">La casse titre capitalise les mots principaux d’un titre. La casse phrase se concentre surtout sur le début de phrase.</p></details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">Puis-je corriger un texte existant ?<span class="text-brand-orange group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Oui. Collez le texte dans l’outil puis sélectionnez la transformation souhaitée.</p></details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">Est-ce utile pour les réseaux sociaux ?<span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Oui. Cela aide à standardiser les titres, légendes et CTA pour une présentation plus nette.</p></details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">Dois-je m’inscrire ?<span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Non. L’outil est accessible immédiatement sans compte.</p></details>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-4">Outils Connexes</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <a href="/fr/word-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="chart" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-pink">Compteur de Mots</h3><p class="text-xs text-text-muted">Mesurez la longueur</p></a>
+              <a href="/fr/title-case-converter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="tag" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-cyan">Convertisseur de Titre</h3><p class="text-xs text-text-muted">Affinez vos titres</p></a>
+              <a href="/fr/character-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="text" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-orange">Compteur de Caractères</h3><p class="text-xs text-text-muted">Respectez les limites</p></a>
+              <a href="/fr/readability-checker" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="book" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-pink">Lisibilité</h3><p class="text-xs text-text-muted">Évaluez la clarté</p></a>
+            </div>
           </section>
         </article>
       </div>

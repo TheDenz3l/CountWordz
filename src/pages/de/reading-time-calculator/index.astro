@@ -4,16 +4,65 @@ import ReadingTimeTool from '../../../components/ReadingTimeTool';
 import Sidebar from '../../../components/Sidebar.astro';
 import Footer from '../../../components/Footer.astro';
 import { getLocalizedToolPath } from '../../../lib/locale-routes';
+import Icon from '../../../components/Icon.astro';
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Wie genau ist die Schätzung?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sie ist eine nützliche Orientierung auf Basis durchschnittlicher Geschwindigkeiten.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Ist das für Präsentationen geeignet?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Ja, besonders mit der geschätzten Sprechzeit.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Hilft das auch bei Blogartikeln?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Ja, es unterstützt die Planung der zu erwartenden Lesedauer.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Sollte ich nach dem Bearbeiten erneut messen?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Ja, schon kleine Änderungen verschieben die Dauer.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Brauche ich ein Konto?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Nein, das Tool ist kostenlos.',
+      },
+    },
+  ],
+};
+
 ---
 
 <BaseLayout 
   title="Lesezeit-Rechner - Schätzt die Lesezeit" 
-  description="Kostenloser Lesezeit-Rechner. Schätzen Sie, wie lange es dauert, Ihren Text zu lesen. Optimieren Sie die Länge Ihres Inhalts."
+  description="Schätzen Sie die Lese- und Sprechzeit Ihres Textes. Ideal für die Planung der Inhaltslänge."
+  jsonLD={[faqSchema]}
 >
   <main class="layout-shell px-4 py-6">
     <header class="mb-6">
       <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Lesezeit-Rechner</h1>
-      <p class="text-base text-text-muted max-w-3xl">Schätzen Sie die Lese- und Sprechzeit für Ihren Text. Optimieren Sie die Länge Ihres Inhalts.</p>
+      <p class="text-base text-text-muted max-w-3xl">Schätzen Sie die Lese- und Sprechzeit Ihres Textes. Ideal für die Planung der Inhaltslänge.</p>
     </header>
 
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
@@ -42,23 +91,83 @@ import { getLocalizedToolPath } from '../../../lib/locale-routes';
 
         <article class="mt-8">
           <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Lesegeschwindigkeiten</h2>
-            <div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4">
-              <ul class="space-y-2 text-text-primary">
-                <li class="flex justify-between"><span>Langsamer Leser</span><span class="font-semibold">150-200 WPM</span></li>
-                <li class="flex justify-between"><span>Durchschnitt</span><span class="font-semibold">200-250 WPM</span></li>
-                <li class="flex justify-between"><span>Schneller Leser</span><span class="font-semibold">250-300 WPM</span></li>
-              </ul>
-            </div>
+            <h2 class="text-2xl font-display font-bold mb-3">Lesezeit-Rechner</h2>
+            <p class="text-text-primary mb-4">Das Tool schätzt Lese- und Sprechzeit, damit Sie Inhalte besser auf Nutzungskontext und Aufmerksamkeitsspanne abstimmen können.</p>
+          </section>
+
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Ideal für</h2>
+            <p class="text-text-primary">Artikel, Newsletter, Präsentationen, Skripte und alle Texte, bei denen Dauer die Nutzung beeinflusst.</p>
+          </section>
+
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Praktische Tipps</h2>
+            <ul class="space-y-4">
+              <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted">Nutzen Sie Lesezeit für stilles Lesen und Sprechzeit für Vorträge oder Audio.</span></li>
+              <li class="flex gap-3"><span class="text-brand-cyan font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted">Passen Sie die Länge an den Kanal an.</span></li>
+              <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted">Messen Sie nach jeder Überarbeitung erneut.</span></li>
+            </ul>
           </section>
 
           <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Ähnliche Tools</h2>
-            <ul class="space-y-2">
-              <li><a href="/de/word-counter" class="text-brand-pink hover:underline">Wortzähler</a></li>
-              <li><a href={getLocalizedToolPath('de', 'speech-time-calculator')} class="text-brand-pink hover:underline">Sprechzeit</a></li>
-              <li><a href={getLocalizedToolPath('de', 'blog-reading-time')} class="text-brand-pink hover:underline">Blog-Lesezeit</a></li>
-            </ul>
+            <h2 class="text-2xl font-display font-bold mb-4">Häufig gestellte Fragen</h2>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Wie genau ist die Schätzung?
+                <span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Sie ist eine nützliche Orientierung auf Basis durchschnittlicher Geschwindigkeiten.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Ist das für Präsentationen geeignet?
+                <span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Ja, besonders mit der geschätzten Sprechzeit.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Hilft das auch bei Blogartikeln?
+                <span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Ja, es unterstützt die Planung der zu erwartenden Lesedauer.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Sollte ich nach dem Bearbeiten erneut messen?
+                <span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Ja, schon kleine Änderungen verschieben die Dauer.</p>
+            </details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4">
+              <summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">
+                Brauche ich ein Konto?
+                <span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="text-text-muted mt-4">Nein, das Tool ist kostenlos.</p>
+            </details>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-4">Ähnliche Tools</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <a href="/de/word-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="chart" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-pink">Wortzähler</h3>
+              </a>
+              <a href="/de/readability-checker" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="text" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-cyan">Lesbarkeitsprüfer</h3>
+              </a>
+              <a href="/de/sentence-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="book" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-orange">Satzanzahl</h3>
+              </a>
+              <a href="/de/character-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center">
+                <div class="text-2xl mb-2"><Icon name="pencil" size={24} /></div>
+                <h3 class="text-sm font-display font-semibold mb-1 text-brand-pink">Zeichenzähler</h3>
+              </a>
+            </div>
           </section>
         </article>
       </div>

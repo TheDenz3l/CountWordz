@@ -3,16 +3,65 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import WordCounterTool from '../../../components/WordCounterTool';
 import Sidebar from '../../../components/Sidebar.astro';
 import Footer from '../../../components/Footer.astro';
+import Icon from '../../../components/Icon.astro';
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Wie werden Wörter gezählt?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Wir zählen Wörter, indem wir den Text an Leerzeichen aufteilen und leere Einträge herausfiltern. Wörter mit Bindestrich zählen wie ein einzelnes Wort.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Ist die Lesezeit genau?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Die Lesezeit basiert auf einer durchschnittlichen Lesegeschwindigkeit von etwa 200 Wörtern pro Minute. Die tatsächliche Zeit hängt vom Schwierigkeitsgrad des Textes ab.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Sind Leerzeichen in der Zeichenzahl enthalten?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Ja. Wir zeigen sowohl die Zeichenzahl mit Leerzeichen als auch ohne Leerzeichen an, damit Sie die passende Kennzahl für Ihren Zweck nutzen können.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Kann ich das für akademische Texte nutzen?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Ja. Das Tool eignet sich für Aufsätze, Hausarbeiten und Berichte, da es Wörter, Sätze, Absätze und die geschätzte Lesezeit zuverlässig anzeigt.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Brauche ich ein Konto?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Nein. Das Tool ist kostenlos und ohne Anmeldung nutzbar. Text einfügen und sofort mit dem Zählen beginnen.',
+      },
+    },
+  ],
+};
 ---
 
 <BaseLayout 
   title="Wortzähler - Wörter, Zeichen und Mehr Zählen" 
   description="Kostenloser Wortzähler. Zählen Sie Wörter, Zeichen, Sätze, Absätze und schätzen Sie Lesezeit in Echtzeit."
+  jsonLD={[faqSchema]}
 >
   <main class="layout-shell px-4 py-6">
     <header class="mb-6">
       <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-2">Wortzähler</h1>
-      <p class="text-base text-text-muted max-w-3xl">Zählen Sie Wörter, Zeichen, Sätze und mehr in Echtzeit. Perfekt für Aufsätze, Lebensläufe und Beiträge.</p>
+      <p class="text-base text-text-muted max-w-3xl">Zählen Sie Wörter, Zeichen, Sätze und mehr in Echtzeit. Perfekt für Aufsätze, Lebensläufe, Beiträge und Skripte.</p>
     </header>
 
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
@@ -41,10 +90,10 @@ import Footer from '../../../components/Footer.astro';
 
         <article class="mt-8">
           <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Wie Man Verwendet</h2>
-            <p class="text-text-primary mb-4">Fügen Sie Ihren Text ein oder tippen Sie ihn ein. Der Zähler zeigt sofort:</p>
+            <h2 class="text-2xl font-display font-bold mb-3">So Verwenden Sie den Wortzähler</h2>
+            <p class="text-text-primary mb-4">Fügen Sie Ihren Text oben ein oder schreiben Sie direkt hinein. Das Tool zeigt sofort:</p>
             <ul class="list-disc list-inside space-y-2 text-text-primary">
-              <li><strong>Wortanzahl</strong> — Gesamtzahl der Wörter</li>
+              <li><strong>Wortanzahl</strong> — Gesamtzahl aller Wörter</li>
               <li><strong>Zeichenanzahl</strong> — Mit und ohne Leerzeichen</li>
               <li><strong>Satzanzahl</strong> — Anzahl der Sätze</li>
               <li><strong>Absatzanzahl</strong> — Anzahl der Absätze</li>
@@ -53,31 +102,56 @@ import Footer from '../../../components/Footer.astro';
             </ul>
           </section>
 
-          <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Häufige Limits</h2>
-            <div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4">
-              <ul class="space-y-2 text-text-primary">
-                <li class="flex justify-between"><span>Schulaufsatz</span><span class="font-semibold">500-1000 Wörter</span></li>
-                <li class="flex justify-between"><span>Universitätsaufsatz</span><span class="font-semibold">1500-3000 Wörter</span></li>
-                <li class="flex justify-between"><span>Blog-Beitrag</span><span class="font-semibold">800-1200 Wörter</span></li>
-                <li class="flex justify-between"><span>Lebenslauf</span><span class="font-semibold">400-600 Wörter</span></li>
-              </ul>
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Ideal für</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <h3 class="font-semibold text-brand-pink mb-2">Schüler und Lehrkräfte</h3>
+                <p class="text-text-muted text-sm">Prüfen Sie Aufsatzlängen, kontrollieren Sie Aufgabenanforderungen und erhalten Sie einen schnellen Überblick über Umfang und Struktur eines Textes.</p>
+              </div>
+              <div>
+                <h3 class="font-semibold text-brand-cyan mb-2">Content-Teams</h3>
+                <p class="text-text-muted text-sm">Bewerten Sie Blogbeiträge, Newsletter und Landingpage-Texte, damit Inhalte die richtige Länge und Lesedauer erreichen.</p>
+              </div>
+              <div>
+                <h3 class="font-semibold text-brand-orange mb-2">Bewerber</h3>
+                <p class="text-text-muted text-sm">Behalten Sie Lebensläufe, Anschreiben und Kurzprofile unter Kontrolle, wenn jedes Wort präzise und relevant sein muss.</p>
+              </div>
+              <div>
+                <h3 class="font-semibold text-brand-pink mb-2">SEO-Redakteure</h3>
+                <p class="text-text-muted text-sm">Vergleichen Sie Textlängen, planen Sie Lesedauer und erstellen Sie Inhalte, die zu Suchintention und Nutzererwartung passen.</p>
+              </div>
             </div>
           </section>
 
-          <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">FAQ</h2>
-            <h3 class="text-xl font-display font-semibold mt-4 mb-2">Wie werden Wörter gezählt?</h3>
-            <p class="text-text-primary mb-4">Wir zählen Wörter durch Teilen des Textes an Leerzeichen. Wörter mit Bindestrich zählen als ein Wort.</p>
+          <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100">
+            <h2 class="text-2xl font-display font-bold mb-6 text-center">Praktische Tipps</h2>
+            <ul class="space-y-4">
+              <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Vor dem Einreichen prüfen:</strong> Kontrollieren Sie Wortanzahl und Absatzstruktur, bevor Sie einen Text abgeben oder veröffentlichen.</span></li>
+              <li class="flex gap-3"><span class="text-brand-cyan font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Lesezeit mitdenken:</strong> Nutzen Sie die geschätzte Lesezeit, um Blogbeiträge und Artikel besser an die Zielgruppe anzupassen.</span></li>
+              <li class="flex gap-3"><span class="text-brand-orange font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Satzlänge beobachten:</strong> Kürzere, klarere Sätze verbessern die Lesbarkeit. Der Satzzähler hilft beim Erkennen zu langer Passagen.</span></li>
+              <li class="flex gap-3"><span class="text-brand-pink font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Unterschiedliche Formate vergleichen:</strong> Aufsätze, Lebensläufe und Social-Media-Texte haben andere Anforderungen. Passen Sie die Länge an das Format an.</span></li>
+              <li class="flex gap-3"><span class="text-brand-cyan font-bold"><Icon name="check" size={18} /></span><span class="text-text-muted"><strong>Mehr als nur Wörter beachten:</strong> Zeichen, Sätze und Absätze geben zusätzliche Hinweise auf Struktur und Verständlichkeit.</span></li>
+            </ul>
           </section>
 
           <section class="mb-6">
-            <h2 class="text-2xl font-display font-bold mb-3">Ähnliche Tools</h2>
-            <ul class="space-y-2">
-              <li><a href="/de/character-counter" class="text-brand-pink hover:underline">Zeichenzähler</a></li>
-              <li><a href="/de/sentence-counter" class="text-brand-pink hover:underline">Satzanzahl</a></li>
-              <li><a href="/de/readability-checker" class="text-brand-pink hover:underline">Lesbarkeitsprüfer</a></li>
-            </ul>
+            <h2 class="text-2xl font-display font-bold mb-4">Häufig gestellte Fragen</h2>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">Wie werden Wörter gezählt?<span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Wir teilen den Text an Leerzeichen und filtern leere Einträge heraus. Bindestrich-Wörter werden wie ein einzelnes Wort behandelt.</p></details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">Ist die Lesezeit genau?<span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Sie ist eine solide Schätzung auf Basis einer durchschnittlichen Lesegeschwindigkeit. Schwierige oder sehr technische Texte benötigen oft etwas länger.</p></details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">Sind Leerzeichen in der Zeichenzahl enthalten?<span class="text-brand-orange group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Ja. Zusätzlich zeigen wir auch die Zeichenzahl ohne Leerzeichen, damit Sie beide Werte vergleichen können.</p></details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">Ist das für akademische Texte geeignet?<span class="text-brand-pink group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Ja. Das Tool ist besonders nützlich für Aufsätze, Berichte und wissenschaftliche Texte, wenn Wortgrenzen eingehalten werden müssen.</p></details>
+            <details class="bg-surface rounded-xl border border-gray-100 p-6 group mb-4"><summary class="font-display font-semibold cursor-pointer list-none flex justify-between items-center text-lg">Brauche ich ein Konto?<span class="text-brand-cyan group-open:rotate-180 transition-transform">▼</span></summary><p class="text-text-muted mt-4">Nein. Sie können das Tool sofort kostenlos und ohne Anmeldung nutzen.</p></details>
+          </section>
+
+          <section class="mb-6">
+            <h2 class="text-2xl font-display font-bold mb-4">Ähnliche Tools</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <a href="/de/character-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="text" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-pink">Zeichenzähler</h3><p class="text-xs text-text-muted">Zeichen präzise messen</p></a>
+              <a href="/de/sentence-counter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="note" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-cyan">Satzzähler</h3><p class="text-xs text-text-muted">Satzstruktur prüfen</p></a>
+              <a href="/de/readability-checker" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="book" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-orange">Lesbarkeitsprüfer</h3><p class="text-xs text-text-muted">Verständlichkeit messen</p></a>
+              <a href="/de/case-converter" class="bg-surface p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow block text-center"><div class="text-2xl mb-2"><Icon name="text" size={24} /></div><h3 class="text-sm font-display font-semibold mb-1 text-brand-pink">Groß-/Kleinschreibung</h3><p class="text-xs text-text-muted">Textformat schnell ändern</p></a>
+            </div>
           </section>
         </article>
       </div>
