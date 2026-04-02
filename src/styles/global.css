@@ -147,6 +147,26 @@ input:focus, textarea:focus {
   animation: fade-in 0.3s ease-out;
 }
 
+/* Related Tools grid cards – prevent long translated text (especially German
+   compound words like "Lesbarkeitsprüfer", "Groß-/Kleinschreibung") from
+   overflowing their grid cells. */
+.grid > a.bg-surface {
+  min-width: 0;          /* allow grid children to shrink below content size */
+  overflow: hidden;      /* clip any remaining overflow */
+}
+
+.grid > a.bg-surface h3 {
+  overflow-wrap: break-word;  /* break long words if needed */
+  word-break: break-word;     /* fallback for older browsers */
+  hyphens: auto;              /* insert hyphens at break points */
+  -webkit-hyphens: auto;
+}
+
+.grid > a.bg-surface p {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
 /* Responsive utilities */
 @media (max-width: 768px) {
   html {

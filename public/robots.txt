@@ -1,4 +1,14 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://counterwordz.com/sitemap.xml
+# Ensure Google can crawl all pages for AdSense ad evaluation
+User-agent: Googlebot
+Allow: /
+
+User-agent: Mediapartners-Google
+Allow: /
+
+User-agent: AdsBot-Google
+Allow: /
+
+Sitemap: https://countwordz.com/sitemap.xml

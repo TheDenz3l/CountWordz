@@ -4,6 +4,7 @@ import { getTranslation } from '../i18n/translations.js';
 import { getLocaleSwitchPath, normalizeLocale } from '../lib/locale-routes';
 import { SEO } from 'astro-seo';
 import { generateSeoMetadata, generateWebsiteSchema } from '../lib/seo-metadata';
+import CookieConsent from '../components/CookieConsent.astro';
 
 interface Props {
   title: string;
@@ -93,5 +94,7 @@ const languages = [
     </div>
 
     <slot />
+
+    <CookieConsent />
   </body>
 </html>

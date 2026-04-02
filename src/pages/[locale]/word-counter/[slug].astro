@@ -113,16 +113,6 @@ const tips = pageData.tips ?? {
             <h2 class="text-2xl font-display font-bold mb-3">{l.overview}</h2>
             <p class="text-text-primary mb-4">{pageData.subtitle}</p>
           </section>
-
-          <div class="my-6 ad-slot-mid-content">
-            <div class="bg-surface rounded-lg border border-gray-200 p-4 text-center">
-              <p class="text-xs text-text-muted mb-2">{t('advertisement')}</p>
-              <div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded">
-                <span class="text-gray-400 text-sm">{t('adSpace')}</span>
-              </div>
-            </div>
-          </div>
-
           {pageData.limits && (
             <section class="mb-6">
               <h2 class="text-2xl font-display font-bold mb-3">{locale === 'es' ? 'Límites Comunes' : locale === 'fr' ? 'Limites Communes' : locale === 'de' ? 'Häufige Limits' : 'Limites Comuns'}</h2>

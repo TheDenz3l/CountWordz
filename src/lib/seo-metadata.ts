@@ -47,7 +47,7 @@ interface SeoMetadataOptions {
   twitterCardType?: 'summary' | 'summary_large_image' | 'app' | 'player';
 }
 
-const SITE_URL = 'https://counterwordz.com';
+const SITE_URL = 'https://countwordz.com';
 const TWITTER_HANDLE = '@countwordz';
 
 /**
@@ -193,11 +193,6 @@ export function generateSoftwareApplicationSchema(options: {
     offers: offers || {
       price: '0',
       priceCurrency: 'USD',
-    },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      ratingCount: '127',
     },
   };
 

@@ -12,26 +12,42 @@ const locale = normalizeLocale(Astro.params.locale);
 const content = {
   en: {
     title: 'Privacy Policy',
-    description: 'Learn how CountWordz handles text, analytics, and privacy across the site.',
+    description: 'Learn how CountWordz handles text, analytics, advertising, and privacy across the site.',
     h1: 'Privacy Policy',
-    updated: 'Last updated: April 1, 2026',
-    intro: 'CountWordz is designed to work in the browser without requiring an account. This page explains what data we collect, what we do not collect, and how we handle basic site analytics.',
+    updated: 'Last updated: April 2, 2026',
+    intro: 'CountWordz is designed to work in the browser without requiring an account. This page explains what data we collect, what we do not collect, and how we handle analytics and advertising.',
     sections: [
       {
         heading: 'Text you enter',
-        body: 'Text entered into the tools is processed in your browser for counting, readability, comparison, and formatting features. We do not require you to create an account to use the tools.',
+        body: 'Text entered into the tools is processed entirely in your browser for counting, readability, comparison, and formatting features. Your text is never sent to our servers or any third party. We do not require you to create an account to use the tools.',
       },
       {
         heading: 'Analytics',
         body: 'We may use privacy-conscious analytics and search performance tools to understand site usage, popular pages, and product quality. Those tools may collect aggregate usage information such as page views, referrers, and device/browser metadata.',
       },
       {
-        heading: 'Cookies and third-party services',
-        body: 'The site may use cookies or similar technologies for analytics, advertising, and performance. Third-party services may apply their own privacy policies when they are loaded on the site.',
+        heading: 'Advertising and cookies',
+        body: 'This site displays advertisements served by Google AdSense and potentially other third-party advertising networks. These third-party vendors, including Google, use cookies, web beacons, and similar technologies to serve ads based on your prior visits to this website or other websites. Google\'s use of advertising cookies enables it and its partners to serve ads to you based on your visit to this site and/or other sites on the Internet. You may opt out of personalized advertising by visiting Google Ads Settings (https://www.google.com/settings/ads). For more information about how Google uses data when you use our site, visit: https://policies.google.com/technologies/partner-sites',
+      },
+      {
+        heading: 'Cookies and similar technologies',
+        body: 'Cookies are small text files stored on your device by your web browser. We and our third-party partners use cookies and similar technologies (such as web beacons, pixel tags, and IP addresses) for analytics, advertising, and site performance. Third-party ad servers or ad networks may use these technologies to measure the effectiveness of their advertisements and to personalize the advertising content you see. CountWordz has no access to or control over cookies that are used by third-party advertisers. You can manage your cookie preferences through your browser settings or through the cookie consent controls provided on this site.',
+      },
+      {
+        heading: 'Third-party services',
+        body: 'We use third-party services including Google AdSense for advertising and Google Fonts for typography. These services may collect information sent by your browser as part of a web page request, such as your IP address, browser type, browser language, the date and time of your request, and one or more cookies that may uniquely identify your browser. Each third-party service is governed by its own privacy policy.',
+      },
+      {
+        heading: 'Children\'s privacy',
+        body: 'CountWordz is not directed at children under the age of 13. We do not knowingly collect personal information from children under 13. If you believe we have inadvertently collected information from a child under 13, please contact us so we can take appropriate action.',
       },
       {
         heading: 'Your choices',
-        body: 'You can stop using the site at any time, block cookies in your browser, or use browser privacy controls and content blockers if you prefer to limit third-party scripts.',
+        body: 'You can stop using the site at any time. You can manage cookies through the cookie consent banner on this site, through your browser settings, or by using browser privacy controls and content blockers. You may opt out of personalized advertising by visiting Google Ads Settings at https://www.google.com/settings/ads or the Network Advertising Initiative opt-out page at https://www.networkadvertising.org/managing/opt_out.asp',
+      },
+      {
+        heading: 'Changes to this policy',
+        body: 'We may update this privacy policy from time to time to reflect changes in our practices or applicable laws. We encourage you to review this page periodically for the latest information on our privacy practices.',
       },
       {
         heading: 'Contact',
@@ -41,26 +57,42 @@ const content = {
   },
   es: {
     title: 'Política de Privacidad',
-    description: 'Conoce cómo CountWordz maneja el texto, las analíticas y la privacidad en todo el sitio.',
+    description: 'Conoce cómo CountWordz maneja el texto, las analíticas, la publicidad y la privacidad en todo el sitio.',
     h1: 'Política de Privacidad',
-    updated: 'Última actualización: 1 de abril de 2026',
-    intro: 'CountWordz está diseñado para funcionar en el navegador sin requerir una cuenta. Esta página explica qué datos recopilamos, qué no recopilamos y cómo manejamos las analíticas básicas del sitio.',
+    updated: 'Última actualización: 2 de abril de 2026',
+    intro: 'CountWordz está diseñado para funcionar en el navegador sin requerir una cuenta. Esta página explica qué datos recopilamos, qué no recopilamos y cómo manejamos las analíticas y la publicidad.',
     sections: [
       {
         heading: 'Texto que ingresas',
-        body: 'El texto que introduces en las herramientas se procesa en tu navegador para funciones de conteo, legibilidad, comparación y formato. No exigimos que crees una cuenta para usar las herramientas.',
+        body: 'El texto que introduces en las herramientas se procesa completamente en tu navegador para funciones de conteo, legibilidad, comparación y formato. Tu texto nunca se envía a nuestros servidores ni a terceros. No exigimos que crees una cuenta para usar las herramientas.',
       },
       {
         heading: 'Analíticas',
         body: 'Podemos usar analíticas respetuosas con la privacidad y herramientas de rendimiento de búsqueda para comprender el uso del sitio, las páginas populares y la calidad del producto. Esas herramientas pueden recopilar información agregada como vistas de página, referencias y metadatos del navegador o dispositivo.',
       },
       {
-        heading: 'Cookies y servicios de terceros',
-        body: 'El sitio puede usar cookies o tecnologías similares para analíticas, publicidad y rendimiento. Los servicios de terceros pueden aplicar sus propias políticas de privacidad cuando se cargan en el sitio.',
+        heading: 'Publicidad y cookies',
+        body: 'Este sitio muestra anuncios servidos por Google AdSense y potencialmente otras redes publicitarias de terceros. Estos proveedores de terceros, incluyendo Google, usan cookies, balizas web y tecnologías similares para servir anuncios basados en tus visitas anteriores a este sitio web u otros. El uso de cookies publicitarias por parte de Google le permite a él y a sus socios servirte anuncios basados en tu visita a este sitio y/u otros sitios en Internet. Puedes cancelar la publicidad personalizada visitando la Configuración de Anuncios de Google (https://www.google.com/settings/ads). Para más información sobre cómo Google usa datos cuando usas nuestro sitio, visita: https://policies.google.com/technologies/partner-sites',
+      },
+      {
+        heading: 'Cookies y tecnologías similares',
+        body: 'Las cookies son pequeños archivos de texto almacenados en tu dispositivo por tu navegador web. Nosotros y nuestros socios de terceros usamos cookies y tecnologías similares (como balizas web, etiquetas de píxel y direcciones IP) para analíticas, publicidad y rendimiento del sitio. Los servidores de anuncios o las redes publicitarias de terceros pueden usar estas tecnologías para medir la efectividad de sus anuncios y personalizar el contenido publicitario que ves. CountWordz no tiene acceso ni control sobre las cookies que usan los anunciantes de terceros. Puedes gestionar tus preferencias de cookies a través de la configuración de tu navegador o a través de los controles de consentimiento de cookies proporcionados en este sitio.',
+      },
+      {
+        heading: 'Servicios de terceros',
+        body: 'Usamos servicios de terceros incluyendo Google AdSense para publicidad y Google Fonts para tipografía. Estos servicios pueden recopilar información enviada por tu navegador como parte de una solicitud de página web, como tu dirección IP, tipo de navegador, idioma del navegador, la fecha y hora de tu solicitud, y una o más cookies que pueden identificar de forma única tu navegador. Cada servicio de terceros se rige por su propia política de privacidad.',
+      },
+      {
+        heading: 'Privacidad de los niños',
+        body: 'CountWordz no está dirigido a niños menores de 13 años. No recopilamos intencionalmente información personal de niños menores de 13 años. Si crees que hemos recopilado información inadvertidamente de un niño menor de 13 años, contáctanos para que podamos tomar las medidas apropiadas.',
       },
       {
         heading: 'Tus opciones',
-        body: 'Puedes dejar de usar el sitio en cualquier momento, bloquear cookies en tu navegador o usar controles de privacidad y bloqueadores de contenido si prefieres limitar scripts de terceros.',
+        body: 'Puedes dejar de usar el sitio en cualquier momento. Puedes gestionar cookies a través del banner de consentimiento de cookies en este sitio, a través de la configuración de tu navegador o usando controles de privacidad y bloqueadores de contenido. Puedes cancelar la publicidad personalizada visitando la Configuración de Anuncios de Google en https://www.google.com/settings/ads o la página de exclusión de Network Advertising Initiative en https://www.networkadvertising.org/managing/opt_out.asp',
+      },
+      {
+        heading: 'Cambios a esta política',
+        body: 'Podemos actualizar esta política de privacidad de vez en cuando para reflejar cambios en nuestras prácticas o las leyes aplicables. Te animamos a revisar esta página periódicamente para la información más reciente sobre nuestras prácticas de privacidad.',
       },
       {
         heading: 'Contacto',
@@ -70,55 +102,87 @@ const content = {
   },
   fr: {
     title: 'Politique de Confidentialité',
-    description: 'Découvrez comment CountWordz traite le texte, les analyses et la confidentialité sur le site.',
+    description: 'Découvrez comment CountWordz traite le texte, les analyses, la publicité et la confidentialité sur le site.',
     h1: 'Politique de Confidentialité',
-    updated: 'Dernière mise à jour : 1 avril 2026',
-    intro: 'CountWordz est conçu pour fonctionner dans le navigateur sans nécessiter de compte. Cette page explique quelles données nous collectons, lesquelles nous ne collectons pas et comment nous gérons les analyses de base du site.',
+    updated: 'Dernière mise à jour : 2 avril 2026',
+    intro: 'CountWordz est conçu pour fonctionner dans le navigateur sans nécessiter de compte. Cette page explique quelles données nous collectons, lesquelles nous ne collectons pas et comment nous gérons les analyses et la publicité.',
     sections: [
       {
         heading: 'Texte saisi',
-        body: 'Le texte saisi dans les outils est traité dans votre navigateur pour les fonctions de comptage, de lisibilité, de comparaison et de formatage. Aucun compte n’est requis pour utiliser les outils.',
+        body: 'Le texte saisi dans les outils est traité entièrement dans votre navigateur pour les fonctions de comptage, de lisibilité, de comparaison et de formatage. Votre texte n\'est jamais envoyé à nos serveurs ni à des tiers. Aucun compte n\'est requis pour utiliser les outils.',
       },
       {
         heading: 'Analyses',
-        body: 'Nous pouvons utiliser des outils d’analyse respectueux de la vie privée et des outils de performance de recherche afin de comprendre l’usage du site, les pages populaires et la qualité du produit. Ces outils peuvent collecter des informations agrégées telles que les vues de page, les référents et certaines métadonnées du navigateur ou de l’appareil.',
+        body: 'Nous pouvons utiliser des outils d\'analyse respectueux de la vie privée et des outils de performance de recherche afin de comprendre l\'usage du site, les pages populaires et la qualité du produit. Ces outils peuvent collecter des informations agrégées telles que les vues de page, les référents et certaines métadonnées du navigateur ou de l\'appareil.',
       },
       {
-        heading: 'Cookies et services tiers',
-        body: 'Le site peut utiliser des cookies ou des technologies similaires pour l’analyse, la publicité et la performance. Les services tiers peuvent appliquer leurs propres politiques de confidentialité lorsqu’ils sont chargés sur le site.',
+        heading: 'Publicité et cookies',
+        body: 'Ce site affiche des publicités diffusées par Google AdSense et potentiellement d\'autres réseaux publicitaires tiers. Ces fournisseurs tiers, y compris Google, utilisent des cookies, des balises web et des technologies similaires pour diffuser des publicités en fonction de vos visites précédentes sur ce site web ou d\'autres sites web. L\'utilisation de cookies publicitaires par Google lui permet, ainsi qu\'à ses partenaires, de vous diffuser des publicités en fonction de votre visite sur ce site et/ou d\'autres sites Internet. Vous pouvez désactiver la publicité personnalisée en visitant les Paramètres des annonces Google (https://www.google.com/settings/ads). Pour plus d\'informations sur la façon dont Google utilise les données lorsque vous utilisez notre site, visitez : https://policies.google.com/technologies/partner-sites',
+      },
+      {
+        heading: 'Cookies et technologies similaires',
+        body: 'Les cookies sont de petits fichiers texte stockés sur votre appareil par votre navigateur web. Nous et nos partenaires tiers utilisons des cookies et des technologies similaires (telles que les balises web, les pixels de suivi et les adresses IP) pour les analyses, la publicité et la performance du site. Les serveurs publicitaires ou les réseaux publicitaires tiers peuvent utiliser ces technologies pour mesurer l\'efficacité de leurs publicités et personnaliser le contenu publicitaire que vous voyez. CountWordz n\'a aucun accès ni contrôle sur les cookies utilisés par les annonceurs tiers. Vous pouvez gérer vos préférences en matière de cookies via les paramètres de votre navigateur ou via les contrôles de consentement aux cookies fournis sur ce site.',
+      },
+      {
+        heading: 'Services tiers',
+        body: 'Nous utilisons des services tiers incluant Google AdSense pour la publicité et Google Fonts pour la typographie. Ces services peuvent collecter des informations envoyées par votre navigateur dans le cadre d\'une requête de page web, telles que votre adresse IP, le type de navigateur, la langue du navigateur, la date et l\'heure de votre requête, et un ou plusieurs cookies pouvant identifier de manière unique votre navigateur. Chaque service tiers est régi par sa propre politique de confidentialité.',
+      },
+      {
+        heading: 'Confidentialité des enfants',
+        body: 'CountWordz ne s\'adresse pas aux enfants de moins de 13 ans. Nous ne collectons pas sciemment d\'informations personnelles auprès d\'enfants de moins de 13 ans. Si vous pensez que nous avons involontairement collecté des informations d\'un enfant de moins de 13 ans, veuillez nous contacter pour que nous puissions prendre les mesures appropriées.',
       },
       {
         heading: 'Vos choix',
-        body: 'Vous pouvez cesser d’utiliser le site à tout moment, bloquer les cookies dans votre navigateur ou utiliser des contrôles de confidentialité et des bloqueurs de contenu pour limiter les scripts tiers.',
+        body: 'Vous pouvez cesser d\'utiliser le site à tout moment. Vous pouvez gérer les cookies via la bannière de consentement aux cookies sur ce site, via les paramètres de votre navigateur ou en utilisant des contrôles de confidentialité et des bloqueurs de contenu. Vous pouvez désactiver la publicité personnalisée en visitant les Paramètres des annonces Google sur https://www.google.com/settings/ads ou la page de désinscription de Network Advertising Initiative sur https://www.networkadvertising.org/managing/opt_out.asp',
+      },
+      {
+        heading: 'Modifications de cette politique',
+        body: 'Nous pouvons mettre à jour cette politique de confidentialité de temps à autre pour refléter les changements dans nos pratiques ou les lois applicables. Nous vous encourageons à consulter cette page régulièrement pour les dernières informations sur nos pratiques de confidentialité.',
       },
       {
         heading: 'Contact',
-        body: 'Si vous avez une question relative à la confidentialité concernant CountWordz, contactez l’exploitant du site via le canal d’assistance ou de contact approprié.',
+        body: 'Si vous avez une question relative à la confidentialité concernant CountWordz, contactez l\'exploitant du site via le canal d\'assistance ou de contact approprié.',
       },
     ],
   },
   de: {
     title: 'Datenschutzrichtlinie',
-    description: 'Erfahren Sie, wie CountWordz Text, Analysen und Datenschutz auf der Website behandelt.',
+    description: 'Erfahren Sie, wie CountWordz Text, Analysen, Werbung und Datenschutz auf der Website behandelt.',
     h1: 'Datenschutzrichtlinie',
-    updated: 'Zuletzt aktualisiert: 1. April 2026',
-    intro: 'CountWordz ist dafür ausgelegt, direkt im Browser zu funktionieren, ohne dass ein Konto erforderlich ist. Diese Seite erklärt, welche Daten wir erfassen, welche wir nicht erfassen und wie wir einfache Website-Analysen handhaben.',
+    updated: 'Zuletzt aktualisiert: 2. April 2026',
+    intro: 'CountWordz ist dafür ausgelegt, direkt im Browser zu funktionieren, ohne dass ein Konto erforderlich ist. Diese Seite erklärt, welche Daten wir erfassen, welche wir nicht erfassen und wie wir Analysen und Werbung handhaben.',
     sections: [
       {
         heading: 'Eingegebener Text',
-        body: 'Text, den Sie in die Tools eingeben, wird in Ihrem Browser für Zähl-, Lesbarkeits-, Vergleichs- und Formatierungsfunktionen verarbeitet. Für die Nutzung der Tools ist kein Konto erforderlich.',
+        body: 'Text, den Sie in die Tools eingeben, wird vollständig in Ihrem Browser für Zähl-, Lesbarkeits-, Vergleichs- und Formatierungsfunktionen verarbeitet. Ihr Text wird niemals an unsere Server oder an Dritte gesendet. Für die Nutzung der Tools ist kein Konto erforderlich.',
       },
       {
         heading: 'Analysen',
         body: 'Wir können datenschutzbewusste Analyse- und Suchleistungs-Tools verwenden, um die Nutzung der Website, beliebte Seiten und die Produktqualität zu verstehen. Diese Tools können aggregierte Informationen wie Seitenaufrufe, Verweise sowie Browser- oder Gerätemetadaten erfassen.',
       },
       {
-        heading: 'Cookies und Drittanbieter-Dienste',
-        body: 'Die Website kann Cookies oder ähnliche Technologien für Analysen, Werbung und Leistung verwenden. Drittanbieter-Dienste können eigene Datenschutzrichtlinien anwenden, wenn sie auf der Website geladen werden.',
+        heading: 'Werbung und Cookies',
+        body: 'Diese Website zeigt Anzeigen an, die von Google AdSense und möglicherweise anderen Werbenetzwerken Dritter geschaltet werden. Diese Drittanbieter, einschließlich Google, verwenden Cookies, Web-Beacons und ähnliche Technologien, um Anzeigen basierend auf Ihren vorherigen Besuchen dieser Website oder anderer Websites zu schalten. Die Verwendung von Werbe-Cookies durch Google ermöglicht es ihm und seinen Partnern, Ihnen Anzeigen basierend auf Ihrem Besuch dieser Website und/oder anderer Websites im Internet zu zeigen. Sie können personalisierte Werbung deaktivieren, indem Sie die Google-Anzeigeneinstellungen besuchen (https://www.google.com/settings/ads). Weitere Informationen darüber, wie Google Daten verwendet, wenn Sie unsere Website nutzen, finden Sie unter: https://policies.google.com/technologies/partner-sites',
+      },
+      {
+        heading: 'Cookies und ähnliche Technologien',
+        body: 'Cookies sind kleine Textdateien, die von Ihrem Webbrowser auf Ihrem Gerät gespeichert werden. Wir und unsere Drittanbieter-Partner verwenden Cookies und ähnliche Technologien (wie Web-Beacons, Pixel-Tags und IP-Adressen) für Analysen, Werbung und Website-Leistung. Drittanbieter-Werbeserver oder Werbenetzwerke können diese Technologien verwenden, um die Wirksamkeit ihrer Werbung zu messen und die von Ihnen gesehenen Werbeinhalte zu personalisieren. CountWordz hat keinen Zugriff auf oder Kontrolle über Cookies, die von Drittanbieter-Werbetreibenden verwendet werden. Sie können Ihre Cookie-Einstellungen über Ihre Browsereinstellungen oder über die auf dieser Website bereitgestellten Cookie-Einwilligungssteuerungen verwalten.',
+      },
+      {
+        heading: 'Dienste von Drittanbietern',
+        body: 'Wir nutzen Drittanbieter-Dienste, darunter Google AdSense für Werbung und Google Fonts für Typografie. Diese Dienste können Informationen sammeln, die Ihr Browser als Teil einer Webseitenanforderung sendet, wie z.B. Ihre IP-Adresse, den Browsertyp, die Browsersprache, das Datum und die Uhrzeit Ihrer Anfrage sowie ein oder mehrere Cookies, die Ihren Browser eindeutig identifizieren können. Jeder Drittanbieter-Dienst unterliegt seiner eigenen Datenschutzrichtlinie.',
+      },
+      {
+        heading: 'Datenschutz für Kinder',
+        body: 'CountWordz richtet sich nicht an Kinder unter 13 Jahren. Wir sammeln wissentlich keine personenbezogenen Daten von Kindern unter 13 Jahren. Wenn Sie glauben, dass wir versehentlich Informationen eines Kindes unter 13 Jahren gesammelt haben, kontaktieren Sie uns bitte, damit wir entsprechende Maßnahmen ergreifen können.',
       },
       {
         heading: 'Ihre Wahlmöglichkeiten',
-        body: 'Sie können die Website jederzeit nicht mehr nutzen, Cookies in Ihrem Browser blockieren oder Datenschutzfunktionen und Inhaltsblocker verwenden, wenn Sie Drittanbieter-Skripte einschränken möchten.',
+        body: 'Sie können die Website jederzeit nicht mehr nutzen. Sie können Cookies über das Cookie-Einwilligungsbanner auf dieser Website, über Ihre Browsereinstellungen oder mithilfe von Datenschutzkontrollen und Inhaltsblockern verwalten. Sie können personalisierte Werbung deaktivieren, indem Sie die Google-Anzeigeneinstellungen unter https://www.google.com/settings/ads oder die Opt-out-Seite der Network Advertising Initiative unter https://www.networkadvertising.org/managing/opt_out.asp besuchen.',
+      },
+      {
+        heading: 'Änderungen dieser Richtlinie',
+        body: 'Wir können diese Datenschutzrichtlinie von Zeit zu Zeit aktualisieren, um Änderungen in unseren Praktiken oder den geltenden Gesetzen widerzuspiegeln. Wir empfehlen Ihnen, diese Seite regelmäßig zu besuchen, um die neuesten Informationen über unsere Datenschutzpraktiken zu erhalten.',
       },
       {
         heading: 'Kontakt',
@@ -128,26 +192,42 @@ const content = {
   },
   pt: {
     title: 'Política de Privacidade',
-    description: 'Saiba como a CountWordz lida com texto, análises e privacidade em todo o site.',
+    description: 'Saiba como a CountWordz lida com texto, análises, publicidade e privacidade em todo o site.',
     h1: 'Política de Privacidade',
-    updated: 'Última atualização: 1 de abril de 2026',
-    intro: 'CountWordz foi criado para funcionar no navegador sem exigir conta. Esta página explica quais dados coletamos, quais dados não coletamos e como lidamos com análises básicas do site.',
+    updated: 'Última atualização: 2 de abril de 2026',
+    intro: 'CountWordz foi criado para funcionar no navegador sem exigir conta. Esta página explica quais dados coletamos, quais dados não coletamos e como lidamos com análises e publicidade.',
     sections: [
       {
         heading: 'Texto inserido',
-        body: 'O texto inserido nas ferramentas é processado no seu navegador para recursos de contagem, legibilidade, comparação e formatação. Não exigimos a criação de conta para usar as ferramentas.',
+        body: 'O texto inserido nas ferramentas é processado completamente no seu navegador para recursos de contagem, legibilidade, comparação e formatação. Seu texto nunca é enviado aos nossos servidores ou a terceiros. Não exigimos a criação de conta para usar as ferramentas.',
       },
       {
         heading: 'Análises',
         body: 'Podemos usar ferramentas de análise com foco em privacidade e ferramentas de desempenho em busca para entender o uso do site, as páginas populares e a qualidade do produto. Essas ferramentas podem coletar informações agregadas, como visualizações de página, origens de tráfego e metadados do navegador ou dispositivo.',
       },
       {
-        heading: 'Cookies e serviços de terceiros',
-        body: 'O site pode usar cookies ou tecnologias semelhantes para análises, publicidade e desempenho. Serviços de terceiros podem aplicar suas próprias políticas de privacidade quando são carregados no site.',
+        heading: 'Publicidade e cookies',
+        body: 'Este site exibe anúncios servidos pelo Google AdSense e potencialmente outras redes de publicidade de terceiros. Esses fornecedores de terceiros, incluindo o Google, usam cookies, web beacons e tecnologias similares para servir anúncios com base em suas visitas anteriores a este site ou a outros sites. O uso de cookies de publicidade pelo Google permite que ele e seus parceiros veiculem anúncios com base em sua visita a este site e/ou outros sites na Internet. Você pode cancelar a publicidade personalizada visitando as Configurações de Anúncios do Google (https://www.google.com/settings/ads). Para mais informações sobre como o Google usa dados quando você usa nosso site, visite: https://policies.google.com/technologies/partner-sites',
+      },
+      {
+        heading: 'Cookies e tecnologias similares',
+        body: 'Cookies são pequenos arquivos de texto armazenados no seu dispositivo pelo seu navegador web. Nós e nossos parceiros de terceiros usamos cookies e tecnologias similares (como web beacons, tags de pixel e endereços IP) para análises, publicidade e desempenho do site. Servidores de anúncios ou redes de publicidade de terceiros podem usar essas tecnologias para medir a eficácia de seus anúncios e personalizar o conteúdo publicitário que você vê. CountWordz não tem acesso nem controle sobre os cookies usados por anunciantes de terceiros. Você pode gerenciar suas preferências de cookies nas configurações do seu navegador ou nos controles de consentimento de cookies fornecidos neste site.',
+      },
+      {
+        heading: 'Serviços de terceiros',
+        body: 'Usamos serviços de terceiros incluindo Google AdSense para publicidade e Google Fonts para tipografia. Esses serviços podem coletar informações enviadas pelo seu navegador como parte de uma solicitação de página web, como seu endereço IP, tipo de navegador, idioma do navegador, a data e hora da sua solicitação e um ou mais cookies que podem identificar exclusivamente seu navegador. Cada serviço de terceiros é regido por sua própria política de privacidade.',
+      },
+      {
+        heading: 'Privacidade das crianças',
+        body: 'CountWordz não é direcionado a crianças menores de 13 anos. Não coletamos intencionalmente informações pessoais de crianças menores de 13 anos. Se você acredita que coletamos inadvertidamente informações de uma criança menor de 13 anos, entre em contato conosco para que possamos tomar as medidas apropriadas.',
       },
       {
         heading: 'Suas escolhas',
-        body: 'Você pode parar de usar o site a qualquer momento, bloquear cookies no navegador ou usar controles de privacidade e bloqueadores de conteúdo se preferir limitar scripts de terceiros.',
+        body: 'Você pode parar de usar o site a qualquer momento. Você pode gerenciar cookies através do banner de consentimento de cookies neste site, nas configurações do seu navegador ou usando controles de privacidade e bloqueadores de conteúdo. Você pode cancelar a publicidade personalizada visitando as Configurações de Anúncios do Google em https://www.google.com/settings/ads ou a página de exclusão da Network Advertising Initiative em https://www.networkadvertising.org/managing/opt_out.asp',
+      },
+      {
+        heading: 'Alterações nesta política',
+        body: 'Podemos atualizar esta política de privacidade de tempos em tempos para refletir mudanças em nossas práticas ou nas leis aplicáveis. Encorajamos você a revisar esta página periodicamente para as informações mais recentes sobre nossas práticas de privacidade.',
       },
       {
         heading: 'Contato',

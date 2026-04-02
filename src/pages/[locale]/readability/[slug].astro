@@ -90,9 +90,6 @@ const fallbackTips = {
 
         <article class="mt-8">
           <section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">{l.overview}</h2><p class="text-text-primary mb-4">{pageData.subtitle}</p></section>
-
-          <div class="my-6 ad-slot-mid-content"><div class="bg-surface rounded-lg border border-gray-200 p-4 text-center"><p class="text-xs text-text-muted mb-2">{t('advertisement')}</p><div class="min-h-[250px] flex items-center justify-center bg-gray-50 rounded"><span class="text-gray-400 text-sm">{t('adSpace')}</span></div></div></div>
-
           {pageData.targets && (<section class="mb-6"><h2 class="text-2xl font-display font-bold mb-3">{l.targets}</h2><div class="bg-surface rounded-lg border border-gray-100 p-4 mb-4"><ul class="space-y-2 text-text-primary">{Object.entries(pageData.targets).map(([key, value]) => <li class="flex justify-between"><span>{key}</span><span class="font-semibold">{value}</span></li>)}</ul></div></section>)}
 
           <section class="mb-6 bg-surface rounded-2xl p-8 border border-gray-100"><h2 class="text-2xl font-display font-bold mb-6 text-center">{l.bestFor}</h2><p class="text-text-primary">{locale === 'es' ? 'Artículos, posts, páginas de venta y cualquier texto que deba ser claro para una audiencia concreta.' : locale === 'fr' ? 'Articles, posts, pages marketing et tout texte qui doit rester clair pour un public défini.' : locale === 'de' ? 'Artikel, Posts, Landingpages und alle Texte, die für eine bestimmte Zielgruppe klar bleiben müssen.' : 'Artigos, posts, páginas de venda e qualquer texto que precise ser claro para um público específico.'}</p></section>

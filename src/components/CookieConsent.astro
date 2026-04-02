@@ -1,0 +1,115 @@
+---
+/**
+ * Cookie consent banner for GDPR/EU User Consent Policy compliance.
+ * Required by Google AdSense Publisher Policies.
+ * 
+ * This banner:
+ * - Appears on first visit (no consent stored)
+ * - Allows users to accept or reject non-essential cookies
+ * - Stores consent in localStorage
+ * - Blocks AdSense loading until consent is given (for EU visitors)
+ */
+
+import { getTranslation } from '../i18n/translations.js';
+import { normalizeLocale } from '../lib/locale-routes';
+
+const props = Astro.props || {};
+const propLocale = props.locale;
+const pathname = Astro.url?.pathname || '/';
+const first = pathname.split('/')[1] || 'en';
+const locale = normalizeLocale(propLocale || first);
+---
+
+<div
+  id="cookie-consent-banner"
+  class="fixed bottom-0 left-0 right-0 z-50 hidden"
+  role="dialog"
+  aria-label="Cookie consent"
+  aria-modal="false"
+>
+  <div class="bg-gray-900 text-white border-t border-gray-700 shadow-2xl">
+    <div class="layout-shell px-4 py-4 md:py-5">
+      <div class="flex flex-col md:flex-row md:items-center gap-4">
+        <div class="flex-1">
+          <p class="text-sm leading-relaxed">
+            {locale === 'es' ? 'Este sitio usa cookies para análisis y publicidad personalizada. Al hacer clic en "Aceptar", consientes el uso de cookies por parte de terceros, incluyendo Google AdSense, para servir anuncios basados en tus visitas. Consulta nuestra' :
+             locale === 'fr' ? 'Ce site utilise des cookies pour les analyses et la publicité personnalisée. En cliquant sur « Accepter », vous consentez à l\'utilisation de cookies par des tiers, y compris Google AdSense, pour diffuser des publicités basées sur vos visites. Consultez notre' :
+             locale === 'de' ? 'Diese Website verwendet Cookies für Analysen und personalisierte Werbung. Durch Klicken auf „Akzeptieren" stimmen Sie der Verwendung von Cookies durch Dritte, einschließlich Google AdSense, zur Schaltung von Anzeigen basierend auf Ihren Besuchen zu. Lesen Sie unsere' :
+             locale === 'pt' ? 'Este site usa cookies para análises e publicidade personalizada. Ao clicar em "Aceitar", você consente o uso de cookies por terceiros, incluindo Google AdSense, para veicular anúncios com base em suas visitas. Consulte nossa' :
+             'This site uses cookies for analytics and personalized advertising. By clicking "Accept", you consent to the use of cookies by third parties, including Google AdSense, to serve ads based on your visits. See our'}
+            {' '}
+            <a
+              href={locale === 'en' ? '/privacy-policy' : `/${locale}/privacy-policy`}
+              class="underline hover:text-brand-pink transition-colors"
+            >
+              {locale === 'es' ? 'Política de Privacidad' :
+               locale === 'fr' ? 'Politique de Confidentialité' :
+               locale === 'de' ? 'Datenschutzrichtlinie' :
+               locale === 'pt' ? 'Política de Privacidade' :
+               'Privacy Policy'}
+            </a>
+            {locale === 'es' ? ' para más detalles.' :
+             locale === 'fr' ? ' pour plus de détails.' :
+             locale === 'de' ? ' für weitere Details.' :
+             locale === 'pt' ? ' para mais detalhes.' :
+             ' for more details.'}
+          </p>
+        </div>
+        <div class="flex gap-3 shrink-0">
+          <button
+            id="cookie-reject-btn"
+            type="button"
+            class="px-5 py-2.5 bg-gray-700 text-white rounded-lg text-sm font-medium hover:bg-gray-600 transition-colors"
+          >
+            {locale === 'es' ? 'Rechazar' :
+             locale === 'fr' ? 'Refuser' :
+             locale === 'de' ? 'Ablehnen' :
+             locale === 'pt' ? 'Rejeitar' :
+             'Reject'}
+          </button>
+          <button
+            id="cookie-accept-btn"
+            type="button"
+            class="px-5 py-2.5 bg-brand-pink text-white rounded-lg text-sm font-medium hover:bg-opacity-90 transition-colors"
+          >
+            {locale === 'es' ? 'Aceptar' :
+             locale === 'fr' ? 'Accepter' :
+             locale === 'de' ? 'Akzeptieren' :
+             locale === 'pt' ? 'Aceitar' :
+             'Accept'}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const banner = document.getElementById('cookie-consent-banner');
+    const acceptBtn = document.getElementById('cookie-accept-btn');
+    const rejectBtn = document.getElementById('cookie-reject-btn');
+
+    if (!banner || !acceptBtn || !rejectBtn) return;
+
+    const consentKey = 'cwz_cookie_consent';
+    const stored = localStorage.getItem(consentKey);
+
+    // Show banner if no consent decision has been made
+    if (!stored) {
+      banner.classList.remove('hidden');
+    }
+
+    acceptBtn.addEventListener('click', () => {
+      localStorage.setItem(consentKey, 'accepted');
+      banner.classList.add('hidden');
+      // Dispatch event so AdSense can be loaded
+      window.dispatchEvent(new CustomEvent('cookie-consent-granted'));
+    });
+
+    rejectBtn.addEventListener('click', () => {
+      localStorage.setItem(consentKey, 'rejected');
+      banner.classList.add('hidden');
+    });
+  });
+</script>
