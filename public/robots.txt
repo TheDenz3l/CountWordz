@@ -11,4 +11,4 @@ Allow: /
 User-agent: AdsBot-Google
 Allow: /
 
-Sitemap: https://countwordz.com/sitemap.xml
+Sitemap: https://wordcounters.dev/sitemap.xml

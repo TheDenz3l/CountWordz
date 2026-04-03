@@ -47,8 +47,7 @@ interface SeoMetadataOptions {
   twitterCardType?: 'summary' | 'summary_large_image' | 'app' | 'player';
 }
 
-const SITE_URL = 'https://countwordz.com';
-const TWITTER_HANDLE = '@countwordz';
+const SITE_URL = 'https://wordcounters.dev';
 
 /**
  * Generate standardized SEO metadata for a page.
@@ -80,7 +79,7 @@ export function generateSeoMetadata(options: SeoMetadataOptions): SeoMetadata {
       },
       optional: {
         description,
-        siteName: 'CountWordz',
+        siteName: 'Word Counters',
         locale: 'en_US',
       },
       image: {
@@ -92,8 +91,6 @@ export function generateSeoMetadata(options: SeoMetadataOptions): SeoMetadata {
     },
     twitter: {
       card: twitterCardType,
-      site: TWITTER_HANDLE,
-      creator: TWITTER_HANDLE,
       title,
       description,
       image: fullImageUrl,
@@ -109,9 +106,9 @@ export function generateWebsiteSchema(): Record<string, unknown> {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'CountWordz',
+    name: 'Word Counters',
     url: SITE_URL,
-    description: 'Free SEO-driven text utility website for word counting, character counting, and text analysis tools.',
+    description: 'Free text utility website for word counting, character counting, and text analysis tools.',
     potentialAction: {
       '@type': 'SearchAction',
       target: {
@@ -145,11 +142,11 @@ export function generateArticleSchema(options: {
     dateModified: dateModified || new Date().toISOString(),
     author: {
       '@type': 'Organization',
-      name: 'CountWordz',
+      name: 'Word Counters',
     },
     publisher: {
       '@type': 'Organization',
-      name: 'CountWordz',
+      name: 'Word Counters',
       logo: {
         '@type': 'ImageObject',
         url: `${SITE_URL}/favicon.svg`,

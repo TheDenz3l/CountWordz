@@ -24,6 +24,7 @@ export const uiTranslations = {
     legal: 'Legal',
     privacyPolicy: 'Privacy Policy',
     termsOfService: 'Terms of Service',
+    contactUs: 'Contact Us',
     allRightsReserved: 'All rights reserved.',
     sidebarLinks: [
       ['Word Counter', 'word-counter'],
@@ -75,6 +76,7 @@ export const uiTranslations = {
     legal: 'Legal',
     privacyPolicy: 'Política de Privacidad',
     termsOfService: 'Términos de Servicio',
+    contactUs: 'Contáctanos',
     allRightsReserved: 'Todos los derechos reservados.',
     sidebarLinks: [
       ['Contador de Palabras', 'word-counter'],
@@ -126,6 +128,7 @@ export const uiTranslations = {
     legal: 'Légal',
     privacyPolicy: 'Politique de Confidentialité',
     termsOfService: 'Conditions d\'Utilisation',
+    contactUs: 'Contactez-nous',
     allRightsReserved: 'Tous droits réservés.',
     sidebarLinks: [
       ['Compteur de Mots', 'word-counter'],
@@ -177,6 +180,7 @@ export const uiTranslations = {
     legal: 'Rechtliches',
     privacyPolicy: 'Datenschutzrichtlinie',
     termsOfService: 'Nutzungsbedingungen',
+    contactUs: 'Kontakt',
     allRightsReserved: 'Alle Rechte vorbehalten.',
     sidebarLinks: [
       ['Wortzähler', 'word-counter'],
@@ -228,6 +232,7 @@ export const uiTranslations = {
     legal: 'Legal',
     privacyPolicy: 'Política de Privacidade',
     termsOfService: 'Termos de Serviço',
+    contactUs: 'Contato',
     allRightsReserved: 'Todos os direitos reservados.',
     sidebarLinks: [
       ['Contador de Palavras', 'word-counter'],

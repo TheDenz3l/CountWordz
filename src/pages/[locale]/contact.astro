@@ -1,0 +1,157 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Footer from '../../components/Footer.astro';
+import { VALID_LOCALES, normalizeLocale } from '../../lib/locale-routes';
+
+export function getStaticPaths() {
+  return VALID_LOCALES.filter((locale) => locale !== 'en').map((locale) => ({ params: { locale } }));
+}
+
+const locale = normalizeLocale(Astro.params.locale);
+const email = 'Admin@WordCounters.dev';
+
+const content = {
+  en: {
+    title: 'Contact Us',
+    description: 'Get in touch with the Word Counters team. Reach out for feedback, bug reports, business inquiries, or privacy questions.',
+    h1: 'Contact Us',
+    intro: 'Have a question, suggestion, or issue? We would love to hear from you. Use the email below to get in touch with the Word Counters team.',
+    emailLabel: 'Email us at',
+    sendEmail: 'Send Email',
+    topicsHeading: 'What you can reach out about',
+    topics: [
+      'Bug reports or issues with any of the tools',
+      'Feature requests or suggestions for new tools',
+      'Business or partnership inquiries',
+      'Privacy questions or data concerns',
+      'General feedback about the site',
+    ],
+    responseHeading: 'Response time',
+    responseBody: 'We aim to respond to all inquiries within 1–2 business days. For privacy-related requests, we will prioritize your message and respond as quickly as possible.',
+  },
+  es: {
+    title: 'Contáctanos',
+    description: 'Ponte en contacto con el equipo de Word Counters. Escríbenos para comentarios, reportes de errores, consultas comerciales o preguntas de privacidad.',
+    h1: 'Contáctanos',
+    intro: '¿Tienes una pregunta, sugerencia o problema? Nos encantaría saber de ti. Usa el correo electrónico a continuación para contactar al equipo de Word Counters.',
+    emailLabel: 'Escríbenos a',
+    sendEmail: 'Enviar Correo',
+    topicsHeading: 'Motivos para contactarnos',
+    topics: [
+      'Reportes de errores o problemas con cualquiera de las herramientas',
+      'Solicitudes de funciones o sugerencias para nuevas herramientas',
+      'Consultas comerciales o de colaboración',
+      'Preguntas de privacidad o inquietudes sobre datos',
+      'Comentarios generales sobre el sitio',
+    ],
+    responseHeading: 'Tiempo de respuesta',
+    responseBody: 'Nos esforzamos por responder a todas las consultas en 1–2 días hábiles. Para solicitudes relacionadas con la privacidad, priorizaremos tu mensaje y responderemos lo antes posible.',
+  },
+  fr: {
+    title: 'Contactez-nous',
+    description: 'Contactez l\'équipe Word Counters. Écrivez-nous pour des commentaires, des rapports de bugs, des demandes commerciales ou des questions de confidentialité.',
+    h1: 'Contactez-nous',
+    intro: 'Vous avez une question, une suggestion ou un problème ? Nous serions ravis de vous entendre. Utilisez l\'adresse e-mail ci-dessous pour contacter l\'équipe Word Counters.',
+    emailLabel: 'Écrivez-nous à',
+    sendEmail: 'Envoyer un E-mail',
+    topicsHeading: 'Sujets pour nous contacter',
+    topics: [
+      'Rapports de bugs ou problèmes avec les outils',
+      'Demandes de fonctionnalités ou suggestions de nouveaux outils',
+      'Demandes commerciales ou de partenariat',
+      'Questions de confidentialité ou préoccupations concernant les données',
+      'Commentaires généraux sur le site',
+    ],
+    responseHeading: 'Délai de réponse',
+    responseBody: 'Nous nous efforçons de répondre à toutes les demandes sous 1 à 2 jours ouvrables. Pour les demandes liées à la confidentialité, nous prioriserons votre message et répondrons dans les meilleurs délais.',
+  },
+  de: {
+    title: 'Kontakt',
+    description: 'Nehmen Sie Kontakt mit dem Word Counters-Team auf. Schreiben Sie uns bei Feedback, Fehlerberichten, geschäftlichen Anfragen oder Datenschutzfragen.',
+    h1: 'Kontakt',
+    intro: 'Haben Sie eine Frage, einen Vorschlag oder ein Problem? Wir freuen uns, von Ihnen zu hören. Nutzen Sie die untenstehende E-Mail-Adresse, um das Word Counters-Team zu kontaktieren.',
+    emailLabel: 'Schreiben Sie uns an',
+    sendEmail: 'E-Mail senden',
+    topicsHeading: 'Gründe, uns zu kontaktieren',
+    topics: [
+      'Fehlerberichte oder Probleme mit den Tools',
+      'Funktionswünsche oder Vorschläge für neue Tools',
+      'Geschäftliche Anfragen oder Kooperationen',
+      'Datenschutzfragen oder Bedenken bezüglich Ihrer Daten',
+      'Allgemeines Feedback zur Website',
+    ],
+    responseHeading: 'Antwortzeit',
+    responseBody: 'Wir bemühen uns, alle Anfragen innerhalb von 1–2 Werktagen zu beantworten. Bei datenschutzbezogenen Anfragen priorisieren wir Ihre Nachricht und antworten so schnell wie möglich.',
+  },
+  pt: {
+    title: 'Contato',
+    description: 'Entre em contato com a equipe Word Counters. Escreva para feedback, relatórios de bugs, consultas comerciais ou perguntas sobre privacidade.',
+    h1: 'Contato',
+    intro: 'Tem uma pergunta, sugestão ou problema? Adoraríamos ouvir de você. Use o e-mail abaixo para entrar em contato com a equipe Word Counters.',
+    emailLabel: 'Envie um e-mail para',
+    sendEmail: 'Enviar E-mail',
+    topicsHeading: 'Motivos para entrar em contato',
+    topics: [
+      'Relatórios de bugs ou problemas com qualquer ferramenta',
+      'Solicitações de recursos ou sugestões de novas ferramentas',
+      'Consultas comerciais ou de parceria',
+      'Perguntas sobre privacidade ou preocupações com dados',
+      'Feedback geral sobre o site',
+    ],
+    responseHeading: 'Tempo de resposta',
+    responseBody: 'Nosso objetivo é responder a todas as consultas em 1 a 2 dias úteis. Para solicitações relacionadas à privacidade, priorizaremos sua mensagem e responderemos o mais rápido possível.',
+  },
+};
+
+const page = content[locale] ?? content.en;
+---
+
+<BaseLayout title={`${page.title} — Word Counters`} description={page.description}>
+  <main class="layout-shell px-4 py-10">
+    <div class="max-w-4xl mx-auto">
+      <header class="mb-8">
+        <h1 class="text-3xl md:text-5xl font-display font-bold tracking-tighter text-text-primary mb-3">{page.h1}</h1>
+      </header>
+
+      <article class="bg-surface rounded-2xl border border-gray-100 p-6 md:p-8 space-y-8">
+        <p class="text-text-primary leading-7">{page.intro}</p>
+
+        <!-- Email CTA -->
+        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 p-6 bg-brand-cream rounded-xl border border-gray-100">
+          <div class="flex-1">
+            <p class="text-sm font-semibold text-text-muted mb-1">{page.emailLabel}</p>
+            <p class="text-lg md:text-xl font-display font-bold text-text-primary">{email}</p>
+          </div>
+          <a
+            href={`mailto:${email}`}
+            class="inline-flex items-center gap-2 px-6 py-3 bg-brand-pink text-white rounded-lg font-semibold hover:bg-opacity-90 transition-all active:translate-y-[1px] active:scale-[0.98] text-sm md:text-base"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256"><path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48Zm-96,85.15L52.57,64H203.43ZM98.71,128,40,181.81V74.19Zm11.84,10.85,12,11.05a8,8,0,0,0,10.82,0l12-11.05,58,53.15H52.57ZM157.29,128,216,74.19V181.81Z"></path></svg>
+            {page.sendEmail}
+          </a>
+        </div>
+
+        <!-- Topics -->
+        <section>
+          <h2 class="text-2xl font-display font-bold mb-3">{page.topicsHeading}</h2>
+          <ul class="space-y-2 text-text-primary leading-7">
+            {page.topics.map((item) => (
+              <li class="flex items-start gap-2">
+                <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-brand-pink shrink-0"></span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <!-- Response time -->
+        <section>
+          <h2 class="text-2xl font-display font-bold mb-3">{page.responseHeading}</h2>
+          <p class="text-text-primary leading-7">{page.responseBody}</p>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <Footer locale={locale} />
+</BaseLayout>

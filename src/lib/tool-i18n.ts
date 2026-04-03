@@ -31,7 +31,7 @@ const translations = {
       readingTime: 'Reading Time',
       speakingTime: 'Speaking Time',
       sampleText:
-        "The quick brown fox jumps over the lazy dog. This sentence contains every letter in the English alphabet and is commonly used for typing practice and font demonstrations. Writing clear, concise content is essential for effective communication in today's fast-paced digital world. CountWordz makes it easy to analyze your text and ensure it meets your requirements.",
+        "The quick brown fox jumps over the lazy dog. This sentence contains every letter in the English alphabet and is commonly used for typing practice and font demonstrations. Writing clear, concise content is essential for effective communication in today's fast-paced digital world. Word Counters makes it easy to analyze your text and ensure it meets your requirements.",
     },
     characterCounter: {
       placeholder: 'Paste or type your text here...',
@@ -238,7 +238,7 @@ const translations = {
       readingTime: 'Tiempo de Lectura',
       speakingTime: 'Tiempo de Habla',
       sampleText:
-        'El zorro marrón rápido salta sobre el perro perezoso. Escribir contenido claro y conciso es esencial para una comunicación efectiva. CountWordz facilita analizar tu texto y comprobar que cumple tus requisitos.',
+        'El zorro marrón rápido salta sobre el perro perezoso. Escribir contenido claro y conciso es esencial para una comunicación efectiva. Word Counters facilita analizar tu texto y comprobar que cumple tus requisitos.',
     },
     characterCounter: {
       placeholder: 'Pega o escribe tu texto aquí...',
@@ -445,7 +445,7 @@ const translations = {
       readingTime: 'Temps de Lecture',
       speakingTime: 'Temps de Parole',
       sampleText:
-        'Le rapide renard brun saute par-dessus le chien paresseux. Rédiger un contenu clair et concis est essentiel pour une communication efficace. CountWordz facilite l’analyse de votre texte et vous aide à vérifier qu’il respecte vos exigences.',
+        'Le rapide renard brun saute par-dessus le chien paresseux. Rédiger un contenu clair et concis est essentiel pour une communication efficace. Word Counters facilite l’analyse de votre texte et vous aide à vérifier qu’il respecte vos exigences.',
     },
     characterCounter: {
       placeholder: 'Collez ou tapez votre texte ici...',
@@ -652,7 +652,7 @@ const translations = {
       readingTime: 'Lesezeit',
       speakingTime: 'Sprechzeit',
       sampleText:
-        'Der schnelle braune Fuchs springt über den faulen Hund. Klare und prägnante Inhalte sind für effektive Kommunikation entscheidend. CountWordz hilft Ihnen dabei, Ihren Text zu analysieren und zu prüfen, ob er Ihre Anforderungen erfüllt.',
+        'Der schnelle braune Fuchs springt über den faulen Hund. Klare und prägnante Inhalte sind für effektive Kommunikation entscheidend. Word Counters hilft Ihnen dabei, Ihren Text zu analysieren und zu prüfen, ob er Ihre Anforderungen erfüllt.',
     },
     characterCounter: {
       placeholder: 'Fügen Sie hier Ihren Text ein oder tippen Sie ihn ein...',
@@ -859,7 +859,7 @@ const translations = {
       readingTime: 'Tempo de Leitura',
       speakingTime: 'Tempo de Fala',
       sampleText:
-        'A rápida raposa marrom pula sobre o cachorro preguiçoso. Escrever conteúdo claro e conciso é essencial para uma comunicação eficaz. CountWordz facilita a análise do seu texto e ajuda a verificar se ele atende aos seus requisitos.',
+        'A rápida raposa marrom pula sobre o cachorro preguiçoso. Escrever conteúdo claro e conciso é essencial para uma comunicação eficaz. Word Counters facilita a análise do seu texto e ajuda a verificar se ele atende aos seus requisitos.',
     },
     characterCounter: {
       placeholder: 'Cole ou digite seu texto aqui...',

@@ -71,7 +71,7 @@ const localeText = {
     faqItems: [
       {
         q: 'How accurate is this tool?',
-        a: 'It uses the same text parsing logic as the main CountWordz tools, so the numbers update consistently as you write.',
+        a: 'It uses the same text parsing logic as the main Word Counters tools, so the numbers update consistently as you write.',
       },
       {
         q: 'Should I rely only on one metric?',
@@ -100,7 +100,7 @@ const localeText = {
     faqItems: [
       {
         q: '¿Qué tan precisa es esta herramienta?',
-        a: 'Usa la misma lógica de análisis que las herramientas principales de CountWordz, por lo que los números se actualizan de forma consistente.',
+        a: 'Usa la misma lógica de análisis que las herramientas principales de Word Counters, por lo que los números se actualizan de forma consistente.',
       },
       {
         q: '¿Debo fijarme solo en una métrica?',
@@ -129,7 +129,7 @@ const localeText = {
     faqItems: [
       {
         q: 'Quelle est la précision de cet outil ?',
-        a: 'Il utilise la même logique d’analyse que les outils principaux de CountWordz, ce qui garantit des résultats cohérents.',
+        a: 'Il utilise la même logique d’analyse que les outils principaux de Word Counters, ce qui garantit des résultats cohérents.',
       },
       {
         q: 'Faut-il se fier à une seule métrique ?',
@@ -158,7 +158,7 @@ const localeText = {
     faqItems: [
       {
         q: 'Wie genau ist dieses Tool?',
-        a: 'Es verwendet dieselbe Auswertungslogik wie die zentralen CountWordz-Tools und liefert dadurch konsistente Ergebnisse.',
+        a: 'Es verwendet dieselbe Auswertungslogik wie die zentralen Word Counters-Tools und liefert dadurch konsistente Ergebnisse.',
       },
       {
         q: 'Sollte ich mich nur auf eine Kennzahl verlassen?',
@@ -187,7 +187,7 @@ const localeText = {
     faqItems: [
       {
         q: 'Qual é a precisão desta ferramenta?',
-        a: 'Ela usa a mesma lógica de análise das ferramentas principais do CountWordz, então os resultados permanecem consistentes.',
+        a: 'Ela usa a mesma lógica de análise das ferramentas principais do Word Counters, então os resultados permanecem consistentes.',
       },
       {
         q: 'Devo olhar apenas uma métrica?',

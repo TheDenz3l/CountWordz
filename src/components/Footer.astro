@@ -12,6 +12,7 @@ const tools = t('footerTools') || [];
 const legalLinks = [
   [t('privacyPolicy'), getLocalizedStaticPath(locale, 'privacy-policy')],
   [t('termsOfService'), getLocalizedStaticPath(locale, 'terms')],
+  [t('contactUs'), getLocalizedStaticPath(locale, 'contact')],
 ];
 ---
 
@@ -19,7 +20,7 @@ const legalLinks = [
   <div class="layout-shell px-4">
     <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
       <div class="md:col-span-1">
-        <h3 class="text-xl font-display font-bold mb-4">CountWordz</h3>
+        <h3 class="text-xl font-display font-bold mb-4">Word Counters</h3>
         <p class="text-gray-400 text-sm">{t('footerBrandDescription')}</p>
       </div>
 
@@ -51,7 +52,7 @@ const legalLinks = [
     </div>
 
     <div class="border-t border-gray-800 pt-8 text-center text-gray-400 text-sm">
-      <p>&copy; {new Date().getFullYear()} CountWordz. {t('allRightsReserved')}</p>
+      <p>&copy; {new Date().getFullYear()} Word Counters. {t('allRightsReserved')}</p>
     </div>
   </div>
 </footer>

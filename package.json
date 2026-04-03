@@ -1,12 +1,13 @@
 {
-  "name": "counterwordz",
+  "name": "word-counters",
   "version": "1.0.0",
-  "description": "CountWordz - Free SEO-driven text utility website",
+  "description": "Word Counters - Free text utility website for word counting, character counting, and text analysis",
   "type": "module",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "postinstall": "node scripts/patch-vite-transform-handler.mjs",
     "test": "vitest",
     "test:run": "vitest run"
   },

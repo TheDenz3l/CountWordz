@@ -6,7 +6,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://countwordz.com',
+  site: 'https://wordcounters.dev',
 
   vite: {
     plugins: [tailwindcss()],

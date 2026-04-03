@@ -21,6 +21,7 @@ const localizedStaticSlugs = new Set([
   'tools',
   'privacy-policy',
   'terms',
+  'contact',
 ]);
 
 const localizedDynamicSlugs: Record<DynamicCategory, Set<string>> = {
